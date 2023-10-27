@@ -180,7 +180,17 @@ input {
     padding: 28px 48px;
 }
 
+.progress-view {
+    width: 168px;
+    height: 118px;
+    padding: 25px 0;
+}
+
 .vertical-bl-line { padding: 0 30px; }
+
+.vertical-gr-line { padding: 0 61px; }
+
+.greet { margin-left: 80px; }
 /* ------------------------------------------------------------ */
 
 /* Side and top bar template */
