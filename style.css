@@ -58,6 +58,8 @@ a { text-decoration: none; }
 
 .fw-400 { font-weight: 400; }
 
+.fw-500 { font-weight: 500; }
+
 .fw-700 { font-weight: 700; }
 
 .ft-general {
@@ -190,7 +192,16 @@ input {
 
 .vertical-gr-line { padding: 0 61px; }
 
-.greet { margin-left: 80px; }
+.greet { 
+    font-size: 47px;
+    margin-left: 80px;
+    width: 185px;
+}
+
+.img-to-do {
+    width: 69px;
+    height: 69px;
+}
 /* ------------------------------------------------------------ */
 
 /* Side and top bar template */
