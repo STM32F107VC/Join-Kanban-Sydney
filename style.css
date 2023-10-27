@@ -48,6 +48,8 @@ a { text-decoration: none; }
 
 .fs-21px { font-size: 21px; }
 
+.fs-27px { font-size: 27px; }
+
 .fs-61px { font-size: 61px; }
 
 .fw-400 { font-weight: 400; }
@@ -58,6 +60,8 @@ a { text-decoration: none; }
     font-style: normal;
     line-height: 120%; 
 }
+
+.dark-blue { color: #2A3647; }
 
 .w-100 { width: 100%; }
 /* ------------------------------------- */
@@ -139,6 +143,24 @@ input {
 #privacy-policy a { color: #A8A8A8; }
 /* ------------------------------------------------------------ */
 
+
+/* Summary section */
+.summary-container {
+    position: absolute;
+    top: 206px;
+    left: 328px;
+}
+
+.spacing-to-do { padding: 38px 19px;}
+
+.spacing-done { padding: 38px 58px;}
+
+.vertical-bl-line {
+    padding: 0 30px;
+}
+/* ------------------------------------------------------------ */
+
+
 /* Side and top bar template */
 .sidebar {
     height: 1024px;
@@ -148,6 +170,8 @@ input {
     background: #2A3647;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
+
+#legal-notice { margin-top: 243px; }
 
 .topbar {
     position: absolute;
