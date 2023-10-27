@@ -60,15 +60,25 @@ a {
 
 /* Login in section */ 
 input {
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 10px;
     outline: none;
     border: none;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%; /* 24px */
+}
+
+.icon-pos {
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+}
+
+.icon-email {
+    background-image: url(assets/img/mail.png);
+}
+
+.icon-password {
+    background-image: url(assets/img/lock.png);
 }
 
 .btn-dark { 
@@ -83,6 +93,7 @@ input {
     border: 1px solid var(--version-2-main-color, #2A3647);
     background: var(--white, #FFF);
     color: var(--version-2-main-color, #2A3647);
+    padding: 15px 24px;
 }   
 
  .guestLogIn-btn {
