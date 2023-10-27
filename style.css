@@ -55,14 +55,13 @@ a {
 .ft-general {
     font-style: normal;
     line-height: 120%; 
-}  
+}
+
+.w-100 { width: 100%; }
 /* ------------------------------------- */
 
 /* Login in section */ 
 input {
-    width: 100%;
-    display: flex;
-    align-items: center;
     gap: 10px;
     outline: none;
     border: none;
@@ -134,7 +133,7 @@ input {
 
 #privacy-policy {
     position: absolute;
-    bottom: 90px;
+    bottom: 40px;
     left: auto;
     right: auto; 
 }
