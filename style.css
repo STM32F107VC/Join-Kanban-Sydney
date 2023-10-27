@@ -7,9 +7,7 @@ body {
     position: relative;
 }
 
-a {
-    text-decoration: none;
-}
+a { text-decoration: none; }
 
 /* Pseudo classes */
 .flex { display: flex; }
@@ -30,9 +28,13 @@ a {
 
 .ml-39px { margin-left: 39px; }
 
+.mr-16px { margin-right: 16px; }
+
 .mr-35px { margin-right: 35px; }
 
 .p-btn { padding: 15px 16px !important; }
+
+.p-8px { padding: 8px; }
 
 .gap-8px { gap: 8px; }
 
@@ -67,18 +69,14 @@ input {
     border: none;
 }
 
-.icon-pos {
+.input-icon-pos {
     background-repeat: no-repeat;
     background-position-x: 100%;
 }
 
-.icon-email {
-    background-image: url(assets/img/mail.png);
-}
+.icon-email { background-image: url(assets/img/mail.png); }
 
-.icon-password {
-    background-image: url(assets/img/lock.png);
-}
+.icon-password { background-image: url(assets/img/lock.png); }
 
 .btn-dark { 
     border-radius: 8px;
@@ -109,7 +107,7 @@ input {
     gap: 32px;
     border-radius: 30px;
     background: var(--white, #FFF);
-    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04); /* shadow backlog box */
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04); 
 }
 
 .login-input {
@@ -141,5 +139,33 @@ input {
 #privacy-policy a { color: #A8A8A8; }
 /* ------------------------------------------------------------ */
 
+/* Side and top bar template */
+.sidebar {
+    height: 1024px;
+    width: 232px;
+    padding: 64px 0;
+    flex-shrink: 0;
+    background: #2A3647;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
 
+.topbar {
+    position: absolute;
+    top: 0;
+    left: 232px;
+    width: 1440px;
+    padding: 20px 40px 20px 116px;
+    background-color: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+}
 
+.menu-choose { padding: 8px 56px; }
+
+.link-col { color: #CDCDCD; }
+
+.profil-icon {
+    position: absolute;
+    right: 54px;
+}
+
+/* ------------------------------------------------------------ */
