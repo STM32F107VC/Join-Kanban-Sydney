@@ -205,7 +205,11 @@ input {
 /* ------------------------------------------------------------ */
 
 /* Side and top bar template */
+.box-realtive { position: relative; }
+
 .sidebar {
+    position: absolute;
+    z-index: 1;
     height: 1024px;
     width: 232px;
     padding: 64px 0;
@@ -214,17 +218,16 @@ input {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
-#legal-notice { margin-top: 243px; }
-
 .topbar {
     position: absolute;
     top: 0;
-    left: 232px;
     width: 1440px;
-    padding: 20px 40px 20px 116px;
+    padding: 20px 40px 20px 348px;
     background-color: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }
+
+#legal-notice { margin-top: 243px; }
 
 .menu-choose { padding: 8px 56px; }
 
