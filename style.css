@@ -264,9 +264,7 @@ input {
     cursor: pointer;
 }
 
-.menu-choose:hover { 
-    background-color: rgb(39, 58, 88);
-}
+.menu-choose:hover { background-color: rgb(39, 58, 88); }
 
 .menu-choose:focus { background-color: #091931; }
 
@@ -277,3 +275,7 @@ input {
     right: 54px;
 }
 /* ------------------------------------------------------------ */
+
+.test svg rect {
+    background-color: green;
+}

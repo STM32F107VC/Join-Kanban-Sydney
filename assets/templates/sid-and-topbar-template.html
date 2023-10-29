@@ -1,39 +1,56 @@
-<!-- Side bar -->
-<div class="box-relative">
-    <!-- Top bar -->
-    <div class="topbar flex x-space-betw y-center">
-        <span class="ft-general fs-20px fw-400">Kanban Project Management Tool</span>
-        <div class="flex y-center">
-            <img id="help" class="mr-16px" src="/assets/img/help.png" alt="help">
-            <img src="/assets/img/Ellipse 3.png" alt="Profil">
-            <img class="profil-icon" src="/assets/img/Group 9.png" alt="Profil">
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="sidebar flex flex-column x-space-betw y-center">
-        <img src="/assets/img/Capa_2_light.png" alt="Join Logo">
-        <div class="w-100">
-            <div class="flex y-center gap-8px mb-16px menu-choose">
-                <img src="/assets/img/summary.png" alt="summary">
-                <a class="ft-general fs-16px fw-400 link-col" href="#">Summary</a>
-            </div>
-            <div class="flex y-center gap-8px mb-16px menu-choose">
-                <img src="/assets/img/add_task.png" alt="add task">
-                <a class="ft-general fs-16px fw-400 link-col" href="#">Add Task</a>
-            </div>
-            <div class="flex y-center gap-8px mb-16px menu-choose">
-                <img src="/assets/img/board.png" alt="board">
-                <a class="ft-general fs-16px fw-400 link-col" href="#">Board</a>
-            </div>
-            <div class="flex y-center gap-8px mb-16px menu-choose">
-                <img src="/assets/img/contacts.png" alt="contacts">
-                <a class="ft-general fs-16px fw-400 link-col" href="#">Contacts</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/CSS/fonts_inter.css">
+</head>
+
+<body>
+    <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
+
+    <div class="box-relative">
+        <!-- Top bar -->
+        <div class="topbar flex x-space-betw y-center">
+            <span class="ft-general fs-20px fw-400">Kanban Project Management Tool</span>
+            <div class="flex y-center">
+                <img id="help" class="mr-16px" src="/assets/img/help.png" alt="help">
+                <img src="/assets/img/Ellipse 3.png" alt="Profil">
+                <img class="profil-icon" src="/assets/img/Group 9.png" alt="Profil">
             </div>
         </div>
 
-        <div id="legal-notice" class="flex flex-column fs-16px">
-            <div class="p-8px"><a class="ft-general fs-16px fw-400 link-col" href="#">Privacy Policy</a></div>
-            <div class="p-8px"><a class="ft-general fs-16px fw-400 link-col" href="#">Legal Notice</a></div>
+        <!-- Side bar -->
+        <div class="sidebar flex flex-column x-space-betw y-center">
+            <img src="/assets/img/Capa_2_light.png" alt="Join Logo">
+            <div class="w-100">
+                <div class="flex y-center gap-8px mb-16px menu-choose">
+                    <img src="/assets/img/summary.png" alt="summary">
+                    <a class="ft-general fs-16px fw-400 link-col" href="#">Summary</a>
+                </div>
+                <div class="flex y-center gap-8px mb-16px menu-choose">
+                    <img src="/assets/img/add_task.png" alt="add task">
+                    <a class="ft-general fs-16px fw-400 link-col" href="#">Add Task</a>
+                </div>
+                <div class="flex y-center gap-8px mb-16px menu-choose">
+                    <img src="/assets/img/board.png" alt="board">
+                    <a class="ft-general fs-16px fw-400 link-col" href="#">Board</a>
+                </div>
+                <div class="flex y-center gap-8px mb-16px menu-choose">
+                    <img src="/assets/img/contacts.png" alt="contacts">
+                    <a class="ft-general fs-16px fw-400 link-col" href="#">Contacts</a>
+                </div>
+            </div>
+
+            <div id="legal-notice" class="flex flex-column fs-16px">
+                <div class="p-8px"><a class="ft-general fs-16px fw-400 link-col" href="#">Privacy Policy</a></div>
+                <div class="p-8px"><a class="ft-general fs-16px fw-400 link-col" href="#">Legal Notice</a></div>
+            </div>
         </div>
     </div>
-</div>
+</body>
+
+</html>
