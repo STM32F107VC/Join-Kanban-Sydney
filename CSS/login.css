@@ -2,9 +2,7 @@
     height: 100vh;
 }
 
-.capa-2 {
-    padding: 80px 0 0 77px;
-}
+.capa-2 { padding: 80px 0 0 77px; }
 
 .login-input {
     border-radius: 10px;
@@ -13,9 +11,7 @@
     padding: 12px 21px;
 }
 
-.sign-up-section {
-    padding: 67px 122px 0 0;
-}
+.sign-up-section { padding: 67px 122px 0 0; }
 
 .log-in {
     margin: 80px 0 200px 0;
@@ -48,7 +44,6 @@ input {
     padding: 15px 24px;
     border: none;
 }
-
 
 .btn-dark:hover { 
     background-color: #29abe2;
