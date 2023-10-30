@@ -1,25 +1,24 @@
-.box-realtive { position: relative; }
-
 .sidebar {
-    position: absolute;
+    position: fixed;
     z-index: 1;
-    height: 896px;
-    width: 232px;
-    padding: 64px 0;
+    height: 100%;
     flex-shrink: 0;
     background: #2A3647;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
 .topbar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 1052px;
-    padding: 20px 40px 20px 348px;
+    z-index: 0;
+    width: 100%;
+    padding: 20px 0;
     background-color: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }
+
+.set-span { margin-left: 348px; }
 
 .topbar div img { cursor: pointer; }
 
@@ -28,6 +27,8 @@
 #legal-notice { padding: 243px 0 0 0; }
 
 #legal-notice > div > a:hover { color: #29ABE2; }
+
+.sign-up { margin-right: 40px; }
 
 .menu-choose { 
     padding: 8px 56px; 
@@ -43,4 +44,9 @@
 .profil-icon {
     position: absolute;
     right: 54px;
+}
+
+.side-topbar-template {
+    height: 100vh;
+    width: 100vw;
 }
