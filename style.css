@@ -227,55 +227,6 @@ input {
 
 /* ------------------------------------------------------------ */
 
-/* Side and top bar template */
-.box-realtive { position: relative; }
-
-.sidebar {
-    position: absolute;
-    z-index: 1;
-    height: 896px;
-    width: 232px;
-    padding: 64px 0;
-    flex-shrink: 0;
-    background: #2A3647;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
-}
-
-.topbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1052px;
-    padding: 20px 40px 20px 348px;
-    background-color: #FFF;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
-}
-
-.topbar div img { cursor: pointer; }
-
-#help:hover { scale: 1.1; }
-
-#legal-notice { padding: 243px 0 0 0; }
-
-#legal-notice > div > a:hover { color: #29ABE2; }
-
-.menu-choose { 
-    padding: 8px 56px; 
-    cursor: pointer;
-}
-
-.menu-choose:hover { background-color: rgb(39, 58, 88); }
-
-.menu-choose:focus { background-color: #091931; }
-
-.link-col { color: #CDCDCD; }
-
-.profil-icon {
-    position: absolute;
-    right: 54px;
-}
-/* ------------------------------------------------------------ */
-
 .test svg rect {
     background-color: green;
 }
