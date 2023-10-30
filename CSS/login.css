@@ -72,3 +72,5 @@ input {
 .privacy-policy { margin-top: -40px; }
 
 .privacy-policy a { color: #A8A8A8; }
+
+.privacy-policy a:hover { color: #29ABE2; }

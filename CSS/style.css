@@ -1,10 +1,7 @@
 body {
     margin: 0;
     background-color: #F6F7F8;
-    /* width: 1440px;
-    height: 1024px; */
     font-family: 'Inter';
-    /* position: relative; */ 
 }
 
 a { text-decoration: none; }
@@ -64,18 +61,14 @@ a { text-decoration: none; }
 
 .fw-700 { font-weight: 700; }
 
-.ft-general {
-    font-style: normal;
-    line-height: 120%;
-}
-
 .dark-blue { color: #2A3647; }
 
 .bg-dark-blue { background: #2A3647; }
 
 .w-100 { width: 100%; }
-/* ------------------------------------- */
 
-.test svg rect {
-    background-color: green;
+.ft-general {
+    font-style: normal;
+    line-height: 120%;
 }
+/* ------------------------------------- */
