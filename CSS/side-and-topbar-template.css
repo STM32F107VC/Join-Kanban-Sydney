@@ -1,4 +1,3 @@
-/* Side and top bar template */
 .box-realtive { position: relative; }
 
 .sidebar {
@@ -45,4 +44,3 @@
     position: absolute;
     right: 54px;
 }
-/* ------------------------------------------------------------ */

@@ -1,0 +1,70 @@
+.summary-container {
+    position: absolute;
+    top: 206px;
+    left: 328px;
+}
+
+.general-box-style {
+    border-radius: 30px;
+    background: var(--white, #FFF);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.main-content-to-do { width: 560px; }
+
+.spacing-to-do { 
+    padding: 38px 19px;
+    width: 226px;
+    height: 92px;
+}
+
+.spacing-done { 
+    padding: 38px 58px;
+    width: 148px;
+    height: 92px;
+}
+
+.spacing-to-do:hover,
+.spacing-done:hover,
+#urgent-tasks:hover,
+#progress-overview div:hover
+ {
+    color: white;
+    background-color: #2A3647;
+    transform: scale(1.1);
+    transition: transform 80ms ease-out;
+    cursor: pointer;
+}
+
+.spacing-to-do:hover circle,
+.spacing-done:hover circle { fill: white; }
+
+.spacing-to-do:hover path { fill: #2A3647; }
+
+.spacing-done:hover path { stroke: #2A3647; }
+
+.urgency-summary {
+    width: 464px;
+    height: 112px;
+    padding: 28px 48px;
+}
+
+.progress-view {
+    width: 168px;
+    height: 118px;
+    padding: 25px 0;
+}
+
+.vertical-bl-line { padding: 0 30px; }
+
+.vertical-gr-line { padding: 0 61px; }
+
+.greet { 
+    margin-left: 80px;
+    width: auto;
+}
+
+.img-to-do {
+    width: 69px;
+    height: 69px;
+}
