@@ -9,15 +9,39 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon-32x32.png">
 
     <!-- Include CSS and Script Sheets -->
-    <script src="script.js"></script>
-    <script src="includeHTML.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="CSS/fonts_inter.css">
+    <script src="JS/script.js"></script>
+    <script src="JS/includeHTML.js"></script>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/summary.css">
+    <link rel="stylesheet" href="CSS/fonts_inter.css">¨
+    <link rel="stylesheet" href="CSS/contacts.css">
 </head>
 
 <body onload="init();">
     <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
 
+    <div class="main-div-contacts">
+        <div class="sub-div-contacts flex flex-row">
+            <div class="contacts-div flex flex-column y-center">
+                <div>
+                    <button class="btn-dark add-contacts-btn">Add new Contact</button>
+                </div>
+                <div>
+                    <table>
+                        <td>hallo</td>
+                    </table>
+                </div>
+            </div>
+
+            <div class="w-100 team-slogan">
+                <div class="flex x-start y-center">
+                    <span class="ft-general fs-61px fw-700">Contacts</span>
+                    <img class="vertical-bl-line" src="assets/img/Vector_blue_vertical.png" alt="vertical blue line">
+                    <span class="ft-general fs-27px fw-400">Better with a Team!</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

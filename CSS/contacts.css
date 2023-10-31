@@ -1,0 +1,30 @@
+.main-div-contacts {
+    position: fixed;
+    top: 96px;
+    left: 220px;
+    bottom: 0;  
+    right: 0;
+}
+
+.sub-div-contacts {
+    height: 100%;
+}
+
+.contacts-div {
+    min-width: 450px;
+    padding: 22.5px 52px;
+    background-color: #FFFFFF;
+}
+
+.add-contacts-btn {
+    cursor: pointer;
+    padding: 12px 0;
+    width: 352px;
+}
+.team-slogan {
+    padding: 48px;
+    padding-top: 64px;
+    flex-shrink: 0;
+}
+
+
