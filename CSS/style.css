@@ -13,6 +13,8 @@ a { text-decoration: none; }
 
 .x-space-betw { justify-content: space-between; }
 
+.x-space-around { justify-content: space-around; }
+
 .y-center { align-items: center; }
 
 .flex-column { flex-direction: column; }

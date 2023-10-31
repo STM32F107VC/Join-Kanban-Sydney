@@ -1,33 +1,32 @@
+.side-topbar-template { height: 100vh; }
+
 .sidebar {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     background: #2A3647;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
     flex-shrink: 0;
+    height: 100%;
 }
 
 .topbar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: 1;
     width: 100%;
     padding: 20px 0;
     background-color: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
-.options { margin-top: 120px; }
-
 .set-span { margin-left: 348px; }
 
 .topbar div img { cursor: pointer; }
 
 #help:hover { scale: 1.1; }
-
-#legal-notice { padding: 243px 0 0 0; }
 
 #legal-notice > div > a:hover { color: #29ABE2; }
 
@@ -48,6 +47,3 @@
     position: absolute;
     right: 54px;
 }
-
-.side-topbar-template { height: 100vh; }
-
