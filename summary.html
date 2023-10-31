@@ -20,15 +20,16 @@
 <body onload="init();">
     <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
 
-    <!-- Title -->
-    <div class="summary-container">
-        <div class="flex y-center x-space-betw mb-28px">
-            <span class="ft-general fs-61px fw-700">Join 360</span>
-            <img class="vertical-bl-line" src="assets/img/Vector_blue_vertical.png" alt="vertical blue line">
-            <span class=".dark-blue ft-general fs-27px">Key Metrics at a Glance</span>
-        </div>
+    <!-- Main div -->
+    <div class="summary-container flex x-center y-center">
+        <!-- Left div with project title and tasks overview -->
+        <div>
+            <div class="flex y-center x-space-betw mb-48px">
+                <span class="ft-general fs-61px fw-700">Join 360</span>
+                <img class="vertical-bl-line" src="assets/img/Vector_blue_vertical.png" alt="vertical blue line">
+                <span class=".dark-blue ft-general fs-27px">Key Metrics at a Glance</span>
+            </div>
 
-        <div class="main-content-to-do">
             <div class="flex y-center">
                 <div>
                     <div class="flex y-center mb-28px">
@@ -99,14 +100,15 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="greet">
-                    <div class="ft-general fs-47px fw-500 dark-blue">Good Morning</div>
-                </div>
             </div>
         </div>
-    </div>
 
+        <!-- Right div with greeting text for user -->
+        <div class="greet">
+            <div class="ft-general fs-47px fw-500 dark-blue">Good Morning</div>
+            <span>Insert User Name</span>
+        </div>
+    </div>
 </body>
 
 </html>

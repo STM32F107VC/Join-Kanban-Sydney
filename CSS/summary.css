@@ -10,8 +10,6 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
-.main-content-to-do { width: 560px; }
-
 .spacing-to-do { 
     padding: 38px 19px;
     width: 226px;
@@ -58,11 +56,6 @@
 .vertical-bl-line { padding: 0 30px; }
 
 .vertical-gr-line { padding: 0 61px; }
-
-.greet { 
-    margin-left: 80px;
-    width: auto;
-}
 
 .img-to-do {
     width: 69px;
