@@ -17,14 +17,17 @@
     <link rel="stylesheet" href="CSS/contacts.css">
 </head>
 
-<body onload="init();">
-    <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
+<body id="body-contacts" onload="init();">
+    <div id="side-and-topbar-contacts" w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
 
-    <div class="main-div-contacts">
+    <div id="contacts" class="main-div-contacts">
         <div class="sub-div-contacts flex flex-row">
             <div class="contacts-div flex flex-column y-center">
                 <div>
-                    <button class="btn-dark add-contacts-btn">Add new Contact</button>
+                    <button onclick="openContactsOverlay()"
+                        class="flex x-center y-center gap-16px btn-dark add-contacts-btn ft-general fs-21px fw-700">Add
+                        new
+                        Contact <img src="/assets/img/person_add.png" alt="add person"></button>
                 </div>
                 <div>
                     <table>
@@ -33,12 +36,28 @@
                 </div>
             </div>
 
-            <div class="w-100 team-slogan">
+            <div class=" team-slogan">
                 <div class="flex x-start y-center">
                     <span class="ft-general fs-61px fw-700">Contacts</span>
                     <img class="vertical-bl-line" src="assets/img/Vector_blue_vertical.png" alt="vertical blue line">
                     <span class="ft-general fs-27px fw-400">Better with a Team!</span>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay-contacts" class="contacts-overlay d-none z-ind-1 flex">
+        <div class="bg-dark-blue">
+            <h1>Test mobile contacts</h1>
+        </div>
+        <div class="flex flex-row w-100 overlay-forms">
+            <div><img src="assets/img/Group 9.png" alt="avatar"></div>
+            <div>
+                <form onsubmit="return false" class="flex flex-column">
+                    <input placeholder="Name" type="text">
+                    <input placeholder="Email" type="text">
+                    <input placeholder="Phone" type="text">
+                </form>
             </div>
         </div>
     </div>

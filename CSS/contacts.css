@@ -1,5 +1,5 @@
 .main-div-contacts {
-    position: fixed;
+    position: absolute;
     top: 96px;
     left: 220px;
     bottom: 0;  
@@ -21,10 +21,25 @@
     padding: 12px 0;
     width: 352px;
 }
+
 .team-slogan {
     padding: 48px;
     padding-top: 64px;
     flex-shrink: 0;
 }
 
+.contacts-overlay { 
+    min-height: 500px;
+    width: 80vw;
+}
 
+#overlay-contacts div.bg-dark-blue {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.overlay-forms {
+    background-color: white;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
