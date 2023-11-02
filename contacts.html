@@ -13,7 +13,8 @@
     <script src="JS/includeHTML.js"></script>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/summary.css">
-    <link rel="stylesheet" href="CSS/fonts_inter.css">¨
+    <link rel="stylesheet" href="CSS/fonts_inter.css">
+    <link rel="stylesheet" href="CSS/login.css">
     <link rel="stylesheet" href="CSS/contacts.css">
 </head>
 
@@ -55,24 +56,33 @@
         </div>
 
         <div class="flex flex-row w-100 overlay-forms">
-            <div class="flex y-center"><img src="assets/img/Group 9.png" alt="avatar"></div>
-            <div class="flex x-center y-center w-100">
-                <div>
-                </div>
+            <div class="flex y-center">
+                <img src="assets/img/contact_person.png" alt="avatar">
+            </div>
+
+            <div class="flex flex-column x-center y-center w-100">
+                <div class="flex w-100 x-end close-cross mb-48px"><img onclick="closeContactOverlay()" class="p-8px"
+                        src="assets/img/close.png" alt="close"></div>
+
                 <form onsubmit="return false" class="flex flex-column">
                     <div class="login-input mb-32px flex x-space-betw y-center">
-                        <input class="ft-general fs-20px fw-400 input-icon-pos  w-100" id="email" placeholder="Name"
-                            name="" required>
+                        <input class="ft-general fs-20px fw-400 input-icon-pos icon-name w-100" id="name"
+                            placeholder="Name" name="name" required>
                     </div>
-
                     <div class="login-input mb-32px flex x-space-betw y-center">
                         <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="email"
                             placeholder="Email" type="email" required>
                     </div>
-
                     <div class="login-input mb-32px flex x-space-betw y-center">
-                        <input class="ft-general fs-20px fw-400 input-icon-pos ö w-100" id="password"
-                            placeholder="Phone" type="password" required>
+                        <input class="ft-general fs-20px fw-400 input-icon-pos icon-phone w-100" id="password"
+                            placeholder="Phone" type="tel" required>
+                    </div>
+                    <div class="flex x-start gap-35px">
+                        <button onclick="closeContactOverlay()"
+                            class="btn-light ft-general fs-21px fw-700 flex y-center gap-4px">Cancel
+                            <img src="assets/img/close.png" alt="cancel"></button>
+                        <button class="btn-dark ft-general fs-21px fw-700 flex y-center gap-4px">Create contact
+                            <img src="assets/img/check.png" alt="add"></button>
                     </div>
                 </form>
             </div>

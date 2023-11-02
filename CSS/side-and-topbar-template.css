@@ -26,7 +26,7 @@
 
 .topbar div img { cursor: pointer; }
 
-#help:hover { scale: 1.1; }
+div.topbar > div.sign-up img:hover { scale: 1.1; }
 
 #legal-notice > div > a:hover { color: #29ABE2; }
 

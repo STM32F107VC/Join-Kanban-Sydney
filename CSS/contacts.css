@@ -6,9 +6,7 @@
     right: 0;
 }
 
-.sub-div-contacts {
-    height: 100%;
-}
+.sub-div-contacts { height: 100%; }
 
 .contacts-div {
     min-width: 450px;
@@ -52,6 +50,14 @@
     border-bottom-right-radius: 30px;
 }
 
-.overlay-forms div img, .overlay-forms div form {
-    padding: 0 48px;
+.overlay-forms > div { padding: 64px; }
+
+.overlay-forms > div.w-100 { padding-left: 0; }
+
+.overlay-forms > div > form div.gap-35px {
+    padding: 48px 0;
 }
+
+.icon-name { background-image: url(/assets/img/person.png); }
+
+.icon-phone { background-image: url(/assets/img/call.png); }
