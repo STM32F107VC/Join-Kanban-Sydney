@@ -9,15 +9,61 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon-32x32.png">
 
     <!-- Include CSS and Script Sheets -->
-    <script src="script.js"></script>
-    <script src="includeHTML.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
+    <link rel="stylesheet" href="CSS/add_tasks.css">
+    <script src="JS/includeHTML.js"></script>
+    <script src="JS/script.js"></script>
 </head>
 
 <body onload="init();">
     <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
+    <div class="main-div-add-tasks">
+        <span>Add Task</span>
+        <form class="flex flex-row" action="">
+            <div class="flex flex-column">
+                <div class="flex flex-column">
+                    <span>Title</span>
+                    <input type="text" name="" id="">
+                </div>
+                <div class="flex flex-column">
+                    <span>Description</span>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div class="flex flex-column">
+                    <span>Assigned to</span>
+                    <select name="" id="">
+                        <option value="">Name of a Person.</option>
+                        <option value="">Name of another Person.</option>
+                    </select>
+                </div>
+            </div>
 
+            <div class=""><img src="assets/img/vertical_line.png" alt="vertical grey line"></div>
+
+            <div>
+                <div class="flex flex-column">
+                    <span>Due date</span>
+                </div>
+                <div class="flex flex-column">
+                    <span>Prio</span>
+                </div>
+                <div class="flex flex-column">
+                    <span>Category</span>
+                    <select name="" id="">
+                        <option value="">Technical Task</option>
+                        <option value="">User Story</option>
+                    </select>
+                </div>
+                <div>
+                    <span>Subtasks</span>
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
 </body>
 
 </html>

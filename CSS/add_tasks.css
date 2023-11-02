@@ -1,0 +1,8 @@
+.main-div-add-tasks {
+    position: absolute;
+    top: 96px;
+    left: 220px;
+    bottom: 0;  
+    right: 0;
+    padding: 64px;
+}
