@@ -30,16 +30,28 @@
 
 .contacts-overlay { 
     min-height: 500px;
-    width: 80vw;
+    min-width: 1200px;
 }
 
 #overlay-contacts div.bg-dark-blue {
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
+    padding: 66px 48px;
+    min-width: 380px;
+    color: white;
+}
+
+.join-logo-small {
+    width: 55px;
+    height: 66px;
 }
 
 .overlay-forms {
     background-color: white;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+}
+
+.overlay-forms div img, .overlay-forms div form {
+    padding: 0 48px;
 }

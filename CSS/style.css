@@ -19,6 +19,8 @@ a { text-decoration: none; }
 
 .y-center { align-items: center; }
 
+.y-start { align-items: flex-start; }
+
 .flex-column { flex-direction: column; }
 
 .flex-row { flex-direction: row; }
@@ -107,3 +109,29 @@ a { text-decoration: none; }
 
 .opacity { opacity: 0.1; }
 /* ------------------------------------- */
+
+.input-icon-pos {
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+}
+
+.login-input {
+    border-radius: 10px;
+    width: 422px;
+    border: 1px solid var(--Style, #D1D1D1);
+    padding: 12px 21px;
+    cursor: pointer;
+}
+
+input {
+    gap: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+}
+
+.icon-email { 
+    background-image: url(/assets/img/mail.png); 
+    background-repeat: no-repeat;
+}

@@ -4,13 +4,6 @@
 
 .capa-2 { padding: 80px 0 0 77px; }
 
-.login-input {
-    border-radius: 10px;
-    width: 422px;
-    border: 1px solid var(--Style, #D1D1D1);
-    padding: 12px 21px;
-}
-
 .sign-up-section { padding: 67px 122px 0 0; }
 
 .log-in {
@@ -22,20 +15,10 @@
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04); 
 }
 
-input {
-    gap: 10px;
-    outline: none;
-    border: none;
-}
-
-.input-icon-pos {
+.icon-password { 
     background-repeat: no-repeat;
-    background-position-x: 100%;
+    background-image: url(/assets/img/lock.png); 
 }
-
-.icon-email { background-image: url(/assets/img/mail.png); }
-
-.icon-password { background-image: url(/assets/img/lock.png); }
 
 .btn-light {
     border-radius: 8px;

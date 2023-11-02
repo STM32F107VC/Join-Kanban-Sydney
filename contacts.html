@@ -47,16 +47,33 @@
     </div>
 
     <div id="overlay-contacts" class="contacts-overlay d-none z-ind-1 flex">
-        <div class="bg-dark-blue">
-            <h1>Test mobile contacts</h1>
+        <div class="bg-dark-blue flex flex-column x-center y-start">
+            <img src="assets/img/Capa_2_light.png" alt="Join logo" class="join-logo-small mb-16px">
+            <span class="ft-general fs-61px fw-700">Add contact</span>
+            <span class="ft-general fs-27px fw-400 mb-16px">Tasks are better with a team!</span>
+            <img src="assets/img/Vector 5.png" alt="blue horizontal line">
         </div>
+
         <div class="flex flex-row w-100 overlay-forms">
-            <div><img src="assets/img/Group 9.png" alt="avatar"></div>
-            <div>
+            <div class="flex y-center"><img src="assets/img/Group 9.png" alt="avatar"></div>
+            <div class="flex x-center y-center w-100">
+                <div>
+                </div>
                 <form onsubmit="return false" class="flex flex-column">
-                    <input placeholder="Name" type="text">
-                    <input placeholder="Email" type="text">
-                    <input placeholder="Phone" type="text">
+                    <div class="login-input mb-32px flex x-space-betw y-center">
+                        <input class="ft-general fs-20px fw-400 input-icon-pos  w-100" id="email" placeholder="Name"
+                            name="" required>
+                    </div>
+
+                    <div class="login-input mb-32px flex x-space-betw y-center">
+                        <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="email"
+                            placeholder="Email" type="email" required>
+                    </div>
+
+                    <div class="login-input mb-32px flex x-space-betw y-center">
+                        <input class="ft-general fs-20px fw-400 input-icon-pos ö w-100" id="password"
+                            placeholder="Phone" type="password" required>
+                    </div>
                 </form>
             </div>
         </div>
