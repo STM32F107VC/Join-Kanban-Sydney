@@ -9,7 +9,6 @@
 .sub-div-contacts { height: 100%; }
 
 .contacts-div {
-    min-width: 450px;
     padding: 22.5px 52px;
     background-color: #FFFFFF;
 }
@@ -17,7 +16,6 @@
 .add-contacts-btn {
     cursor: pointer;
     padding: 12px 0;
-    width: 352px;
 }
 
 .team-slogan {
@@ -26,16 +24,12 @@
     flex-shrink: 0;
 }
 
-.contacts-overlay { 
-    min-height: 500px;
-    min-width: 1200px;
-}
+.contacts-overlay { white-space: nowrap; }
 
 #overlay-contacts div.bg-dark-blue {
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     padding: 66px 48px;
-    min-width: 380px;
     color: white;
 }
 

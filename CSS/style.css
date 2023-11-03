@@ -27,6 +27,8 @@ a { text-decoration: none; }
 
 .flex-row { flex-direction: row; }
 
+.mb-8px { margin-bottom: 8px; }
+
 .mb-16px { margin-bottom: 16px; }
 
 .mb-24px { margin-bottom: 24px; }
@@ -124,7 +126,6 @@ input {
     outline: none;
     border: none;
     cursor: pointer;
-
 }
 
 .icon-email { 
@@ -155,5 +156,4 @@ button,
     background-color: grey; 
     border-radius: 50%;
     background-color:  var(--Style, #D1D1D1);
-
 }

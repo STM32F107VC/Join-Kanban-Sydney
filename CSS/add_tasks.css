@@ -1,8 +1,26 @@
 .main-div-add-tasks {
     position: absolute;
-    top: 96px;
-    left: 220px;
+    top: 206px;
+    left: 328px;
     bottom: 0;  
     right: 0;
     padding: 64px;
+}
+
+.vertical-line { padding: 0 64px; }
+
+.vertical-line img { height: 100%; }
+
+
+
+input, select { color: #D1D1D1; }
+
+select {
+    outline: none;
+    width: 100% !important;
+}
+    
+textarea { 
+    outline: none;
+    font-family: 'Inter'; 
 }

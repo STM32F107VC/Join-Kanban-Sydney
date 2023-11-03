@@ -20,6 +20,11 @@
     background-image: url(/assets/img/lock.png); 
 }
 
+.input-name {
+    background-repeat: no-repeat;
+    background-image: url(/assets/img/person.png);
+}
+
 .btn-light {
     border-radius: 8px;
     border: 2px solid var(--version-2-main-color, #2A3647);
@@ -44,3 +49,13 @@
 .privacy-policy a { color: #A8A8A8; }
 
 .privacy-policy a:hover { color: #29ABE2; }
+
+.change-col-bl { color: #29ABE2; }
+
+.sign-up { position: relative; }
+
+.arrow-back {
+    position: absolute;
+    top: 62px;
+    left: 48px;
+}

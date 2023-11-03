@@ -39,7 +39,7 @@ div.topbar > div.sign-up img:hover { scale: 1.1; }
 
 .menu-choose:hover { background-color: rgb(39, 58, 88); }
 
-.menu-choose:focus { background-color: #091931; }
+.sidebar > div > a:active { background-color: #091931; }
 
 .link-col { color: #CDCDCD; }
 

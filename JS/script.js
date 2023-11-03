@@ -1,6 +1,22 @@
+/* Declare variable */
+let signUp = [];
+let users = [];
+
+
 async function init() {
     await includeHTML();
 }
+
+
+function signUpSection() {
+    document.getElementById('loggin').classList.add('d-none');
+    document.getElementById('sign-up').classList.remove('d-none');
+}
+
+function generateAccount() {
+
+}
+
 
 function openContactsOverlay() {
     document.getElementById('contacts').classList.add('d-none');

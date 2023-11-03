@@ -18,51 +18,53 @@
 
 <body onload="init();">
     <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
+
     <div class="main-div-add-tasks">
-        <span>Add Task</span>
-        <form class="flex flex-row" action="">
+        <span class="ft-general fs-61px fw-700">Add Task</span>
+        <form class="flex flex-row mt-64px" action="">
             <div class="flex flex-column">
-                <div class="flex flex-column">
-                    <span>Title</span>
-                    <input type="text" name="" id="">
+                <div class="flex flex-column mb-32px">
+                    <span class="mb-8px">Title</span>
+                    <input class="login-input fs-20px" placeholder="Enter a title" name="" id="">
+                </div>
+                <div class="flex flex-column mb-32px ">
+                    <span class="mb-8px">Description</span>
+                    <textarea placeholder="Enter a description" class="login-input fs-20px" name="" id="" cols="30"
+                        rows="10"></textarea>
                 </div>
                 <div class="flex flex-column">
-                    <span>Description</span>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
-                </div>
-                <div class="flex flex-column">
-                    <span>Assigned to</span>
-                    <select name="" id="">
+                    <span class="mb-8px">Assigned to</span>
+                    <select class="login-input fs-20px" name="" id="">
                         <option value="">Name of a Person.</option>
                         <option value="">Name of another Person.</option>
                     </select>
                 </div>
             </div>
 
-            <div class=""><img src="assets/img/vertical_line.png" alt="vertical grey line"></div>
+            <div class="vertical-line"><img src="assets/img/vertical_line.png" alt="vertical grey line"></div>
 
             <div>
-                <div class="flex flex-column">
-                    <span>Due date</span>
+                <div class="flex flex-column mb-24px">
+                    <span class="mb-8px">Due date</span>
+                    <input class="login-input fs-20px" type="date" name="" id="">
                 </div>
-                <div class="flex flex-column">
-                    <span>Prio</span>
+                <div class="flex flex-column mb-24px">
+                    <span class="mb-8px">Prio</span>
                 </div>
-                <div class="flex flex-column">
-                    <span>Category</span>
-                    <select name="" id="">
+                <div class="flex flex-column mb-24px">
+                    <span class="mb-8px">Category</span>
+                    <select class="login-input fs-20px" name="" id="">
                         <option value="">Technical Task</option>
                         <option value="">User Story</option>
                     </select>
                 </div>
                 <div>
-                    <span>Subtasks</span>
+                    <span class="mb-8px">Subtasks</span>
+                    <input class="login-input fs-20px" placeholder="Add subtasks" name="" id="">
+
                 </div>
             </div>
-
-
         </form>
-
     </div>
 </body>
 
