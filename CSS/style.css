@@ -152,7 +152,8 @@ button,
 
 .close-cross { padding: 21px; }
 
-.close-cross > img:hover {
+.close-cross > img:hover,
+.arrow-back:hover {
     background-color: grey; 
     border-radius: 50%;
     background-color:  var(--Style, #D1D1D1);
