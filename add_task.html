@@ -19,7 +19,7 @@
 <body onload="init();">
     <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
 
-    <div class="main-div-add-tasks">
+    <div class="main-div-add-tasks mb--128px">
         <span class="ft-general fs-61px fw-700">Add Task</span>
         <form class="flex flex-row mt-64px" action="">
             <div class="flex flex-column">
@@ -50,6 +50,11 @@
                 </div>
                 <div class="flex flex-column mb-24px">
                     <span class="mb-8px">Prio</span>
+                    <div class="flex x-space-betw">
+                        <div>Urgent</div>
+                        <div>Medium</div>
+                        <div>Low</div>
+                    </div>
                 </div>
                 <div class="flex flex-column mb-24px">
                     <span class="mb-8px">Category</span>
@@ -59,9 +64,8 @@
                     </select>
                 </div>
                 <div>
-                    <span class="mb-8px">Subtasks</span>
+                    <span class="flex flex-column mb-8px">Subtasks</span>
                     <input class="login-input fs-20px" placeholder="Add subtasks" name="" id="">
-
                 </div>
             </div>
         </form>

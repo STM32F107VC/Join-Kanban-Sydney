@@ -21,7 +21,7 @@
             <img class="capa-2" src="assets/img/Capa 2.png" alt="Join Logo">
             <div class="sign-up-section">
                 <span class="ft-general mr-35px fs-20px">Not a Join user?</span>
-                <button onclick="signUpSection()" class="btn-dark p-btn ft-general fs-16px fw-700">Sign up</button>
+                <button onclick="openSignUpSection()" class="btn-dark p-btn ft-general fs-16px fw-700">Sign up</button>
             </div>
         </div>
 
@@ -34,7 +34,7 @@
                 </div>
 
                 <div>
-                    <form onsubmit="">
+                    <form onsubmit="return false">
                         <div class="login-input mb-32px flex x-space-betw y-center">
                             <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="email"
                                 placeholder="Email" type="email" required>
@@ -59,29 +59,29 @@
         <!-- Sign in section -->
         <div id="sign-up" class="sign-up flex x-center d-none">
             <div class="sign-up log-in flex x-center y-center flex-column">
-                <img class="arrow-back" src="assets/img/arrow-left-line.png" alt="back">
+                <img onclick="closeSignUpSection()" class="arrow-back" src="assets/img/arrow-left-line.png" alt="back">
                 <div class="flex flex-column">
                     <span class="ft-general fs-61px fw-700 mb-16px">Sign up</span>
                     <img src="assets/img/Vector 5.png" alt="blue line">
                 </div>
 
                 <div>
-                    <form onsubmit="">
+                    <form onsubmit="addNewUser(); return false">
                         <div class="login-input mb-32px flex x-space-betw y-center">
-                            <input class="ft-general fs-20px fw-400 input-icon-pos input-name w-100" id="email"
-                                placeholder="Name" type="name" required>
+                            <input class="ft-general fs-20px fw-400 input-icon-pos input-name w-100" placeholder="Name"
+                                id="new-name" required>
                         </div>
                         <div class="login-input mb-32px flex x-space-betw y-center">
-                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="email"
+                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="new-email"
                                 placeholder="Email" type="email" required>
                         </div>
                         <div class="login-input mb-32px flex x-space-betw y-center">
-                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100" id="password"
-                                placeholder="Password" type="password" required>
+                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100"
+                                id="new-password" placeholder="Password" type="password" required>
                         </div>
                         <div class="login-input mb-32px flex x-space-betw y-center">
-                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100" id="email"
-                                placeholder="Confirm password" type="password" required>
+                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100"
+                                id="compare-password" placeholder="Confirm password" type="password" required>
                         </div>
                         <div class="flex mb-32px ml-39px gap-8px">
                             <input type="checkbox">
