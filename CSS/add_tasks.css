@@ -1,26 +1,42 @@
 .main-div-add-tasks {
     position: absolute;
-    top: 206px;
+    top: 180px;
     left: 328px;
     bottom: 0;  
     right: 0;
-    padding: 64px;
 }
 
 .vertical-line { padding: 0 64px; }
 
 .vertical-line img { height: 100%; }
 
-
-
-input, select { color: #D1D1D1; }
+input, select, textarea { color: #D1D1D1; }
 
 select {
     outline: none;
     width: 100% !important;
 }
     
-textarea { 
+textarea {
+    height: 80px;
     outline: none;
-    font-family: 'Inter'; 
+    font-family: 'Inter';
+    resize: none;
+    /* resize: vertical; */
 }
+
+.priority > div > div {
+    display: flex;
+    padding: 16px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex: 1 0 0;
+    border-radius: 10px;
+    background: var(--white, #FFF);
+    cursor: pointer;
+}
+
+.priority > div > div:hover { box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10); }
+
+.col-red { color: red; }

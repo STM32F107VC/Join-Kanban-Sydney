@@ -1,0 +1,13 @@
+.main-div-legel-notice {
+    position: absolute;
+    top: 180px;
+    left: 328px;
+    bottom: 0;  
+    right: 0;
+}
+
+h2 { margin-bottom: 0; }
+
+.spacing-bottom {
+    padding-bottom: 128px;
+}

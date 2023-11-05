@@ -9,11 +9,11 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon-32x32.png">
 
     <!-- Include CSS and Script Sheets -->
+    <script src="JS/includeHTML.js"></script>
+    <script src="JS/script.js"></script>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
     <link rel="stylesheet" href="CSS/add_tasks.css">
-    <script src="JS/includeHTML.js"></script>
-    <script src="JS/script.js"></script>
 </head>
 
 <body onload="init();">
@@ -24,8 +24,8 @@
         <form class="flex flex-row mt-64px" action="">
             <div class="flex flex-column">
                 <div class="flex flex-column mb-32px">
-                    <span class="mb-8px">Title</span>
-                    <input class="login-input fs-20px" placeholder="Enter a title" name="" id="">
+                    <span class="mb-8px">Title<span class="col-red">*</span></span>
+                    <input class="login-input fs-20px" placeholder="Enter a title" name="" id="" required>
                 </div>
                 <div class="flex flex-column mb-32px ">
                     <span class="mb-8px">Description</span>
@@ -34,9 +34,8 @@
                 </div>
                 <div class="flex flex-column">
                     <span class="mb-8px">Assigned to</span>
-                    <select class="login-input fs-20px" name="" id="">
-                        <option value="">Name of a Person.</option>
-                        <option value="">Name of another Person.</option>
+                    <select placeholder="Select" class="login-input fs-20px" name="" id="">
+                        <option value="" disabled selected hidden>Select contacts to assign</option>
                     </select>
                 </div>
             </div>
@@ -45,20 +44,29 @@
 
             <div>
                 <div class="flex flex-column mb-24px">
-                    <span class="mb-8px">Due date</span>
-                    <input class="login-input fs-20px" type="date" name="" id="">
+                    <span class="mb-8px">Due date<span class="col-red">*</span></span>
+                    <input class="login-input fs-20px" type="date" name="" id="" required>
                 </div>
-                <div class="flex flex-column mb-24px">
+                <div class="priority flex flex-column mb-24px">
                     <span class="mb-8px">Prio</span>
-                    <div class="flex x-space-betw">
-                        <div>Urgent</div>
-                        <div>Medium</div>
-                        <div>Low</div>
+                    <div class="flex x-space-betw gap-16px">
+                        <div>
+                            <span class="ft-general fs-20px fw-400">Urgent</span>
+                            <img src="assets/img/Prio alta.png" alt="urgent">
+                        </div>
+                        <div>
+                            <span class="ft-general fs-20px fw-400">Medium</span>
+                            <img src="assets/img/Prio media.png" alt="medium">
+                        </div>
+                        <div>
+                            <span class="ft-general fs-20px fw-400">Low</span>
+                            <img src="assets/img/Prio baja.png" alt="low">
+                        </div>
                     </div>
                 </div>
                 <div class="flex flex-column mb-24px">
-                    <span class="mb-8px">Category</span>
-                    <select class="login-input fs-20px" name="" id="">
+                    <span class="mb-8px">Category<span class="col-red">*</span></span>
+                    <select class="login-input fs-20px" name="" id="" required>
                         <option value="">Technical Task</option>
                         <option value="">User Story</option>
                     </select>
