@@ -4,9 +4,8 @@
     left: 328px;
     bottom: 0;  
     right: 0;
+    padding-right: 64px;
 }
-
-h2 { margin-bottom: 0; }
 
 .spacing-bottom {
     padding-bottom: 128px;
