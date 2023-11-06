@@ -10,6 +10,7 @@
     <!-- Include CSS and Script Sheets -->
     <script src="JS/script.js"></script>
     <script src="JS/includeHTML.js"></script>
+    <script src="JS/storage.js"></script>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/login.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
@@ -34,22 +35,23 @@
                 </div>
 
                 <div>
-                    <form onsubmit="return false">
+                    <form onsubmit="login(); return false">
                         <div class="login-input mb-32px flex x-space-betw y-center">
                             <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="email"
-                                placeholder="Email" type="email" required>
+                                placeholder="Email" type="email" autocomplete="on" required>
                         </div>
                         <div class="login-input mb-32px flex x-space-betw y-center">
                             <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100" id="password"
-                                placeholder="Password" type="password" required>
+                                placeholder="Password" type="password" autocomplete="on" required>
                         </div>
                         <div class="flex mb-32px ml-39px gap-8px">
-                            <input type="checkbox">
+                            <input type="checkbox" autocomplete="off">
                             <span class="ft-general fs-16px fw-400">Remember me</span>
                         </div>
                         <div class="flex x-center gap-35px">
-                            <button class="btn-dark ft-general fs-21px fw-700">Log in</button>
-                            <button class="btn-light ft-general fs-21px fw-700">Guest Log in</button>
+                            <button id="login-btn" class="btn-dark ft-general fs-21px fw-700">Log in</button>
+                            <button onclick="loginAsGuest()" class="btn-light ft-general fs-21px fw-700">Guest Log
+                                in</button>
                         </div>
                     </form>
                 </div>
@@ -69,19 +71,20 @@
                     <form onsubmit="addNewUser(); return false">
                         <div class="login-input mb-32px flex x-space-betw y-center">
                             <input class="ft-general fs-20px fw-400 input-icon-pos input-name w-100" placeholder="Name"
-                                id="new-name" required>
+                                id="new-name" autocomplete="on" required>
                         </div>
                         <div class="login-input mb-32px flex x-space-betw y-center">
                             <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="new-email"
-                                placeholder="Email" type="email" required>
+                                placeholder="Email" type="email" autocomplete="on" required>
                         </div>
                         <div class="login-input mb-32px flex x-space-betw y-center">
                             <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100"
-                                id="new-password" placeholder="Password" type="password" required>
+                                id="new-password" placeholder="Password" type="password" autocomplete="on" required>
                         </div>
                         <div class="login-input mb-32px flex x-space-betw y-center">
                             <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100"
-                                id="compare-password" placeholder="Confirm password" type="password" required>
+                                id="compare-password" placeholder="Confirm password" type="password" autocomplete="on"
+                                required>
                         </div>
                         <div class="flex mb-32px ml-39px gap-8px">
                             <input type="checkbox">
@@ -96,10 +99,9 @@
             </div>
         </div>
 
-
         <footer class="privacy-policy flex x-center fs-16px gap-16px">
-            <a class="p-8px" href="#">Privacy Policy</a>
-            <a class="p-8px" href="#">Legal Notice</a>
+            <a class="p-8px" href="privacy_policy.html">Privacy Policy</a>
+            <a class="p-8px" href="legal_notice.html">Legal Notice</a>
         </footer>
     </div>
 </body>
