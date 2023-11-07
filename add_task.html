@@ -11,6 +11,7 @@
     <!-- Include CSS and Script Sheets -->
     <script src="JS/includeHTML.js"></script>
     <script src="JS/script.js"></script>
+    <link rel="stylesheet" href="CSS/login.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
     <link rel="stylesheet" href="CSS/add_tasks.css">
@@ -32,11 +33,15 @@
                     <textarea placeholder="Enter a description" class="login-input fs-20px" name="" id="" cols="30"
                         rows="10"></textarea>
                 </div>
-                <div class="flex flex-column">
+                <div class="flex flex-column mb-128px">
                     <span class="mb-8px">Assigned to</span>
                     <select placeholder="Select" class="login-input fs-20px" name="" id="">
                         <option value="" disabled selected hidden>Select contacts to assign</option>
                     </select>
+                </div>
+
+                <div>
+                    <span class="col-red">*</span> This field is required
                 </div>
             </div>
 
@@ -71,9 +76,16 @@
                         <option value="">User Story</option>
                     </select>
                 </div>
-                <div>
+                <div class="mb-64px">
                     <span class="flex flex-column mb-8px">Subtasks</span>
                     <input class="login-input fs-20px" placeholder="Add subtasks" name="" id="">
+                </div>
+
+                <div class="submit-section flex x-end gap-16px ft-general">
+                    <button class="flex y-center gap-4px btn-light fs-20px">Clear <img src="assets/img/close.png"
+                            alt="close"></button>
+                    <button class="flex y-center gap-4px btn-dark fs-20px fw-700">Create Task <img
+                            src="assets/img/check.png" alt=""></button>
                 </div>
             </div>
         </form>

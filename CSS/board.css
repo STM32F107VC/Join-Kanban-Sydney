@@ -2,9 +2,19 @@
     position: absolute;
     top: 180px;
     left: 328px;
+}
+
+.main-div-board > div {
     padding: 64px 80px;
 }
 
 .addTask-btn {
     padding: 8px 16px !important;
+}
+
+
+.plus {
+    padding: 3px;
+    border-radius: 8px;
+    border: 2px solid var(--version-2-main-color, #2A3647);
 }

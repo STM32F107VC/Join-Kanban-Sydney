@@ -51,6 +51,7 @@ div.topbar > div.sign-up img:hover { scale: 1.1; }
 }
 
 #log-out {
+    z-index: 2;
     position: absolute;
     top: 96px;
     right: 20px;
