@@ -114,7 +114,6 @@ a { text-decoration: none; }
     background-repeat: no-repeat;
     background-position-x: 100%;
     background-size: 24px;
-
 }
 
 .login-input {
@@ -158,8 +157,13 @@ button,
 .close-cross { padding: 21px; }
 
 .close-cross > img:hover,
-.arrow-back:hover {
+.arrow-back:hover,
+.go-back:hover {
     background-color: grey; 
     border-radius: 50%;
     background-color:  var(--Style, #D1D1D1);
+}
+
+.go-back {
+    cursor: pointer;
 }

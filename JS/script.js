@@ -58,6 +58,27 @@ function closeSignUpSection() {
 }
 
 /**
+ * Removes or adds the d-none class depending on if menu is open or not. open --> add / close --> remove
+ * 
+ */
+function openLogoutMenu() {
+    let addClassList = document.getElementById('log-out');
+    if (addClassList.classList.contains('d-none'))
+        document.getElementById('log-out').classList.remove('d-none');
+    else {
+        document.getElementById('log-out').classList.add('d-none');
+    }
+}
+
+/**
+ * FUnction to go back to summary.html
+ * 
+ */
+function goBack() {
+    location.href = 'summary.html';
+}
+
+/**
  * This function is used to take information of the registration process
  * @param {string} name This is the name of the person registering
  * @param {string} email This is the email of the person registering 

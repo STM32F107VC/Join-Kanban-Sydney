@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="/JS/script.js"></script>
     <link rel="stylesheet" href="/CSS/style.css">
     <link rel="stylesheet" href="/CSS/side-and-topbar-template.css">
     <link rel="stylesheet" href="/CSS/fonts_inter.css">
@@ -17,8 +18,15 @@
             <span class="ft-general fs-20px fw-400 set-span">Kanban Project Management Tool</span>
             <div class="flex y-center sign-up">
                 <img class="mr-16px" src="/assets/img/help.png" alt="help">
-                <img src="/assets/img/user_profile.png" alt="profil">
+                <img onclick="openLogoutMenu()" src="/assets/img/user_profile.png" alt="profil">
             </div>
+        </div>
+
+        <!-- Logout menu -->
+        <div id="log-out" class="flex flex-column x-space-betw d-none ft-general fs-16px fw-400 bg-dark-blue">
+            <a href="/legal_notice.html">Legal Notice</a>
+            <a href="/privacy_policy.html">Privacy Policy</a>
+            <a href="/login.html">Log out</a>
         </div>
 
         <!-- Side bar -->
@@ -45,9 +53,11 @@
             </div>
 
             <div id="legal-notice" class="flex flex-column fs-16px">
-                <div class="p-8px"><a class="ft-general fs-16px fw-400 link-col" href="/privacy_policy.html">Privacy
+                <div class="p-8px"><a class="ft-general fs-16px fw-400 link-col" href="/privacy_policy.html"
+                        target="_blank">Privacy
                         Policy</a></div>
-                <div class="p-8px"><a class="ft-general fs-16px fw-400 link-col" href="/legal_notice.html">Legal
+                <div class="p-8px"><a class="ft-general fs-16px fw-400 link-col" href="/legal_notice.html"
+                        target="_blank">Legal
                         Notice</a></div>
             </div>
         </div>

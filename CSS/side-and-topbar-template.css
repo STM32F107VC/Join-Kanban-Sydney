@@ -37,7 +37,9 @@ div.topbar > div.sign-up img:hover { scale: 1.1; }
     cursor: pointer;
 }
 
-.menu-choose:hover { background-color: rgb(39, 58, 88); }
+.menu-choose:hover,
+#log-out > a:hover
+ { background-color: rgb(39, 58, 88); }
 
 .sidebar > div > a:active { background-color: #091931; }
 
@@ -46,4 +48,23 @@ div.topbar > div.sign-up img:hover { scale: 1.1; }
 .profil-icon {
     position: absolute;
     right: 54px;
+}
+
+#log-out {
+    position: absolute;
+    top: 96px;
+    right: 20px;
+    height: 138px;
+    cursor: pointer;
+    width: fit-content;
+    padding: 10px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#log-out a {
+    padding: 8px 16px;
+    color: #CDCDCD;
+
 }
