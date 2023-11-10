@@ -51,7 +51,7 @@ div.topbar > div.sign-up img:hover { scale: 1.1; }
 }
 
 #log-out {
-    z-index: 2;
+    z-index: 0;
     position: absolute;
     top: 96px;
     right: 20px;
@@ -67,5 +67,17 @@ div.topbar > div.sign-up img:hover { scale: 1.1; }
 #log-out a {
     padding: 8px 16px;
     color: #CDCDCD;
-
 }
+
+.login { position: relative;
+    width: 56px;
+    height: 56px; 
+}
+
+.login span {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+}
+
+.login img { position: absolute; }

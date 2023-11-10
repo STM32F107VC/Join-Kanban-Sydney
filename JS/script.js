@@ -2,6 +2,7 @@
 let signUp = [];
 let users = [];
 
+
 async function init() {
     await includeHTML();
     await loadUsers();

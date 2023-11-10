@@ -2,6 +2,7 @@
     position: absolute;
     top: 180px;
     left: 328px;
+    padding-bottom: 128px;
 }
 
 .vertical-line { padding: 0 64px; }
@@ -31,14 +32,18 @@ textarea {
     gap: 8px;
     flex: 1 0 0;
     border-radius: 10px;
-    background: var(--white, #FFF);
     cursor: pointer;
 }
 
 .priority > div > div:hover { box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10); }
 
+/* #prio-high { background-color: white; } */
+
+.bgc-prio-default { background: var(--white, #FFF) }
+.bgc-prio-high { background-color: #FF3D00;}
+.bgc-prio-medium { background-color: #FFA800; }
+.bgc-prio-low { background-color: #7AE229; }
+
 .col-red { color: red; }
 
-.submit-section > button {
-    padding: 16px;
-}
+.submit-section > button { padding: 16px; }

@@ -59,6 +59,8 @@ a { text-decoration: none; }
 
 .p-btn { padding: 15px 16px !important; }
 
+.p-4px { padding: 4px; }
+
 .p-8px { padding: 8px; }
 
 .p-16px { padding: 16px; }
@@ -68,6 +70,10 @@ a { text-decoration: none; }
 .gap-8px { gap: 8px; }
 
 .gap-16px { gap: 16px; }
+
+.gap-26px { gap: 26px; }
+
+.gap-32px { gap: 32px; }
 
 .gap-35px { gap: 35px; }
 

@@ -11,9 +11,9 @@
     <!-- Include CSS and Script Sheets -->
     <script src="JS/includeHTML.js"></script>
     <script src="JS/script.js"></script>
+    <script src="JS/tasks.js"></script>
     <link rel="stylesheet" href="CSS/login.css">
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/fonts_inter.css">
+    <link rel="stylesheet" href="CSS/style.css" e <link rel="stylesheet" href="CSS/fonts_inter.css">
     <link rel="stylesheet" href="CSS/add_tasks.css">
 </head>
 
@@ -22,20 +22,20 @@
 
     <div class="main-div-add-tasks mb--128px">
         <span class="ft-general fs-61px fw-700">Add Task</span>
-        <form class="flex flex-row mt-64px" action="">
+        <form onsubmit="addTask(); return false;" class="flex flex-row mt-64px" action="">
             <div class="flex flex-column">
                 <div class="flex flex-column mb-32px">
                     <span class="mb-8px">Title<span class="col-red">*</span></span>
-                    <input class="login-input fs-20px" placeholder="Enter a title" name="" id="" required>
+                    <input class="login-input fs-20px" placeholder="Enter a title" name="" id="title" required>
                 </div>
                 <div class="flex flex-column mb-32px ">
                     <span class="mb-8px">Description</span>
-                    <textarea placeholder="Enter a description" class="login-input fs-20px" name="" id="" cols="30"
-                        rows="10"></textarea>
+                    <textarea placeholder="Enter a description" class="login-input fs-20px" name="" id="textarea"
+                        cols="30" rows="10"></textarea>
                 </div>
                 <div class="flex flex-column mb-128px">
                     <span class="mb-8px">Assigned to</span>
-                    <select placeholder="Select" class="login-input fs-20px" name="" id="">
+                    <select placeholder="Select" class="login-input fs-20px" name="" id="assigned-to">
                         <option value="" disabled selected hidden>Select contacts to assign</option>
                     </select>
                 </div>
@@ -50,20 +50,20 @@
             <div>
                 <div class="flex flex-column mb-24px">
                     <span class="mb-8px">Due date<span class="col-red">*</span></span>
-                    <input class="login-input fs-20px" type="date" name="" id="" required>
+                    <input class="login-input fs-20px" type="date" name="" id="date" required>
                 </div>
                 <div class="priority flex flex-column mb-24px">
                     <span class="mb-8px">Prio</span>
                     <div class="flex x-space-betw gap-16px">
-                        <div>
+                        <div class="bgc-prio-default" id="prio-high" onclick="savePrioStateHigh('high')">
                             <span class="ft-general fs-20px fw-400">Urgent</span>
                             <img src="assets/img/Prio alta.png" alt="urgent">
                         </div>
-                        <div>
+                        <div class="bgc-prio-default" id="prio-medium" onclick="savePrioStateMedium('medium')">
                             <span class="ft-general fs-20px fw-400">Medium</span>
                             <img src="assets/img/Prio media.png" alt="medium">
                         </div>
-                        <div>
+                        <div class="bgc-prio-default" id="prio-low" onclick="savePrioStateLow('low')">
                             <span class="ft-general fs-20px fw-400">Low</span>
                             <img src="assets/img/Prio baja.png" alt="low">
                         </div>
@@ -90,6 +90,9 @@
             </div>
         </form>
     </div>
+
+    <!-- <img id="test-prio-img" src="" alt=""> -->
+
 </body>
 
 </html>
