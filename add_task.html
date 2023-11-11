@@ -13,7 +13,8 @@
     <script src="JS/script.js"></script>
     <script src="JS/tasks.js"></script>
     <link rel="stylesheet" href="CSS/login.css">
-    <link rel="stylesheet" href="CSS/style.css" e <link rel="stylesheet" href="CSS/fonts_inter.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/fonts_inter.css">
     <link rel="stylesheet" href="CSS/add_tasks.css">
 </head>
 
@@ -57,7 +58,7 @@
                     <div class="flex x-space-betw gap-16px">
                         <div class="bgc-prio-default" id="prio-high" onclick="savePrioStateHigh('high')">
                             <span class="ft-general fs-20px fw-400">Urgent</span>
-                            <img src="assets/img/Prio_alta.png" alt="urgent">
+                            <img src="assets/img/Prio_alta.png" alt="usrgent">
                         </div>
                         <div class="bgc-prio-default" id="prio-medium" onclick="savePrioStateMedium('medium')">
                             <span class="ft-general fs-20px fw-400">Medium</span>
@@ -71,7 +72,7 @@
                 </div>
                 <div class="flex flex-column mb-24px">
                     <span class="mb-8px">Category<span class="col-red">*</span></span>
-                    <select class="login-input fs-20px" name="" id="" required>
+                    <select class="login-input fs-20px" name="" id="category" required>
                         <option value="">Technical Task</option>
                         <option value="">User Story</option>
                     </select>
@@ -84,8 +85,8 @@
                 <div class="submit-section flex x-end gap-16px ft-general">
                     <button class="flex y-center gap-4px btn-light fs-20px">Clear <img src="assets/img/close.png"
                             alt="close"></button>
-                    <button class="flex y-center gap-4px btn-dark fs-20px fw-700">Create Task <img
-                            src="assets/img/check.png" alt=""></button>
+                    <button id="submitBtn" type="submit" class="flex y-center gap-4px btn-dark fs-20px fw-700">Create
+                        Task <img src="assets/img/check.png" alt="create"></button>
                 </div>
             </div>
         </form>
