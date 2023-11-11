@@ -35,7 +35,10 @@ textarea {
     cursor: pointer;
 }
 
-.priority > div > div:hover { box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10); }
+.priority > div > div:hover { 
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10); 
+    cursor: pointer;
+}
 
 /* #prio-high { background-color: white; } */
 

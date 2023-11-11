@@ -95,6 +95,8 @@ a { text-decoration: none; }
 
 .fw-700 { font-weight: 700; }
 
+.col-white { color: #FFF; }
+
 .dark-blue { color: #2A3647; }
 
 .bg-dark-blue { background: #2A3647; }
