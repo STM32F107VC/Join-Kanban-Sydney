@@ -9,8 +9,9 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon-32x32.png">
 
     <!-- Include CSS and Script Sheets -->
-    <script src="JS/script.js"></script>
     <script src="JS/includeHTML.js"></script>
+    <script src="JS/script.js"></script>
+    <script src="JS/contacts.js"></script>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/summary.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
@@ -21,10 +22,11 @@
 <body id="body-contacts" onload="init();">
     <div id="side-and-topbar-contacts" w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
 
+    <!-- Main contacts overview -->
     <div id="contacts" class="main-div-contacts">
         <div class="sub-div-contacts flex flex-row">
             <div class="contacts-div flex flex-column y-center">
-                <div>
+                <div class="mb-32px">
                     <button onclick="openContactsOverlay()"
                         class="flex x-center y-center gap-16px btn-dark add-contacts-btn ft-general fs-21px fw-700">Add
                         new Contact
@@ -32,8 +34,48 @@
                 </div>
                 <div>
                     <table>
-                        <td>hallo</td>
+                        <tbody id="contact-book">
+                            <tr id="A"></tr>
+                            <tr id="B"></tr>
+                            <tr id="C"></tr>
+                            <tr id="D"></tr>
+                            <tr id="E"></tr>
+                            <tr id="F"></tr>
+                            <tr id="G"></tr>
+                            <tr id="H"></tr>
+                            <tr id="I"></tr>
+                            <tr id="J"></tr>
+                            <tr id="K"></tr>
+                            <tr id="L"></tr>
+                            <tr id="M"></tr>
+                            <tr id="N"></tr>
+                            <tr id="O"></tr>
+                            <tr id="P"></tr>
+                            <tr id="Q"></tr>
+                            <tr id="R"></tr>
+                            <tr id="S"></tr>
+                            <tr id="T"></tr>
+                            <tr id="U"></tr>
+                            <tr id="V"></tr>
+                            <tr id="W"></tr>
+                            <tr id="X"></tr>
+                            <tr id="Y"></tr>
+                            <tr id="Z"></tr>
+                        </tbody>
                     </table>
+                    <!-- <td>
+                        <div>
+                            <span>A</span>
+                            <hr class="mb-16px">
+                            <div class="flex x-space-betw y-center ft-general fs-20px fw-400">
+                                <div>Initialen</div>
+                                <div>
+                                    <div>Name- und Vorname</div>
+                                    <div>E-Mail Adresse</div>
+                                </div>
+                            </div>
+                        </div>
+                    </td> -->
                 </div>
             </div>
 
@@ -47,6 +89,7 @@
         </div>
     </div>
 
+    <!-- Overlay contacts menu -->
     <div id="overlay-contacts" class="contacts-overlay d-none z-ind-1 flex">
         <div class="bg-dark-blue flex flex-column x-center y-start">
             <img src="assets/img/Capa_2_light.png" alt="Join logo" class="join-logo-small mb-16px">
@@ -64,7 +107,7 @@
                 <div class="flex w-100 x-end close-cross mb-48px"><img onclick="closeContactOverlay()" class="p-8px"
                         src="assets/img/close.png" alt="close"></div>
 
-                <form onsubmit="return false" class="flex flex-column">
+                <form onsubmit="addContact(); return false;" class="flex flex-column">
                     <div class="login-input mb-32px flex x-space-betw y-center">
                         <input class="ft-general fs-20px fw-400 input-icon-pos icon-name w-100" id="name"
                             placeholder="Name" name="name" required>
@@ -74,7 +117,7 @@
                             placeholder="Email" type="email" required>
                     </div>
                     <div class="login-input mb-32px flex x-space-betw y-center">
-                        <input class="ft-general fs-20px fw-400 input-icon-pos icon-phone w-100" id="password"
+                        <input class="ft-general fs-20px fw-400 input-icon-pos icon-phone w-100" id="number"
                             placeholder="Phone" type="tel" required>
                     </div>
                     <div class="flex x-start gap-35px">

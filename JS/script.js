@@ -1,11 +1,11 @@
-/* Declare variable */
+/* Declare variables and arrays */
 let signUp = [];
 let users = [];
-
 
 async function init() {
     await includeHTML();
     await loadUsers();
+    loadContacts();
 }
 
 /**
@@ -23,12 +23,11 @@ async function loadUsers() {
 function login() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
-    // document.getElementById('login-btn').disabled;
+    // document.getElementById('login-btn').disabled = true;
     let user = users.find(u => u.email == email.value && u.password == password.value);
     if (user) {
         window.location.href = "summary.html";
     }
-
     console.log('Gespeicherte Benutzerkonten', users);
 }
 
@@ -127,18 +126,4 @@ function resetRegisterForm(n, e, p, cp) {
     e.value = "";
     p.value = "";
     cp.value = "";
-}
-
-function openContactsOverlay() {
-    document.getElementById('contacts').classList.add('d-none');
-    document.getElementById('body-contacts').classList.add("flex", "x-center", "y-center");
-    document.getElementById('side-and-topbar-contacts').classList.add("opacity", "z-ind--1");
-    document.getElementById('overlay-contacts').classList.remove('d-none');
-}
-
-function closeContactOverlay() {
-    document.getElementById('contacts').classList.remove('d-none');
-    document.getElementById('body-contacts').classList.remove("flex", "x-center", "y-center");
-    document.getElementById('side-and-topbar-contacts').classList.remove("opacity", "z-ind--1");
-    document.getElementById('overlay-contacts').classList.add('d-none');
 }

@@ -1,8 +1,6 @@
-let tasks = [];
+/* Declare variables and arrays */
 let prioImg;
-let setPrioStateHigh = false;
-let setPrioStateMedium = false;
-let setPrioStateLow = false;
+let tasks = [];
 
 /**
  * Function to add new tasks
@@ -13,8 +11,7 @@ function addTask() {
     let description = document.getElementById('textarea');
     // let assignedTo = document.getElementById('assigned-to');
     let date = document.getElementById('date');
-
-    submitBtn.disabled = ture;
+    document.getElementById('submitBtn').disabled = true;
 
     tasks.push({
         "Title": title.value,
@@ -25,9 +22,7 @@ function addTask() {
         // "Category": 
     });
     resetAddTaskForm();
-    submitBtn.disabled = false;
-
-    console.log('Add Task function.');
+    document.getElementById('submitBtn').disabled = false;
 }
 
 /**
@@ -38,10 +33,8 @@ function addTask() {
  */
 function savePrioStateHigh(id) {
     let prioDiv = document.getElementById("prio-" + id);
-
     setPrioMediumDefault();
     setPrioLowDefault();
-
     if (prioDiv.querySelector('span').classList.contains('col-white', 'fw-700')) {
         prioDiv.querySelector('span').classList.remove('col-white', 'fw-700');
         prioDiv.querySelector('img').src = 'assets/img/Prio_alta.png';
@@ -62,10 +55,8 @@ function savePrioStateHigh(id) {
  */
 function savePrioStateMedium(id) {
     let prioDiv = document.getElementById("prio-" + id);
-
     setPrioHighDefault();
     setPrioLowDefault();
-
     if (prioDiv.querySelector('span').classList.contains('col-white', 'fw-700')) {
         prioDiv.querySelector('span').classList.remove('col-white', 'fw-700');
         prioDiv.querySelector('img').src = 'assets/img/Prio_media.png';
@@ -86,10 +77,8 @@ function savePrioStateMedium(id) {
  */
 function savePrioStateLow(id) {
     let prioDiv = document.getElementById("prio-" + id);
-
     setPrioHighDefault();
     setPrioMediumDefault();
-
     if (prioDiv.querySelector('span').classList.contains('col-white', 'fw-700')) {
         prioDiv.querySelector('span').classList.remove('col-white', 'fw-700');
         prioDiv.querySelector('img').src = 'assets/img/Prio_baja.png';
@@ -134,15 +123,14 @@ function setPrioLowDefault() {
 //     prioImg = document.getElementById("prio-" + id).getElementsByTagName('img');
 // }
 
+/**
+ * Clear add task form
+ * Not: fucntion not complete so far
+ */
 function resetAddTaskForm() {
-    let title = document.getElementById('title');
-    let textarea = document.getElementById('textarea');
-    let assignedTo = document.getElementById('assigned-to');
-    let date = document.getElementById('date');
-    let category = document.getElementById('category');
-    title.value = '';
-    textarea.value = '';
-    assignedTo = '';
-    date = '';
-    category = '';
+    document.getElementById('title').value = '';
+    document.getElementById('textarea').value = '';
+    document.getElementById('assigned-to').value = '';
+    document.getElementById('date').value = '';
+    document.getElementById('category').value = '';
 }

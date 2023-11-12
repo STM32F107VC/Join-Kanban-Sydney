@@ -14,6 +14,7 @@
 }
 
 .add-contacts-btn {
+    width: 352px;
     cursor: pointer;
     padding: 12px 0;
 }
@@ -25,6 +26,10 @@
 }
 
 .contacts-overlay { white-space: nowrap; }
+
+#contact-book > div {
+    width: 304px;
+}
 
 #overlay-contacts div.bg-dark-blue {
     border-top-left-radius: 30px;
