@@ -176,6 +176,4 @@ button,
     background-color:  var(--Style, #D1D1D1);
 }
 
-.go-back {
-    cursor: pointer;
-}
+.go-back { cursor: pointer; }
