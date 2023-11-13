@@ -58,29 +58,23 @@ function loadContacts() {
     let contactsAsString = localStorage.getItem('contacts');
     if (contactsAsString) {
         contacts = JSON.parse(contactsAsString);
-        renderContacts();
+        getInitialLetterOfFirstname();
     } else {
         console.log('Could not load contacts.');
     }
-}
-
-function renderContacts() {
-    getInitialLetterOfFirstname();
-
 }
 
 function getInitialLetterOfFirstname() {
     for (let i = 0; i < contacts.length; i++) {
         let contact = contacts[i];
         let initialLetter = contact['name'].charAt(0);
-        console.log('Der Anfangsbuchstabe lautet: ', initialLetter);
-
-        checkRegister(initialLetter);
-        // console.log('Folgende Kontakte müssen ins Kontaktbuch', contact);
+        let name = contact['name'];
+        let email = contact['email'];
+        checkRegister(initialLetter, name, email);
     }
 }
 
-function checkRegister(letter) {
+function checkRegister(letter, n, e) {
     let contactBook = document.getElementById('contact-book');
     let children = contactBook.children;
     for (let i = 0; i < children.length; i++) {
@@ -89,22 +83,26 @@ function checkRegister(letter) {
         console.log(id);
         console.log(child);
         if (id == letter) {
-            child.innerHTML += /*html*/`
-            <div>
-                <span>${id}</span>
-                <hr class="mb-16px">
-                <div class="flex x-space-betw y-center ft-general fs-20px fw-400">
-                    <div>Initialen</div>
-                    <div>
-                        <div>Name- und Vorname</div>
-                        <div>E-Mail Adresse</div>
-                    </div>
-                </div>
-            </div>  
-            `;
+            child.innerHTML += renderContacts(id, n, e);
         }
     }
 }
+
+function renderContacts(id, n, e) {
+    return /*html*/`
+    <div class="contact">
+        <span class="ft-general fs-20px fw-700">${id}</span>
+        <hr class="">
+        <div class="flex gap-35px y-center ft-general fs-20px fw-400">
+            <div>Initialen</div>
+            <div class="ft-general fs-20px">
+                <span><b>${n}</b></span>
+                <div><a href="mailto: ${e}">${e}</a></div>
+            </div>
+        </div>
+    </div>`;
+}
+
 
 
 /**

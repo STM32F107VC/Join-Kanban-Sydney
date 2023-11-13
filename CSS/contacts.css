@@ -9,6 +9,7 @@
 .sub-div-contacts { height: 100%; }
 
 .contacts-div {
+    height: 100%;
     padding: 22.5px 52px;
     background-color: #FFFFFF;
 }
@@ -27,9 +28,7 @@
 
 .contacts-overlay { white-space: nowrap; }
 
-#contact-book > div {
-    width: 304px;
-}
+#contact-book > div { min-width: 304px; }
 
 #overlay-contacts div.bg-dark-blue {
     border-top-left-radius: 30px;
@@ -53,10 +52,15 @@
 
 .overlay-forms > div.w-100 { padding-left: 0; }
 
-.overlay-forms > div > form div.gap-35px {
-    padding: 48px 0;
-}
+.overlay-forms > div > form div.gap-35px { padding: 48px 0; }
 
 .icon-name { background-image: url(/assets/img/person.png); }
 
 .icon-phone { background-image: url(/assets/img/call.png); }
+
+.contact { 
+    width: 352px;
+    padding: 17px 24px;
+ }
+
+hr { margin: 8px 0; }
