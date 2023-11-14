@@ -67,7 +67,7 @@ function loadContacts() {
 function getInitialLetterOfFirstname() {
     for (let i = 0; i < contacts.length; i++) {
         let contact = contacts[i];
-        let initialLetter = contact['name'].charAt(0);
+        let initialLetter = contact['name'].charAt(0)[0].toUpperCase();
         let name = contact['name'];
         let email = contact['email'];
         checkRegister(initialLetter, name, email);
@@ -82,25 +82,35 @@ function checkRegister(letter, n, e) {
         let child = children[i];
         console.log(id);
         console.log(child);
-        if (id == letter) {
-            child.innerHTML += renderContacts(id, n, e);
-        }
+        if (id == letter) { child.innerHTML += renderContacts(id, n, e); }
     }
 }
 
 function renderContacts(id, n, e) {
     return /*html*/`
-    <div class="contact">
-        <span class="ft-general fs-20px fw-700">${id}</span>
-        <hr class="">
-        <div class="flex gap-35px y-center ft-general fs-20px fw-400">
-            <div>Initialen</div>
-            <div class="ft-general fs-20px">
-                <span><b>${n}</b></span>
-                <div><a href="mailto: ${e}">${e}</a></div>
+        <div class="contact">
+            <div>
+
+            </div>
+            <div>
+                <div>${n}</div>
+                <div>${e}</div>
             </div>
         </div>
-    </div>`;
+    `;
+
+    // return /*html*/`
+    // <div class="contact">
+    //     <span class="ft-general fs-20px fw-700">${id}</span>
+    //     <hr class="">
+    //     <div class="flex gap-35px y-center ft-general fs-20px fw-400">
+    //         <div>Initialen</div>
+    //         <div class="ft-general fs-20px">
+    //             <span><b>${n}</b></span>
+    //             <div><a href="mailto: ${e}">${e}</a></div>
+    //         </div>
+    //     </div>
+    // </div>`;
 }
 
 
