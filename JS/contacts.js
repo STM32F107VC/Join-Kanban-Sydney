@@ -81,20 +81,21 @@ function checkRegister(letter, n, e, auc) {
     let children = contactBook.children;
     for (let i = 0; i < children.length; i++) {
         let id = contactBook.getElementsByTagName('tr')[i].id;
+        let dataCell = contactBook.getElementsByTagName('td');
         let child = children[i];
         // console.log(id);
         // console.log(child);
-        if (id === letter) { child.innerHTML += renderContacts(id, n, e, auc); }
+        if (id === letter) {
+            child.innerHTML += renderContacts(id, n, e, auc);
+            console.log(`${dataCell[i]}`);
+            dataCell[i].classList.remove('d-none');
+        }
     }
 }
 
 function renderContacts(id, n, e, auc) {
     return /*html*/`
-        <div class="contact">
-            <div>
-                ${id}
-                <hr>
-            </div>
+        <div class="contact mb-24px">
             <div class="flex y-center gap-35px">
                 <div>${auc}</div>
                 <div>
