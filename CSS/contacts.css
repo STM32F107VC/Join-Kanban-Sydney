@@ -9,7 +9,7 @@
 .sub-div-contacts { height: 100%; }
 
 .contacts-div {
-    height: 100vh;
+    height: fit-content;
     padding: 22.5px 52px;
     background-color: #FFFFFF;
 }
@@ -65,7 +65,7 @@
 
  .contact a { color: #007CEE; }
 
-hr { margin: 8px 0; }
+/* hr { margin: 8px 0; } */
 
 
 /* ::-webkit-scrollbar {

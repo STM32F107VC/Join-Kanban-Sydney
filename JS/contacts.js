@@ -67,50 +67,42 @@ function loadContacts() {
 function getInitialLetterOfFirstname() {
     for (let i = 0; i < contacts.length; i++) {
         let contact = contacts[i];
+        let str = contact['name'].match(/\b(\w)/g);
+        let acronymUpperCase = str.join('').toUpperCase();
         let initialLetter = contact['name'].charAt(0)[0].toUpperCase();
         let name = contact['name'];
         let email = contact['email'];
-        checkRegister(initialLetter, name, email);
+        checkRegister(initialLetter, name, email, acronymUpperCase);
     }
 }
 
-function checkRegister(letter, n, e) {
+function checkRegister(letter, n, e, auc) {
     let contactBook = document.getElementById('contact-book');
     let children = contactBook.children;
     for (let i = 0; i < children.length; i++) {
         let id = contactBook.getElementsByTagName('tr')[i].id;
         let child = children[i];
-        console.log(id);
-        console.log(child);
-        if (id == letter) { child.innerHTML += renderContacts(id, n, e); }
+        // console.log(id);
+        // console.log(child);
+        if (id === letter) { child.innerHTML += renderContacts(id, n, e, auc); }
     }
 }
 
-function renderContacts(id, n, e) {
+function renderContacts(id, n, e, auc) {
     return /*html*/`
         <div class="contact">
             <div>
-
+                ${id}
+                <hr>
             </div>
-            <div>
-                <div>${n}</div>
-                <div>${e}</div>
+            <div class="flex y-center gap-35px">
+                <div>${auc}</div>
+                <div>
+                    <div>${n}</div>
+                    <div><a href="mailto: ${e}">${e}</a></div>
+                </div>
             </div>
-        </div>
-    `;
-
-    // return /*html*/`
-    // <div class="contact">
-    //     <span class="ft-general fs-20px fw-700">${id}</span>
-    //     <hr class="">
-    //     <div class="flex gap-35px y-center ft-general fs-20px fw-400">
-    //         <div>Initialen</div>
-    //         <div class="ft-general fs-20px">
-    //             <span><b>${n}</b></span>
-    //             <div><a href="mailto: ${e}">${e}</a></div>
-    //         </div>
-    //     </div>
-    // </div>`;
+        </div>`;
 }
 
 
