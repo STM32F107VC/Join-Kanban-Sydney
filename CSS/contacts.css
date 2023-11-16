@@ -26,7 +26,10 @@
     flex-shrink: 0;
 }
 
-.contacts-overlay { white-space: nowrap; }
+.contacts-overlay { 
+    white-space: nowrap; 
+    height: 592px;
+}
 
 #contact-book > div { min-width: 304px; }
 
@@ -58,10 +61,15 @@
 
 .icon-phone { background-image: url(/assets/img/call.png); }
 
-.contact { 
+.contact,
+#contact-book > tr > td { 
     width: 352px;
     padding: 17px 24px;
  }
+
+ #contact-book > tr > td { font-weight: 700; }
+ #contact-book > tr > div { cursor: pointer; }
+ #contact-book > tr > td > span { margin-left: 12px; }
 
  .contact a { color: #007CEE; }
 
@@ -70,9 +78,11 @@
     border-bottom: 1px solid #D1D1D1;
  }
 
-/* hr { margin: 8px 0; } */
+ .acronym {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    color: white;
+ }
 
-
-/* ::-webkit-scrollbar {
-    border-radius: 10px;;
-} */
+ 

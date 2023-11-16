@@ -27,6 +27,8 @@ a { text-decoration: none; }
 
 .flex-row { flex-direction: row; }
 
+.mb-5px { margin-bottom: 5px; }
+
 .mb-8px { margin-bottom: 8px; }
 
 .mb-16px { margin-bottom: 16px; }
@@ -62,6 +64,8 @@ a { text-decoration: none; }
 .p-4px { padding: 4px; }
 
 .p-8px { padding: 8px; }
+
+.p-12px { padding: 12px; }
 
 .p-16px { padding: 16px; }
 
@@ -119,6 +123,8 @@ a { text-decoration: none; }
 .z-ind-1 { z-index: 1; }
 
 .opacity { opacity: 0.1; }
+
+.border-round { border-radius: 50%; }
 /* ------------------------------------- */
 
 /* Classes for input fields */

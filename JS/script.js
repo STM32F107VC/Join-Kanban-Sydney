@@ -2,6 +2,8 @@
 let signUp = [];
 let users = [];
 
+let numberRandom;
+
 async function init() {
     await includeHTML();
     await loadUsers();
@@ -27,8 +29,8 @@ function login() {
     let user = users.find(u => u.email == email.value && u.password == password.value);
     if (user) {
         window.location.href = "summary.html";
+        console.log('Gespeicherte Benutzerkonten', users);
     }
-    console.log('Gespeicherte Benutzerkonten', users);
 }
 
 /**
@@ -53,7 +55,7 @@ function openSignUpSection() {
  * 
  */
 function closeSignUpSection() {
-    document.getElementById('loggin').classList.remove('d-none');
+    document.getElementById('login').classList.remove('d-none');
     document.getElementById('sign-up').classList.add('d-none');
 }
 

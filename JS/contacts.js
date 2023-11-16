@@ -64,6 +64,9 @@ function loadContacts() {
     }
 }
 
+/**
+ * 
+ */
 function getInitialLetterOfFirstname() {
     for (let i = 0; i < contacts.length; i++) {
         let contact = contacts[i];
@@ -76,6 +79,13 @@ function getInitialLetterOfFirstname() {
     }
 }
 
+/**
+ * 
+ * @param {*} letter 
+ * @param {*} n 
+ * @param {*} e 
+ * @param {*} auc 
+ */
 function checkRegister(letter, n, e, auc) {
     let contactBook = document.getElementById('contact-book');
     let children = contactBook.children;
@@ -83,30 +93,63 @@ function checkRegister(letter, n, e, auc) {
         let id = contactBook.getElementsByTagName('tr')[i].id;
         let dataCell = contactBook.getElementsByTagName('td');
         let child = children[i];
+
         // console.log(id);
         // console.log(child);
         if (id === letter) {
-            child.innerHTML += renderContacts(id, n, e, auc);
+            child.innerHTML += renderContacts(id, n, e, auc, i);// i übergeben
             console.log(`${dataCell[i]}`);
             dataCell[i].classList.remove('d-none');
         }
     }
 }
 
+/**
+ * 
+ * @param {*} id 
+ * @param {*} n 
+ * @param {*} e 
+ * @param {*} auc 
+ * @returns 
+ */
 function renderContacts(id, n, e, auc) {
     return /*html*/`
-        <div class="contact mb-24px">
+        <div id="${id}" onclick="contactDetails(${n}, ${e}, ${auc})" class="contact mb-24px">
             <div class="flex y-center gap-35px">
-                <div>${auc}</div>
+                <div style="background-color: #${randomNumber()}" class="flex x-center y-center p-12px acronym">${auc}</div>
                 <div>
-                    <div>${n}</div>
-                    <div><a href="mailto: ${e}">${e}</a></div>
+                    <div class="ft-general fs-20px fw-400 mb-5px">${n}</div>
+                    <div><a class="ft-general fw-400 fs-16px" href="mailto: ${e}">${e}</a></div>
                 </div>
             </div>
         </div>`;
 }
 
+function contactDetails() {
+    let divDetails = document.getElementById('contact-details');
+    divDetails = renderDetailDiv();
+}
 
+function renderDetailDiv() {
+    return /*html*/`
+      ${n} ${e} ${auc}
+    `;
+}
+
+/**
+ * Function to generate ranndom number to set ranom background color
+ * with 16 bit hex number
+ * @returns Returns the random gneerated number to set it as background-color
+ */
+function randomNumber() {
+    numberRandom = Math.floor((Math.random() * 16777216)).toString(16);
+    let colWhite = 0xFFFFFFF;
+    let colBlack = 0x0000000;
+    console.log(numberRandom);
+    if ((numberRandom != colBlack) || (numberRandom != colWhite)) {
+        return numberRandom;
+    } else { randomNumber(); }
+}
 
 /**
  * Clear add contacts form
