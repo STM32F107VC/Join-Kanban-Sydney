@@ -3,6 +3,19 @@ let contacts = [];
 
 
 /**
+ * Load contacts from backend
+ * 
+ */
+async function loadContacts() {
+    try {
+        contacts = JSON.parse(await getItem('contacts'));
+        getInitialLetterOfFirstname();
+    } catch (error) {
+        console.info('Could not load contacts.');
+    }
+}
+
+/**
  * Open contacts overlay menu
  * 
  */
@@ -28,7 +41,7 @@ function closeContactOverlay() {
  * Add new contacts
  * 
  */
-function addContact() {
+async function addContact() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
     let phone = document.getElementById('number');
@@ -37,45 +50,23 @@ function addContact() {
         'email': email.value,
         'phone': phone.value,
     });
-    safeToLocalStorage(contacts);
     resetAddContactsForm(name, email, phone);
-}
-
-/**
- * Safe contacts to locaol storage for testing purpose(later in backlog)
- * @param {*} c 
- */
-function safeToLocalStorage(c) {
-    let contactsAsString = JSON.stringify(c);
-    localStorage.setItem('contacts', contactsAsString);
-}
-
-/**
- * Load contacts from local storage
- * 
- */
-function loadContacts() {
-    let contactsAsString = localStorage.getItem('contacts');
-    if (contactsAsString) {
-        contacts = JSON.parse(contactsAsString);
-        getInitialLetterOfFirstname();
-    } else {
-        console.log('Could not load contacts.');
-    }
+    await setItem('contacts', JSON.stringify(contacts));
 }
 
 /**
  * 
  */
 function getInitialLetterOfFirstname() {
-    for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];
+    for (let j = 0; j < contacts.length; j++) {
+        let contact = contacts[j];
         let str = contact['name'].match(/\b(\w)/g);
         let acronymUpperCase = str.join('').toUpperCase();
         let initialLetter = contact['name'].charAt(0)[0].toUpperCase();
         let name = contact['name'];
         let email = contact['email'];
-        checkRegister(initialLetter, name, email, acronymUpperCase);
+        let phone = contact['phone'];
+        checkRegister(j, initialLetter, name, email, acronymUpperCase, phone);
     }
 }
 
@@ -86,35 +77,31 @@ function getInitialLetterOfFirstname() {
  * @param {*} e 
  * @param {*} auc 
  */
-function checkRegister(letter, n, e, auc) {
+function checkRegister(j, letter, n, e, auc, p) {
     let contactBook = document.getElementById('contact-book');
     let children = contactBook.children;
     for (let i = 0; i < children.length; i++) {
         let id = contactBook.getElementsByTagName('tr')[i].id;
         let dataCell = contactBook.getElementsByTagName('td');
         let child = children[i];
-
-        // console.log(id);
-        // console.log(child);
         if (id === letter) {
-            child.innerHTML += renderContacts(id, n, e, auc, i);// i übergeben
-            console.log(`${dataCell[i]}`);
+            child.innerHTML += renderContacts(j, id, n, e, auc, p);
             dataCell[i].classList.remove('d-none');
         }
     }
 }
 
 /**
- * 
+ * ${n}, ${e}, ${auc}
  * @param {*} id 
  * @param {*} n 
  * @param {*} e 
  * @param {*} auc 
  * @returns 
  */
-function renderContacts(id, n, e, auc) {
+function renderContacts(j, id, n, e, auc, p) {
     return /*html*/`
-        <div id="${id}" onclick="contactDetails(${n}, ${e}, ${auc})" class="contact mb-24px">
+        <div id="${id}${j}" onclick="contactDetails('${n}', '${e}', '${auc}', ${p})" class="contact mb-24px">
             <div class="flex y-center gap-35px">
                 <div style="background-color: #${randomNumber()}" class="flex x-center y-center p-12px acronym">${auc}</div>
                 <div>
@@ -125,27 +112,60 @@ function renderContacts(id, n, e, auc) {
         </div>`;
 }
 
-function contactDetails() {
+function contactDetails(n, e, auc, p) {
+    console.log('Du bist in die Funktion contactDetails() eingetreten.')
+    console.log(n, e, auc, p);
     let divDetails = document.getElementById('contact-details');
-    divDetails = renderDetailDiv();
+    divDetails.innerHTML = renderContactDetails(n, e, auc, p);
 }
 
-function renderDetailDiv() {
+function renderContactDetails(n, e, auc, p) {
     return /*html*/`
-      ${n} ${e} ${auc}
-    `;
+        <div class="flex y-center mb-24px">
+            <div class="mr-54px">
+                <span>${auc}</span>
+            </div>
+            <div class="">
+                <div class="ft-general fs-47px fw-500">${n}</div>
+                <div class="flex gap-16px">
+                    <a class="col-black" href="Edit">
+                        <div class="flex y-center gap-8px">
+                            <img src="/assets/img/edit.png" alt="Edit">
+                            <span class="dark-blue">Edit</span>
+                        </div>
+                    </a>
+                    <a class="col-black" href="Edit">
+                        <div class="flex y-center gap-8px">
+                            <img src="/assets/img/delete.png" alt="Delete">
+                            <span class="dark-blue">Delete</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-column">
+            <span class="ft-general fs-20px fw-400 mb-24px">Contact Information</span>
+            <div class="flex flex-column">
+                <span class="ft-general fs-16px fw-700">Email</span>
+                <a href="mailto:${e}">${e}</a>
+
+                <span class="ft-general fs-16px fw-700">Phone</span>
+                <a href="phone: ">${p}</a>
+            </div>
+        </div>
+      `;
 }
 
 /**
  * Function to generate ranndom number to set ranom background color
  * with 16 bit hex number
- * @returns Returns the random gneerated number to set it as background-color
+ * @returns Returns the random generated number to set it as background-color
  */
 function randomNumber() {
     numberRandom = Math.floor((Math.random() * 16777216)).toString(16);
     let colWhite = 0xFFFFFFF;
     let colBlack = 0x0000000;
-    console.log(numberRandom);
     if ((numberRandom != colBlack) || (numberRandom != colWhite)) {
         return numberRandom;
     } else { randomNumber(); }

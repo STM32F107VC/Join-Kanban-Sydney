@@ -7,7 +7,7 @@ let numberRandom;
 async function init() {
     await includeHTML();
     await loadUsers();
-    loadContacts();
+    await loadContacts();
 }
 
 /**
@@ -88,7 +88,6 @@ function goBack() {
  * @param {string} comparePassword This is the password to compare of the person registering
  */
 async function addNewUser() {
-    console.log('addNewUser function');
     let name = document.getElementById("new-name");
     let email = document.getElementById("new-email");
     let password = document.getElementById("new-password");

@@ -9,7 +9,7 @@
 .sub-div-contacts { height: 100%; }
 
 .contacts-div {
-    height: fit-content;
+    /* height: 100vh; */
     padding: 22.5px 52px;
     background-color: #FFFFFF;
 }
@@ -85,4 +85,4 @@
     color: white;
  }
 
- 
+.mr-54px { margin-right: 54px; }
