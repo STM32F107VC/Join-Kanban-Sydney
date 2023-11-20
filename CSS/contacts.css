@@ -9,7 +9,7 @@
 .sub-div-contacts { height: 100%; }
 
 .contacts-div {
-    /* height: 100vh; */
+    height: fit-content;
     padding: 22.5px 52px;
     background-color: #FFFFFF;
 }
@@ -65,17 +65,22 @@
 #contact-book > tr > td { 
     width: 352px;
     padding: 17px 24px;
+    font-weight: 700;
  }
 
- #contact-book > tr > td { font-weight: 700; }
+ #contact-book > tr > div:hover { 
+     background-color: rgba(0, 0, 0, 0.1);
+     border-radius: 10px;
+  }
  #contact-book > tr > div { cursor: pointer; }
  #contact-book > tr > td > span { margin-left: 12px; }
 
- .contact a { color: #007CEE; }
+ a { color: #007CEE; }
 
  .separator {
     padding: 8px 0;
     border-bottom: 1px solid #D1D1D1;
+    margin-bottom: 8px;
  }
 
  .acronym {
@@ -83,6 +88,9 @@
     width: 36px;
     height: 36px;
     color: white;
+    border: 3px solid white;
  }
 
 .mr-54px { margin-right: 54px; }
+
+.edit-contact > div > div > div { cursor: pointer; }

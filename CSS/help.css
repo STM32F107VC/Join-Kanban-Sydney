@@ -1,0 +1,13 @@
+.main-div-help {
+    position: absolute;
+    top: 96px;
+    left: 220px;
+    padding: 128px;
+}
+
+ol { padding-left: 24px; }
+
+ol > li::marker {
+    font-size: 20px;
+    font-weight: 700;
+}

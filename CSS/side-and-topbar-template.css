@@ -24,7 +24,7 @@
 
 .set-span { margin-left: 348px; }
 
-.topbar div img { cursor: pointer; }
+.side-topbar-template > .topbar img { cursor: pointer; }
 
 div.topbar > div.sign-up > img:hover { scale: 1.1; }
 

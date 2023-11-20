@@ -77,7 +77,12 @@ function openLogoutMenu() {
  * 
  */
 function goBack() {
-    location.href = 'summary.html';
+    location.replace('summary.html')
+    // location.href = 'summary.html';
+}
+
+function goToHelp() {
+    location.replace('help.html');
 }
 
 /**

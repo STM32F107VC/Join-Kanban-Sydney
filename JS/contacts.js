@@ -101,7 +101,7 @@ function checkRegister(j, letter, n, e, auc, p) {
  */
 function renderContacts(j, id, n, e, auc, p) {
     return /*html*/`
-        <div id="${id}${j}" onclick="contactDetails('${n}', '${e}', '${auc}', ${p})" class="contact mb-24px">
+        <div id="${id}${j}" onclick="contactDetails('${n}', '${e}', '${auc}', ${p}, '${id}', '${j}')" class="contact mb-24px">
             <div class="flex y-center gap-35px">
                 <div style="background-color: #${randomNumber()}" class="flex x-center y-center p-12px acronym">${auc}</div>
                 <div>
@@ -112,49 +112,56 @@ function renderContacts(j, id, n, e, auc, p) {
         </div>`;
 }
 
-function contactDetails(n, e, auc, p) {
-    console.log('Du bist in die Funktion contactDetails() eingetreten.')
-    console.log(n, e, auc, p);
+function contactDetails(n, e, auc, p, id, j) {
     let divDetails = document.getElementById('contact-details');
-    divDetails.innerHTML = renderContactDetails(n, e, auc, p);
+    divDetails.innerHTML = renderContactDetails(n, e, auc, p, id, j);
 }
 
-function renderContactDetails(n, e, auc, p) {
+function renderContactDetails(n, e, auc, p, id, j) {
     return /*html*/`
-        <div class="flex y-center mb-24px">
+        <div class="edit-contact flex y-center mb-24px">
             <div class="mr-54px">
                 <span>${auc}</span>
             </div>
-            <div class="">
-                <div class="ft-general fs-47px fw-500">${n}</div>
+            <div>
+                <div class="ft-general fs-47px fw-500 mb-12px">${n}</div>
                 <div class="flex gap-16px">
-                    <a class="col-black" href="Edit">
-                        <div class="flex y-center gap-8px">
+                        <div onclick="editContact('${id}', '${j}')" class="flex col-black y-center gap-8px">
                             <img src="/assets/img/edit.png" alt="Edit">
                             <span class="dark-blue">Edit</span>
                         </div>
-                    </a>
-                    <a class="col-black" href="Edit">
-                        <div class="flex y-center gap-8px">
+                        <div onclick="deleteContact('${j}')" class="flex col-black y-center gap-8px">
                             <img src="/assets/img/delete.png" alt="Delete">
                             <span class="dark-blue">Delete</span>
                         </div>
-                    </a>
                 </div>
             </div>
         </div>
 
         <div class="flex flex-column">
-            <span class="ft-general fs-20px fw-400 mb-24px">Contact Information</span>
+            <span class="ft-general fs-20px fw-400 mb-64px mt-24px">Contact Information</span>
             <div class="flex flex-column">
-                <span class="ft-general fs-16px fw-700">Email</span>
-                <a href="mailto:${e}">${e}</a>
+                <span class="ft-general fs-16px fw-700 mb-16px">Email</span>
+                <a class="mb-24px" href="mailto:${e}">${e}</a>
 
-                <span class="ft-general fs-16px fw-700">Phone</span>
-                <a href="phone: ">${p}</a>
+                <span class="ft-general fs-16px fw-700 mb-16px">Phone</span>
+                <a href="phone:${p}">${p}</a>
             </div>
         </div>
       `;
+}
+
+function editContact(id, j) {
+    let contact = document.getElementById(`${id},${j}`);
+}
+
+async function deleteContact(j) {
+    contacts.splice(j, 1);
+    await setItem('contacts', JSON.stringify(contacts));
+    contacts = JSON.parse(await getItem('contacts'));
+    checkRegister();
+    location.replace('contacts.html');
+
 }
 
 /**

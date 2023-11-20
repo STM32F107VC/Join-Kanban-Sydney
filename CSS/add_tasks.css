@@ -2,7 +2,7 @@
     position: absolute;
     top: 180px;
     left: 328px;
-    padding-bottom: 128px;
+    padding: 0 64px 128px 0;
 }
 
 .vertical-line { padding: 0 64px; }
