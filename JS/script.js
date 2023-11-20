@@ -4,6 +4,7 @@ let users = [];
 
 let numberRandom;
 
+
 async function init() {
     await includeHTML();
     await loadUsers();
