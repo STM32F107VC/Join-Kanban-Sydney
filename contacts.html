@@ -33,6 +33,8 @@
                         new Contact
                         <img src="/assets/img/person_add.png" alt="add person"></button>
                 </div>
+
+                <!-- Contact book to render in contacts -->
                 <div>
                     <table>
                         <tbody id="contact-book">
@@ -144,7 +146,6 @@
             <div class="flex y-center">
                 <img src="assets/img/contact_person.png" alt="avatar">
             </div>
-
             <div class="flex flex-column x-center y-center w-100">
                 <div class="flex w-100 x-end close-cross mb-48px"><img onclick="closeContactOverlay()" class="p-8px"
                         src="assets/img/close.png" alt="close"></div>
@@ -174,7 +175,39 @@
         </div>
     </div>
 
-    <div id="edit-contacts" class="contacts-overlay d-none z-ind-1 flex"></div>
+    <!-- Edit contact form -->
+    <div id="edit-contacts" class="contacts-overlay d-none z-ind-1 flex">
+        <div class="bg-dark-blue flex flex-column x-center y-start">
+            <img src="assets/img/Capa_2_light.png" alt="Join logo" class="join-logo-small mb-16px">
+            <span class="ft-general fs-61px fw-700 mb-8px">Edit contact</span>
+            <img src="assets/img/Vector 5.png" alt="blue horizontal line">
+        </div>
+        <div class="flex flex-row w-100 overlay-forms">
+            <div class="flex y-center">
+                <img src="assets/img/contact_person.png" alt="avatar">
+            </div>
+            <div class="flex flex-column x-center y-center w-100">
+                <div class="flex w-100 x-end close-cross mb-48px"><img onclick="closeEditContactForm()" class="p-8px"
+                        src="assets/img/close.png" alt="close"></div>
+
+                <form onsubmit="return false;" class="flex flex-column">
+                    <div class="login-input mb-32px flex x-space-betw y-center">
+                        <input contenteditable="true" class="ft-general fs-20px fw-400 input-icon-pos icon-name w-100"
+                            id="edit-name" placeholder="Name" name="name" required>
+                    </div>
+                    <div class="login-input mb-32px flex x-space-betw y-center">
+                        <input contenteditable="true" class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100"
+                            id="edit-email" placeholder="Email" type="email" required>
+                    </div>
+                    <div class="login-input mb-32px flex x-space-betw y-center">
+                        <input contenteditable="true" class="ft-general fs-20px fw-400 input-icon-pos icon-phone w-100"
+                            id="edit-number" placeholder="Phone" type="tel" required>
+                    </div>
+                    <div id="delete-part" class="flex x-start gap-35px"></div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

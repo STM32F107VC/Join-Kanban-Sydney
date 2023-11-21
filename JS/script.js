@@ -1,7 +1,6 @@
 /* Declare variables and arrays */
 let signUp = [];
 let users = [];
-
 let numberRandom;
 
 
@@ -47,7 +46,7 @@ function loginAsGuest() {
  * 
  */
 function openSignUpSection() {
-    document.getElementById('loggin').classList.add('d-none');
+    document.getElementById('login').classList.add('d-none');
     document.getElementById('sign-up').classList.remove('d-none');
 }
 
@@ -74,7 +73,7 @@ function openLogoutMenu() {
 }
 
 /**
- * FUnction to go back to summary.html
+ * Go back to summary.html page
  * 
  */
 function goBack() {
@@ -82,6 +81,10 @@ function goBack() {
     // location.href = 'summary.html';
 }
 
+
+/**
+ * Go to help.html page
+ */
 function goToHelp() {
     location.replace('help.html');
 }
