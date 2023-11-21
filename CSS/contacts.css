@@ -10,6 +10,7 @@
 
 .contacts-div {
     height: 100%;
+    height: fit-content;
     padding: 22.5px 52px;
     background-color: #FFFFFF;
 }

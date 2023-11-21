@@ -8,10 +8,11 @@ let contacts = [];
  */
 async function loadContacts() {
     try {
+        console.log('Kontakte erfolgreich geladen.');
         contacts = JSON.parse(await getItem('contacts'));
         getInitialLetterOfFirstname();
     } catch (error) {
-        console.info('Could not load contacts.');
+        console.info('Kontakte konnten nicht geladen werden.');
     }
 }
 
@@ -65,8 +66,21 @@ async function addContact() {
         'phone': phone.value,
     });
     await setItem('contacts', JSON.stringify(contacts));
+    getInitialLetterOfFirstname();
     resetAddContactsForm(name, email, phone);
     location.replace('contacts.html');
+}
+
+/**
+ * Clear add contacts form
+ * @param {*} n Name of contact
+ * @param {*} e E-mail of contact
+ * @param {*} p Phone number of contact
+ */
+function resetAddContactsForm(n, e, p) {
+    n.value = '';
+    e.value = '';
+    p.value = '';
 }
 
 /**
@@ -94,6 +108,7 @@ function getInitialLetterOfFirstname() {
  * @param {*} auc 
  */
 function checkRegister(j, letter, n, e, auc, p) {
+    console.log('checkRegister() funktion.');
     let contactBook = document.getElementById('contact-book');
     let children = contactBook.children;
     for (let i = 0; i < children.length; i++) {
@@ -256,16 +271,4 @@ function randomNumber() {
     if ((numberRandom != colBlack) || (numberRandom != colWhite)) {
         return numberRandom;
     } else { randomNumber(); }
-}
-
-/**
- * Clear add contacts form
- * @param {*} n 
- * @param {*} e 
- * @param {*} p 
- */
-function resetAddContactsForm(n, e, p) {
-    n.value = '';
-    e.value = '';
-    p.value = '';
 }
