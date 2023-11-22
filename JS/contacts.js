@@ -164,6 +164,17 @@ function contactDetails(n, e, auc, p, id, j) {
     divDetails.innerHTML = renderContactDetails(n, e, auc, p, id, j);
 }
 
+
+/**
+ * Render contact details, when a contact is selected
+ * @param {*} n 
+ * @param {*} e 
+ * @param {*} auc 
+ * @param {*} p 
+ * @param {*} id 
+ * @param {*} j 
+ * @returns 
+ */
 function renderContactDetails(n, e, auc, p, id, j) {
     return /*html*/`
         <div class="edit-contact flex y-center mb-24px">
@@ -207,6 +218,10 @@ function getContactValues(j) {
     document.getElementById('edit-number').value = phone;
 }
 
+/**
+ * Render
+ * @param {*} j 
+ */
 function editContact(j) {
     let editContactForm = document.getElementById('delete-part');
     editContactForm.innerHTML = renderDeletePart(j);
@@ -215,7 +230,7 @@ function editContact(j) {
 }
 
 /**
- * Render from edit contact overlay menu the part to delete and safe contacts contacts
+ * Render form edit contact overlay menu the part to delete and safe contacts contacts
  * @param {*} j 
  * @returns 
  */
@@ -224,16 +239,17 @@ function renderDeletePart(j) {
         <button onclick="deleteContact(${j})" class="btn-light ft-general fs-21px fw-700 flex y-center gap-4px">
             Delete <img src="assets/img/close.png" alt="cancel">
         </button>
-        <button onclick="safeEditChanges(${j})" class="btn-dark ft-general fs-21px fw-700 flex y-center gap-4px">
+        <button id="safe-btn" onclick="safeEditChanges(${j})" class="btn-dark ft-general fs-21px fw-700 flex y-center gap-4px">
             Safe <img src="assets/img/check.png" alt="add">
         </button>`;
 }
 
 /**
- * 
+ * Safes changes which were made on a contact
  * @param {*} j 
  */
 async function safeEditChanges(j) {
+    document.getElementById('safe-btn').disabled = true;
     let name = document.getElementById('edit-name').value;
     let email = document.getElementById('edit-email').value;
     let phone = document.getElementById('edit-number').value;
@@ -244,15 +260,14 @@ async function safeEditChanges(j) {
         'phone': phone,
     });
     await setItem('contacts', JSON.stringify(contacts));
+    document.getElementById('safe-btn').disabled = false;
     location.replace('contacts.html');
-    console.log(name, email, phone);
 }
 
-/* Button während ladevorgang disablen */
-
-
-
-
+/**
+ * Deletes a complet contact
+ * @param {*} j 
+ */
 async function deleteContact(j) {
     contacts.splice(j, 1);
     await setItem('contacts', JSON.stringify(contacts));
@@ -268,9 +283,11 @@ async function deleteContact(j) {
  */
 function randomNumber() {
     numberRandom = Math.floor((Math.random() * 16777216)).toString(16);
-    let colWhite = 0xFFFFFFF;
-    let colBlack = 0x0000000;
-    if ((numberRandom != colBlack) || (numberRandom != colWhite)) {
+    let colBright = Number(13817305).toString('16');
+    let colDark = Number(1645081).toString('16');
+
+
+    if ((numberRandom < colBright) && (numberRandom > colDark)) {
         return numberRandom;
     } else { randomNumber(); }
 }
