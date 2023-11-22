@@ -96,3 +96,13 @@
 .mr-54px { margin-right: 54px; }
 
 .edit-contact > div > div > div { cursor: pointer; }
+
+.edit-contact > div.mr-54px {
+    height: 120px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 4px solid white;
+}

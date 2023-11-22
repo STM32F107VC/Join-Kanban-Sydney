@@ -16,8 +16,6 @@
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/contacts.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
-    <!-- <link rel="stylesheet" href="CSS/summary.css"> -->
-    <!-- <link rel="stylesheet" href="CSS/login.css"> -->
 </head>
 
 <body id="body-contacts" onload="init();">
@@ -160,8 +158,8 @@
                             placeholder="Email" type="email" required>
                     </div>
                     <div class="login-input mb-32px flex x-space-betw y-center">
-                        <input class="ft-general fs-20px fw-400 input-icon-pos icon-phone w-100" id="number"
-                            placeholder="Phone" type="tel" required>
+                        <input type="number" class="ft-general fs-20px fw-400 input-icon-pos icon-phone w-100"
+                            id="number" placeholder="Phone" required>
                     </div>
                     <div class="flex x-start gap-35px">
                         <button onclick="closeContactOverlay()"
@@ -193,15 +191,16 @@
                 <form onsubmit="return false;" class="flex flex-column">
                     <div class="login-input mb-32px flex x-space-betw y-center">
                         <input contenteditable="true" class="ft-general fs-20px fw-400 input-icon-pos icon-name w-100"
-                            id="edit-name" placeholder="Name" name="name" required>
+                            id="edit-name" placeholder="Name" type="text" required>
                     </div>
                     <div class="login-input mb-32px flex x-space-betw y-center">
                         <input contenteditable="true" class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100"
                             id="edit-email" placeholder="Email" type="email" required>
                     </div>
                     <div class="login-input mb-32px flex x-space-betw y-center">
-                        <input contenteditable="true" class="ft-general fs-20px fw-400 input-icon-pos icon-phone w-100"
-                            id="edit-number" placeholder="Phone" type="tel" required>
+                        <input type="number" contenteditable="true"
+                            class="ft-general fs-20px fw-400 input-icon-pos icon-phone w-100" id="edit-number"
+                            placeholder="Phone" required>
                     </div>
                     <div id="delete-part" class="flex x-start gap-35px"></div>
                 </form>

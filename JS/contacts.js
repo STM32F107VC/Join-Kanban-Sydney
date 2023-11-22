@@ -1,6 +1,6 @@
 /* Declare variables and arrays */
 let contacts = [];
-
+let getBackgroundColor;
 
 /**
  * Load contacts from backend
@@ -68,10 +68,12 @@ async function addContact() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
     let phone = document.getElementById('number');
+    let backgroundColor = randomNumber();
     contacts.push({
         'name': name.value,
         'email': email.value,
         'phone': phone.value,
+        'background-color': backgroundColor
     });
     await setItem('contacts', JSON.stringify(contacts));
     getInitialLetterOfFirstname();
@@ -104,7 +106,8 @@ function getInitialLetterOfFirstname() {
         let name = contact['name'];
         let email = contact['email'];
         let phone = contact['phone'];
-        checkRegister(j, initialLetter, name, email, acronymUpperCase, phone);
+        let backgroundColor = contact['background-color'];
+        checkRegister(j, initialLetter, name, email, acronymUpperCase, phone, backgroundColor);
     }
 }
 
@@ -115,7 +118,7 @@ function getInitialLetterOfFirstname() {
  * @param {*} e 
  * @param {*} auc 
  */
-function checkRegister(j, letter, n, e, auc, p) {
+function checkRegister(j, letter, n, e, auc, p, bgc) {
     let contactBook = document.getElementById('contact-book');
     let children = contactBook.children;
     for (let i = 0; i < children.length; i++) {
@@ -123,7 +126,7 @@ function checkRegister(j, letter, n, e, auc, p) {
         let dataCell = contactBook.getElementsByTagName('td');
         let child = children[i];
         if (id === letter) {
-            child.innerHTML += renderContacts(j, id, n, e, auc, p);
+            child.innerHTML += renderContacts(j, id, n, e, auc, p, bgc);
             dataCell[i].classList.remove('d-none');
         }
     }
@@ -137,11 +140,11 @@ function checkRegister(j, letter, n, e, auc, p) {
  * @param {*} auc 
  * @returns 
  */
-function renderContacts(j, id, n, e, auc, p) {
+function renderContacts(j, id, n, e, auc, p, bgc) {
     return /*html*/`
         <div id="${id}${j}" onclick="contactDetails('${n}', '${e}', '${auc}', ${p}, '${id}', '${j}')" class="contact mb-24px">
             <div class="flex y-center gap-35px">
-                <div style="background-color: #${randomNumber()}" class="flex x-center y-center p-12px acronym">${auc}</div>
+                <div style="background-color: #${bgc}" class="flex x-center y-center p-12px acronym">${auc}</div>
                 <div>
                     <div class="ft-general fs-20px fw-400 mb-5px">${n}</div>
                     <div><a class="ft-general fw-400 fs-16px" href="mailto: ${e}">${e}</a></div>
@@ -178,7 +181,7 @@ function contactDetails(n, e, auc, p, id, j) {
 function renderContactDetails(n, e, auc, p, id, j) {
     return /*html*/`
         <div class="edit-contact flex y-center mb-24px">
-            <div class="mr-54px"><span>${auc}</span></div>
+            <div class="ft-general fs-47px fw-500 col-white mr-54px" style='background-color: #${contacts[j]['background-color']}'><span>${auc}</span></div>
             <div>
                 <div class="ft-general fs-47px fw-500 mb-12px">${n}</div>
                 <div class="flex gap-16px">
@@ -213,6 +216,7 @@ function getContactValues(j) {
     let name = contacts[j]['name'];
     let email = contacts[j]['email'];
     let phone = contacts[j]['phone'];
+    getBackgroundColor = contacts[j]['background-color'];
     document.getElementById('edit-name').value = name;
     document.getElementById('edit-email').value = email;
     document.getElementById('edit-number').value = phone;
@@ -258,6 +262,7 @@ async function safeEditChanges(j) {
         'name': name,
         'email': email,
         'phone': phone,
+        'background-color': getBackgroundColor
     });
     await setItem('contacts', JSON.stringify(contacts));
     document.getElementById('safe-btn').disabled = false;
@@ -282,12 +287,10 @@ async function deleteContact(j) {
  * @returns Returns the random generated number to set it as background-color
  */
 function randomNumber() {
-    numberRandom = Math.floor((Math.random() * 16777216)).toString(16);
-    let colBright = Number(13817305).toString('16');
-    let colDark = Number(1645081).toString('16');
-
-
-    if ((numberRandom < colBright) && (numberRandom > colDark)) {
-        return numberRandom;
-    } else { randomNumber(); }
+    let numberRandom = Math.floor((Math.random() * 13000000));
+    let numberRandomHex = numberRandom.toString(16);
+    let minValue = Number(4400000);
+    return numberRandomHex;
+    // if (numberRandom > minValue) {
+    // } else { randomNumber() }
 }
