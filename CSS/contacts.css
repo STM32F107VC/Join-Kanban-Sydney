@@ -97,7 +97,9 @@
 
 .edit-contact > div > div > div { cursor: pointer; }
 
-.edit-contact > div.mr-54px {
+.edit-contact > div.mr-54px,
+#edit-Overlay-Menu-Avatar > div
+{
     height: 120px;
     width: 120px;
     display: flex;

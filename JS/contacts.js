@@ -185,7 +185,7 @@ function renderContactDetails(n, e, auc, p, id, j) {
             <div>
                 <div class="ft-general fs-47px fw-500 mb-12px">${n}</div>
                 <div class="flex gap-16px">
-                    <div onclick="editContact('${j}')" class="flex col-black y-center gap-8px">
+                    <div onclick="editContact('${j}', '${auc}')" class="flex col-black y-center gap-8px">
                         <img src="/assets/img/edit.png" alt="Edit">
                         <span class="dark-blue">Edit</span>
                     </div>
@@ -216,7 +216,6 @@ function getContactValues(j) {
     let name = contacts[j]['name'];
     let email = contacts[j]['email'];
     let phone = contacts[j]['phone'];
-    getBackgroundColor = contacts[j]['background-color'];
     document.getElementById('edit-name').value = name;
     document.getElementById('edit-email').value = email;
     document.getElementById('edit-number').value = phone;
@@ -226,11 +225,22 @@ function getContactValues(j) {
  * Render
  * @param {*} j 
  */
-function editContact(j) {
+function editContact(j, auc) {
+    getBackgroundColor = contacts[j]['background-color'];
     let editContactForm = document.getElementById('delete-part');
+    let avatar = document.getElementById('edit-Overlay-Menu-Avatar');
+    avatar.style = `background-color: ${getBackgroundColor}`;
+    avatar.innerHTML = renderEditOverlayAvatar(auc);
     editContactForm.innerHTML = renderDeletePart(j);
     openEditContactForm();
     getContactValues(j);
+}
+
+function renderEditOverlayAvatar(auc) {
+    return /*html*/`
+    <div class="ft-general fs-47px fw-500 col-white" style="background-color: #${getBackgroundColor}">
+        <span>${auc}</span></div>
+    </div>`;
 }
 
 /**
@@ -287,10 +297,15 @@ async function deleteContact(j) {
  * @returns Returns the random generated number to set it as background-color
  */
 function randomNumber() {
-    let numberRandom = Math.floor((Math.random() * 13000000));
-    let numberRandomHex = numberRandom.toString(16);
-    let minValue = Number(4400000);
-    return numberRandomHex;
-    // if (numberRandom > minValue) {
-    // } else { randomNumber() }
+
+    let numberRandom = Math.floor((Math.random() * 0xffffff)).toString(16);
+    console.log(numberRandom);
+    if ((randomNumber <= 0xffff) || (randomNumber < 0xfffff)) {
+        return numberRandom;
+    } else { randomNumber(); }
+    // if ((numberRandom <= 0x1000)) {
+    //     randomNumber();
+    // } else {
+    //     return numberRandom;
+    // }
 }
