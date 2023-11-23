@@ -9,8 +9,9 @@
 .sub-div-contacts { height: 100%; }
 
 .contacts-div {
-    height: 100vh;
-    height: fit-content;
+    overflow-y: scroll;
+    min-width: 404px;
+    overflow-x: hidden;
     padding: 22.5px 52px;
     background-color: #FFFFFF;
 }
@@ -68,30 +69,29 @@
     width: 352px;
     padding: 17px 24px;
     font-weight: 700;
- }
+}
 
- #contact-book > tr > div:hover { 
-     background-color: rgba(0, 0, 0, 0.1);
-     border-radius: 10px;
-  }
- #contact-book > tr > div { cursor: pointer; }
- #contact-book > tr > td > span { margin-left: 12px; }
+.contactHover:hover { background-color: rgba(0, 0, 0, 0.1); }
 
- a { color: #007CEE; }
+#contact-book > tr > div { border-radius: 10px; }
+/* #contact-book > tr > div:hover { background-color: rgba(0, 0, 0, 0.1); } */
+#contact-book > tr > div { cursor: pointer; }
+#contact-book > tr > td > span { margin-left: 12px; }
+a { color: #007CEE; }
 
- .separator {
-    padding: 8px 0;
-    border-bottom: 1px solid #D1D1D1;
-    margin-bottom: 8px;
- }
+.separator {
+   padding: 8px 0;
+   border-bottom: 1px solid #D1D1D1;
+   margin-bottom: 8px;
+}
 
- .acronym {
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    color: white;
-    border: 3px solid white;
- }
+.acronym {
+   border-radius: 50%;
+   width: 36px;
+   height: 36px;
+   color: white;
+   border: 3px solid white;
+}
 
 .mr-54px { margin-right: 54px; }
 
@@ -108,3 +108,7 @@
     border-radius: 50%;
     border: 4px solid white;
 }
+
+/* input[type=number] {
+    
+} */

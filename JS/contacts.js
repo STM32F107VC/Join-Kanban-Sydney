@@ -1,6 +1,10 @@
 /* Declare variables and arrays */
 let contacts = [];
 let getBackgroundColor;
+let bgcState = null;
+let oldNumericId;
+let oldLetterId;
+let oldId = null;
 
 /**
  * Load contacts from backend
@@ -142,7 +146,7 @@ function checkRegister(j, letter, n, e, auc, p, bgc) {
  */
 function renderContacts(j, id, n, e, auc, p, bgc) {
     return /*html*/`
-        <div id="${id}${j}" onclick="contactDetails('${n}', '${e}', '${auc}', ${p}, '${id}', '${j}')" class="contact mb-24px">
+        <div id="${id}${j}" onclick="contactDetails('${n}', '${e}', '${auc}', ${p}, '${id}', '${j}')" class="contact contactHover mb-24px">
             <div class="flex y-center gap-35px">
                 <div style="background-color: #${bgc}" class="flex x-center y-center p-12px acronym">${auc}</div>
                 <div>
@@ -152,6 +156,20 @@ function renderContacts(j, id, n, e, auc, p, bgc) {
             </div>
         </div>`;
 }
+
+// var x = document.getElementsByClassName('contact')
+// for (var i = 0; i < x.length; i++) {
+//     x[i].addEventListener("click", function () {
+
+//         var selectedEl = document.querySelector(".contactHover");
+//         if (selectedEl) {
+//             selectedEl.classList.remove('bg-dark-blue', 'col-white');
+//         }
+//         this.classList.add('bg-dark-blue', 'col-white');
+
+//     }, false);;
+// }
+
 
 /**
  * Function to show contact details
@@ -164,9 +182,22 @@ function renderContacts(j, id, n, e, auc, p, bgc) {
  */
 function contactDetails(n, e, auc, p, id, j) {
     let divDetails = document.getElementById('contact-details');
+    let contact = document.getElementById(`${id}${j}`);
+    let currentId = id + j;
+
+    if (!contact.classList.contains('bg-dark-blue', 'col-white')) {
+        contact.classList.add('bg-dark-blue', 'col-white');
+        contact.classList.remove('contactHover');
+        oldId = currentId;
+        if (oldId !== currentId) {
+            document.getElementById(`${oldId}`).classList.remove('bg-dark-blue', 'col-white');
+
+        }
+    } else {
+        contact.classList.remove('bg-dark-blue', 'col-white');
+    }
     divDetails.innerHTML = renderContactDetails(n, e, auc, p, id, j);
 }
-
 
 /**
  * Render contact details, when a contact is selected
@@ -199,6 +230,13 @@ function renderContactDetails(n, e, auc, p, id, j) {
         ${renderContactInformatons(e, p)}`;
 }
 
+
+/**
+ * Renders the email adress and phone number
+ * @param {*} e Variable with email adress
+ * @param {*} p Variable with phone number
+ * @returns 
+ */
 function renderContactInformatons(e, p) {
     return /*html*/`
         <div class="flex flex-column">
@@ -212,6 +250,10 @@ function renderContactInformatons(e, p) {
         </div>`;
 }
 
+/**
+ * Get values out of contacts JSON array and show them in the input fields to check
+ * @param {*} j Index for selected contact
+ */
 function getContactValues(j) {
     let name = contacts[j]['name'];
     let email = contacts[j]['email'];
@@ -222,7 +264,7 @@ function getContactValues(j) {
 }
 
 /**
- * Render
+ * 
  * @param {*} j 
  */
 function editContact(j, auc) {
@@ -297,15 +339,9 @@ async function deleteContact(j) {
  * @returns Returns the random generated number to set it as background-color
  */
 function randomNumber() {
-
     let numberRandom = Math.floor((Math.random() * 0xffffff)).toString(16);
     console.log(numberRandom);
-    if ((randomNumber <= 0xffff) || (randomNumber < 0xfffff)) {
-        return numberRandom;
-    } else { randomNumber(); }
-    // if ((numberRandom <= 0x1000)) {
-    //     randomNumber();
-    // } else {
-    //     return numberRandom;
-    // }
+    if (numberRandom <= 0xffff) {
+        randomNumber();
+    } else { return numberRandom; }
 }
