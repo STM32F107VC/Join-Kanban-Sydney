@@ -188,15 +188,17 @@ function contactDetails(n, e, auc, p, id, j) {
     if (!contact.classList.contains('bg-dark-blue', 'col-white')) {
         contact.classList.add('bg-dark-blue', 'col-white');
         contact.classList.remove('contactHover');
-        oldId = currentId;
-        if (oldId !== currentId) {
-            document.getElementById(`${oldId}`).classList.remove('bg-dark-blue', 'col-white');
 
+        if (currentId !== oldId) {
+            document.getElementById(`${oldId}`).classList.remove('bg-dark-blue', 'col-white');
         }
+
     } else {
         contact.classList.remove('bg-dark-blue', 'col-white');
     }
     divDetails.innerHTML = renderContactDetails(n, e, auc, p, id, j);
+    oldId = currentId;
+
 }
 
 /**
