@@ -1,7 +1,7 @@
 /* Declare variables and arrays */
 let contacts = [];
 let getBackgroundColor;
-let bgcState = null;
+let bgcState = false;
 let oldNumericId;
 let oldLetterId;
 let oldId = null;
@@ -157,20 +157,6 @@ function renderContacts(j, id, n, e, auc, p, bgc) {
         </div>`;
 }
 
-// var x = document.getElementsByClassName('contact')
-// for (var i = 0; i < x.length; i++) {
-//     x[i].addEventListener("click", function () {
-
-//         var selectedEl = document.querySelector(".contactHover");
-//         if (selectedEl) {
-//             selectedEl.classList.remove('bg-dark-blue', 'col-white');
-//         }
-//         this.classList.add('bg-dark-blue', 'col-white');
-
-//     }, false);;
-// }
-
-
 /**
  * Function to show contact details
  * @param {*} n 
@@ -183,23 +169,24 @@ function renderContacts(j, id, n, e, auc, p, bgc) {
 function contactDetails(n, e, auc, p, id, j) {
     let divDetails = document.getElementById('contact-details');
     let contact = document.getElementById(`${id}${j}`);
+    let oldContact = document.getElementById(`${oldId}`);
     let currentId = id + j;
 
-    if (!contact.classList.contains('bg-dark-blue', 'col-white')) {
+    if (!contact.classList.contains('bg-dark-blue', 'col-white') && currentId) {
         contact.classList.add('bg-dark-blue', 'col-white');
         contact.classList.remove('contactHover');
 
         if (currentId !== oldId) {
             document.getElementById(`${oldId}`).classList.remove('bg-dark-blue', 'col-white');
         }
-
     } else {
         contact.classList.remove('bg-dark-blue', 'col-white');
     }
     divDetails.innerHTML = renderContactDetails(n, e, auc, p, id, j);
     oldId = currentId;
-
 }
+
+
 
 /**
  * Render contact details, when a contact is selected
