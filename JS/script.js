@@ -3,7 +3,6 @@ let signUp = [];
 let users = [];
 let numberRandom;
 
-
 async function init() {
     await includeHTML();
     await loadUsers();
@@ -77,10 +76,9 @@ function openLogoutMenu() {
  * 
  */
 function goBack() {
-    location.replace('summary.html')
+    location.replace('summary.html');
     // location.href = 'summary.html';
 }
-
 
 /**
  * Go to help.html page

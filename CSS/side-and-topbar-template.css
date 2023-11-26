@@ -28,10 +28,9 @@
 
 div.topbar > div.sign-up > img:hover { scale: 1.1; }
 
-#legal-notice > div > a:hover { 
-    color: #29ABE2; 
-    /* font-weight: 700; */
-}
+#legal-notice > div > a:hover,
+#lega-notice > div > span:hover
+{ color: #29ABE2; }
 
 .sign-up { margin-right: 40px; }
 

@@ -1,10 +1,12 @@
-/* Declare variables and arrays */
-let contacts = [];
+/* Declare variables */
 let getBackgroundColor;
 let bgcState = false;
 let oldNumericId;
 let oldLetterId;
-let oldId = null;
+let oldId;
+
+/* Declare arrays */
+let contacts = [];
 
 /**
  * Load contacts from backend
@@ -32,7 +34,7 @@ function openContactsOverlay() {
 }
 
 /**
- * 
+ * Open edit contacts overlay menu
  * 
  */
 function openEditContactForm() {
@@ -54,7 +56,7 @@ function closeContactOverlay() {
 }
 
 /**
- * 
+ * Close edit contacts overlay menu
  * 
  */
 function closeEditContactForm() {
@@ -98,7 +100,7 @@ function resetAddContactsForm(n, e, p) {
 }
 
 /**
- * 
+ * Iterate each contact JSON out of contacts array
  * 
  */
 function getInitialLetterOfFirstname() {
@@ -169,24 +171,33 @@ function renderContacts(j, id, n, e, auc, p, bgc) {
 function contactDetails(n, e, auc, p, id, j) {
     let divDetails = document.getElementById('contact-details');
     let contact = document.getElementById(`${id}${j}`);
-    let oldContact = document.getElementById(`${oldId}`);
     let currentId = id + j;
-
     if (!contact.classList.contains('bg-dark-blue', 'col-white') && currentId) {
-        contact.classList.add('bg-dark-blue', 'col-white');
-        contact.classList.remove('contactHover');
-
-        if (currentId !== oldId) {
-            document.getElementById(`${oldId}`).classList.remove('bg-dark-blue', 'col-white');
-        }
+        addContactClasses(contact, divDetails, currentId);
     } else {
         contact.classList.remove('bg-dark-blue', 'col-white');
+        divDetails.classList.add('d-none');
     }
     divDetails.innerHTML = renderContactDetails(n, e, auc, p, id, j);
     oldId = currentId;
 }
 
-
+/**
+ * Add classes background-color and text color for contacts if its selected
+ * @param {*} contact 
+ * @param {*} divDetails 
+ * @param {*} currentId 
+ */
+function addContactClasses(contact, divDetails, currentId) {
+    contact.classList.add('bg-dark-blue', 'col-white');
+    contact.classList.remove('contactHover');
+    divDetails.classList.remove('d-none');
+    if (currentId !== oldId) {
+        if (oldId === undefined) {
+            oldId = currentId;
+        } else { document.getElementById(`${oldId}`).classList.remove('bg-dark-blue', 'col-white'); }
+    }
+}
 
 /**
  * Render contact details, when a contact is selected
@@ -200,7 +211,7 @@ function contactDetails(n, e, auc, p, id, j) {
  */
 function renderContactDetails(n, e, auc, p, id, j) {
     return /*html*/`
-        <div class="edit-contact flex y-center mb-24px">
+        <div id="modify-contact" class="edit-contact flex y-center mb-24px">
             <div class="ft-general fs-47px fw-500 col-white mr-54px" style='background-color: #${contacts[j]['background-color']}'><span>${auc}</span></div>
             <div>
                 <div class="ft-general fs-47px fw-500 mb-12px">${n}</div>
@@ -218,7 +229,6 @@ function renderContactDetails(n, e, auc, p, id, j) {
         </div>
         ${renderContactInformatons(e, p)}`;
 }
-
 
 /**
  * Renders the email adress and phone number
@@ -267,6 +277,11 @@ function editContact(j, auc) {
     getContactValues(j);
 }
 
+/**
+ * 
+ * @param {*} auc 
+ * @returns 
+ */
 function renderEditOverlayAvatar(auc) {
     return /*html*/`
     <div class="ft-general fs-47px fw-500 col-white" style="background-color: #${getBackgroundColor}">
