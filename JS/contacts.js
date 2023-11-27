@@ -67,7 +67,7 @@ function closeEditContactForm() {
 }
 
 /**
- * Add new contacts
+ * Add new contacts get values out of input fields
  * 
  */
 async function addContact() {
@@ -89,9 +89,9 @@ async function addContact() {
 
 /**
  * Clear add contacts form
- * @param {*} n Name of contact
- * @param {*} e E-mail of contact
- * @param {*} p Phone number of contact
+ * @param {variable} n Name of contact
+ * @param {variable} e E-mail of contact
+ * @param {variable} p Phone number of contact
  */
 function resetAddContactsForm(n, e, p) {
     n.value = '';
@@ -119,10 +119,10 @@ function getInitialLetterOfFirstname() {
 
 /**
  * 
- * @param {*} letter 
- * @param {*} n 
- * @param {*} e 
- * @param {*} auc 
+ * @param {variable} letter Initial letter of first name
+ * @param {variable} n Contact name
+ * @param {variable} e Contact email adress
+ * @param {variable} auc Contact acronym
  */
 function checkRegister(j, letter, n, e, auc, p, bgc) {
     let contactBook = document.getElementById('contact-book');
@@ -140,11 +140,11 @@ function checkRegister(j, letter, n, e, auc, p, bgc) {
 
 /**
  * ${n}, ${e}, ${auc}
- * @param {*} id 
- * @param {*} n 
- * @param {*} e 
- * @param {*} auc 
- * @returns 
+ * @param {variable} id Contact specific id
+ * @param {variable} n Contact name
+ * @param {variable} e Contact email adress
+ * @param {variable} auc Contact acronym
+ * @returns Returns rendered selected contact
  */
 function renderContacts(j, id, n, e, auc, p, bgc) {
     return /*html*/`
@@ -161,12 +161,12 @@ function renderContacts(j, id, n, e, auc, p, bgc) {
 
 /**
  * Function to show contact details
- * @param {*} n 
- * @param {*} e 
- * @param {*} auc 
- * @param {*} p 
- * @param {*} id 
- * @param {*} j 
+ * @param {variable} n Contact name
+ * @param {variable} e Contact email adress
+ * @param {variable} auc Contact acronym
+ * @param {variable} p Contact phone number
+ * @param {variable} id Contact specific id
+ * @param {variable} j J is the index number for accessing a contact in the contacts array
  */
 function contactDetails(n, e, auc, p, id, j) {
     let divDetails = document.getElementById('contact-details');
@@ -184,9 +184,9 @@ function contactDetails(n, e, auc, p, id, j) {
 
 /**
  * Add classes background-color and text color for contacts if its selected
- * @param {*} contact 
- * @param {*} divDetails 
- * @param {*} currentId 
+ * @param {div} contact Contact informations
+ * @param {div} divDetails Biger contact view when contact is selected
+ * @param {variable} currentId Id of current selected contact
  */
 function addContactClasses(contact, divDetails, currentId) {
     contact.classList.add('bg-dark-blue', 'col-white');
@@ -201,13 +201,13 @@ function addContactClasses(contact, divDetails, currentId) {
 
 /**
  * Render contact details, when a contact is selected
- * @param {*} n 
- * @param {*} e 
- * @param {*} auc 
- * @param {*} p 
- * @param {*} id 
- * @param {*} j 
- * @returns 
+ * @param {variable} n Contact name
+ * @param {variable} e Contact email adress
+ * @param {variable} auc Contact acronym
+ * @param {variable} p Contact phone number
+ * @param {variable} id Contact specific id
+ * @param {variable} j J is the index number for accessing a contact in the contacts array
+ * @returns Returns rendered contact details
  */
 function renderContactDetails(n, e, auc, p, id, j) {
     return /*html*/`
@@ -232,9 +232,9 @@ function renderContactDetails(n, e, auc, p, id, j) {
 
 /**
  * Renders the email adress and phone number
- * @param {*} e Variable with email adress
- * @param {*} p Variable with phone number
- * @returns 
+ * @param {*} e Contact email adress
+ * @param {*} p Contact phone number
+ * @returns Returns rendered contact informations
  */
 function renderContactInformatons(e, p) {
     return /*html*/`
@@ -251,7 +251,7 @@ function renderContactInformatons(e, p) {
 
 /**
  * Get values out of contacts JSON array and show them in the input fields to check
- * @param {*} j Index for selected contact
+ * @param {*} j J is the index number for accessing a contact in the contacts array
  */
 function getContactValues(j) {
     let name = contacts[j]['name'];
@@ -263,8 +263,8 @@ function getContactValues(j) {
 }
 
 /**
- * 
- * @param {*} j 
+ * Shows detailed information about a contact
+ * @param {*} j J is the index number for accessing a contact in the contacts array
  */
 function editContact(j, auc) {
     getBackgroundColor = contacts[j]['background-color'];
@@ -278,21 +278,21 @@ function editContact(j, auc) {
 }
 
 /**
- * 
- * @param {*} auc 
- * @returns 
+ * Render acronym for contact details 
+ * @param {*} auc Variable with acronym in it
+ * @returns Returns rendered accronym part
  */
 function renderEditOverlayAvatar(auc) {
     return /*html*/`
-    <div class="ft-general fs-47px fw-500 col-white" style="background-color: #${getBackgroundColor}">
-        <span>${auc}</span></div>
-    </div>`;
+        <div class="ft-general fs-47px fw-500 col-white" style="background-color: #${getBackgroundColor}">
+            <span>${auc}</span></div>
+        </div>`;
 }
 
 /**
  * Render form edit contact overlay menu the part to delete and safe contacts contacts
- * @param {*} j 
- * @returns 
+ * @param {*} j J is the index number for accessing a contact in the contacts array
+ * @returns Returns rendered delete part
  */
 function renderDeletePart(j) {
     return /*html*/`
@@ -306,7 +306,7 @@ function renderDeletePart(j) {
 
 /**
  * Safes changes which were made on a contact
- * @param {*} j 
+ * @param {*} j J is the index number for accessing a contact in the contacts array
  */
 async function safeEditChanges(j) {
     document.getElementById('safe-btn').disabled = true;
@@ -327,7 +327,7 @@ async function safeEditChanges(j) {
 
 /**
  * Deletes a complet contact
- * @param {*} j 
+ * @param {*} j J is the index number for accessing a contact in the contacts array
  */
 async function deleteContact(j) {
     contacts.splice(j, 1);
@@ -345,7 +345,7 @@ async function deleteContact(j) {
 function randomNumber() {
     let numberRandom = Math.floor((Math.random() * 0xffffff)).toString(16);
     console.log(numberRandom);
-    if (numberRandom <= 0xffff) {
+    if (numberRandom <= 0xffff || numberRandom <= 0xfffff) {
         randomNumber();
     } else { return numberRandom; }
 }
