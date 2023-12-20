@@ -24,11 +24,12 @@ async function loadUsers() {
 function login() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
-    // document.getElementById('login-btn').disabled = true;
-    let user = users.find(u => u.email == email.value && u.password == password.value);
-    if (user) {
-        window.location.href = "summary.html";
-        console.log('Gespeicherte Benutzerkonten', users);
+    for (let u = 0; u < users.length; u++) {
+        let user = users[u];
+        if (user.Email == email.value && user.Password == password.value) {
+            window.location.href = "summary.html";
+            console.log('Gespeicherte Benutzerkonten', users);
+        }
     }
 }
 
