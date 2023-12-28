@@ -1,4 +1,4 @@
-/* Declare variables and arrays */
+/* Declare global variables and arrays */
 let prioImg;
 let tasks = [];
 
@@ -8,13 +8,14 @@ async function init_tasks() {
     assignContact();
 }
 
+
 function assignContact() {
     let assignSection = document.getElementById('assigned-to');
     for (let i = 0; i < contacts.length; i++) {
         let contact = contacts[i];
-        console.log(`${contact}`);
+        console.log(`${contact['name']}`);
         assignSection.innerHTML += /*html*/`
-            <option value="${contact[0]['name']}">${contact[0]['name']}</option>
+            <option value="${contact['name']}">${contact['name']}</option>
         `;
     }
 }
@@ -26,17 +27,18 @@ function assignContact() {
 function addTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('textarea');
-    // let assignedTo = document.getElementById('assigned-to');
+    let assignedTo = document.getElementById('assigned-to');
     let date = document.getElementById('date');
+    let category = document.getElementById('category');
     document.getElementById('submitBtn').disabled = true;
 
     tasks.push({
         "Title": title.value,
         "Description": description.value,
-        // "Assigned-to": ,
-        "Date": date.value
+        "Assigned-to": assignedTo.value,
+        "Date": date.value,
         // "Prio": prioImg[0]
-        // "Category": 
+        "Category": category.value
     });
     resetAddTaskForm();
     document.getElementById('submitBtn').disabled = false;
