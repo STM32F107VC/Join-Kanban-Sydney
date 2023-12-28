@@ -1,0 +1,204 @@
+<body class="body-login" onload="init();">
+    <div class="login-main">
+        <div class="flex x-space-betw">
+            <img class="capa-2" src="assets/img/Capa 2.png" alt="Join Logo">
+            <div class="sign-up-section">
+                <span class="ft-general mr-35px fs-20px">Not a Join user?</span>
+                <button onclick="openSignUpSection()" class="btn-dark p-btn ft-general fs-16px fw-700">Sign up</button>
+            </div>
+        </div>
+
+        <!-- Login section -->
+        <div id="login" class="flex x-center">
+            <div class="log-in flex x-center y-center flex-column">
+                <div class="flex flex-column">
+                    <span class="ft-general fs-61px fw-700 mb-16px">Log in</span>
+                    <img src="assets/img/Vector 5.png" alt="blue line">
+                </div>
+
+                <div>
+                    <form onsubmit="login(); return false">
+                        <div class="login-input mb-32px flex x-space-betw y-center">
+                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="email"
+                                placeholder="Email" type="email" autocomplete="on" required>
+                        </div>
+                        <div class="login-input mb-32px flex x-space-betw y-center">
+                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100" id="password"
+                                placeholder="Password" type="password" autocomplete="on" required>
+                        </div>
+                        <div class="flex mb-32px ml-39px gap-8px">
+                            <input type="checkbox" autocomplete="off">
+                            <span class="ft-general fs-16px fw-400">Remember me</span>
+                        </div>
+                        <div class="flex x-center gap-35px">
+                            <button id="login-btn" class="btn-dark ft-general fs-21px fw-700">Log in</button>
+                            <button onclick="loginAsGuest()" class="btn-light ft-general fs-21px fw-700">Guest Log
+                                in</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sign up section -->
+        <div id="sign-up" class="sign-up flex x-center d-none">
+            <div class="sign-up log-in flex x-center y-center flex-column">
+                <img onclick="closeSignUpSection()" class="arrow-back" src="assets/img/arrow-left-line.png" alt="back">
+                <div class="flex flex-column">
+                    <span class="ft-general fs-61px fw-700 mb-16px">Sign up</span>
+                    <img src="assets/img/Vector 5.png" alt="blue line">
+                </div>
+
+                <div>
+                    <form onsubmit="addNewUser(); return false">
+                        <div class="login-input mb-32px flex x-space-betw y-center">
+                            <input class="ft-general fs-20px fw-400 input-icon-pos input-name w-100" placeholder="Name"
+                                id="new-name" autocomplete="on" required>
+                        </div>
+                        <div class="login-input mb-32px flex x-space-betw y-center">
+                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="new-email"
+                                placeholder="Email" type="email" autocomplete="on" required>
+                        </div>
+                        <div class="login-input mb-32px flex x-space-betw y-center">
+                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100"
+                                id="new-password" placeholder="Password" type="password" autocomplete="on" required>
+                        </div>
+                        <div class="login-input mb-32px flex x-space-betw y-center">
+                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100"
+                                id="compare-password" placeholder="Confirm password" type="password" autocomplete="on"
+                                required>
+                        </div>
+                        <div class="flex mb-32px ml-39px gap-8px">
+                            <input type="checkbox">
+                            <span class="ft-general fs-16px fw-400">I accept the <span class="change-col-bl">Privacy
+                                    policy</span></span>
+                        </div>
+                        <div class="flex x-center gap-35px">
+                            <button class="btn-dark ft-general fs-21px fw-700">Sign up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer class="privacy-policy flex x-center fs-16px gap-16px">
+            <a class="p-8px" target="_blank" href="privacy_policy.html">Privacy Policy</a>
+            <a class="p-8px" target="_blank" href="legal_notice.html">Legal Notice</a>
+        </footer>
+    </div>
+</body>
+
+/* .login-main {
+height: 100vh;
+} */
+
+/* *** */
+.body-login {
+height: 100vh;
+}
+
+/* *** */
+.login-error { border: 1px solid red; }
+
+/* *** */
+.capa-2 {
+position: absolute;
+top: 80px;
+left: 77px;
+}
+
+/* *** */
+.sign-up-section {
+position: absolute;
+top: 67px;
+right: 122px;
+}
+
+.capa-2 { padding: 80px 0 0 77px; }
+
+.sign-up-section { padding: 67px 122px 0 0; }
+
+.log-in {
+margin: 80px 0 200px 0;
+padding: 48px 115px;
+gap: 32px;
+border-radius: 30px;
+background: var(--white, #FFF);
+box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+}
+
+.icon-password {
+background-repeat: no-repeat;
+background-image: url(/assets/img/lock.png);
+}
+
+.input-name {
+background-repeat: no-repeat;
+background-image: url(/assets/img/person.png);
+}
+
+.privacy-policy { margin-top: -40px; }
+
+.privacy-policy a { color: #A8A8A8; }
+
+.privacy-policy a:hover { color: #29ABE2; }
+
+.change-col-bl { color: #29ABE2; }
+
+.sign-up { position: relative; }
+
+.arrow-back {
+position: absolute;
+top: 62px;
+left: 48px;
+cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+.capa-2 {
+height: 78px;
+width: 64px;
+top: 37px;
+left: 38px;
+}
+
+.sign-up-section {
+top: 750px;
+left: 50%;
+right: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+white-space: nowrap
+}
+
+.log-in {
+padding: 32px 16px;
+margin-top: 210px;
+}
+
+div.login-input {
+width: 322px;
+}
+
+/* #login-btn {
+font-size: 16px;
+} */
+
+.log-in > div > form > div.flex.x-center.gap-35px {
+align-items: center;
+gap: 21px;
+flex-direction: column;
+}
+
+.log-in > div > form > div.flex.x-center.gap-35px button {
+width: 180px;
+font-size: 16px;
+}
+
+div.log-in > div > span { font-size: 47px; }
+
+div.log-in > div > img {
+width: 88px;
+}
+}

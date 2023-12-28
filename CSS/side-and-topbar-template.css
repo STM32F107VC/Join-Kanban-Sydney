@@ -1,6 +1,7 @@
 .side-topbar-template { height: 100vh; }
 
 .sidebar {
+    min-height: 100vh;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -71,9 +72,10 @@ div.topbar > div.sign-up > img:hover { scale: 1.1; }
     color: #CDCDCD;
 }
 
-.login { position: relative;
-    width: 56px;
-    height: 56px; 
+.login { 
+    position: relative;
+    width: 64px;
+    height: 64px; 
 }
 
 .login span {

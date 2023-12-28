@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="CSS/fonts_inter.css">
 </head>
 
-<body id="body-contacts" onload="init();">
+<body id="body-contacts" onload="init_contacts();">
     <div id="side-and-topbar-contacts" w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
 
     <!-- Main contacts overview -->
@@ -125,7 +125,7 @@
                     <img class="vertical-bl-line" src="assets/img/Vector_blue_vertical.png" alt="vertical blue line">
                     <span class="ft-general fs-27px fw-400">Better with a Team!</span>
                 </div>
-                <div id="contact-details">
+                <div id="contact-details" class="">
                 </div>
             </div>
         </div>
@@ -182,9 +182,6 @@
         </div>
         <div class="flex flex-row w-100 overlay-forms">
             <div id="edit-Overlay-Menu-Avatar" class="flex y-center"></div>
-            <!-- <div class="flex y-center">
-                <img src="assets/img/contact_person.png" alt="avatar">
-            </div> -->
             <div class="flex flex-column x-center y-center w-100">
                 <div class="flex w-100 x-end close-cross mb-48px"><img onclick="closeEditContactForm()" class="p-8px"
                         src="assets/img/close.png" alt="close"></div>

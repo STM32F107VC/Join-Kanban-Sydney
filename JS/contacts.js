@@ -8,6 +8,12 @@ let oldId;
 /* Declare arrays */
 let contacts = [];
 
+async function init_contacts() {
+    await includeHTML();
+    await loadUsers();
+    await loadContacts();
+}
+
 /**
  * Load contacts from backend
  * 
@@ -139,7 +145,7 @@ function checkRegister(j, letter, n, e, auc, p, bgc) {
 }
 
 /**
- * ${n}, ${e}, ${auc}
+ * Render contacts
  * @param {variable} id Contact specific id
  * @param {variable} n Contact name
  * @param {variable} e Contact email adress
@@ -176,7 +182,7 @@ function contactDetails(n, e, auc, p, id, j) {
         addContactClasses(contact, divDetails, currentId);
     } else {
         contact.classList.remove('bg-dark-blue', 'col-white');
-        divDetails.classList.add('d-none');
+        divDetails.classList.add('x-translate');
     }
     divDetails.innerHTML = renderContactDetails(n, e, auc, p, id, j);
     oldId = currentId;
@@ -191,11 +197,11 @@ function contactDetails(n, e, auc, p, id, j) {
 function addContactClasses(contact, divDetails, currentId) {
     contact.classList.add('bg-dark-blue', 'col-white');
     contact.classList.remove('contactHover');
-    divDetails.classList.remove('d-none');
+    divDetails.classList.remove('x-translate');
     if (currentId !== oldId) {
         if (oldId === undefined) {
             oldId = currentId;
-        } else { document.getElementById(`${oldId}`).classList.remove('bg-dark-blue', 'col-white'); }
+        } else { document.getElementById(`${oldId}`).classList.remove('bg-dark-blue', 'col-white', 'contact-details-x-trans'); }
     }
 }
 
@@ -343,9 +349,6 @@ async function deleteContact(j) {
  * @returns Returns the random generated number to set it as background-color
  */
 function randomNumber() {
-    let numberRandom = Math.floor((Math.random() * 0xffffff)).toString(16);
-    console.log(numberRandom);
-    if (numberRandom <= 0xffff || numberRandom <= 0xfffff) {
-        randomNumber();
-    } else { return numberRandom; }
+    let n = (Math.random() * 0xfffff * 1000000).toString(16);
+    return n.slice(0, 6);
 }

@@ -2,6 +2,23 @@
 let prioImg;
 let tasks = [];
 
+async function init_tasks() {
+    await includeHTML();
+    await loadContacts();
+    assignContact();
+}
+
+function assignContact() {
+    let assignSection = document.getElementById('assigned-to');
+    for (let i = 0; i < contacts.length; i++) {
+        let contact = contacts[i];
+        console.log(`${contact}`);
+        assignSection.innerHTML += /*html*/`
+            <option value="${contact[0]['name']}">${contact[0]['name']}</option>
+        `;
+    }
+}
+
 /**
  * Function to add new tasks
  * 

@@ -7,104 +7,106 @@
     <title>Join</title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/favicon-32x32.png">
-    <!-- Test -->
+
     <!-- Include CSS and Script Sheets -->
     <script src="JS/script.js"></script>
     <script src="JS/includeHTML.js"></script>
+    <script src="JS/contacts.js"></script>
     <script src="JS/storage.js"></script>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/login.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
 </head>
 
-<body onload="init();">
-    <div class="login-main">
-        <div class="flex x-space-betw">
-            <img class="capa-2" src="assets/img/Capa 2.png" alt="Join Logo">
-            <div class="sign-up-section">
-                <span class="ft-general mr-35px fs-20px">Not a Join user?</span>
-                <button onclick="openSignUpSection()" class="btn-dark p-btn ft-general fs-16px fw-700">Sign up</button>
-            </div>
+<body class="body-login flex x-center y-center flex-column" onload="init();">
+    <div class="capa-2-div flex x-center y-center">
+        <img id="capa-2" class="capa-2" src="assets/img/Capa 2.png" alt="Join Logo">
+
+        <div class="sign-up-section">
+            <span class="ft-general mr-35px fs-20px">Not a Join user?</span>
+            <button onclick="openSignUpSection()" class="btn-dark p-btn ft-general fs-16px fw-700">Sign up</button>
         </div>
-
-        <!-- Login section -->
-        <div id="login" class="flex x-center">
-            <div class="log-in flex x-center y-center flex-column">
-                <div class="flex flex-column">
-                    <span class="ft-general fs-61px fw-700 mb-16px">Log in</span>
-                    <img src="assets/img/Vector 5.png" alt="blue line">
-                </div>
-
-                <div>
-                    <form onsubmit="login(); return false">
-                        <div class="login-input mb-32px flex x-space-betw y-center">
-                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="email"
-                                placeholder="Email" type="email" autocomplete="on" required>
-                        </div>
-                        <div class="login-input mb-32px flex x-space-betw y-center">
-                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100" id="password"
-                                placeholder="Password" type="password" autocomplete="on" required>
-                        </div>
-                        <div class="flex mb-32px ml-39px gap-8px">
-                            <input type="checkbox" autocomplete="off">
-                            <span class="ft-general fs-16px fw-400">Remember me</span>
-                        </div>
-                        <div class="flex x-center gap-35px">
-                            <button id="login-btn" class="btn-dark ft-general fs-21px fw-700">Log in</button>
-                            <button onclick="loginAsGuest()" class="btn-light ft-general fs-21px fw-700">Guest Log
-                                in</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sign up section -->
-        <div id="sign-up" class="sign-up flex x-center d-none">
-            <div class="sign-up log-in flex x-center y-center flex-column">
-                <img onclick="closeSignUpSection()" class="arrow-back" src="assets/img/arrow-left-line.png" alt="back">
-                <div class="flex flex-column">
-                    <span class="ft-general fs-61px fw-700 mb-16px">Sign up</span>
-                    <img src="assets/img/Vector 5.png" alt="blue line">
-                </div>
-
-                <div>
-                    <form onsubmit="addNewUser(); return false">
-                        <div class="login-input mb-32px flex x-space-betw y-center">
-                            <input class="ft-general fs-20px fw-400 input-icon-pos input-name w-100" placeholder="Name"
-                                id="new-name" autocomplete="on" required>
-                        </div>
-                        <div class="login-input mb-32px flex x-space-betw y-center">
-                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="new-email"
-                                placeholder="Email" type="email" autocomplete="on" required>
-                        </div>
-                        <div class="login-input mb-32px flex x-space-betw y-center">
-                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100"
-                                id="new-password" placeholder="Password" type="password" autocomplete="on" required>
-                        </div>
-                        <div class="login-input mb-32px flex x-space-betw y-center">
-                            <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100"
-                                id="compare-password" placeholder="Confirm password" type="password" autocomplete="on"
-                                required>
-                        </div>
-                        <div class="flex mb-32px ml-39px gap-8px">
-                            <input type="checkbox">
-                            <span class="ft-general fs-16px fw-400">I accept the <span class="change-col-bl">Privacy
-                                    policy</span></span>
-                        </div>
-                        <div class="flex x-center gap-35px">
-                            <button class="btn-dark ft-general fs-21px fw-700">Sign up</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <footer class="privacy-policy flex x-center fs-16px gap-16px">
-            <a class="p-8px" target="_blank" href="privacy_policy.html">Privacy Policy</a>
-            <a class="p-8px" target="_blank" href="legal_notice.html">Legal Notice</a>
-        </footer>
     </div>
+
+    <!-- Login section -->
+    <div id="login" class="flex x-center login-invisible">
+        <div class="log-in flex x-center y-center flex-column">
+            <div class="flex flex-column">
+                <span class="ft-general fs-61px fw-700 mb-16px">Log in</span>
+                <img src="assets/img/Vector 5.png" alt="blue line">
+            </div>
+
+            <div>
+                <form onsubmit="login(); return false">
+                    <div class="login-input mb-32px flex x-space-betw y-center">
+                        <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="email"
+                            placeholder="Email" type="email" autocomplete="on" required>
+                    </div>
+                    <div class="login-input mb-32px flex x-space-betw y-center">
+                        <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100" id="password"
+                            placeholder="Password" type="password" autocomplete="on" required>
+                    </div>
+                    <div class="flex mb-32px ml-39px gap-8px">
+                        <input type="checkbox" autocomplete="off">
+                        <span class="ft-general fs-16px fw-400">Remember me</span>
+                    </div>
+                    <div class="flex x-center gap-35px">
+                        <button id="login-btn" class="btn-dark ft-general fs-21px fw-700" type="submit">Log
+                            in</button>
+                        <button onclick="loginAsGuest()" class="btn-light ft-general fs-21px fw-700" type="button">Guest
+                            Log
+                            in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign up section -->
+    <div id="sign-up" class="sign-up flex x-center d-none">
+        <div class="sign-up log-in flex x-center y-center flex-column">
+            <img onclick="closeSignUpSection()" class="arrow-back" src="assets/img/arrow-left-line.png" alt="back">
+            <div class="flex flex-column">
+                <span class="ft-general fs-61px fw-700 mb-16px">Sign up</span>
+                <img src="assets/img/Vector 5.png" alt="blue line">
+            </div>
+
+            <div>
+                <form onsubmit="addNewUser(); return false">
+                    <div class="login-input mb-32px flex x-space-betw y-center">
+                        <input class="ft-general fs-20px fw-400 input-icon-pos input-name w-100" placeholder="Name"
+                            id="new-name" autocomplete="on" required>
+                    </div>
+                    <div class="login-input mb-32px flex x-space-betw y-center">
+                        <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="new-email"
+                            placeholder="Email" type="email" autocomplete="on" required>
+                    </div>
+                    <div class="login-input mb-32px flex x-space-betw y-center">
+                        <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100" id="new-password"
+                            placeholder="Password" type="password" autocomplete="on" required>
+                    </div>
+                    <div class="login-input mb-32px flex x-space-betw y-center">
+                        <input class="ft-general fs-20px fw-400 input-icon-pos icon-password w-100"
+                            id="compare-password" placeholder="Confirm password" type="password" autocomplete="on"
+                            required>
+                    </div>
+                    <div class="flex mb-32px ml-39px gap-8px">
+                        <input type="checkbox">
+                        <span class="ft-general fs-16px fw-400">I accept the <span class="change-col-bl">Privacy
+                                policy</span></span>
+                    </div>
+                    <div class="flex x-center gap-35px">
+                        <button class="btn-dark ft-general fs-21px fw-700">Sign up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="privacy-policy flex x-center fs-16px gap-16px z-ind-1">
+        <a class="p-8px" target="_blank" href="privacy_policy.html">Privacy Policy</a>
+        <a class="p-8px" target="_blank" href="legal_notice.html">Legal Notice</a>
+    </footer>
 </body>
 
 </html>

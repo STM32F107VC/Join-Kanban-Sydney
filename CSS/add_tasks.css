@@ -14,6 +14,7 @@ input, select, textarea { color: #D1D1D1; }
 select {
     outline: none;
     width: 100% !important;
+    color: black;
 }
     
 textarea {

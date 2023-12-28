@@ -1,12 +1,26 @@
 /* Declare variables and arrays */
 let signUp = [];
 let users = [];
-let numberRandom;
 
 async function init() {
     await includeHTML();
     await loadUsers();
     await loadContacts();
+    loadLoginScreen();
+}
+
+/**
+ * Load login screen, effect with opacity 0.1 to 1 within 
+ * 500ms and also translate effect from Join logo centered to 
+ * top left window corner.
+ * 
+ */
+function loadLoginScreen() {
+    let img = document.getElementById('capa-2');
+    let loginWindow = document.getElementById('login');
+    img.classList.add('x-translate-capa2');
+    loginWindow.classList.remove('login-invisible');
+    loginWindow.classList.add('login', 'z-ind-1');
 }
 
 /**
@@ -28,7 +42,8 @@ function login() {
         let user = users[u];
         if (user.Email == email.value && user.Password == password.value) {
             window.location.href = "summary.html";
-            console.log('Gespeicherte Benutzerkonten', users);
+        } else {
+            document.querySelector('.log-in').classList.add('login-error');
         }
     }
 }
