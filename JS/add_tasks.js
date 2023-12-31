@@ -1,5 +1,8 @@
 /* Declare global variables and arrays */
 let prioImg;
+let firstClickedImg;
+let oldImg;
+
 let tasks = [];
 
 async function init_tasks() {
@@ -7,7 +10,6 @@ async function init_tasks() {
     await loadContacts();
     assignContact();
 }
-
 
 function assignContact() {
     let assignSection = document.getElementById('assigned-to');
@@ -36,7 +38,7 @@ function addTask() {
         "Description": description.value,
         "Assigned-to": assignedTo.value,
         "Date": date.value,
-        // "Prio": prioImg[0]
+        "Prio": oldImg,
         "Category": category.value
     });
     resetAddTaskForm();
@@ -45,7 +47,21 @@ function addTask() {
 
 function savePriorityState(id) {
     let priorityImg = document.getElementById('prio-' + `${id}`);
-    priorityImg.src = `assets/img/prio-${id}.svg`;
+    let priorityImgOld = document.getElementById('prio-' + `${oldImg}`);
+
+    if (oldImg === undefined) {
+        priorityImg.src = `assets/img/prio-${id}.svg`;
+    } else {
+        if (oldImg !== id) {
+            priorityImg.src = `assets/img/prio-${id}.svg`;
+            priorityImgOld.src = `assets/img/prio-default-${oldImg}.svg`;
+        } else {
+            if (priorityImg.src.includes(`assets/img/prio-default-${id}.svg`)) {
+                priorityImg.src = `assets/img/prio-${id}.svg`;
+            } else { priorityImg.src = `assets/img/prio-default-${id}.svg`; }
+        }
+    }
+    oldImg = id;
 }
 
 /**

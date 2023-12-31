@@ -14,6 +14,7 @@
     <script src="JS/add_tasks.js"></script>
     <script src="JS/contacts.js"></script>
     <script src="JS/storage.js"></script>
+    <script src="JS/script.js"></script>
     <link rel="stylesheet" href="CSS/login.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
@@ -58,12 +59,12 @@
                 <div class="priority flex flex-column mb-24px">
                     <span class="mb-8px">Prio</span>
                     <div class="flex x-space-betw gap-16px">
-                        <img onclick="savePriorityState('high')" id="prio-high" src="assets/img/prio-default-high.svg"
-                            alt="urgent">
-                        <img onclick="savePriorityState('medium')" id="prio-medium"
-                            src="assets/img/prio-default-medium.svg" alt="urgent">
-                        <img onclick="savePriorityState('low')" id="prio-low" src="assets/img/prio-default-low.svg"
-                            alt="urgent">
+                        <img class="priorityImg" onclick="savePriorityState('high')" id="prio-high"
+                            src="assets/img/prio-default-high.svg" alt="priority high">
+                        <img class="priorityImg" onclick="savePriorityState('medium')" id="prio-medium"
+                            src="assets/img/prio-default-medium.svg" alt="priority medium">
+                        <img class="priorityImg" onclick="savePriorityState('low')" id="prio-low"
+                            src="assets/img/prio-default-low.svg" alt="priority low">
                     </div>
                 </div>
                 <div class="flex flex-column mb-24px">
