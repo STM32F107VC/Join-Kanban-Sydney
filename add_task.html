@@ -11,9 +11,9 @@
     <!-- Include CSS and Script Sheets -->
     <script src="JS/includeHTML.js"></script>
     <!-- <script src="JS/script.js"></script> -->
+    <script src="JS/add_tasks.js"></script>
     <script src="JS/contacts.js"></script>
     <script src="JS/storage.js"></script>
-    <script src="JS/add_tasks.js"></script>
     <link rel="stylesheet" href="CSS/login.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="flex flex-column mb-128px">
                     <span class="mb-8px">Assigned to</span>
-                    <select class="login-input fs-20px" name="" id="assigned-to">
+                    <select role="listbox" class="login-input fs-20px" name="" id="assigned-to">
                         <option value="" disabled selected hidden>Select contacts to assign</option>
                     </select>
                 </div>
@@ -58,18 +58,12 @@
                 <div class="priority flex flex-column mb-24px">
                     <span class="mb-8px">Prio</span>
                     <div class="flex x-space-betw gap-16px">
-                        <div class="bgc-prio-default" id="prio-high" onclick="savePrioStateHigh('high')">
-                            <span class="ft-general fs-20px fw-400">Urgent</span>
-                            <img src="assets/img/Prio_alta.png" alt="usrgent">
-                        </div>
-                        <div class="bgc-prio-default" id="prio-medium" onclick="savePrioStateMedium('medium')">
-                            <span class="ft-general fs-20px fw-400">Medium</span>
-                            <img src="assets/img/Prio_media.png" alt="medium">
-                        </div>
-                        <div class="bgc-prio-default" id="prio-low" onclick="savePrioStateLow('low')">
-                            <span class="ft-general fs-20px fw-400">Low</span>
-                            <img src="assets/img/Prio_baja.png" alt="low">
-                        </div>
+                        <img onclick="savePriorityState('high')" id="prio-high" src="assets/img/prio-default-high.svg"
+                            alt="urgent">
+                        <img onclick="savePriorityState('medium')" id="prio-medium"
+                            src="assets/img/prio-default-medium.svg" alt="urgent">
+                        <img onclick="savePriorityState('low')" id="prio-low" src="assets/img/prio-default-low.svg"
+                            alt="urgent">
                     </div>
                 </div>
                 <div class="flex flex-column mb-24px">
