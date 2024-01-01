@@ -61,6 +61,8 @@ a { text-decoration: none; }
 
 .mb-64px { margin-bottom: 64px; }
 
+.mb-96px { margin-bottom: 96px; }
+
 .mb-128px { margin-bottom: 128px; }
 
 .mb--128px { margin-bottom: -128px; }
@@ -70,6 +72,10 @@ a { text-decoration: none; }
 .mr-16px { margin-right: 16px; }
 
 .mt-24px { margin-top: 24px; }
+
+.mr-4px { margin-right: 4px; }
+
+.mr-8px { margin-right: 8px; }
 
 .mr-32px { margin-right: 32px; }
 

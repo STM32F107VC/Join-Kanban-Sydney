@@ -47,7 +47,7 @@ div.log-in > div {
 
 .icon-password { 
     background-repeat: no-repeat;
-    background-image: url(/assets/img/lock.png); 
+    background-image: url(/assets/img/lock.png);
 }
 
 .input-name {

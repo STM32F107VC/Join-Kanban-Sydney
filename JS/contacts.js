@@ -8,6 +8,10 @@ let oldId;
 /* Declare arrays */
 let contacts = [];
 
+/**
+ * Init function called on body="onload" load
+ * programm.
+ */
 async function init_contacts() {
     await includeHTML();
     await loadUsers();

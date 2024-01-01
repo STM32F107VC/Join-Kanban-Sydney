@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
     <link rel="stylesheet" href="CSS/add_tasks.css">
+    <link rel="stylesheet" href="CSS/contacts.css">
 </head>
 
 <body onload="init_tasks();">
@@ -37,13 +38,14 @@
                     <textarea placeholder="Enter a description" class="login-input fs-20px" name="" id="textarea"
                         cols="30" rows="10"></textarea>
                 </div>
-                <div class="flex flex-column mb-128px">
+                <div class="flex flex-column">
                     <span class="mb-8px">Assigned to</span>
-                    <select role="listbox" class="login-input fs-20px" name="" id="assigned-to">
+                    <select onchange="showAssignedContact(this.value)" role="listbox"
+                        class="login-input fs-20px mb-24px" id="assigned-to">
                         <option value="" disabled selected hidden>Select contacts to assign</option>
                     </select>
                 </div>
-
+                <div id="displaySelectedContacts" class="mb-96px flex"></div>
                 <div>
                     <span class="col-red">*</span> This field is required
                 </div>
@@ -54,7 +56,7 @@
             <div>
                 <div class="flex flex-column mb-24px">
                     <span class="mb-8px">Due date<span class="col-red">*</span></span>
-                    <input class="login-input fs-20px" type="date" name="" id="date" required>
+                    <input class="login-input fs-20px" type="date" value="2024-01-01" name="" id="date" required>
                 </div>
                 <div class="priority flex flex-column mb-24px">
                     <span class="mb-8px">Prio</span>
@@ -82,8 +84,8 @@
                 </div>
 
                 <div class="submit-section flex x-end gap-16px ft-general">
-                    <button class="flex y-center gap-4px btn-light fs-20px">Clear <img src="assets/img/close.png"
-                            alt="close"></button>
+                    <button onclick="resetAddTaskForm()" class="flex y-center gap-4px btn-light fs-20px">Clear <img
+                            src="assets/img/close.png" alt="close"></button>
                     <button id="submitBtn" type="submit" class="flex y-center gap-4px btn-dark fs-20px fw-700">Create
                         Task <img src="assets/img/check.png" alt="create"></button>
                 </div>

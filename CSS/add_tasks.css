@@ -44,12 +44,23 @@ div.priority > div img:hover {
     filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.4));
 }
 
-/* #prio-high { background-color: white; } */
+.filter-none { filter: none; }
 
-.bgc-prio-default { background: var(--white, #FFF) }
-.bgc-prio-high { background-color: #FF3D00;}
-.bgc-prio-medium { background-color: #FFA800; }
-.bgc-prio-low { background-color: #7AE229; }
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: url(/assets/img/event.svg) no-repeat;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.acronym-small {
+    padding: 6px;
+}
+
+.alreadyAssigned {
+    border-color: rgb(0, 255, 38) !important;
+    transition: border-color 500ms ease-in;
+}   
 
 .col-red { color: red; }
 
