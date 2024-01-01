@@ -37,9 +37,7 @@ function showAssignedContact(i) {
     let array = buildAcronym(contact);
     let acronymUpperCase = array[0];
     let bgc = array[1];
-
     if (selectedContacts.innerHTML.includes(acronymUpperCase)) {
-        // alert('Person wurde dem Ticket bereits hinzugefügt!');
         document.getElementById(`${acronymUpperCase}${i}`).classList.add('alreadyAssigned');
         setTimeout(() => {
             document.getElementById(`${acronymUpperCase}${i}`).classList.remove('alreadyAssigned');

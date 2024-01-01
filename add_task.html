@@ -80,9 +80,16 @@
                 </div>
                 <div class="mb-64px">
                     <span class="flex flex-column mb-8px">Subtasks</span>
-                    <input class="login-input fs-20px" placeholder="Add subtasks" name="" id="">
+                    <div style="position: relative; ">
+                        <input id="subtasks" class="" placeholder="Add subtasks" name="subtasks">
+                        <span class=""
+                            style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px;">ff</span>
+                        <span class=""
+                            style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px;">ff</span>
+                    </div>
+                    <!-- login-input fs-20px input-icon-pos subtasks -->
                 </div>
-
+                <div id="displaySubtasks"></div>
                 <div class="submit-section flex x-end gap-16px ft-general">
                     <button onclick="resetAddTaskForm()" class="flex y-center gap-4px btn-light fs-20px">Clear <img
                             src="assets/img/close.png" alt="close"></button>

@@ -60,7 +60,28 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .alreadyAssigned {
     border-color: rgb(0, 255, 38) !important;
     transition: border-color 500ms ease-in;
-}   
+}  
+
+.subtasks {
+    
+}
+
+.subtasks:hover {
+    background-repeat: no-repeat;
+    background-image: url(/assets/img/plus.svg);
+    background-position-y: center;
+    background-position-x: 99%;
+}
+
+input.subtasks::before, 
+input.subtasks:focus {
+    background-repeat: no-repeat;
+    background-image: url(/assets/img/subtasks_cross.svg);
+    background-image: url(/assets/img/subtasks_vector.svg);
+    background-image: url(/assets/img/subtasks_tick.svg);
+    background-position-y: center;
+    background-position-x: 99%;
+}
 
 .col-red { color: red; }
 

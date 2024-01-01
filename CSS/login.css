@@ -5,9 +5,7 @@
 
 .login-error { border: 1px solid red; }
 
-.login-invisible {
-    opacity: 0;
-}
+.login-invisible { opacity: 0; }
 
 .login {
     opacity: 1;
@@ -74,10 +72,7 @@ div.log-in > div {
     background: var(--white, #FFF);
  }
 
-.privacy-policy { 
-    margin: 100px 0 32px 0;
-
- }
+.privacy-policy { margin: 100px 0 32px 0; }
 
 .privacy-policy a { color: #A8A8A8; }
 
