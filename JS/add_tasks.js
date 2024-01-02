@@ -108,6 +108,33 @@ function savePriorityState(id) {
 }
 
 /**
+ * Remove plus icon and add cross and tick for canceling and accept
+ * subtask
+ */
+function toggleIcons() {
+    let div = document.getElementById('subtasks-content');
+    div.classList.add('blueBorderThin');
+    let plusIcon = document.getElementById('plus-icon');
+    let icons = document.getElementById('subtask-icons');
+    plusIcon.classList.add('d-none');
+    icons.classList.remove('d-none');
+}
+
+function addSubtask() {
+    let list = document.getElementById('displaySubtasks');
+    let inputValue = document.getElementById('subtasks');
+
+    if (list.children.length < 2) {
+        list.innerHTML += /*html*/ `<li class="listElements">
+                ${inputValue.value}
+            </li>`;
+    } else {
+        console.log('hey jetzt habe sie schon zwei tasks hinzugefügt');
+    }
+}
+
+
+/**
  * Clear add task form
  * Not: fucntion not complete so far
  */

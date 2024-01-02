@@ -78,18 +78,24 @@
                         <option value="User Story">User Story</option>
                     </select>
                 </div>
-                <div class="mb-64px">
+                <div class="subtasks-main">
                     <span class="flex flex-column mb-8px">Subtasks</span>
-                    <div style="position: relative; ">
-                        <input id="subtasks" class="" placeholder="Add subtasks" name="subtasks">
-                        <span class=""
-                            style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px;">ff</span>
-                        <span class=""
-                            style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px;">ff</span>
+                    <div onclick="toggleIcons();" id="subtasks-content" class="login-input flex x-space-betw">
+
+                        <input id="subtasks" class="fs-20px" placeholder="Add subtasks" name="subtasks">
+
+                        <div id="subtask-icons" class="flex flex-row d-none">
+                            <img id="cancle" src="assets/img/subtasks_cross.svg" alt="cancle">
+                            <img id="separator" class="p-4px" src="assets/img/subtasks_vector.svg" alt="separator line">
+                            <img id="accept" onclick="addSubtask();" src="assets/img/subtasks_tick.svg" alt="cancle">
+                        </div>
+                        <img id="plus-icon" src="assets/img/plus.svg" alt="plus">
                     </div>
-                    <!-- login-input fs-20px input-icon-pos subtasks -->
                 </div>
-                <div id="displaySubtasks"></div>
+                <div class="mb-64px">
+                    <ul id="displaySubtasks"></ul>
+                </div>
+
                 <div class="submit-section flex x-end gap-16px ft-general">
                     <button onclick="resetAddTaskForm()" class="flex y-center gap-4px btn-light fs-20px">Clear <img
                             src="assets/img/close.png" alt="close"></button>

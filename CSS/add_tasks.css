@@ -66,21 +66,36 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     
 }
 
-.subtasks:hover {
+/* .subtasks-main:hover {
     background-repeat: no-repeat;
     background-image: url(/assets/img/plus.svg);
     background-position-y: center;
     background-position-x: 99%;
+}  */
+
+div.login-input {
+    background-color: white;
 }
 
-input.subtasks::before, 
-input.subtasks:focus {
-    background-repeat: no-repeat;
-    background-image: url(/assets/img/subtasks_cross.svg);
-    background-image: url(/assets/img/subtasks_vector.svg);
-    background-image: url(/assets/img/subtasks_tick.svg);
-    background-position-y: center;
-    background-position-x: 99%;
+input#subtasks {
+    width: 95%;
+}
+
+div.subtasks-main > div {
+    height: 28px;
+}
+
+#cancle:hover,
+#accept:hover { 
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+}
+
+.blueBorderThin { border: 1px solid #29ABE2 !important; }
+
+.listElements {
+    width: 422px;
+    word-wrap: break-word;
 }
 
 .col-red { color: red; }
