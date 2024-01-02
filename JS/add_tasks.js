@@ -108,7 +108,7 @@ function savePriorityState(id) {
 }
 
 /**
- * Remove plus icon and add cross and tick for canceling and accept
+ * Remove plus icon then add cross and tick- icons for canceling and accept
  * subtask
  */
 function toggleIcons() {
@@ -120,19 +120,40 @@ function toggleIcons() {
     icons.classList.remove('d-none');
 }
 
+/**
+ * Add a subtask, maximum two
+ */
 function addSubtask() {
     let list = document.getElementById('displaySubtasks');
     let inputValue = document.getElementById('subtasks');
-
     if (list.children.length < 2) {
-        list.innerHTML += /*html*/ `<li class="listElements">
-                ${inputValue.value}
-            </li>`;
-    } else {
-        console.log('hey jetzt habe sie schon zwei tasks hinzugefügt');
+        list.innerHTML += /*html*/ `<tr class="listElements">
+                                        <div>${inputValue.value}</div>
+                                        <div>
+                                            <img src="/assets/img/subtasks_pencil.svg" alt="edit">
+                                            <img src="/assets/img/Vector 19.svg" alt="separator">
+                                            <img src="/assets/img/subtasks_bin.svg" alt="delete">
+                                        </div>
+                                    </tr>`;
     }
+    clearSubtasks(inputValue);
 }
 
+/**
+ * Clear subtask input field
+ * @param {string} inputValue
+ */
+function clearSubtasks(inputValue) {
+    inputValue.value = '';
+}
+
+/**
+ * Cancle subtask
+ */
+function cancleSubtask() {
+    let subtask = document.getElementById('subtasks');
+    subtask.value = '';
+}
 
 /**
  * Clear add task form

@@ -31,8 +31,6 @@ div.priority > div {
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    /* padding: 16px 10px; */
-    /* flex: 1 0 0; */
 }
 
 div.priority > div img {
@@ -40,9 +38,7 @@ div.priority > div img {
     height: 56px;
 }
 
-div.priority > div img:hover {
-    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.4));
-}
+div.priority > div img:hover { filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.4)); }
 
 .filter-none { filter: none; }
 
@@ -53,37 +49,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
-.acronym-small {
-    padding: 6px;
-}
+.acronym-small { padding: 6px; }
 
 .alreadyAssigned {
     border-color: rgb(0, 255, 38) !important;
     transition: border-color 500ms ease-in;
 }  
 
-.subtasks {
-    
-}
+div.login-input { background-color: white; }
 
-/* .subtasks-main:hover {
-    background-repeat: no-repeat;
-    background-image: url(/assets/img/plus.svg);
-    background-position-y: center;
-    background-position-x: 99%;
-}  */
+input#subtasks { width: 95%; }
 
-div.login-input {
-    background-color: white;
-}
-
-input#subtasks {
-    width: 95%;
-}
-
-div.subtasks-main > div {
-    height: 28px;
-}
+div.subtasks-main > div { height: 28px; }
 
 #cancle:hover,
 #accept:hover { 
@@ -96,6 +73,25 @@ div.subtasks-main > div {
 .listElements {
     width: 422px;
     word-wrap: break-word;
+}
+
+.listElements:hover { background-color: rgba(0, 0, 0, 0.05); }
+
+ul {
+    list-style: none;
+    padding   : 0;
+}
+
+li { 
+    padding-left: 16px; 
+    position: relative;
+}
+
+li:before {
+    position: absolute;
+    left   : 4px;
+    top: 50%;
+    content: "•";
 }
 
 .col-red { color: red; }

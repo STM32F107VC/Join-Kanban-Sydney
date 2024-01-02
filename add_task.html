@@ -85,7 +85,8 @@
                         <input id="subtasks" class="fs-20px" placeholder="Add subtasks" name="subtasks">
 
                         <div id="subtask-icons" class="flex flex-row d-none">
-                            <img id="cancle" src="assets/img/subtasks_cross.svg" alt="cancle">
+                            <img id="cancle" onclick="cancleSubtask();" src="assets/img/subtasks_cross.svg"
+                                alt="cancle">
                             <img id="separator" class="p-4px" src="assets/img/subtasks_vector.svg" alt="separator line">
                             <img id="accept" onclick="addSubtask();" src="assets/img/subtasks_tick.svg" alt="cancle">
                         </div>
@@ -93,9 +94,8 @@
                     </div>
                 </div>
                 <div class="mb-64px">
-                    <ul id="displaySubtasks"></ul>
+                    <table id="displaySubtasks"></table>
                 </div>
-
                 <div class="submit-section flex x-end gap-16px ft-general">
                     <button onclick="resetAddTaskForm()" class="flex y-center gap-4px btn-light fs-20px">Clear <img
                             src="assets/img/close.png" alt="close"></button>
