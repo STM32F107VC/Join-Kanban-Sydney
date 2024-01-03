@@ -78,7 +78,7 @@
                         <option value="User Story">User Story</option>
                     </select>
                 </div>
-                <div class="subtasks-main">
+                <div class="subtasks-main mb-8px">
                     <span class="flex flex-column mb-8px">Subtasks</span>
                     <div onclick="toggleIcons();" id="subtasks-content" class="login-input flex x-space-betw">
 
@@ -93,9 +93,8 @@
                         <img id="plus-icon" src="assets/img/plus.svg" alt="plus">
                     </div>
                 </div>
-                <div class="mb-64px">
-                    <table id="displaySubtasks"></table>
-                </div>
+                <div id="displaySubtasks" class="mb-64px"></div>
+
                 <div class="submit-section flex x-end gap-16px ft-general">
                     <button onclick="resetAddTaskForm()" class="flex y-center gap-4px btn-light fs-20px">Clear <img
                             src="assets/img/close.png" alt="close"></button>

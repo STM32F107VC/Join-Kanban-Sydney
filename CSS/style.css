@@ -67,6 +67,8 @@ a { text-decoration: none; }
 
 .mb--128px { margin-bottom: -128px; }
 
+.ml-16px { margin-left: 16px; }
+
 .ml-39px { margin-left: 39px; }
 
 .mr-16px { margin-right: 16px; }
@@ -94,6 +96,10 @@ a { text-decoration: none; }
 .p-12px { padding: 12px; }
 
 .p-16px { padding: 16px; }
+
+.p-lr {
+    padding: 0 4px;
+}
 
 .gap-4px { gap: 4px; }
 

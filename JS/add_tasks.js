@@ -6,7 +6,8 @@ let oldImg;
 let tasks = [];
 
 /**
- * 
+ * Init function called on body="onload" to load
+ * first necessary functions
  */
 async function init_tasks() {
     await includeHTML();
@@ -127,15 +128,15 @@ function addSubtask() {
     let list = document.getElementById('displaySubtasks');
     let inputValue = document.getElementById('subtasks');
     if (list.children.length < 2) {
-        list.innerHTML += /*html*/ `<tr class="listElements">
-                                        <div>${inputValue.value}</div>
-                                        <div>
-                                            <img src="/assets/img/subtasks_pencil.svg" alt="edit">
-                                            <img src="/assets/img/Vector 19.svg" alt="separator">
+        list.innerHTML += /*html*/ `<div class="flex x-space-betw y-center">
+                                        <div class="ml-16px">&#x2022; ${inputValue.value}</div>
+                                        <div class="flex x-space-betw y-center">
                                             <img src="/assets/img/subtasks_bin.svg" alt="delete">
+                                            <img class="p-lr" src="/assets/img/Vector 19.svg" alt="separator">
+                                            <img src="/assets/img/subtasks_pencil.svg" alt="edit">
                                         </div>
-                                    </tr>`;
-    }
+                                    </div>`;
+    } else { console.log('Reached maximum of insertable subtasks.'); }
     clearSubtasks(inputValue);
 }
 

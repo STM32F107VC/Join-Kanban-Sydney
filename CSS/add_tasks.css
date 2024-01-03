@@ -75,7 +75,14 @@ div.subtasks-main > div { height: 28px; }
     word-wrap: break-word;
 }
 
-.listElements:hover { background-color: rgba(0, 0, 0, 0.05); }
+#displaySubtasks > div {
+    padding: 4px 8px;
+}
+
+#displaySubtasks > div:hover { 
+    background-color: rgba(0, 0, 0, 0.05); 
+    border-radius: 8px;
+}
 
 ul {
     list-style: none;

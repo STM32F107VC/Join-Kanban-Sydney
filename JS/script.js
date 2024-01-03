@@ -2,6 +2,10 @@
 let signUp = [];
 let users = [];
 
+/**
+ * Init function called on body="onload" to load
+ * first necessary functions
+ */
 async function init() {
     await includeHTML();
     await loadUsers();

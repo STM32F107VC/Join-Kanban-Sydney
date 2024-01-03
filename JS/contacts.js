@@ -9,8 +9,8 @@ let oldId;
 let contacts = [];
 
 /**
- * Init function called on body="onload" load
- * programm.
+ * Init function called on body="onload" to load
+ * first necessary functions
  */
 async function init_contacts() {
     await includeHTML();
