@@ -156,6 +156,10 @@ a { text-decoration: none; }
 
 .z-ind-1 { z-index: 1; }
 
+.opacity-zero { opacity: 0; }
+
+.opacity-one { opacity: 1; }
+
 .opacity { opacity: 0.1; }
 
 .border-round { border-radius: 50%; }

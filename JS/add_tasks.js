@@ -2,8 +2,10 @@
 let prioImg;
 let firstClickedImg;
 let oldImg;
+let priorityStatus;
 
 let tasks = [];
+let subtasks = [];
 
 /**
  * Init function called on body="onload" to load
@@ -78,7 +80,8 @@ function addTask() {
         "Assigned-to": assignedTo.value,
         "Date": date.value,
         "Prio": oldImg,
-        "Category": category.value
+        "Category": category.value,
+        "Subtasks": subtasks
     });
     resetAddTaskForm();
     document.getElementById('submitBtn').disabled = false;
@@ -122,18 +125,21 @@ function toggleIcons() {
 }
 
 /**
- * Add a subtask, maximum two
+ * Add a subtasks. Max. two subtasks possible.
+ * Empty subtasks field is not allowed.
  */
 function addSubtask() {
     let list = document.getElementById('displaySubtasks');
     let inputValue = document.getElementById('subtasks');
-    if (list.children.length < 2) {
-        list.innerHTML += /*html*/ `<div class="flex x-space-betw y-center">
+    if ((list.children.length < 2) && !(inputValue.value === "")) {
+        subtasks.push(inputValue.value);
+        let state = subtasks.length - 1;
+        list.innerHTML += /*html*/ `<div id="${state}" class="flex x-space-betw y-center">
                                         <div class="ml-16px">&#x2022; ${inputValue.value}</div>
-                                        <div class="flex x-space-betw y-center">
-                                            <img src="/assets/img/subtasks_bin.svg" alt="delete">
+                                        <div id="subtask-delete-accept" class="flex x-space-betw y-center opacity-zero">
+                                            <img onclick="deleteSubtask(${state});" src="/assets/img/subtasks_bin.svg" alt="delete">
                                             <img class="p-lr" src="/assets/img/Vector 19.svg" alt="separator">
-                                            <img src="/assets/img/subtasks_pencil.svg" alt="edit">
+                                            <img onclick="editSubtask(${state});" src="/assets/img/subtasks_pencil.svg" alt="edit">
                                         </div>
                                     </div>`;
     } else { console.log('Reached maximum of insertable subtasks.'); }
@@ -146,6 +152,16 @@ function addSubtask() {
  */
 function clearSubtasks(inputValue) {
     inputValue.value = '';
+}
+
+function deleteSubtask(x) {
+    let div = document.getElementById('displaySubtasks');
+    // for (let i = 0; i < div.children.length; i++) {
+    //     let child = div.children[i];
+    //     child
+    // }
+    // div.removeChildren(div.getElementsByTagName('div')[x]);
+    subtasks.splice(x, 1);
 }
 
 /**
@@ -166,4 +182,9 @@ function resetAddTaskForm() {
     document.getElementById('assigned-to').value = '';
     document.getElementById('date').value = '';
     document.getElementById('category').value = '';
+    document.getElementById('subtasks').value = '';
+    document.getElementById('displaySubtasks').replaceChildren();
+    document.getElementById('displaySelectedContacts').replaceChildren();
+    document.getElementById('prio-' + `${oldImg}`).src = `assets/img/prio-default-${oldImg}.svg`;
+    subtasks = [];
 }

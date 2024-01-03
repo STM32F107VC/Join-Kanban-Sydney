@@ -77,6 +77,7 @@ div.subtasks-main > div { height: 28px; }
 
 #displaySubtasks > div {
     padding: 4px 8px;
+    width: 450px;
 }
 
 #displaySubtasks > div:hover { 
@@ -84,21 +85,13 @@ div.subtasks-main > div { height: 28px; }
     border-radius: 8px;
 }
 
-ul {
-    list-style: none;
-    padding   : 0;
+#displaySubtasks > div > div {
+    word-break: break-all;
 }
 
-li { 
-    padding-left: 16px; 
-    position: relative;
-}
-
-li:before {
-    position: absolute;
-    left   : 4px;
-    top: 50%;
-    content: "•";
+#displaySubtasks > div:hover #subtask-delete-accept { 
+    opacity: 1; 
+    cursor: pointer;
 }
 
 .col-red { color: red; }
