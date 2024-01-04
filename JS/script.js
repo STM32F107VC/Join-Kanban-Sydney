@@ -39,6 +39,9 @@ async function loadUsers() {
     }
 }
 
+/**
+ * Check users login data Email and Password
+ */
 function login() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
@@ -54,7 +57,7 @@ function login() {
 
 /**
  * Login as a guest forwarding to summary.html
- * @param {attribute} location Has the old link from login.html in it which gets overwritte by summary.html
+ * @param {attribute} location Has the old link from login.html in it which gets overwritte by and forwarded to summary.html
  */
 function loginAsGuest() {
     location.href = "summary.html"
@@ -115,12 +118,17 @@ function goToHelp() {
  * @param {string} comparePassword This is the password to compare of the person registering
  */
 async function addNewUser() {
-    let name = document.getElementById("new-name");
-    let email = document.getElementById("new-email");
-    let password = document.getElementById("new-password");
-    let comparePassword = document.getElementById("compare-password");
-    saveNewUser(name, email, password, comparePassword);
-    await setItem('users', JSON.stringify(users));
+    let checkbox = document.getElementById('sign-up-checkbox');
+    if (checkbox.checked == true) {
+        let name = document.getElementById("new-name");
+        let email = document.getElementById("new-email");
+        let password = document.getElementById("new-password");
+        let comparePassword = document.getElementById("compare-password");
+        saveNewUser(name, email, password, comparePassword);
+        await setItem('users', JSON.stringify(users));
+    } else {
+        console.log('Checkbox is not checked.');
+    }
 }
 
 /**

@@ -5,10 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
+
+    <style>
+        input {
+            background-color: red;
+        }
+    </style>
+
 </head>
 
 <body style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <input onclick="checkCheckbox();" id="checkbox" type="checkbox" name="" id="">
 
+    <script>
+        function checkCheckbox() {
+            let checkbox = document.getElementById('checkbox');
+            if (checkbox.checked == true) {
+                console.log('Checkbox is checked.');
+            } else {
+                console.log('Checkbox is not checked.');
+            }
+        }
+
+    </script>
 </body>
 
 </html>
