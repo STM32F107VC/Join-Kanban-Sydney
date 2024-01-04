@@ -116,6 +116,7 @@ function goToHelp() {
  * @param {string} email This is the email of the person registering 
  * @param {string} password This is the password of the person registering
  * @param {string} comparePassword This is the password to compare of the person registering
+ * @param {boolean} checkBox True or false depending on if privacy policy is accepted or not
  */
 async function addNewUser() {
     let checkbox = document.getElementById('sign-up-checkbox');
@@ -127,8 +128,12 @@ async function addNewUser() {
         saveNewUser(name, email, password, comparePassword);
         await setItem('users', JSON.stringify(users));
     } else {
-        console.log('Checkbox is not checked.');
+        markCheckbox();
     }
+}
+
+function markCheckbox() {
+    console.log('Checkbox is not checked.');
 }
 
 /**
