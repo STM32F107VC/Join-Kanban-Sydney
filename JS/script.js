@@ -133,7 +133,11 @@ async function addNewUser() {
 }
 
 function markCheckbox() {
-    console.log('Checkbox is not checked.');
+    let div = document.getElementById('div-privavy-policy');
+    div.classList.add('checkbox');
+    setTimeout(() => {
+        div.classList.add('checkbox-default');
+    }, 500);
 }
 
 /**

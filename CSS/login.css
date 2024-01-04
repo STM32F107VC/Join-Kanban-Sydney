@@ -89,22 +89,27 @@ div.log-in > div {
     cursor: pointer;
 }
 
+.checkbox {
+    scale: 1.2;
+    transition: scale 1000ms ease-in-out;
+}
+
+.checkbox-default {
+    scale: 1;
+    transition: scale 500ms ease-in-out;
+}
+
+
 @media only screen and (max-width: 1600px) {
-    .capa-2 {
-        transform: translate(-75vh, -34vh);
-    }
+    .capa-2 { transform: translate(-75vh, -34vh); }
 }
 
 @media only screen and (max-width: 1000px) {
-    .capa-2 {
-        transform: translate(-26vh, -34vh);
-    }
+    .capa-2 { transform: translate(-26vh, -34vh); }
 }
 
 @media only screen and (max-width: 700px) {
-    .capa-2 {
-        transform: translate(-22vh, -34vh);
-    }
+    .capa-2 { transform: translate(-22vh, -34vh); }
 }
 
 @media only screen and (max-width: 600px) {
@@ -129,9 +134,7 @@ div.log-in > div {
         margin-top: 210px;
     }
 
-    div.login-input {
-        width: 322px;
-    }
+    div.login-input { width: 322px; }
 
     .log-in > div > form > div.flex.x-center.gap-35px {
         align-items: center;
@@ -146,17 +149,11 @@ div.log-in > div {
 
     div.log-in > div > span { font-size: 47px; }
 
-    div.log-in > div > img {
-        width: 88px;
-    }
+    div.log-in > div > img { width: 88px; }
 }
 
 @media only screen and (max-width: 400px) {
-    div.login-input {
-        width: 230px;
-    }
+    div.login-input { width: 230px; }
 
-    .capa-2 {
-        transform: translate(-8vh, -40vh);
-    }
+    .capa-2 { transform: translate(-8vh, -40vh); }
 }
