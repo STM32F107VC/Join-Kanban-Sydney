@@ -61,9 +61,7 @@ function login() {
         let user = users[u];
         if (user.Email == email.value && user.Password == password.value) {
             guestOrUserAccount('account');
-        } else {
-            document.querySelector('.log-in').classList.add('login-error');
-        }
+        } else document.querySelector('.log-in').classList.add('login-error');
     }
 }
 
@@ -72,7 +70,7 @@ function login() {
  * @param {string} log string either 'guest' or 'account' as value
  */
 async function guestOrUserAccount(log) {
-    let login = { login: log }
+    let login = { log };
     await setItem('guestOrAccount', JSON.stringify(login));
     window.location.href = "summary.html";
 }
@@ -105,9 +103,7 @@ function openLogoutMenu() {
     let addClassList = document.getElementById('log-out');
     if (addClassList.classList.contains('d-none'))
         document.getElementById('log-out').classList.remove('d-none');
-    else {
-        document.getElementById('log-out').classList.add('d-none');
-    }
+    else document.getElementById('log-out').classList.add('d-none');
 }
 
 /**
@@ -143,9 +139,7 @@ async function addNewUser() {
         let comparePassword = document.getElementById("compare-password");
         saveNewUser(name, email, password, comparePassword);
         await setItem('users', JSON.stringify(users));
-    } else {
-        markCheckbox();
-    }
+    } else markCheckbox();
 }
 
 /**
@@ -170,14 +164,13 @@ function markCheckbox() {
  */
 function saveNewUser(name, email, password, comparePassword) {
     if (password.value == comparePassword.value) {
-        console.log('Registration succesfull.');
         users.push({
             "Name": name.value,
             "Email": email.value,
             "Password": password.value,
         });
         resetRegisterForm(name, email, password, comparePassword);
-    } else { console.log('Registration failed, check input!'); }
+    }
 }
 
 /**
