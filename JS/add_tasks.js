@@ -97,26 +97,62 @@ function addTask() {
 function savePriorityState(id) {
     let priorityImg = document.getElementById('prio-' + `${id}`);
     let priorityImgOld = document.getElementById('prio-' + `${oldImg}`);
-    if (oldImg === undefined) {
-        priorityImg.src = `assets/img/prio-${id}.svg`;
-        priorityImg.classList.remove('priorityImg');
-    } else {
-        if (oldImg !== id) {
-            priorityImg.src = `assets/img/prio-${id}.svg`;
-            priorityImg.classList.remove('priorityImg');
-            priorityImgOld.src = `assets/img/prio-default-${oldImg}.png`;
-            priorityImgOld.classList.add('priorityImg');
-        } else {
-            if (priorityImg.src.includes(`assets/img/prio-default-${id}.png`)) {
-                priorityImg.src = `assets/img/prio-${id}.svg`;
-                priorityImg.classList.remove('priorityImg');
-            } else {
-                priorityImg.src = `assets/img/prio-default-${id}.png`;
-                priorityImg.classList.add('priorityImg');
-            }
+    if (oldImg === undefined) setFirstTimePriorityState(priorityImg, id);
+    else {
+        if (oldImg !== id) setCurrentPriorityState(priorityImg, priorityImgOld, id);
+        else {
+            if (priorityImg.src.includes(`assets/img/prio-default-${id}.png`)) replaceDefaultPriorityImg(priorityImg, id);
+            else setDefaultPriorityImg(priorityImg, id);
         }
     }
     oldImg = id;
+}
+
+/**
+ * First time a priortiy state is clicke, this function will be executed
+ * to set current selected priority state
+ * @param {img} img Current img
+ * @param {string} id Current id of img
+ */
+function setFirstTimePriorityState(img, id) {
+    img.src = `assets/img/prio-${id}.svg`;
+    img.classList.remove('priorityImg');
+}
+
+/**
+ * Sets the current priority state and mark them and 
+ * remove the old state and marked one
+ * @param {img} img 
+ * @param {string} imgOld 
+ * @param {string} id 
+ */
+function setCurrentPriorityState(img, imgOld, id) {
+    img.src = `assets/img/prio-${id}.svg`;
+    img.classList.remove('priorityImg');
+    imgOld.src = `assets/img/prio-default-${oldImg}.png`;
+    imgOld.classList.add('priorityImg');
+}
+
+/**
+ * Replace the default priority and set current
+ * selected state
+ * @param {img} img Current img
+ * @param {string} id Current id of img
+ */
+function replaceDefaultPriorityImg(img, id) {
+    img.src = `assets/img/prio-${id}.svg`;
+    img.classList.remove('priorityImg');
+}
+
+/**
+ * Set default img like no priority state is
+ * selected
+ * @param {img} img Current img
+ * @param {string} id Current id of img
+ */
+function setDefaultPriorityImg(img, id) {
+    img.src = `assets/img/prio-default-${id}.png`;
+    img.classList.add('priorityImg');
 }
 
 /**
