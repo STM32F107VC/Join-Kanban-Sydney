@@ -1,6 +1,6 @@
 .body-login {
-    height: 100vh;
     position: relative;
+    height: 100vh;
 }
 
 .login-error { border: 1px solid red; }
@@ -9,7 +9,7 @@
 
 .login {
     opacity: 1;
-    transition: opacity 500ms ease-in-out;
+    transition: opacity 1000ms ease-in-out;
 }
 
 .capa-2-div {
@@ -18,15 +18,24 @@
     width: 100vw;
 }
 
+.capa-2 {
+    width: 274px;
+    height: 334px;
+    z-index: 2;
+}
+
 .x-translate-capa2 {
+    width: 100px;
+    height: 122px;
     transform: translate(-75vh, -34vh);
-    transition: transform 500ms ease-in-out;
+    transition: width 1000ms ease-in-out, height 1000ms ease-in-out, transform 1000ms ease-in-out;
 }
 
 .sign-up-section {
     position: absolute;
     top: 10vh;
     right: 122px;
+    z-index: 2;
 }
 
 .log-in {
@@ -66,11 +75,11 @@ div.log-in > div {
     box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.5);
 }
 
- .guestLogIn-btn {
+.guestLogIn-btn {
     border-radius: 8px;
     border: 1px solid var(--version-2-main-color, #2A3647);
     background: var(--white, #FFF);
- }
+}
 
 .privacy-policy { margin: 100px 0 32px 0; }
 
@@ -99,10 +108,9 @@ div.log-in > div {
     transition: scale 500ms ease-in-out;
 }
 
-
-@media only screen and (max-width: 1600px) {
+/* @media only screen and (max-width: 1600px) {
     .capa-2 { transform: translate(-75vh, -34vh); }
-}
+} */
 
 @media only screen and (max-width: 1000px) {
     .capa-2 { transform: translate(-26vh, -34vh); }

@@ -194,6 +194,12 @@ input {
     background-repeat: no-repeat;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* Classes for buttons */
 .btn-light {
     border-radius: 8px;
@@ -246,3 +252,6 @@ button,
 .vertical-bl-line { padding: 0 30px; }
 
 .vertical-gr-line { padding: 0 61px; }
+
+/* Classes for color */
+.bgc-darkblue { background-color: #091931; }

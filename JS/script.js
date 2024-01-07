@@ -6,18 +6,30 @@ let users = [];
  * Init function called on body="onload" to load
  * first necessary functions
  */
-async function init() {
+async function init(id) {
     await includeHTML();
+    markActiveLink(id);
     await loadUsers();
-    await loadContacts();
     loadLoginScreen();
+    await loadContacts();
+}
+
+/**
+ * Changes background-color on activ link summary.html
+ * add_task.html, board.html or contacts.html
+ * @param {string} id Represents the current id of the active link 
+ */
+function markActiveLink(id) {
+    let link = document.getElementById(`${id}`);
+    link.classList.add('bgc-darkblue');
+    link.classList.remove('menu-choose');
 }
 
 /**
  * Load login screen, effect with opacity 0.1 to 1 within 
  * 500ms and also translate effect from Join logo centered to 
  * top left window corner.
- * 
+ *
  */
 function loadLoginScreen() {
     let img = document.getElementById('capa-2');
@@ -70,6 +82,7 @@ function loginAsGuest() {
 function openSignUpSection() {
     document.getElementById('login').classList.add('d-none');
     document.getElementById('sign-up').classList.remove('d-none');
+    document.querySelector('.sign-up-section').classList.add('d-none');
 }
 
 /**
@@ -79,6 +92,7 @@ function openSignUpSection() {
 function closeSignUpSection() {
     document.getElementById('login').classList.remove('d-none');
     document.getElementById('sign-up').classList.add('d-none');
+    document.querySelector('.sign-up-section').classList.remove('d-none');
 }
 
 /**
@@ -99,8 +113,8 @@ function openLogoutMenu() {
  * 
  */
 function goBack() {
-    location.replace('summary.html');
-    // location.href = 'summary.html';
+    // location.replace('summary.html');
+    location.href = 'summary.html';
 }
 
 /**
@@ -132,6 +146,11 @@ async function addNewUser() {
     }
 }
 
+/**
+ * Show animation to checkbox in sign-up section if not checked
+ * so the users should accept privacy policy
+ * 
+ */
 function markCheckbox() {
     let div = document.getElementById('div-privavy-policy');
     div.classList.add('checkbox');

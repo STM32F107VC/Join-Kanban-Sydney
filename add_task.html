@@ -9,12 +9,11 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon-32x32.png">
 
     <!-- Include CSS and Script Sheets -->
+    <script src="JS/script.js"></script>
     <script src="JS/includeHTML.js"></script>
-    <!-- <script src="JS/script.js"></script> -->
     <script src="JS/add_tasks.js"></script>
     <script src="JS/contacts.js"></script>
     <script src="JS/storage.js"></script>
-    <script src="JS/script.js"></script>
     <link rel="stylesheet" href="CSS/login.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
@@ -22,7 +21,7 @@
     <link rel="stylesheet" href="CSS/contacts.css">
 </head>
 
-<body onload="init_tasks();">
+<body onload="init_tasks('add-task-link');">
     <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
 
     <div class="main-div-add-tasks mb--128px">
@@ -61,12 +60,12 @@
                 <div class="priority flex flex-column mb-24px">
                     <span class="mb-8px">Prio</span>
                     <div class="flex x-space-betw gap-16px">
-                        <img class="priorityImg" onclick="savePriorityState('high')" id="prio-high"
-                            src="assets/img/prio-default-high.svg" alt="priority high">
-                        <img class="priorityImg" onclick="savePriorityState('medium')" id="prio-medium"
-                            src="assets/img/prio-default-medium.svg" alt="priority medium">
                         <img class="priorityImg" onclick="savePriorityState('low')" id="prio-low"
-                            src="assets/img/prio-default-low.svg" alt="priority low">
+                            src="assets/img/prio-default-low.png" alt="priority low">
+                        <img class="priorityImg" onclick="savePriorityState('medium')" id="prio-medium"
+                            src="assets/img/prio-default-medium.png" alt="priority medium">
+                        <img class="priorityImg" onclick="savePriorityState('high')" id="prio-high"
+                            src="assets/img/prio-default-high.png" alt="priority high">
                     </div>
                 </div>
                 <div class="flex flex-column mb-24px">

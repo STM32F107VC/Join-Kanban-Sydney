@@ -11,9 +11,10 @@ let subtasks = [];
  * Init function called on body="onload" to load
  * first necessary functions
  */
-async function init_tasks() {
+async function init_tasks(id) {
     await includeHTML();
     await loadContacts();
+    markActiveLink(id);
     assignContact();
 }
 
@@ -98,14 +99,21 @@ function savePriorityState(id) {
     let priorityImgOld = document.getElementById('prio-' + `${oldImg}`);
     if (oldImg === undefined) {
         priorityImg.src = `assets/img/prio-${id}.svg`;
+        priorityImg.classList.remove('priorityImg');
     } else {
         if (oldImg !== id) {
             priorityImg.src = `assets/img/prio-${id}.svg`;
-            priorityImgOld.src = `assets/img/prio-default-${oldImg}.svg`;
+            priorityImg.classList.remove('priorityImg');
+            priorityImgOld.src = `assets/img/prio-default-${oldImg}.png`;
+            priorityImgOld.classList.add('priorityImg');
         } else {
-            if (priorityImg.src.includes(`assets/img/prio-default-${id}.svg`)) {
+            if (priorityImg.src.includes(`assets/img/prio-default-${id}.png`)) {
                 priorityImg.src = `assets/img/prio-${id}.svg`;
-            } else { priorityImg.src = `assets/img/prio-default-${id}.svg`; }
+                priorityImg.classList.remove('priorityImg');
+            } else {
+                priorityImg.src = `assets/img/prio-default-${id}.png`;
+                priorityImg.classList.add('priorityImg');
+            }
         }
     }
     oldImg = id;

@@ -9,16 +9,18 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon-32x32.png">
 
     <!-- Include CSS and Script Sheets -->
-    <script src="JS/includeHTML.js"></script>
-    <script src="JS/script.js"></script>
     <script src="JS/storage.js"></script>
+    <script src="JS/script.js"></script>
+    <script src="JS/includeHTML.js"></script>
+    <script src="JS/board.js"></script>
+    <script src="JS/contacts.js"></script>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
     <link rel="stylesheet" href="CSS/side-and-topbar-template.css">
     <link rel="stylesheet" href="CSS/board.css">
 </head>
 
-<body onload="init();">
+<body onload="init_board('board-link');">
     <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
 
     <div class="main-div-board">

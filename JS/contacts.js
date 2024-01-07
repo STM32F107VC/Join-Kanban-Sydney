@@ -12,10 +12,11 @@ let contacts = [];
  * Init function called on body="onload" to load
  * first necessary functions
  */
-async function init_contacts() {
+async function init_contacts(id) {
     await includeHTML();
     await loadUsers();
     await loadContacts();
+    markActiveLink(id);
 }
 
 /**

@@ -36,9 +36,10 @@ div.priority > div {
 div.priority > div img {
     width: 140px;
     height: 56px;
+    border-radius: 10px;
 }
 
-div.priority > div img:hover { filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.4)); }
+.priorityImg:hover { box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2) ; }
 
 .filter-none { filter: none; }
 
