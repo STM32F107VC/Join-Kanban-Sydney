@@ -13,6 +13,7 @@
     <script src="JS/includeHTML.js"></script>
     <script src="JS/contacts.js"></script>
     <script src="JS/storage.js"></script>
+    <script src="JS/summary.js"></script>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/login.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
@@ -37,7 +38,7 @@
             </div>
 
             <div>
-                <form onsubmit="login(); return false">
+                <form onsubmit="login(); return false;">
                     <div class="login-input mb-32px flex x-space-betw y-center">
                         <input class="ft-general fs-20px fw-400 input-icon-pos icon-email w-100" id="email"
                             placeholder="Email" type="email" autocomplete="on" required>
@@ -53,7 +54,8 @@
                     <div class="flex x-center gap-35px">
                         <button id="login-btn" class="btn-dark ft-general fs-21px fw-700" type="submit">Log
                             in</button>
-                        <button onclick="loginAsGuest()" class="btn-light ft-general fs-21px fw-700" type="button">Guest
+                        <button onclick="guestOrUserAccount('guest');" class="btn-light ft-general fs-21px fw-700"
+                            type="button">Guest
                             Log
                             in</button>
                     </div>

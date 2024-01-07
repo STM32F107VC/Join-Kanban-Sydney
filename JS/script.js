@@ -1,14 +1,14 @@
 /* Declare variables and arrays */
 let signUp = [];
 let users = [];
+let guest = false;
 
 /**
  * Init function called on body="onload" to load
  * first necessary functions
  */
-async function init(id) {
+async function init() {
     await includeHTML();
-    markActiveLink(id);
     await loadUsers();
     loadLoginScreen();
     await loadContacts();
@@ -60,7 +60,7 @@ function login() {
     for (let u = 0; u < users.length; u++) {
         let user = users[u];
         if (user.Email == email.value && user.Password == password.value) {
-            window.location.href = "summary.html";
+            guestOrUserAccount('account');
         } else {
             document.querySelector('.log-in').classList.add('login-error');
         }
@@ -68,11 +68,13 @@ function login() {
 }
 
 /**
- * Login as a guest forwarding to summary.html
- * @param {attribute} location Has the old link from login.html in it which gets overwritte by and forwarded to summary.html
+ * Check if its a existing user account or a guest logged in
+ * @param {string} log string either 'guest' or 'account' as value
  */
-function loginAsGuest() {
-    location.href = "summary.html"
+async function guestOrUserAccount(log) {
+    let login = { login: log }
+    await setItem('guestOrAccount', JSON.stringify(login));
+    window.location.href = "summary.html";
 }
 
 /**

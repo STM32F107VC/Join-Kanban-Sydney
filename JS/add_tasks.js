@@ -198,6 +198,10 @@ function clearSubtasks(inputValue) {
     inputValue.value = '';
 }
 
+/**
+ * Function to delete an added subtask
+ * @param {} x 
+ */
 function deleteSubtask(x) {
     let div = document.getElementById('displaySubtasks');
     // for (let i = 0; i < div.children.length; i++) {
