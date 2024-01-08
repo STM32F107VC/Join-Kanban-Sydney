@@ -178,16 +178,27 @@ function addSubtask() {
     if ((list.children.length < 2) && !(inputValue.value === "")) {
         subtasks.push(inputValue.value);
         let state = subtasks.length - 1;
-        list.innerHTML += /*html*/ `<div id="${state}" class="flex x-space-betw y-center">
-                                        <div class="ml-16px">&#x2022; ${inputValue.value}</div>
-                                        <div id="subtask-delete-accept" class="flex x-space-betw y-center opacity-zero">
-                                            <img onclick="deleteSubtask(${state});" src="/assets/img/subtasks_bin.svg" alt="delete">
-                                            <img class="p-lr" src="/assets/img/Vector 19.svg" alt="separator">
-                                            <img onclick="editSubtask(${state});" src="/assets/img/subtasks_pencil.svg" alt="edit">
-                                        </div>
-                                    </div>`;
+        list.innerHTML += subtaskTemplate(state, inputValue);
     } else { console.log('Reached maximum of insertable subtasks.'); }
     clearSubtasks(inputValue);
+}
+
+
+/**
+ * Template to render new subtask
+ * @param {variable} state 
+ * @param {string} inputValue 
+ * @returns 
+ */
+function subtaskTemplate(state, inputValue) {
+    return /*html*/` <div id="subtask${state}" class="flex x-space-betw y-center">
+                        <div class="ml-16px">&#x2022; ${inputValue.value}</div>
+                        <div id="subtask-delete-accept" class="flex x-space-betw y-center opacity-zero">
+                            <img id="${state}" onclick="deleteSubtask(${state});" src="/assets/img/subtasks_bin.svg" alt="delete">
+                            <img class="p-lr" src="/assets/img/Vector 19.svg" alt="separator">
+                            <img onclick="editSubtask(${state});" src="/assets/img/subtasks_pencil.svg" alt="edit">
+                        </div>
+                    </div>`;
 }
 
 /**
@@ -200,16 +211,16 @@ function clearSubtasks(inputValue) {
 
 /**
  * Function to delete an added subtask
- * @param {} x 
+ * @param {} x
  */
 function deleteSubtask(x) {
-    let div = document.getElementById('displaySubtasks');
-    // for (let i = 0; i < div.children.length; i++) {
-    //     let child = div.children[i];
-    //     child
-    // }
-    // div.removeChildren(div.getElementsByTagName('div')[x]);
-    subtasks.splice(x, 1);
+    let div = document.getElementById(`subtask${x}`);
+    if (x == 1 && subtasks.length == 1) {
+        subtasks.splice(0, 1);
+    } else {
+        subtasks.splice(x, 1);
+    }
+    div.remove();
 }
 
 /**
