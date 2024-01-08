@@ -211,15 +211,13 @@ function clearSubtasks(inputValue) {
 
 /**
  * Function to delete an added subtask
- * @param {} x
+ * @param {variable} x Id number of the subtask
  */
 function deleteSubtask(x) {
     let div = document.getElementById(`subtask${x}`);
     if (x == 1 && subtasks.length == 1) {
         subtasks.splice(0, 1);
-    } else {
-        subtasks.splice(x, 1);
-    }
+    } else subtasks.splice(x, 1);
     div.remove();
 }
 
@@ -244,6 +242,6 @@ function resetAddTaskForm() {
     document.getElementById('subtasks').value = '';
     document.getElementById('displaySubtasks').replaceChildren();
     document.getElementById('displaySelectedContacts').replaceChildren();
-    document.getElementById('prio-' + `${oldImg}`).src = `assets/img/prio-default-${oldImg}.svg`;
+    document.getElementById('prio-' + `${oldImg}`).src = `assets/img/prio-default-${oldImg}.png`;
     subtasks = [];
 }
