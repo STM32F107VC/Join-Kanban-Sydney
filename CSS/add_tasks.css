@@ -81,7 +81,7 @@ div.subtasks-main > div { height: 28px; }
     width: 450px;
 }
 
-#displaySubtasks > div:hover { 
+.sub-pseudo:hover { 
     background-color: rgba(0, 0, 0, 0.05); 
     border-radius: 8px;
 }
@@ -93,6 +93,11 @@ div.subtasks-main > div { height: 28px; }
 #displaySubtasks > div:hover #subtask-delete-accept { 
     opacity: 1; 
     cursor: pointer;
+}
+
+.no-outline {
+    outline: none;
+    border-bottom: 1px solid #29ABE2;   
 }
 
 .col-red { color: red; }
