@@ -168,6 +168,8 @@ a { text-decoration: none; }
 
 .border-round { border-radius: 50%; }
 
+.c-pointer { cursor: pointer; }
+
 /* ------------------------------------- */
 
 /* Classes for input fields */

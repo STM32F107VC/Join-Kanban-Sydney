@@ -191,7 +191,7 @@ function addSubtask() {
  * @returns 
  */
 function subtaskTemplate(state, inputValue) {
-    return /*html*/ `<div ondblclick="editSubtask(${state});" id="subtask${state}" class="sub-pseudo flex x-space-betw y-center">
+    return /*html*/ `<div ondblclick="editSubtask(${state});" id="subtask${state}" class="sub-pseudo c-pointer flex x-space-betw y-center">
                         <div class="flex flex-row y-center ml-16px"><div>&#x2022;</div>&nbsp;<div>${inputValue.value}</div></div>
                         <div id="subtask-delete-accept" class="flex x-space-betw y-center opacity-zero">
                             <img id="${state}" onclick="deleteSubtask(${state});" src="/assets/img/subtasks_bin.svg" alt="delete">
@@ -201,13 +201,29 @@ function subtaskTemplate(state, inputValue) {
                     </div>`;
 }
 
+/**
+ * Make subtask editable to change
+ * @param {variable} state Index of the subtask
+ */
 function editSubtask(state) {
     let subtask = document.getElementById(`subtask${state}`);
     let replaceImg = document.getElementById(`edite${state}`);
-    replaceImg.src = 'assets/img/subtasks_tick.svg'
+    replaceImg.src = 'assets/img/subtasks_tick.svg';
+
+    replaceImg.addEventListener('click', saveSubtaskChanges(state));
+    // replaceImg.parentNode.removeChild(replaceImg);
+
     subtask.setAttribute('contenteditable', 'true');
     subtask.classList.add('no-outline', 'bg-white');
     subtask.classList.remove('sub-pseudo');
+}
+
+function saveSubtaskChanges(state) {
+    console.log('Entered saveSubtaskChanges function.');
+    console.log(state);
+    let div = document.getElementById(`subtask${state}`).innerHTML;
+    console.log(div);
+    // subtasks[state] =
 }
 
 /**

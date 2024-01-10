@@ -84,6 +84,7 @@ div.subtasks-main > div { height: 28px; }
 .sub-pseudo:hover { 
     background-color: rgba(0, 0, 0, 0.05); 
     border-radius: 8px;
+    cursor: pointer;
 }
 
 #displaySubtasks > div > div {
