@@ -22,7 +22,6 @@ textarea {
     outline: none;
     font-family: 'Inter';
     resize: none;
-    /* resize: vertical; */
 }
 
 div.priority > div {
@@ -87,18 +86,47 @@ div.subtasks-main > div { height: 28px; }
     cursor: pointer;
 }
 
-#displaySubtasks > div > div {
+/* #displaySubtasks > div > div {
     word-break: break-all;
-}
+} */
 
 #displaySubtasks > div:hover #subtask-delete-accept { 
     opacity: 1; 
     cursor: pointer;
 }
 
-.no-outline {
+.no-outline { border-bottom: 1px solid #29ABE2; }
+
+ul { 
+    margin: 0;
+    padding-right: 4px;
+    padding-left: 0; 
+    word-break: break-all;
+    list-style: none;
+}
+
+li { 
     outline: none;
-    border-bottom: 1px solid #29ABE2;   
+    position: relative;
+    padding-left: 20px; /* Adjust as needed */
+ }
+
+ li::before {
+    content: '\2022';
+    color: #000; 
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    margin-right: 8px; 
+  }
+
+.icon-hover:hover {
+    background-color: rgba(0, 0, 0, 0.1); 
+    border-radius: 50%;
+    /* padding: px; */
 }
 
 .col-red { color: red; }

@@ -182,6 +182,7 @@ function addSubtask() {
     } else { console.log('Reached maximum of insertable subtasks.'); }
     clearSubtasks(inputValue);
 }
+{/* <div class="flex flex-row y-center ml-16px"><div>&#x2022;</div>&nbsp;<div id="value${state}">${inputValue.value}</div></div> */ }
 
 
 /**
@@ -191,10 +192,10 @@ function addSubtask() {
  * @returns 
  */
 function subtaskTemplate(state, inputValue) {
-    return /*html*/ `<div ondblclick="editSubtask(${state});" id="subtask${state}" class="sub-pseudo c-pointer flex x-space-betw y-center">
-                        <div class="flex flex-row y-center ml-16px"><div>&#x2022;</div>&nbsp;<div>${inputValue.value}</div></div>
+    return /*html*/ `<div ondblclick="editSubtask(${state});" id="subtask${state}" class="sub-pseudo c-pointer flex x-space-betw y-center mb-4px">
+                        <ul class="w-100 outline-none"><li id="value${state}">${inputValue.value}</li></ul>
                         <div id="subtask-delete-accept" class="flex x-space-betw y-center opacity-zero">
-                            <img id="${state}" onclick="deleteSubtask(${state});" src="/assets/img/subtasks_bin.svg" alt="delete">
+                            <img id="delete${state}" onclick="deleteSubtask(${state});" src="/assets/img/subtasks_bin.svg" alt="delete">
                             <img class="p-lr" src="/assets/img/Vector 19.svg" alt="separator">
                             <img id="edite${state}" onclick="editSubtask(${state});" src="/assets/img/subtasks_pencil.svg" alt="edit">
                         </div>
@@ -207,22 +208,23 @@ function subtaskTemplate(state, inputValue) {
  */
 function editSubtask(state) {
     let subtask = document.getElementById(`subtask${state}`);
+    let subtaskValue = document.getElementById(`value${state}`);
     let replaceImg = document.getElementById(`edite${state}`);
+    let deleteImg = document.getElementById(`delete${state}`);
+    replaceImg.classList.add('icon-hover');
+    deleteImg.classList.add('icon-hover');
     replaceImg.src = 'assets/img/subtasks_tick.svg';
-
-    replaceImg.addEventListener('click', saveSubtaskChanges(state));
-    // replaceImg.parentNode.removeChild(replaceImg);
-
-    subtask.setAttribute('contenteditable', 'true');
-    subtask.classList.add('no-outline', 'bg-white');
+    replaceImg.addEventListener('click', saveSubtaskChanges(state, subtask));
+    subtaskValue.setAttribute('contenteditable', 'true');
+    subtask.classList.add('bg-white');
     subtask.classList.remove('sub-pseudo');
 }
 
-function saveSubtaskChanges(state) {
+function saveSubtaskChanges(state, sT) {
     console.log('Entered saveSubtaskChanges function.');
     console.log(state);
-    let div = document.getElementById(`subtask${state}`).innerHTML;
-    console.log(div);
+    // let div = document.getElementById(`subtask${state}`).innerHTML;
+    console.log(sT.innerHTML);
     // subtasks[state] =
 }
 
