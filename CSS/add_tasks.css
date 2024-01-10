@@ -108,7 +108,7 @@ ul {
 li { 
     outline: none;
     position: relative;
-    padding-left: 20px; /* Adjust as needed */
+    padding-left: 40px; /* Adjust as needed */
  }
 
  li::before {
@@ -120,13 +120,13 @@ li {
     top: 50%;
     transform: translateY(-50%);
     display: inline-block;
-    margin-right: 8px; 
+    margin-right: 16px;
+    margin-left: 16px; 
   }
 
 .icon-hover:hover {
     background-color: rgba(0, 0, 0, 0.1); 
     border-radius: 50%;
-    /* padding: px; */
 }
 
 .col-red { color: red; }

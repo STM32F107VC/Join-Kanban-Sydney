@@ -211,21 +211,23 @@ function editSubtask(state) {
     let subtaskValue = document.getElementById(`value${state}`);
     let replaceImg = document.getElementById(`edite${state}`);
     let deleteImg = document.getElementById(`delete${state}`);
-    replaceImg.classList.add('icon-hover');
     deleteImg.classList.add('icon-hover');
     replaceImg.src = 'assets/img/subtasks_tick.svg';
-    replaceImg.addEventListener('click', saveSubtaskChanges(state, subtask));
+
     subtaskValue.setAttribute('contenteditable', 'true');
     subtask.classList.add('bg-white');
     subtask.classList.remove('sub-pseudo');
+    replaceImg.addEventListener('click', saveSubtaskChanges(state));
 }
 
-function saveSubtaskChanges(state, sT) {
-    console.log('Entered saveSubtaskChanges function.');
-    console.log(state);
-    // let div = document.getElementById(`subtask${state}`).innerHTML;
-    console.log(sT.innerHTML);
-    // subtasks[state] =
+function saveSubtaskChanges(state) {
+    let subtask = document.getElementById(`subtask${state}`);
+    let subtaskValue = document.getElementById(`value${state}`);
+    console.log('Entered saveSubtaskChanges function.', state);
+    // console.log(sTV.textContent);
+    // sT.classList.remove('bg-white');
+    // sT.classList.add('sub-pseudo');
+    // subtasks[state] = sTV.textContent;
 }
 
 /**
