@@ -84,8 +84,18 @@ function addTask() {
         "Category": category.value,
         "Subtasks": subtasks
     });
+    setToLocalStorage(tasks);
     resetAddTaskForm();
     document.getElementById('submitBtn').disabled = false;
+}
+
+/**
+ * Testwise local storage in workflow use backend
+ * 
+ */
+function setToLocalStorage(t) {
+    let tasksToString = JSON.stringify(t);
+    localStorage.setItem('tasks', tasksToString);
 }
 
 /**
@@ -211,6 +221,11 @@ function editSubtask(state) {
     let subtaskValue = document.getElementById(`value${state}`);
     let replaceImg = document.getElementById(`edite${state}`);
     let deleteImg = document.getElementById(`delete${state}`);
+
+    subtask.removeEventListener('click', editSubtask);
+    replaceImg.removeEventListener('click', editSubtask);
+    // replaceImg.addEventListener('click', saveSubtaskChanges(state));
+
     deleteImg.classList.add('icon-hover');
     replaceImg.src = 'assets/img/subtasks_tick.svg';
 
@@ -219,6 +234,7 @@ function editSubtask(state) {
     subtask.classList.remove('sub-pseudo');
     replaceImg.addEventListener('click', saveSubtaskChanges(state));
 }
+
 
 function saveSubtaskChanges(state) {
     let subtask = document.getElementById(`subtask${state}`);

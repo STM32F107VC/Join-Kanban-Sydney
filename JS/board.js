@@ -2,6 +2,11 @@ async function init_board(id) {
     await includeHTML();
     await loadContacts();
     markActiveLink(id);
+    loadTasks();
+}
+
+function loadTasks() {
+
 }
 
 // function markActiveLink() {
