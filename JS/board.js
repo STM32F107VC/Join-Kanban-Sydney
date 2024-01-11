@@ -1,3 +1,5 @@
+let tasksInBoard = [];
+
 async function init_board(id) {
     await includeHTML();
     await loadContacts();
@@ -6,6 +8,23 @@ async function init_board(id) {
 }
 
 function loadTasks() {
+    let tasksToString = localStorage.getItem('tasks');
+    if (tasksToString) {
+        let object = JSON.parse(tasksToString);
+        tasksInBoard = object;
+        loadToBacklog();
+        console.log(object);
+    }
+}
+
+function loadToBacklog() {
+    let backlog = document.getElementById('backlog');
+    for (let i = 0; i < tasksInBoard.length; i++) {
+        let subtask = tasksInBoard[i];
+        backlog.innerHTML += /*html*/`
+            ${subtask['Title']}
+    `;
+    }
 
 }
 
