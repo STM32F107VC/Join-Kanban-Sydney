@@ -4,6 +4,8 @@ let firstClickedImg;
 let oldImg;
 let priorityStatus;
 
+let state;
+
 let tasks = [];
 let subtasks = [];
 
@@ -187,13 +189,23 @@ function addSubtask() {
     let inputValue = document.getElementById('subtasks');
     if ((list.children.length < 2) && !(inputValue.value === "")) {
         subtasks.push(inputValue.value);
-        let state = subtasks.length - 1;
+        state = subtasks.length - 1;
         list.innerHTML += subtaskTemplate(state, inputValue);
+        let editImg = document.getElementById(`edite${state}`);
+
+        editImg.addEventListener('click', clickHandler, false);
+
     } else { console.log('Reached maximum of insertable subtasks.'); }
     clearSubtasks(inputValue);
 }
-{/* <div class="flex flex-row y-center ml-16px"><div>&#x2022;</div>&nbsp;<div id="value${state}">${inputValue.value}</div></div> */ }
 
+function clickHandler(event) {
+    editSubtask(state);
+}
+
+function clickHandlerSave(event) {
+    saveSubtaskChanges(state);
+}
 
 /**
  * Template to render new subtask
@@ -207,7 +219,7 @@ function subtaskTemplate(state, inputValue) {
                         <div id="subtask-delete-accept" class="flex x-space-betw y-center opacity-zero">
                             <img id="delete${state}" onclick="deleteSubtask(${state});" src="/assets/img/subtasks_bin.svg" alt="delete">
                             <img class="p-lr" src="/assets/img/Vector 19.svg" alt="separator">
-                            <img id="edite${state}" onclick="editSubtask(${state});" src="/assets/img/subtasks_pencil.svg" alt="edit">
+                            <img id="edite${state}" src="/assets/img/subtasks_pencil.svg" alt="edit">
                         </div>
                     </div>`;
 }
@@ -222,24 +234,30 @@ function editSubtask(state) {
     let replaceImg = document.getElementById(`edite${state}`);
     let deleteImg = document.getElementById(`delete${state}`);
 
-    subtask.removeEventListener('click', editSubtask);
-    replaceImg.removeEventListener('click', editSubtask);
-    // replaceImg.addEventListener('click', saveSubtaskChanges(state));
+    replaceImg.removeEventListener('click', clickHandler, false);
+
+    replaceImg.src = 'assets/img/subtasks_tick.svg';
+
+    replaceImg.addEventListener('click', clickHandlerSave, false);
 
     deleteImg.classList.add('icon-hover');
-    replaceImg.src = 'assets/img/subtasks_tick.svg';
 
     subtaskValue.setAttribute('contenteditable', 'true');
     subtask.classList.add('bg-white');
     subtask.classList.remove('sub-pseudo');
-    replaceImg.addEventListener('click', saveSubtaskChanges(state));
 }
 
 
 function saveSubtaskChanges(state) {
     let subtask = document.getElementById(`subtask${state}`);
     let subtaskValue = document.getElementById(`value${state}`);
+    let replaceImg = document.getElementById(`edite${state}`);
     console.log('Entered saveSubtaskChanges function.', state);
+    replaceImg.removeEventListener('click', clickHandlerSave, false);
+    replaceImg.src = '/assets/img/subtasks_pencil.svg';
+    replaceImg.addEventListener('click', clickHandler, false);
+
+
     // console.log(sTV.textContent);
     // sT.classList.remove('bg-white');
     // sT.classList.add('sub-pseudo');
