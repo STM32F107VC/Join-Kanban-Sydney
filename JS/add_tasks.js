@@ -192,14 +192,12 @@ function addSubtask() {
         state = subtasks.length - 1;
         list.innerHTML += subtaskTemplate(state, inputValue);
         let editImg = document.getElementById(`edite${state}`);
-
-        editImg.addEventListener('click', clickHandler, false);
-
+        editImg.addEventListener('click', clickHandlerEdit, false);
     } else { console.log('Reached maximum of insertable subtasks.'); }
     clearSubtasks(inputValue);
 }
 
-function clickHandler(event) {
+function clickHandlerEdit(event) {
     editSubtask(state);
 }
 
@@ -233,15 +231,11 @@ function editSubtask(state) {
     let subtaskValue = document.getElementById(`value${state}`);
     let replaceImg = document.getElementById(`edite${state}`);
     let deleteImg = document.getElementById(`delete${state}`);
-
-    replaceImg.removeEventListener('click', clickHandler, false);
-
+    replaceImg.removeEventListener('click', clickHandlerEdit, false);
     replaceImg.src = 'assets/img/subtasks_tick.svg';
-
     replaceImg.addEventListener('click', clickHandlerSave, false);
-
+    replaceImg.classList.add('icon-hover');
     deleteImg.classList.add('icon-hover');
-
     subtaskValue.setAttribute('contenteditable', 'true');
     subtask.classList.add('bg-white');
     subtask.classList.remove('sub-pseudo');
@@ -249,19 +243,22 @@ function editSubtask(state) {
 
 
 function saveSubtaskChanges(state) {
+    console.log('Entered saveSubtaskChanges function.', state);
     let subtask = document.getElementById(`subtask${state}`);
     let subtaskValue = document.getElementById(`value${state}`);
     let replaceImg = document.getElementById(`edite${state}`);
-    console.log('Entered saveSubtaskChanges function.', state);
+    let deleteImg = document.getElementById(`delete${state}`);
     replaceImg.removeEventListener('click', clickHandlerSave, false);
     replaceImg.src = '/assets/img/subtasks_pencil.svg';
-    replaceImg.addEventListener('click', clickHandler, false);
+    replaceImg.addEventListener('click', clickHandlerEdit, false);
+    replaceImg.classList.remove('icon-hover');
+    deleteImg.classList.remove('icon-hover');
+    subtaskValue.removeAttribute('contenteditable');
+    subtask.classList.remove('bg-white');
+    subtask.classList.add('sub-pseudo');
 
-
-    // console.log(sTV.textContent);
-    // sT.classList.remove('bg-white');
-    // sT.classList.add('sub-pseudo');
-    // subtasks[state] = sTV.textContent;
+    console.log(subtaskValue.textContent);
+    subtasks[state] = subtaskValue.textContent;
 }
 
 /**
