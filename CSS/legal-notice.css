@@ -1,4 +1,4 @@
-.main-div-legel-notice {
+.main-div-legal-notice {
     position: absolute;
     top: 180px;
     left: 328px;
@@ -9,4 +9,41 @@
 
 .spacing-bottom {
     padding-bottom: 128px;
+}
+
+p { word-break: break-all; }
+
+/* @media only screen and (max-width: 800px) {
+
+    .main-div-legal-notice{
+        top:80px;
+        left:0;
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+  
+} */
+
+@media only screen and (max-width: 600px) {
+    div.main-div-legal-notice > div > span { font-size: 47px; }
+    
+    p, ul { font-size: 16px; }
+
+    h2 { font-size: 30px; }
+}
+
+@media only screen and (max-width: 480px) {
+    div.main-div-legal-notice > div > span { font-size: 41px; }
+    
+    h2 { font-size: 24px; }
+}
+
+@media only screen and (max-width: 400px) {
+    div.main-div-legal-notice > div > span { font-size: 36px; }
+    
+    h2 { font-size: 20px; }
+}
+
+@media only screen and (max-width: 350px) {
+    div.main-div-legal-notice > div > span { font-size: 27px; }   
 }

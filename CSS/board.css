@@ -6,7 +6,10 @@
 
 .main-div-board > div { padding: 64px 80px; }
 
-.drag-drop > div { min-width: 286px; }
+.drag-drop > div { 
+    width: 246px; 
+    min-height: 200px;
+}
 
 .addTask-btn { padding: 8px 16px !important; }
 

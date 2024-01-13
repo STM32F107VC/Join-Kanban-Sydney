@@ -233,7 +233,7 @@ function editSubtask(state) {
     let deleteImg = document.getElementById(`delete${state}`);
 
 
-    replaceImg.id = 'save' + state;
+    // replaceImg.id = 'save' + state;
     replaceImg.removeEventListener('click', clickHandlerEdit);
     replaceImg.src = 'assets/img/subtasks_tick.svg';
     replaceImg.addEventListener('click', function () { clickHandlerSave(state) });
@@ -245,7 +245,6 @@ function editSubtask(state) {
     subtaskValue.setAttribute('contenteditable', 'true');
     subtask.classList.add('bg-white');
     subtask.classList.remove('sub-pseudo');
-    // if (state == 1) { state = undefined; }
 }
 
 
@@ -253,10 +252,10 @@ function saveSubtaskChanges(state) {
     console.log('Entered saveSubtaskChanges function.', state);
     let subtask = document.getElementById(`subtask${state}`);
     let subtaskValue = document.getElementById(`value${state}`);
-    let replaceImg = document.getElementById(`save${state}`);
+    let replaceImg = document.getElementById(`edite${state}`);
     let deleteImg = document.getElementById(`delete${state}`);
 
-    replaceImg.id = 'edite' + state;
+    // replaceImg.id = 'edite' + state;
     replaceImg.removeEventListener('click', clickHandlerSave);
     replaceImg.src = '/assets/img/subtasks_pencil.svg';
     replaceImg.addEventListener('click', clickHandlerEdit);
