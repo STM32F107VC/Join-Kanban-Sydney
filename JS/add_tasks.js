@@ -192,16 +192,16 @@ function addSubtask() {
         state = subtasks.length - 1;
         list.innerHTML += subtaskTemplate(state, inputValue);
         let editImg = document.getElementById(`edite${state}`);
-        editImg.addEventListener('click', clickHandlerEdit, false);
+        editImg.addEventListener('click', clickHandlerEdit);
     } else { console.log('Reached maximum of insertable subtasks.'); }
     clearSubtasks(inputValue);
 }
 
-function clickHandlerEdit(event) {
+function clickHandlerEdit() {
     editSubtask(state);
 }
 
-function clickHandlerSave(event) {
+function clickHandlerSave(state) {
     saveSubtaskChanges(state);
 }
 
@@ -231,14 +231,21 @@ function editSubtask(state) {
     let subtaskValue = document.getElementById(`value${state}`);
     let replaceImg = document.getElementById(`edite${state}`);
     let deleteImg = document.getElementById(`delete${state}`);
-    replaceImg.removeEventListener('click', clickHandlerEdit, false);
+
+
+    replaceImg.id = 'save' + state;
+    replaceImg.removeEventListener('click', clickHandlerEdit);
     replaceImg.src = 'assets/img/subtasks_tick.svg';
-    replaceImg.addEventListener('click', clickHandlerSave, false);
+    replaceImg.addEventListener('click', function () { clickHandlerSave(state) });
+
+
+
     replaceImg.classList.add('icon-hover');
     deleteImg.classList.add('icon-hover');
     subtaskValue.setAttribute('contenteditable', 'true');
     subtask.classList.add('bg-white');
     subtask.classList.remove('sub-pseudo');
+    // if (state == 1) { state = undefined; }
 }
 
 
@@ -246,11 +253,14 @@ function saveSubtaskChanges(state) {
     console.log('Entered saveSubtaskChanges function.', state);
     let subtask = document.getElementById(`subtask${state}`);
     let subtaskValue = document.getElementById(`value${state}`);
-    let replaceImg = document.getElementById(`edite${state}`);
+    let replaceImg = document.getElementById(`save${state}`);
     let deleteImg = document.getElementById(`delete${state}`);
-    replaceImg.removeEventListener('click', clickHandlerSave, false);
+
+    replaceImg.id = 'edite' + state;
+    replaceImg.removeEventListener('click', clickHandlerSave);
     replaceImg.src = '/assets/img/subtasks_pencil.svg';
-    replaceImg.addEventListener('click', clickHandlerEdit, false);
+    replaceImg.addEventListener('click', clickHandlerEdit);
+
     replaceImg.classList.remove('icon-hover');
     deleteImg.classList.remove('icon-hover');
     subtaskValue.removeAttribute('contenteditable');
