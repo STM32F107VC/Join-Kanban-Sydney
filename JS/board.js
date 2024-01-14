@@ -25,21 +25,55 @@ function loadToBacklog() {
     }
 }
 
+/**
+ * Render tasks to board
+ * @param {JSON} task JSON with all informations of a task
+ * @returns 
+ */
 function taskTemplate(task) {
     return /*html*/`
-    <div class="task flex flex-column ft-general" id="drag1" draggable='true'  ondragstart='drag(event)'>
-        <div style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white mb-24px">${task['Category']}</div>
-        <div class="task-title fs-16px fw-700">${task['Title']}</div>
-        <div class="flex x-start">${task['Description']}</div>
-        <div class="flex x-space-betw">
-            <div>bar</div> 
-            <div>1/2</div>
-        </div>
-        <div class="flex x-space-betw">
-            <div></div>
-            <img src="assets/img/prio-indicator-${task['Prio']}.svg" alt="priority ${task['Prio']}">
-        </div>
-    </div>`;
+                    <div class="task flex flex-column ft-general" id="drag1" draggable='true'  ondragstart='drag(event)'>
+                        <div style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white mb-24px">${task['Category']}</div>
+                        <div class="task-title fs-16px fw-700 mb-8px">${task['Title']}</div>
+                        <div class="flex x-start mb-24px">${task['Description']}</div>
+                        <div class="subtasks flex x-space-betw y-center fs-12px mb-24px">
+                            <progress value="${getAmounTOfSubtasks(task)}" max="100"></progress> 
+                            <span>${getSubtasks(task)}/2 Subtasks</span>
+                        </div>
+                        <div class="flex x-space-betw">
+                            <div></div>
+                            <img src="assets/img/prio-indicator-${task['Prio']}.svg" alt="priority ${task['Prio']}">
+                        </div>
+                    </div>`;
+}
+
+/**
+ * Check if there are one or two subtasks to return
+ * the number for progress bar. 1 Subtask: value = 50;
+ * 2. Subtask: value = 100;
+ * @param {*} t 
+ * @returns 
+ */
+function getAmounTOfSubtasks(t) {
+    let length = t['Subtasks'].length;
+    if (length == 1) {
+        let percent = 50;
+        return percent;
+    } else if (length == 2) {
+        let percent = 100;
+        return percent;
+    }
+}
+
+/**
+ * Check length of subtask array and return it as a number
+ * Possible numbers 0, 1 and 2. 
+ * If it's 1 there is 1 additional subtask added to the task.
+ * If it's 2 there are two additional subtasks added to the task.
+ * If it's 0 there is no additional subtak added to the task.
+ */
+function getSubtasks(t) {
+    return t['Subtasks'].length;
 }
 
 function allowDrop(ev) {
