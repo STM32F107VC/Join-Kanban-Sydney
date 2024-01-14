@@ -4,26 +4,9 @@
     left: 328px;
 }
 
-.main-div-board > div { 
-    padding-bottom: 64px; 
-}
-
-.drag-drop > div { 
-    width: 246px; 
-    /* min-height: 200px; */
-}
-
-.content-column {
-    height: 100vh;
-}
+.main-div-board > div { padding-bottom: 64px; }
 
 .addTask-btn { padding: 8px 16px !important; }
-
-.plus {
-    padding: 3px;
-    border-radius: 8px;
-    border: 2px solid var(--version-2-main-color, #2A3647);
-}
 
 .search-field {
     border-radius: 10px;
@@ -31,4 +14,44 @@
     background: #FFF;
     padding: 16px 8px;
     border-radius: 10px;
+}
+
+.plus {
+    padding: 3px;
+    border-radius: 8px;
+    border: 2px solid var(--version-2-main-color, #2A3647);
+}
+
+.content-column {
+    height: 100vh;
+    width: 252px;
+}
+
+.drag-drop > div { width: 246px; }
+
+.task {
+    width: 220px;
+    padding: 16px;
+    border-radius: 24px;
+    background: var(--white, #FFF);
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    gap: 10px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+.task > div {
+    /* width: 100%; */
+    display: flex;
+    /* justify-content: flex-start; */
+}
+
+.task-category {
+    width: fit-content;
+    padding: 4px 16px;
+    border-radius: 8px;
+}
+
+.task-title {
+    color: var(--Version-2-main-color, #2A3647);
 }

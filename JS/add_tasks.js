@@ -76,6 +76,7 @@ function addTask() {
     let assignedTo = document.getElementById('assigned-to');
     let date = document.getElementById('date');
     let category = document.getElementById('category');
+    let bgcCode = checkCategory(category);
     document.getElementById('submitBtn').disabled = true;
     tasks.push({
         "Title": title.value,
@@ -84,11 +85,27 @@ function addTask() {
         "Date": date.value,
         "Prio": oldImg,
         "Category": category.value,
+        "Bgc-Code": bgcCode,
         "Subtasks": subtasks
     });
     setToLocalStorage(tasks);
     resetAddTaskForm();
     document.getElementById('submitBtn').disabled = false;
+}
+
+/**
+ * 
+ * @param {*} c Includes the current category either 'User Story' or 'Technical Task'
+ * @returns The hexadecimal background color code
+ */
+function checkCategory(c) {
+    if (c.value == 'Technical Task') {
+        let bgcCode = '#1FD7C1';
+        return bgcCode;
+    } else {
+        let bgcCode = '#0038FF';
+        return bgcCode;
+    }
 }
 
 /**
