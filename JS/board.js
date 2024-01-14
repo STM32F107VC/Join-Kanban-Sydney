@@ -21,7 +21,7 @@ function loadToBacklog() {
     let backlog = document.getElementById('backlog');
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
-        backlog.innerHTML += taskTemplate(task);
+        backlog.innerHTML += taskTemplate(task, i);
     }
 }
 
@@ -30,9 +30,9 @@ function loadToBacklog() {
  * @param {JSON} task JSON with all informations of a task
  * @returns 
  */
-function taskTemplate(task) {
+function taskTemplate(task, i) {
     return /*html*/`
-                    <div class="task flex flex-column ft-general" id="drag1" draggable='true'  ondragstart='drag(event)'>
+                    <div id="task${i}" class="task flex flex-column ft-general" id="drag1" draggable='true'  ondragstart='drag(event)'>
                         <div style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white mb-24px">${task['Category']}</div>
                         <div class="task-title fs-16px fw-700 mb-8px">${task['Title']}</div>
                         <div class="flex x-start mb-24px">${task['Description']}</div>
@@ -42,9 +42,25 @@ function taskTemplate(task) {
                         </div>
                         <div class="flex x-space-betw">
                             <div></div>
-                            <img src="assets/img/prio-indicator-${task['Prio']}.svg" alt="priority ${task['Prio']}">
+                            ${renderPrioImg(task, i)}
                         </div>
                     </div>`;
+}
+
+
+/**
+ * Check if a priority state is selected. When selected, insert priority img,
+ * when no state selected, render image and hide to edit later and add a priotity state.
+ * @param {JSON} t Is a JSON with all feature of one task in it 
+ * @param {variable} i Index of current JSON-array place
+ * @returns 
+ */
+function renderPrioImg(t, i) {
+    if (t['Prio'] !== undefined) {
+        return /*html*/`<img src="assets/img/prio-indicator-${t['Prio']}.svg" alt="prio-${t['Prio']}">`;
+    } else {
+        return /*html*/`<img class="d-none" src="assets/img/prio-indicator-${t['Prio']}.svg" alt="prio-${t['Prio']}">`;
+    }
 }
 
 /**

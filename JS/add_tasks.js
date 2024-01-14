@@ -3,6 +3,7 @@ let prioImg;
 let firstClickedImg;
 let oldImg;
 let priorityStatus;
+let k = false;
 
 let state;
 
@@ -67,7 +68,7 @@ function buildAcronym(contact) {
 }
 
 /**
- * Function to add new tasks
+ * Function to add new tasks and save into tasks JSON-array
  * 
  */
 function addTask() {
@@ -214,17 +215,23 @@ function addSubtask() {
     clearSubtasks(inputValue);
 }
 
+/**
+ * Set the "click" eventlistener for edit tasks
+ */
 function clickHandlerEdit() {
     editSubtask(state);
 }
 
+/**
+ * Set the "click" eventlistener for saving tasks
+ */
 function clickHandlerSave(state) {
     saveSubtaskChanges(state);
 }
 
 /**
  * Template to render new subtask
- * @param {variable} state 
+ * @param {variable} state Index of the subtask
  * @param {string} inputValue 
  * @returns 
  */
@@ -248,15 +255,9 @@ function editSubtask(state) {
     let subtaskValue = document.getElementById(`value${state}`);
     let replaceImg = document.getElementById(`edite${state}`);
     let deleteImg = document.getElementById(`delete${state}`);
-
-
-    // replaceImg.id = 'save' + state;
     replaceImg.removeEventListener('click', clickHandlerEdit);
     replaceImg.src = 'assets/img/subtasks_tick.svg';
     replaceImg.addEventListener('click', function () { clickHandlerSave(state) });
-
-
-
     replaceImg.classList.add('icon-hover');
     deleteImg.classList.add('icon-hover');
     subtaskValue.setAttribute('contenteditable', 'true');
@@ -264,31 +265,28 @@ function editSubtask(state) {
     subtask.classList.remove('sub-pseudo');
 }
 
-
+/**
+ * Save changes made on a subtask
+ * @param {variable} state Index of the subtask
+ */
 function saveSubtaskChanges(state) {
-    console.log('Entered saveSubtaskChanges function.', state);
     let subtask = document.getElementById(`subtask${state}`);
     let subtaskValue = document.getElementById(`value${state}`);
     let replaceImg = document.getElementById(`edite${state}`);
     let deleteImg = document.getElementById(`delete${state}`);
-
-    // replaceImg.id = 'edite' + state;
     replaceImg.removeEventListener('click', clickHandlerSave);
     replaceImg.src = '/assets/img/subtasks_pencil.svg';
     replaceImg.addEventListener('click', clickHandlerEdit);
-
     replaceImg.classList.remove('icon-hover');
     deleteImg.classList.remove('icon-hover');
     subtaskValue.removeAttribute('contenteditable');
     subtask.classList.remove('bg-white');
     subtask.classList.add('sub-pseudo');
-
-    console.log(subtaskValue.textContent);
     subtasks[state] = subtaskValue.textContent;
 }
 
 /**
- * Clear subtask input field
+ * Clear subtasks input field
  * @param {string} inputValue
  */
 function clearSubtasks(inputValue) {
@@ -308,7 +306,7 @@ function deleteSubtask(x) {
 }
 
 /**
- * Cancle subtask
+ * Cancle subtask and clear input field
  */
 function cancleSubtask() {
     let subtask = document.getElementById('subtasks');
@@ -317,7 +315,6 @@ function cancleSubtask() {
 
 /**
  * Clear add task form
- * Not: fucntion not complete so far
  */
 function resetAddTaskForm() {
     document.getElementById('title').value = '';
