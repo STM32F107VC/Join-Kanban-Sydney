@@ -28,7 +28,7 @@ function loadToBacklog() {
 /**
  * Render tasks to board
  * @param {JSON} task JSON with all informations of a task
- * @returns 
+ * @returns Returns the rendered task
  */
 function taskTemplate(task, i) {
     return /*html*/`
@@ -36,8 +36,8 @@ function taskTemplate(task, i) {
                         <div style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white mb-24px">${task['Category']}</div>
                         <div class="task-title fs-16px fw-700 mb-8px">${task['Title']}</div>
                         <div class="flex x-start mb-24px">${task['Description']}</div>
-                        <div class="subtasks flex x-space-betw y-center fs-12px mb-24px">
-                            <progress value="${getAmounTOfSubtasks(task)}" max="100"></progress> 
+                        <div id="progress${i}" class="subtasks flex x-space-betw y-center fs-12px mb-24px">
+                            <progress id="progressBar${i}" value="${getAmounTOfSubtasks(task, i)}" max="100"></progress> 
                             <span>${getSubtasks(task)}/2 Subtasks</span>
                         </div>
                         <div class="flex x-space-betw">
@@ -47,13 +47,12 @@ function taskTemplate(task, i) {
                     </div>`;
 }
 
-
 /**
  * Check if a priority state is selected. When selected, insert priority img,
  * when no state selected, render image and hide to edit later and add a priotity state.
  * @param {JSON} t Is a JSON with all feature of one task in it 
  * @param {variable} i Index of current JSON-array place
- * @returns 
+ * @returns Returns the rendered img
  */
 function renderPrioImg(t, i) {
     if (t['Prio'] !== undefined) {
@@ -67,10 +66,10 @@ function renderPrioImg(t, i) {
  * Check if there are one or two subtasks to return
  * the number for progress bar. 1 Subtask: value = 50;
  * 2. Subtask: value = 100;
- * @param {*} t 
- * @returns 
+ * @param {*} t Is a JSON with all feature of one task in it 
+ * @returns Returns the percent value
  */
-function getAmounTOfSubtasks(t) {
+function getAmounTOfSubtasks(t, i) {
     let length = t['Subtasks'].length;
     if (length == 1) {
         let percent = 50;
