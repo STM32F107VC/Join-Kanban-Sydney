@@ -4,11 +4,17 @@
     left: 328px;
 }
 
-.main-div-board > div { padding: 64px 80px; }
+.main-div-board > div { 
+    padding-bottom: 64px; 
+}
 
 .drag-drop > div { 
     width: 246px; 
-    min-height: 200px;
+    /* min-height: 200px; */
+}
+
+.content-column {
+    height: 100vh;
 }
 
 .addTask-btn { padding: 8px 16px !important; }

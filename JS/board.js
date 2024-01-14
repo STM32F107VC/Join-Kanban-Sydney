@@ -22,7 +22,7 @@ function loadToBacklog() {
     for (let i = 0; i < tasksInBoard.length; i++) {
         let subtask = tasksInBoard[i];
         backlog.innerHTML += /*html*/`
-            <div id="drag1" draggable='true' ondragstart='drag(event)'>${subtask['Title']}</div>`;
+            <div id="drag1" draggable='true'  ondragstart='drag(event)'>${subtask['Title']}</div>`;
     }
 }
 
@@ -36,6 +36,8 @@ function drag(ev) {
 
 function drop(ev) {
     ev.preventDefault();
-    let data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+    if (ev.target.hasChildNodes()) {
+        let data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
 }
