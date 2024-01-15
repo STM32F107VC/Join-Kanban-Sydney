@@ -22,6 +22,7 @@ function loadToBacklog() {
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         backlog.innerHTML += taskTemplate(task, i);
+        renderAssignedContacts(task, i);
     }
 }
 
@@ -41,29 +42,32 @@ function taskTemplate(task, i) {
                             <span>${getSubtasks(task)}/2 Subtasks</span>
                         </div>
                         <div class="flex x-space-betw">
-                            <div>${renderAssignedContacts(task, i)}</div>
+                            <div id="assignedContact${i}" class="flex pl-6px"></div>
                             ${renderPrioImg(task, i)}
                         </div>
                     </div>`;
 }
 
+// ${renderAssignedContacts(task, i)}
+
 function renderAssignedContacts(t, i) {
+    let showContacts = document.getElementById(`assignedContact${i}`);
     for (let j = 0; j < t['Assigned-to'].length; j++) {
         let contact = t['Assigned-to'][j];
+        console.log(contact);
         let array = buildAcronym(contact);
         let acronymUpperCase = array[0];
         let bgc = array[1];
-        return /*html*/`
+
+        showContacts.innerHTML += /*html*/`
             <div id='${acronymUpperCase}${i}' class="acronym acronym-small acronym-dimensions flex x-center y-center fs-12px" style="background-color: #${bgc}">${acronymUpperCase}</div>
         `;
+        //     return /*html*/`
+        //     <div id='${acronymUpperCase}${i}' class="acronym acronym-small acronym-dimensions flex x-center y-center fs-12px" style="background-color: #${bgc}">${acronymUpperCase}</div>
+        // `;
         // console.log(buildAcronym(contact));
-        // console.log(contact); 
 
     }
-    // let contact = t['Assigned-to'];
-    // return /*html*/`
-
-    // `;
 }
 
 function buildAcronym(contact) {
