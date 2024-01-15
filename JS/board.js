@@ -33,10 +33,10 @@ function loadToBacklog() {
  */
 function taskTemplate(task, i) {
     return /*html*/`
-                    <div id="task${i}" class="task flex flex-column ft-general" id="drag1" draggable='true'  ondragstart='drag(event)'>
-                        <div style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-16px fw-400 mb-24px">${task['Category']}</div>
-                        <div class="task-title fs-16px fw-700 mb-8px">${task['Title']}</div>
-                        <div class="flex x-start mb-24px fs-16px col-grey">${task['Description']}</div>
+                    <div id="task${i}" onclick="showTaskOverlay(${i});" class="task flex flex-column ft-general" id="drag1" draggable='true'  ondragstart='drag(event)'>
+                        <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-16px fw-400 mb-24px">${task['Category']}</div>
+                        <div id="taskTitle${i}}" class="task-title fs-16px fw-700 mb-8px">${task['Title']}</div>
+                        <div id="taskDescription${i}}" class="flex x-start mb-24px fs-16px col-grey">${task['Description']}</div>
                         <div id="progress${i}" class="subtasks flex x-space-betw y-center fs-12px mb-24px">
                             <progress id="progressBar${i}" value="${getAmounTOfSubtasks(task, i)}" max="100"></progress> 
                             <span>${getSubtasks(task)}/2 Subtasks</span>
@@ -48,28 +48,59 @@ function taskTemplate(task, i) {
                     </div>`;
 }
 
-// ${renderAssignedContacts(task, i)}
+function showTaskOverlay(i) {
+    let div = document.getElementById('tasks-overlay-view');
+    div.innerHTML = /*html*/`
+        <div>
+            <div>
+                <div>hallo welt</div>
+                <div></div>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    `;
+}
 
+/**
+ * Get contacts to render in another step
+ * @param {JSON} t Includes a complete task
+ * @param {variable} i Is the contact index
+ */
 function renderAssignedContacts(t, i) {
     let showContacts = document.getElementById(`assignedContact${i}`);
     for (let j = 0; j < t['Assigned-to'].length; j++) {
         let contact = t['Assigned-to'][j];
-        console.log(contact);
+        // console.log(contact);
         let array = buildAcronym(contact);
         let acronymUpperCase = array[0];
         let bgc = array[1];
-
-        showContacts.innerHTML += /*html*/`
-            <div id='${acronymUpperCase}${i}' class="acronym acronym-small acronym-dimensions flex x-center y-center fs-12px" style="background-color: #${bgc}">${acronymUpperCase}</div>
-        `;
-        //     return /*html*/`
-        //     <div id='${acronymUpperCase}${i}' class="acronym acronym-small acronym-dimensions flex x-center y-center fs-12px" style="background-color: #${bgc}">${acronymUpperCase}</div>
-        // `;
-        // console.log(buildAcronym(contact));
-
+        showContacts.innerHTML += assigneContactsTemplate(acronymUpperCase, i, bgc);
     }
 }
 
+/**
+ * Render contacts
+ * @param {variable} aUC Includes the acronym of contact
+ * @param {variable} i Is the contact index
+ * @param {string} bgc Is the background-color code
+ * @returns 
+ */
+function assigneContactsTemplate(aUC, i, bgc) {
+    return /*html*/`
+                    <div id='${aUC}${i}' class="acronym acronym-small acronym-dimensions flex      x-center y-center fs-12px" style="background-color: #${bgc}">${aUC}
+                    </div>`;
+}
+
+/**
+ * Generate acronym for example, Max Mustermann => MM
+ * @param {JSON} contact JSON with all values a contact contains
+ * @returns Returns the built acronym and background-color
+ */
 function buildAcronym(contact) {
     let bgc = contact['background-color'];
     let str = contact['name'].match(/\b(\w)/g);

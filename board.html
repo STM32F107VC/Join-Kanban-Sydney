@@ -24,6 +24,9 @@
 <body onload="init_board('board-link');">
     <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
 
+    <!-- Tasks overlay view -->
+    <div id="tasks-overlay-view">teesttt</div>
+
     <div class="main-div-board">
         <!-- Titel and search field -->
         <div class="search-section flex x-space-betw">
@@ -40,7 +43,7 @@
             <div>
                 <div class="flex x-space-betw y-center mb-16px">
                     <span class="ft-general fs-20px fw-700">To do</span>
-                    <img class="plus" src="assets/img/plus.png" alt="plus">
+                    <img class="plus c-pointer" src="assets/img/plus-button.svg" alt="plus">
                 </div>
                 <div class="content-column" id="backlog" ondrop="drop(event)" ondragover="allowDrop(event)">
                 </div>
@@ -49,7 +52,7 @@
             <div>
                 <div class="flex x-space-betw y-center mb-16px">
                     <span class="ft-general fs-20px fw-700">In progress</span>
-                    <img class=" plus" src="assets/img/plus.png" alt="plus">
+                    <img class="plus c-pointer" src="assets/img/plus-button.svg" alt="plus">
                 </div>
                 <div class="content-column" id="in-progress" ondrop="drop(event)" ondragover="allowDrop(event)">
 
@@ -59,7 +62,7 @@
             <div>
                 <div class="flex x-space-betw y-center mb-16px">
                     <span class="ft-general fs-20px fw-700"> Await feedback</span>
-                    <img class="plus" src="assets/img/plus.png" alt="plus">
+                    <img class="plus c-pointer" src="assets/img/plus-button.svg" alt="plus">
                 </div>
                 <div class="content-column" id="await-feedback" ondrop="drop(event)" ondragover="allowDrop(event)">
 
@@ -69,7 +72,7 @@
             <div>
                 <div class="flex x-space-betw y-center mb-16px">
                     <span class="ft-general fs-20px fw-700">Done</span>
-                    <img class="plus" src="assets/img/plus.png" alt="plus">
+                    <img class="plus c-pointer" src="assets/img/plus-button.svg" alt="plus">
                 </div>
                 <div class="content-column" id="done" ondragover="allowDrop(event)" ondrop="drop(event)">
 
