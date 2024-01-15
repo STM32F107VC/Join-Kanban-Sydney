@@ -9,6 +9,7 @@ let state;
 
 let tasks = [];
 let subtasks = [];
+let assignedContacts = [];
 
 /**
  * Init function called on body="onload" to load
@@ -50,6 +51,7 @@ function showAssignedContact(i) {
             document.getElementById(`${acronymUpperCase}${i}`).classList.remove('alreadyAssigned');
         }, 2000);
     } else {
+        assignedContacts.push(contact);
         selectedContacts.innerHTML += /*html*/`
         <div id='${acronymUpperCase}${i}' class="acronym acronym-small flex x-center y-center mr-4px" style="background-color: #${bgc}">${acronymUpperCase}</div>`;
     }
@@ -58,7 +60,7 @@ function showAssignedContact(i) {
 /**
  * Generate acronym for example, Max Mustermann => MM
  * @param {JSON} contact JSON with all values a contact contains
- * @returns Returns the built acronym and background-color from
+ * @returns Returns the built acronym and background-color
  */
 function buildAcronym(contact) {
     let bgc = contact['background-color'];
@@ -74,7 +76,7 @@ function buildAcronym(contact) {
 function addTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('textarea');
-    let assignedTo = document.getElementById('assigned-to');
+    // let assignedTo = document.getElementById('assigned-to');
     let date = document.getElementById('date');
     let category = document.getElementById('category');
     let bgcCode = checkCategory(category);
@@ -82,7 +84,7 @@ function addTask() {
     tasks.push({
         "Title": title.value,
         "Description": description.value,
-        "Assigned-to": assignedTo.value,
+        "Assigned-to": assignedContacts,
         "Date": date.value,
         "Prio": oldImg,
         "Category": category.value,
