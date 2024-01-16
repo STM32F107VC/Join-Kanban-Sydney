@@ -123,6 +123,8 @@ a { text-decoration: none; }
 
 .fs-21px { font-size: 21px; }
 
+.fs-23px { font-size: 23px; }
+
 .fs-27px { font-size: 27px; }
 
 .fs-47px { font-size: 47px; }
@@ -257,7 +259,8 @@ button,
 .go-back:hover {
     background-color: grey; 
     border-radius: 50%;
-    background-color:  var(--Style, #D1D1D1);
+    /* background-color:  var(--Style, #D1D1D1); */
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .go-back { cursor: pointer; }
@@ -269,3 +272,14 @@ button,
 
 /* Classes for color */
 .bgc-darkblue { background-color: #091931; }
+
+/* Classes with transformation effects */
+.x-translate {
+    transform: translateX(200vh);
+    transition: transform 250ms ease-in-out;
+}
+
+/* .x-translate-zero {
+    transform: translateX(0) !important;
+    transition: transform 250ms ease-in-out;
+} */

@@ -27,16 +27,26 @@ function loadToBacklog() {
 }
 
 /**
+ * Close tasks overlay menu
+ * 
+ */
+function closeShowTaskOverlay() {
+    document.getElementById('main-div-board').classList.remove('d-none');
+    document.getElementById('body-board').classList.remove("flex", "x-center", "y-center");
+    document.getElementById('side-and-topbar-board').classList.remove("opacity", "z-ind--1");
+}
+
+/**
  * Render tasks to board
  * @param {JSON} task JSON with all informations of a task
  * @returns Returns the rendered task
  */
 function taskTemplate(task, i) {
     return /*html*/`
-                    <div id="task${i}" onclick="showTaskOverlay(${i});" class="task flex flex-column ft-general" id="drag1" draggable='true'  ondragstart='drag(event)'>
+                    <div id="task${i}" onclick="showTaskOverlay(${i})" class="task flex flex-column ft-general" id="drag1" draggable='true'  ondragstart='drag(event)'>
                         <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-16px fw-400 mb-24px">${task['Category']}</div>
-                        <div id="taskTitle${i}}" class="task-title fs-16px fw-700 mb-8px">${task['Title']}</div>
-                        <div id="taskDescription${i}}" class="flex x-start mb-24px fs-16px col-grey">${task['Description']}</div>
+                        <div id="taskTitle${i}" class="task-title fs-16px fw-700 mb-8px">${task['Title']}</div>
+                        <div id="taskDescription${i}" class="flex x-start mb-24px fs-16px col-grey">${task['Description']}</div>
                         <div id="progress${i}" class="subtasks flex x-space-betw y-center fs-12px mb-24px">
                             <progress id="progressBar${i}" value="${getAmounTOfSubtasks(task, i)}" max="100"></progress> 
                             <span>${getSubtasks(task)}/2 Subtasks</span>
@@ -49,15 +59,30 @@ function taskTemplate(task, i) {
 }
 
 function showTaskOverlay(i) {
+    console.log('showTaskOVerlay');
+    document.getElementById('main-div-board').classList.add('d-none');
+    document.getElementById('body-board').classList.add("flex", "x-center", "y-center");
+    document.getElementById('side-and-topbar-board').classList.add("opacity", "z-ind--1");
+
+    let task = tasks[i];
+    // console.log(task);
+    let category = document.getElementById(`category${i}`).innerHTML;
+    let title = document.getElementById(`taskTitle${i}`).innerHTML;
+
+
     let div = document.getElementById('tasks-overlay-view');
+    div.classList.remove('d-none');
+
     div.innerHTML = /*html*/`
         <div>
-            <div>
-                <div>hallo welt</div>
-                <div></div>
+            <div class="flex x-space-betw y-center">
+            <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-23px fw-400 mb-24px">${task['Category']}</div>
+                <div class="close-cross"> <img onclick="closeShowTaskOverlay()" class="p-8px "
+                        src="assets/img/close.png" alt="close"></div>
             </div>
-            <div></div>
-            <div></div>
+            </div>
+            <div>${category}</div>
+            <div>${title}</div>
             <div></div>
             <div></div>
             <div></div>
@@ -92,7 +117,7 @@ function renderAssignedContacts(t, i) {
  */
 function assigneContactsTemplate(aUC, i, bgc) {
     return /*html*/`
-                    <div id='${aUC}${i}' class="acronym acronym-small acronym-dimensions flex      x-center y-center fs-12px" style="background-color: #${bgc}">${aUC}
+                    <div id='${aUC}${i}' class="acronym acronym-small acronym-dimensions flex x-center y-center fs-12px" style="background-color: #${bgc}">${aUC}
                     </div>`;
 }
 
