@@ -91,6 +91,8 @@ a { text-decoration: none; }
 
 .p-btn { padding: 15px 16px !important; }
 
+.p-zero { padding: 0 !important;}
+
 .p-4px { padding: 4px; }
 
 .p-8px { padding: 8px; }

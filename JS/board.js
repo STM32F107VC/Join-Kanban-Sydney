@@ -74,17 +74,17 @@ function showTaskOverlay(i) {
     div.classList.remove('d-none');
 
     div.innerHTML = /*html*/`
-        <div>
+        <div class="ft-general">
             <div class="flex x-space-betw y-center">
-            <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-23px fw-400 mb-24px">${task['Category']}</div>
-                <div class="close-cross"> <img onclick="closeShowTaskOverlay()" class="p-8px "
+            <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-23px fw-400">${category}</div>
+                <div class="close-cross p-zero"> <img onclick="closeShowTaskOverlay()" class="p-8px"
                         src="assets/img/close.png" alt="close"></div>
             </div>
             </div>
-            <div>${category}</div>
-            <div>${title}</div>
-            <div></div>
-            <div></div>
+            <div class="fs-61px fw-700">${task['Title']}</div>
+            <div>${task['Description']}</div>
+            <div>${task['Date']}</div>
+            <div>${task['Priority']}</div>
             <div></div>
             <div></div>
         </div>

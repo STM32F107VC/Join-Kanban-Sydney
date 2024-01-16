@@ -88,6 +88,8 @@ progress {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
 }
 
+
+
 progress::-webkit-progress-value {
     border-radius: 16px;
     background: var(--Version-2-main-color, #4589FF);
