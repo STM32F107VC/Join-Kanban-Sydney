@@ -22,7 +22,7 @@ function loadToBacklog() {
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         backlog.innerHTML += taskTemplate(task, i);
-        renderAssignedContacts(task, i);
+        renderAssignedContacts(task, i, false);
     }
 }
 
@@ -31,6 +31,7 @@ function loadToBacklog() {
  * 
  */
 function closeShowTaskOverlay() {
+    document.getElementById('tasks-overlay-view').classList.add('d-none');
     document.getElementById('main-div-board').classList.remove('d-none');
     document.getElementById('body-board').classList.remove("flex", "x-center", "y-center");
     document.getElementById('side-and-topbar-board').classList.remove("opacity", "z-ind--1");
@@ -58,17 +59,18 @@ function taskTemplate(task, i) {
                     </div>`;
 }
 
+/**
+ * 
+ * @param {variable} i Is the task index
+ */
 function showTaskOverlay(i) {
-    console.log('showTaskOVerlay');
     document.getElementById('main-div-board').classList.add('d-none');
     document.getElementById('body-board').classList.add("flex", "x-center", "y-center");
     document.getElementById('side-and-topbar-board').classList.add("opacity", "z-ind--1");
 
     let task = tasks[i];
-    // console.log(task);
-    let category = document.getElementById(`category${i}`).innerHTML;
-    let title = document.getElementById(`taskTitle${i}`).innerHTML;
-
+    let str = task['Prio'];
+    let priority = str.charAt(0).toUpperCase() + str.slice(1);
 
     let div = document.getElementById('tasks-overlay-view');
     div.classList.remove('d-none');
@@ -76,19 +78,25 @@ function showTaskOverlay(i) {
     div.innerHTML = /*html*/`
         <div class="ft-general">
             <div class="flex x-space-betw y-center">
-            <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-23px fw-400">${category}</div>
+                <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-23px fw-400">${task['Category']}</div>
                 <div class="close-cross p-zero"> <img onclick="closeShowTaskOverlay()" class="p-8px"
                         src="assets/img/close.png" alt="close"></div>
             </div>
             </div>
             <div class="fs-61px fw-700">${task['Title']}</div>
-            <div>${task['Description']}</div>
-            <div>${task['Date']}</div>
-            <div>${task['Priority']}</div>
-            <div></div>
+            <div class="fs-20px fw-400">${task['Description']}</div>
+            <div><span class="col-grey-blue">Due date:</span>&nbsp;&nbsp;&nbsp;${task['Date']}</div>
+            <div class="flex y-center">
+                <span class="col-grey-blue">Priority:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${priority}&nbsp;
+                <img src="assets/img/prio-indicator-${priority}.svg" alt="prio-${priority}">
+            </div>
+            <div id="assignedContactPreView${i}">
+                <div class="mb-8px col-grey-blue">Assigned To:</div>
+            </div>
             <div></div>
         </div>
     `;
+    renderAssignedContacts(task, i, true);
 }
 
 /**
@@ -96,29 +104,49 @@ function showTaskOverlay(i) {
  * @param {JSON} t Includes a complete task
  * @param {variable} i Is the contact index
  */
-function renderAssignedContacts(t, i) {
-    let showContacts = document.getElementById(`assignedContact${i}`);
+function renderAssignedContacts(t, i, flag) {
+    let showContacts;
+    if (!flag) showContacts = document.getElementById(`assignedContact${i}`);
+    else if (flag) showContacts = document.getElementById(`assignedContactPreView${i}`);
     for (let j = 0; j < t['Assigned-to'].length; j++) {
         let contact = t['Assigned-to'][j];
-        // console.log(contact);
         let array = buildAcronym(contact);
         let acronymUpperCase = array[0];
         let bgc = array[1];
-        showContacts.innerHTML += assigneContactsTemplate(acronymUpperCase, i, bgc);
+        if (!flag) showContacts.innerHTML += assigneContactsTemplate(acronymUpperCase, i, bgc);
+        else if (flag) showContacts.innerHTML += assigneContactsTemplatePreview(contact, acronymUpperCase, i, bgc);
     }
 }
-
 /**
  * Render contacts
  * @param {variable} aUC Includes the acronym of contact
  * @param {variable} i Is the contact index
  * @param {string} bgc Is the background-color code
- * @returns 
+ * @returns Rendered contact info sign includes acronym and
+ *          a background color in a circle
  */
 function assigneContactsTemplate(aUC, i, bgc) {
     return /*html*/`
-                    <div id='${aUC}${i}' class="acronym acronym-small acronym-dimensions flex x-center y-center fs-12px" style="background-color: #${bgc}">${aUC}
+                    <div id='${aUC}${i}' class="acronym acronym-dimensions-small flex x-center y-center fs-12px " style="background-color: #${bgc}">${aUC}
                     </div>`;
+}
+
+
+/**
+* Render contacts
+ * @param {variable} aUC Includes the acronym of contact
+ * @param {variable} i Is the contact index
+ * @param {string} bgc Is the background-color code
+ * @returns Rendered contact info sign includes acronym and
+ *          a background color in a circle
+ */
+function assigneContactsTemplatePreview(c, aUC, i, bgc) {
+    return /*html*/`
+                <div  class="flex y-center contacts-padding">
+                    <div id='${aUC}${i}' class="acronym acronym-dimensions-medium flex x-center y-center fs-12px" style="background-color: #${bgc}">${aUC}
+                    </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>${c['name']}</span>
+                </div>`;
 }
 
 /**

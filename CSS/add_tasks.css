@@ -49,8 +49,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
-.acronym-small { padding: 6px; }
-
 .alreadyAssigned {
     border-color: rgb(0, 255, 38) !important;
     transition: border-color 500ms ease-in;

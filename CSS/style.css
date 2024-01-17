@@ -95,6 +95,8 @@ a { text-decoration: none; }
 
 .p-4px { padding: 4px; }
 
+.p-6px { padding: 6px; }
+
 .p-8px { padding: 8px; }
 
 .p-12px { padding: 12px; }
@@ -274,6 +276,8 @@ button,
 
 /* Classes for color */
 .bgc-darkblue { background-color: #091931; }
+
+.col-grey-blue { color: var(--menu-color, #42526E); }
 
 /* Classes with transformation effects */
 .x-translate {

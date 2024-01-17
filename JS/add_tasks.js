@@ -53,7 +53,7 @@ function showAssignedContact(i) {
     } else {
         assignedContacts.push(contact);
         selectedContacts.innerHTML += /*html*/`
-        <div id='${acronymUpperCase}${i}' class="acronym acronym-small flex x-center y-center mr-4px" style="background-color: #${bgc}">${acronymUpperCase}</div>`;
+        <div id='${acronymUpperCase}${i}' class="acronym p-6px flex x-center y-center mr-4px" style="background-color: #${bgc}">${acronymUpperCase}</div>`;
     }
 }
 
