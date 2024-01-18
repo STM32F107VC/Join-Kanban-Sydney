@@ -87,9 +87,10 @@ progress {
     appearance: none;
 }
 
+.remove-margin { margin: 0 !important; }
+
 #tasks-overlay-view {
     width: 445px;
-    height: 775px;
     padding: 48px 40px;
     border-radius: 30px;
     background: #FFF;

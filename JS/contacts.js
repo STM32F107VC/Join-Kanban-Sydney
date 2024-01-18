@@ -223,7 +223,8 @@ function addContactClasses(contact, divDetails, currentId) {
 function renderContactDetails(n, e, auc, p, id, j) {
     return /*html*/`
         <div id="modify-contact" class="edit-contact flex y-center mb-24px">
-            <div class="ft-general fs-47px fw-500 col-white mr-54px" style='background-color: #${contacts[j]['background-color']}'><span>${auc}</span></div>
+            <div class="ft-general fs-47px fw-500 col-white mr-54px" style='background-color: #${contacts[j]['background-color']}'>
+                <span>${auc}</span></div>
             <div>
                 <div class="ft-general fs-47px fw-500 mb-12px">${n}</div>
                 <div class="flex gap-16px">

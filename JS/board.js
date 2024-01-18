@@ -49,7 +49,7 @@ function taskTemplate(task, i) {
                         <div id="taskTitle${i}" class="task-title fs-16px fw-700 mb-8px">${task['Title']}</div>
                         <div id="taskDescription${i}" class="flex x-start mb-24px fs-16px col-grey">${task['Description']}</div>
                         <div id="progress${i}" class="subtasks flex x-space-betw y-center fs-12px mb-24px">
-                            <progress id="progressBar${i}" value="${getAmounTOfSubtasks(task, i)}" max="100"></progress> 
+                            <progress id="progressBar${i}" value="${getAmounTOfSubtasks(task)}" max="100"></progress> 
                             <span>${getSubtasks(task)}/2 Subtasks</span>
                         </div>
                         <div class="flex x-space-betw">
@@ -81,7 +81,7 @@ function showTaskOverlay(i) {
                 <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-23px fw-400">${task['Category']}</div>
                 <div class="close-cross p-zero"> <img onclick="closeShowTaskOverlay()" class="p-8px"
                         src="assets/img/close.png" alt="close"></div>
-            </div>
+                </div>
             </div>
             <div class="fs-61px fw-700">${task['Title']}</div>
             <div class="fs-20px fw-400">${task['Description']}</div>
@@ -93,10 +93,27 @@ function showTaskOverlay(i) {
             <div id="assignedContactPreView${i}">
                 <div class="mb-8px col-grey-blue">Assigned To:</div>
             </div>
-            <div></div>
+            <div>
+                <div class="mb-8px col-grey-blue">Subtasks</div>
+                <div id="renderSubtask${i}"></div>
+            </div>
+            <div class="flex x-end gap-16px remove-margin">
+                    <div class="flex col-black y-center gap-8px">
+                        <img src="/assets/img/edit.png" alt="Edit">
+                        <span class="dark-blue">Edit</span>
+                    </div>
+                    
+                        <img src="/assets/img/subtasks_vector.svg" alt="separator">
+                   
+                    <div class="flex col-black y-center gap-8px">
+                        <img src="/assets/img/delete.png" alt="delete">
+                        <span class="dark-blue">Delete</span>
+                    </div>
+            </div>
         </div>
     `;
     renderAssignedContacts(task, i, true);
+    renderSubtask(task, i);
 }
 
 /**
@@ -117,6 +134,19 @@ function renderAssignedContacts(t, i, flag) {
         else if (flag) showContacts.innerHTML += assigneContactsTemplatePreview(contact, acronymUpperCase, i, bgc);
     }
 }
+//------------------------------------------------------
+function renderSubtask(t, i) {
+    let div = document.getElementById(`renderSubtask${i}`);
+    let subtasks = t['Subtasks'];
+    for (let i = 0; i < subtasks.length; i++) {
+        let subtask = subtasks[i];
+        div.innerHTML += /*html*/` 
+            <div>${subtask}</div>`;
+    }
+}
+//------------------------------------------------------
+
+
 /**
  * Render contacts
  * @param {variable} aUC Includes the acronym of contact
@@ -130,7 +160,6 @@ function assigneContactsTemplate(aUC, i, bgc) {
                     <div id='${aUC}${i}' class="acronym acronym-dimensions-small flex x-center y-center fs-12px " style="background-color: #${bgc}">${aUC}
                     </div>`;
 }
-
 
 /**
 * Render contacts
@@ -183,7 +212,7 @@ function renderPrioImg(t, i) {
  * @param {*} t Is a JSON with all feature of one task in it 
  * @returns Returns the percent value
  */
-function getAmounTOfSubtasks(t, i) {
+function getAmounTOfSubtasks(t) {
     let length = t['Subtasks'].length;
     if (length == 1) {
         let percent = 50;
