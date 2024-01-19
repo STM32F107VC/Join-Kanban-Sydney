@@ -103,9 +103,7 @@ a { text-decoration: none; }
 
 .p-16px { padding: 16px; }
 
-.p-lr {
-    padding: 0 4px;
-}
+.p-lr { padding: 0 4px; }
 
 .gap-4px { gap: 4px; }
 
@@ -284,6 +282,26 @@ button,
     transform: translateX(200vh);
     transition: transform 250ms ease-in-out;
 }
+
+/* On hover classes */ 
+.edit {
+    width: 64px;                     
+    height: 25px;
+}
+
+.delete {
+    width: 84px;
+    height: 25px;
+}
+
+.delete:hover {
+    content: url('/assets/img/delete_onhover.png');
+}
+
+.edit:hover {
+    content: url('/assets/img/edit_onhover.png');
+}
+
 
 /* .x-translate-zero {
     transform: translateX(0) !important;

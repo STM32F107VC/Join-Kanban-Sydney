@@ -228,14 +228,9 @@ function renderContactDetails(n, e, auc, p, id, j) {
             <div>
                 <div class="ft-general fs-47px fw-500 mb-12px">${n}</div>
                 <div class="flex gap-16px">
-                    <div onclick="editContact('${j}', '${auc}')" class="flex col-black y-center gap-8px">
-                        <img src="/assets/img/edit.png" alt="Edit">
-                        <span class="dark-blue">Edit</span>
-                    </div>
-                    <div onclick="deleteContact('${j}')" class="flex col-black y-center gap-8px">
-                        <img src="/assets/img/delete.png" alt="Delete">
-                        <span class="dark-blue">Delete</span>
-                    </div>
+                    <img onclick="editContact('${j}', '${auc}')" class="edit c-pointer" src="/assets/img/edit_default.png" alt="edit">
+                    <img src="/assets/img/subtasks_vector.svg" alt="separator">
+                    <img onclick="deleteContact('${j}')" class="delete c-pointer" src="/assets/img/delete_default.png" alt="delete">
                 </div>
             </div>
         </div>

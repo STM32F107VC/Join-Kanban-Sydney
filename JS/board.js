@@ -48,7 +48,7 @@ function taskTemplate(task, i) {
                         <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-16px fw-400 mb-24px">${task['Category']}</div>
                         <div id="taskTitle${i}" class="task-title fs-16px fw-700 mb-8px">${task['Title']}</div>
                         <div id="taskDescription${i}" class="flex x-start mb-24px fs-16px col-grey">${task['Description']}</div>
-                        <div id="progress${i}" class="subtasks flex x-space-betw y-center fs-12px mb-24px">
+                        <div id="progress${i}" class="flex x-space-betw y-center fs-12px mb-24px">
                             <progress id="progressBar${i}" value="${getAmounTOfSubtasks(task)}" max="100"></progress> 
                             <span>${getSubtasks(task)}/2 Subtasks</span>
                         </div>
@@ -98,17 +98,9 @@ function showTaskOverlay(i) {
                 <div id="renderSubtask${i}"></div>
             </div>
             <div class="flex x-end gap-16px remove-margin">
-                    <div class="flex col-black y-center gap-8px">
-                        <img src="/assets/img/edit.png" alt="Edit">
-                        <span class="dark-blue">Edit</span>
-                    </div>
-                    
-                        <img src="/assets/img/subtasks_vector.svg" alt="separator">
-                   
-                    <div class="flex col-black y-center gap-8px">
-                        <img src="/assets/img/delete.png" alt="delete">
-                        <span class="dark-blue">Delete</span>
-                    </div>
+                    <img class="delete c-pointer" src="/assets/img/delete_default.png" alt="delete">
+                    <img src="/assets/img/subtasks_vector.svg" alt="separator">
+                    <img class="edit c-pointer" src="/assets/img/edit_default.png" alt="edit">
             </div>
         </div>
     `;
@@ -134,18 +126,24 @@ function renderAssignedContacts(t, i, flag) {
         else if (flag) showContacts.innerHTML += assigneContactsTemplatePreview(contact, acronymUpperCase, i, bgc);
     }
 }
-//------------------------------------------------------
+
+/**
+ * Render subtasks in big task view
+ * @param {JSON} t Includes a complete task
+ * @param {variable} i Is the contact index
+ */
 function renderSubtask(t, i) {
     let div = document.getElementById(`renderSubtask${i}`);
     let subtasks = t['Subtasks'];
     for (let i = 0; i < subtasks.length; i++) {
         let subtask = subtasks[i];
         div.innerHTML += /*html*/` 
-            <div>${subtask}</div>`;
+            <div class="subtasks flex gap-16px">
+                <input type="checkbox" id="subtasks${i}">
+                <div>${subtask}</div>
+            </div>`;
     }
 }
-//------------------------------------------------------
-
 
 /**
  * Render contacts
