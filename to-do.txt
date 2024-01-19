@@ -1,8 +1,13 @@
 to-do
 ---Date: ---
-- push all into tasks JSON array
-- display dasks in backlog column
+- push all into tasks JSON array ✓
+- display tasks in backlog column ✓
 
 ---Date: 19.01.24 ---
+- Change order of date in detailed task view -
+- Replace edit and delete icon with span description through pictures from figma ✓
+
+---Date: 20.01.24 ---
 - Change order of date in detailed task view
-- Replace edit and delete icon with span description through pictures from figma
+- Remove low opacity
+- Create mobile template
