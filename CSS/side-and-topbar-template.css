@@ -32,7 +32,8 @@ div.topbar > div.sign-up > img:hover { scale: 1.1; }
 #legal-notice { width: 240px; }
 
 #legal-notice > div > a:hover,
-#lega-notice > div > span:hover
+#lega-notice > div > span:hover,
+footer > a:hover
 { color: #29ABE2; font-weight: 700; }
 
 .sign-up { margin-right: 40px; }

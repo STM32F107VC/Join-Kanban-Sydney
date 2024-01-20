@@ -81,11 +81,14 @@ div.log-in > div {
     background: var(--white, #FFF);
 }
 
-.privacy-policy { margin: 100px 0 32px 0; }
+.privacy-policy { margin: 100px 0 64px 0; }
 
 .privacy-policy a { color: #A8A8A8; }
 
-.privacy-policy a:hover { color: #29ABE2; }
+.privacy-policy a:hover { 
+    color: #29ABE2; 
+    font-weight: 700;
+}
 
 .change-col-bl { color: #29ABE2; }
 
