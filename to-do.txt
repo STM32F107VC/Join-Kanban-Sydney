@@ -11,3 +11,4 @@ to-do
 - Change order of date in detailed task view
 - Remove low opacity
 - Create mobile template
+- Über Modulare Struktur mit ES6-Modulen informieren

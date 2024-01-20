@@ -112,7 +112,7 @@ function openLogoutMenu() {
  */
 function goBack() {
     // location.replace('summary.html');
-    location.href = 'summary.html';
+    window.location.href = 'summary.html';
 }
 
 /**

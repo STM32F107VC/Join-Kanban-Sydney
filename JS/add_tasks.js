@@ -238,7 +238,8 @@ function clickHandlerSave(state) {
  * @returns 
  */
 function subtaskTemplate(state, inputValue) {
-    return /*html*/ `<div ondblclick="editSubtask(${state});" id="subtask${state}" class="sub-pseudo c-pointer flex x-space-betw y-center mb-4px">
+    return /*html*/ `
+                    <div ondblclick="editSubtask(${state});" id="subtask${state}" class="sub-pseudo c-pointer flex x-space-betw y-center mb-4px">
                         <ul class="w-100 outline-none"><li id="value${state}">${inputValue.value}</li></ul>
                         <div id="subtask-delete-accept" class="flex x-space-betw y-center opacity-zero">
                             <img id="delete${state}" onclick="deleteSubtask(${state});" src="/assets/img/subtasks_bin.svg" alt="delete">

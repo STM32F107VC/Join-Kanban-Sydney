@@ -14,15 +14,24 @@
     <script src="JS/includeHTML.js"></script>
     <script src="JS/board.js"></script>
     <script src="JS/contacts.js"></script>
+    <script src="assets/templates/templates.js"></script>
+    <!-- <script src="JS/add_tasks.js"></script> -->
+
+
+
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/fonts_inter.css">
     <link rel="stylesheet" href="CSS/side-and-topbar-template.css">
     <link rel="stylesheet" href="CSS/board.css">
     <link rel="stylesheet" href="CSS/contacts.css">
+    <link rel="stylesheet" href="CSS/add_tasks.css">
 </head>
 
 <body id="body-board" onload="init_board('board-link');">
     <div id="side-and-topbar-board" w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
+
+    <!-- Add Tasks overlay view -->
+    <div id="add-tasks-overlay-view" class="main-div-add-tasks mb--128px"></div>
 
     <!-- Tasks overlay view -->
     <div id="tasks-overlay-view" class="d-none"></div>
@@ -32,8 +41,9 @@
         <div class="search-section flex x-space-betw">
             <span class="ft-general fs-61px fw-700">Board</span>
             <div class="flex y-center gap-32px">
-                <input class="search-field" placeholder="Find Task" type="text" name="" id="">
-                <button class="flex y-center btn-dark addTask-btn ft-general fs-21px fw-700">Add task <img
+                <input class="search-field" placeholder="Find Task" type="text" id="">
+                <button onclick="getAddTaskOverlayMenu();"
+                    class="flex y-center btn-dark addTask-btn ft-general fs-21px fw-700">Add task <img
                         src="assets/img/add.png" alt="add task"></button>
             </div>
         </div>
@@ -80,6 +90,7 @@
             </div>
         </div>
     </div>
+    <script type="module" src="add_tasks.js"></script>
 
 </body>
 

@@ -1,32 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Task</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon-32x32.png">
-
-    <!-- Include CSS and Script Sheets -->
-    <script src="JS/script.js"></script>
-    <script src="JS/includeHTML.js"></script>
-    <script src="JS/add_tasks.js"></script>
-    <script src="JS/contacts.js"></script>
-    <script src="JS/storage.js"></script>
-    <script src="assets/templates/templates.js"></script>
-    <script src="JS/board.js"></script>
-    <link rel="stylesheet" href="CSS/login.css">
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/fonts_inter.css">
-    <link rel="stylesheet" href="CSS/add_tasks.css">
-    <link rel="stylesheet" href="CSS/contacts.css">
-</head>
-
-<body onload="init_tasks('add-task-link');">
-    <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
-
-    <div id="main-div-add-tasks" class="main-div-add-tasks mb--128px">
+function getAddTaskOverlayMenuTemplate() {
+    return /*html*/`
         <span class="ft-general fs-61px fw-700">Add Task</span>
         <form onsubmit="addTask(); return false;" class="flex flex-row mt-64px">
             <div class="flex flex-column">
@@ -102,7 +75,5 @@
                 </div>
             </div>
         </form>
-    </div>
-</body>
-
-</html>
+`;
+}

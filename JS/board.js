@@ -1,10 +1,13 @@
+let oldImg;
 let tasks = [];
+
 
 async function init_board(id) {
     await includeHTML();
     await loadContacts();
     markActiveLink(id);
     loadTasks();
+    assignContact();
 }
 
 function loadTasks() {
@@ -230,6 +233,15 @@ function getAmounTOfSubtasks(t) {
  */
 function getSubtasks(t) {
     return t['Subtasks'].length;
+}
+
+function getAddTaskOverlayMenu() {
+    document.getElementById('main-div-board').classList.add('d-none');
+    document.getElementById('body-board').classList.add("flex", "x-center", "y-center");
+    document.getElementById('side-and-topbar-board').classList.add("opacity", "z-ind--1");
+    let AddTaskDiv = document.getElementById('add-tasks-overlay-view');
+    // let showTaskDiv = document.getElementById('')
+    AddTaskDiv.innerHTML = getAddTaskOverlayMenuTemplate();
 }
 
 function allowDrop(ev) {
