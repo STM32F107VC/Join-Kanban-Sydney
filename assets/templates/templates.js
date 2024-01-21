@@ -1,6 +1,12 @@
 function getAddTaskOverlayMenuTemplate() {
     return /*html*/`
+    <div class="flex x-space-betw">
         <span class="ft-general fs-61px fw-700">Add Task</span>
+        <div class="close-cross p-zero">
+            <img onclick="closeAddTaskOverlay()" class="p-8px"
+                        src="assets/img/close.png" alt="close"></div>
+        </div>
+    </div>
         <form onsubmit="addTask(); return false;" class="flex flex-row mt-64px">
             <div class="flex flex-column">
                 <div class="flex flex-column mb-32px">
@@ -35,11 +41,11 @@ function getAddTaskOverlayMenuTemplate() {
                 <div class="priority flex flex-column mb-24px">
                     <span class="mb-8px">Prio</span>
                     <div class="flex x-space-betw gap-16px">
-                        <img class="priorityImg" onclick="savePriorityState('low')" id="prio-low"
+                        <img class="priorityImg prio-border" onclick="savePriorityState('low')" id="prio-low"
                             src="assets/img/prio-default-low.png" alt="priority low">
-                        <img class="priorityImg" onclick="savePriorityState('medium')" id="prio-medium"
+                        <img class="priorityImg prio-border" onclick="savePriorityState('medium')" id="prio-medium"
                             src="assets/img/prio-default-medium.png" alt="priority medium">
-                        <img class="priorityImg" onclick="savePriorityState('high')" id="prio-high"
+                        <img class="priorityImg prio-border" onclick="savePriorityState('high')" id="prio-high"
                             src="assets/img/prio-default-high.png" alt="priority high">
                     </div>
                 </div>

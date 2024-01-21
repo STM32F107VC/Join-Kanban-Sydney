@@ -1,5 +1,4 @@
-let oldImg;
-let tasks = [];
+// let tasks = [];
 
 
 async function init_board(id) {
@@ -27,6 +26,29 @@ function loadToBacklog() {
         backlog.innerHTML += taskTemplate(task, i);
         renderAssignedContacts(task, i, false);
     }
+}
+
+/**
+ * Open add new task overlay menu
+ * 
+ */
+function openAddTaskOverlay() {
+    document.getElementById('add-tasks-overlay-view').classList.remove('d-none');
+    document.getElementById('main-div-board').classList.add('d-none');
+    document.getElementById('body-board').classList.add("flex", "x-center", "y-center");
+    document.getElementById('side-and-topbar-board').classList.add("opacity", "z-ind--1");
+    getAddTaskOverlayMenu();
+}
+
+/**
+ * Close add new task overlay menu
+ * 
+ */
+function closeAddTaskOverlay() {
+    document.getElementById('add-tasks-overlay-view').classList.add('d-none');
+    document.getElementById('main-div-board').classList.remove('d-none');
+    document.getElementById('body-board').classList.remove("flex", "x-center", "y-center");
+    document.getElementById('side-and-topbar-board').classList.remove("opacity", "z-ind--1");
 }
 
 /**
@@ -236,9 +258,6 @@ function getSubtasks(t) {
 }
 
 function getAddTaskOverlayMenu() {
-    document.getElementById('main-div-board').classList.add('d-none');
-    document.getElementById('body-board').classList.add("flex", "x-center", "y-center");
-    document.getElementById('side-and-topbar-board').classList.add("opacity", "z-ind--1");
     let AddTaskDiv = document.getElementById('add-tasks-overlay-view');
     // let showTaskDiv = document.getElementById('')
     AddTaskDiv.innerHTML = getAddTaskOverlayMenuTemplate();
