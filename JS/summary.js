@@ -9,6 +9,9 @@ async function init_summary(id) {
     greetUser();
 }
 
+/**
+ * Check if its a user account or a guest login. Then greet the user
+ */
 async function greetUser() {
     let greetingText = document.getElementById('greet-user');
     let acronym = document.getElementById('acronym');

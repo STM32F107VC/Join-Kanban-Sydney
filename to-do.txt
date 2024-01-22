@@ -11,4 +11,7 @@ to-do
 - Change order of date in detailed task view
 - Remove low opacity
 - Create mobile template
-- Über Modulare Struktur mit ES6-Modulen informieren
+- Über Modulare Struktur mit ES6-Modulen informieren ✓
+
+---Date: 22.01.24 ---
+- Assigne contacts to tasks big view

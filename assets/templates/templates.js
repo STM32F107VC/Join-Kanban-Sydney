@@ -1,3 +1,7 @@
+/**
+ * Complete tasks overlay template
+ * @returns The complete tasks form
+ */
 function getAddTaskOverlayMenuTemplate() {
     return /*html*/`
     <div class="flex x-space-betw">
@@ -80,6 +84,5 @@ function getAddTaskOverlayMenuTemplate() {
                         Task <img src="assets/img/check.png" alt="create"></button>
                 </div>
             </div>
-        </form>
-`;
+        </form>`;
 }

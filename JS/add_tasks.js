@@ -4,7 +4,6 @@ let firstClickedImg;
 let oldImg;
 let priorityStatus;
 let k = false;
-
 let state;
 
 let tasks = [];

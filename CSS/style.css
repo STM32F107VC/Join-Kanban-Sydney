@@ -218,6 +218,8 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+::placeholder { color: #DADADA; }
+
 /* Classes for buttons */
 .btn-light {
     border-radius: 8px;
