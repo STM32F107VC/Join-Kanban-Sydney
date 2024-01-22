@@ -10,6 +10,7 @@ let guest = false;
 async function init() {
     await includeHTML();
     await loadUsers();
+    greetUser();
     loadLoginScreen();
     await loadContacts();
 }
@@ -60,7 +61,7 @@ function login() {
     for (let u = 0; u < users.length; u++) {
         let user = users[u];
         if (user.Email == email.value && user.Password == password.value) {
-            guestOrUserAccount('account');
+            guestOrUserAccount(user);
         } else document.querySelector('.log-in').classList.add('login-error');
     }
 }

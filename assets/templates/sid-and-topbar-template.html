@@ -12,15 +12,18 @@
 </head>
 
 <body>
-    <div class="side-topbar-template">
+    <div class="side-topbar-template ft-general">
         <!-- Top bar -->
         <div class="topbar flex x-space-betw y-center">
             <span class="ft-general fs-20px fw-400 set-span">Kanban Project Management Tool</span>
             <div class="flex y-center sign-up">
                 <img onclick="goToHelp()" class="mr-16px" src="/assets/img/help.png" alt="help">
-                <div class="login">
+                <!-- <div class="login">
                     <img style="width: 64px; height: 64px;" onclick="openLogoutMenu()"
                         src="/assets/img/account_filled.webp" alt="profil">
+                </div> -->
+                <div class="round-logout fs-27px fw-700 col-light-blue" onclick="openLogoutMenu()">
+                    <span id="acronym"></span>
                 </div>
             </div>
         </div>

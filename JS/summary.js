@@ -11,16 +11,17 @@ async function init_summary(id) {
 
 async function greetUser() {
     let greetingText = document.getElementById('greet-user');
+    let acronym = document.getElementById('acronym');
     let user = JSON.parse(await getItem('guestOrAccount'));
-    console.log(user['log']);
+    let name = user['log']['Name'];
+    console.log(user['log']['Name']);
     user = user['log'];
     if (user === 'guest') {
-        greetingText.textContent = '';
+        acronym.textContent = 'G';
         greetingText.textContent = 'Guest';
-        console.log('Guest has logged in.');
-    } else if (user === 'account') {
-        greetingText.textContent = '';
-        greetingText.textContent = 'Account';
-        console.log('User has logged in.');
+    } else {
+        let acronymUpperCase = buildAcronymContact(name, true);
+        acronym.textContent = acronymUpperCase;
+        greetingText.textContent = name;
     }
 }

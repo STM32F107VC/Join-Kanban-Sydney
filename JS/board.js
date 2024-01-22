@@ -6,6 +6,7 @@ async function init_board(id) {
     await loadContacts();
     markActiveLink(id);
     loadTasks();
+    greetUser();
     assignContact();
 }
 

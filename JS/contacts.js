@@ -17,6 +17,7 @@ async function init_contacts(id) {
     await loadUsers();
     await loadContacts();
     markActiveLink(id);
+    greetUser();
 }
 
 /**
@@ -117,14 +118,31 @@ function resetAddContactsForm(n, e, p) {
 function getInitialLetterOfFirstname() {
     for (let j = 0; j < contacts.length; j++) {
         let contact = contacts[j];
-        let str = contact['name'].match(/\b(\w)/g);
-        let acronymUpperCase = str.join('').toUpperCase();
-        let initialLetter = contact['name'].charAt(0)[0].toUpperCase();
+        let array = buildAcronymContact(contact, false);
         let name = contact['name'];
         let email = contact['email'];
         let phone = contact['phone'];
         let backgroundColor = contact['background-color'];
-        checkRegister(j, initialLetter, name, email, acronymUpperCase, phone, backgroundColor);
+        checkRegister(j, array[1], name, email, array[0], phone, backgroundColor);
+    }
+}
+
+/**
+ * Function to generate acronym
+ * @param {JSON} contact Includes the name of the user or new added contact
+ * @param {flag} flag Indicates from where the function was called
+ * @returns 
+ */
+function buildAcronymContact(contact, flag) {
+    if (!flag) {
+        let str = contact['name'].match(/\b(\w)/g);
+        let acronymUpperCase = str.join('').toUpperCase();
+        let initialLetter = contact['name'].charAt(0)[0].toUpperCase();
+        return [acronymUpperCase, initialLetter];
+    } else if (flag) {
+        let str = contact.match(/\b(\w)/g);
+        let acronymUpperCase = str.join('').toUpperCase();
+        return acronymUpperCase;
     }
 }
 
@@ -239,8 +257,8 @@ function renderContactDetails(n, e, auc, p, id, j) {
 
 /**
  * Renders the email adress and phone number
- * @param {*} e Contact email adress
- * @param {*} p Contact phone number
+ * @param {JSON value} e Contact email adress
+ * @param {JSON value} p Contact phone number
  * @returns Returns rendered contact informations
  */
 function renderContactInformatons(e, p) {
@@ -258,7 +276,7 @@ function renderContactInformatons(e, p) {
 
 /**
  * Get values out of contacts JSON array and show them in the input fields to check
- * @param {*} j J is the index number for accessing a contact in the contacts array
+ * @param {variable} j J is the index number for accessing a contact in the contacts array
  */
 function getContactValues(j) {
     let name = contacts[j]['name'];
@@ -271,7 +289,7 @@ function getContactValues(j) {
 
 /**
  * Shows detailed information about a contact
- * @param {*} j J is the index number for accessing a contact in the contacts array
+ * @param {variable} j J is the index number for accessing a contact in the contacts array
  */
 function editContact(j, auc) {
     getBackgroundColor = contacts[j]['background-color'];
@@ -286,7 +304,7 @@ function editContact(j, auc) {
 
 /**
  * Render acronym for contact details 
- * @param {*} auc Variable with acronym in it
+ * @param {string} auc Variable with acronym in it
  * @returns Returns rendered accronym part
  */
 function renderEditOverlayAvatar(auc) {
@@ -298,7 +316,7 @@ function renderEditOverlayAvatar(auc) {
 
 /**
  * Render form edit contact overlay menu the part to delete and safe contacts contacts
- * @param {*} j J is the index number for accessing a contact in the contacts array
+ * @param {variable} j J is the index number for accessing a contact in the contacts array
  * @returns Returns rendered delete part
  */
 function renderDeletePart(j) {
@@ -313,7 +331,7 @@ function renderDeletePart(j) {
 
 /**
  * Safes changes which were made on a contact
- * @param {*} j J is the index number for accessing a contact in the contacts array
+ * @param {variable} j J is the index number for accessing a contact in the contacts array
  */
 async function safeEditChanges(j) {
     document.getElementById('safe-btn').disabled = true;
@@ -334,7 +352,7 @@ async function safeEditChanges(j) {
 
 /**
  * Deletes a complet contact
- * @param {*} j J is the index number for accessing a contact in the contacts array
+ * @param {variable} j J is the index number for accessing a contact in the contacts array
  */
 async function deleteContact(j) {
     contacts.splice(j, 1);

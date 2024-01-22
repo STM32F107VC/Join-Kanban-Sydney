@@ -19,6 +19,7 @@ async function init_tasks(id) {
     await includeHTML();
     await loadContacts();
     markActiveLink(id);
+    greetUser();
     assignContact();
 }
 

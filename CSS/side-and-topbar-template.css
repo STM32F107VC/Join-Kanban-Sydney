@@ -85,3 +85,16 @@ footer > a:hover
 }
 
 .login img { position: absolute; }
+
+.round-logout {
+    border-radius: 50%;
+    border: 3px solid #2A3647;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.round-logout:hover { background-color: rgba(0, 0, 0, 0.1); }
