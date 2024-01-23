@@ -7,7 +7,7 @@ async function init_board(id) {
     markActiveLink(id);
     loadTasks();
     greetUser();
-    assignContact();
+    // assignContact('add-task-overlay');
 }
 
 function loadTasks() {
@@ -262,6 +262,7 @@ function getAddTaskOverlayMenu() {
     let AddTaskDiv = document.getElementById('add-tasks-overlay-view');
     // let showTaskDiv = document.getElementById('')
     AddTaskDiv.innerHTML = getAddTaskOverlayMenuTemplate();
+    assignContact('add-task-overlay');
 }
 
 function allowDrop(ev) {

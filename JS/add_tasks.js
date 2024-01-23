@@ -19,20 +19,49 @@ async function init_tasks(id) {
     await loadContacts();
     markActiveLink(id);
     greetUser();
-    assignContact();
+    assignContact('add-task');
 }
 
 /**
  * Load available contacts
  */
-function assignContact() {
+function assignContact(location) {
     let assignSection = document.getElementById('assigned-to');
-    for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];
-        assignSection.innerHTML += /*html*/`
-            <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
+    let assignSectionOverlay = document.getElementById('assigned-to-overlay');
+
+    switch (location) {
+        case 'add-task':
+            console.log('add-task');
+            // assignSection.innerHTML += /*html*/`
+            //     <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
+            for (let i = 0; i < contacts.length; i++) {
+                let contact = contacts[i];
+                assignSection.innerHTML += /*html*/`
+                <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
+            }
+
+            break;
+
+        case 'add-task-overlay':
+            console.log('add-task-overlay');
+            // assignSectionOverlay.innerHTML += /*html*/`
+            // <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
+            for (let i = 0; i < contacts.length; i++) {
+                let contact = contacts[i];
+                assignSectionOverlay.innerHTML += /*html*/`
+                <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
+            }
+            break;
     }
+
 }
+
+// function getContacts() {
+//     for (let i = 0; i < contacts.length; i++) {
+//         let contact = contacts[i];
+//         return contact['name'];
+//     }
+// }
 
 /**
  * Show all available contacts to assign to a task

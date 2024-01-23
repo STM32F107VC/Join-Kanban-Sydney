@@ -25,7 +25,7 @@ function getAddTaskOverlayMenuTemplate() {
                 <div class="flex flex-column">
                     <span class="mb-8px">Assigned to</span>
                     <select onchange="showAssignedContact(this.value)" role="listbox"
-                        class="login-input fs-20px mb-24px" id="assigned-to">
+                        class="login-input fs-20px mb-24px" id="assigned-to-overlay">
                         <option value="" disabled selected hidden>Select contacts to assign</option>
                     </select>
                 </div>

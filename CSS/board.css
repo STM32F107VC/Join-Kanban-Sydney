@@ -44,9 +44,7 @@
     cursor: pointer;
 }
 
-/* .task:hover {
-    rotate: 5deg;
-} */
+.task:active { rotate: 5deg; }
 
 .task > div { display: flex; }
 
@@ -117,10 +115,13 @@ progress {
     background-position-x: 80%, 94%;
     background-position-y: 50%;
     background-repeat: no-repeat;
-    /* border: 0.5px solid #A8A8A8; */
-    /* outline: none; */
     height: 32px;
 }
+
+/* Hover effect über lupen symbol einfügen */
+/* .search-field::after:hover {
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+} */
 
 progress::-webkit-progress-value {
     border-radius: 16px;
