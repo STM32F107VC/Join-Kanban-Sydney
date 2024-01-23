@@ -61,6 +61,7 @@ function closeShowTaskOverlay() {
     document.getElementById('main-div-board').classList.remove('d-none');
     document.getElementById('body-board').classList.remove("flex", "x-center", "y-center");
     document.getElementById('side-and-topbar-board').classList.remove("opacity", "z-ind--1");
+    document.getElementById('edit-task-overlay-view').classList.add('d-none');
 }
 
 /**
@@ -86,7 +87,7 @@ function taskTemplate(task, i) {
 }
 
 /**
- * 
+ * Show big view of a task
  * @param {variable} i Is the task index
  */
 function showTaskOverlay(i) {
@@ -105,7 +106,7 @@ function showTaskOverlay(i) {
         <div class="ft-general">
             <div class="flex x-space-betw y-center">
                 <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-23px fw-400">${task['Category']}</div>
-                <div class="close-cross p-zero"> <img onclick="closeShowTaskOverlay()" class="p-8px"
+                <div class="close-cross p-zero"><img onclick="closeShowTaskOverlay()" class="p-8px"
                         src="assets/img/close.png" alt="close"></div>
                 </div>
             </div>
@@ -126,12 +127,20 @@ function showTaskOverlay(i) {
             <div class="flex x-end gap-16px remove-margin">
                     <img class="delete c-pointer" src="/assets/img/delete_default.png" alt="delete">
                     <img src="/assets/img/subtasks_vector.svg" alt="separator">
-                    <img class="edit c-pointer" src="/assets/img/edit_default.png" alt="edit">
+                    <img onclick="showEditTaskOverlay('${task}', '${i}')" class="edit c-pointer" src="/assets/img/edit_default.png" alt="edit">
             </div>
         </div>
     `;
     renderAssignedContacts(task, i, true);
     renderSubtask(task, i);
+}
+
+function showEditTaskOverlay(task, i) {
+    let divBigViewTask = document.getElementById('tasks-overlay-view');
+    let divEditTask = document.getElementById('edit-task-overlay-view');
+    divBigViewTask.classList.add('d-none');
+    divEditTask.classList.remove('d-none');
+    console.log('showEditTaskOverlay()');
 }
 
 /**

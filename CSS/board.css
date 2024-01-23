@@ -20,11 +20,7 @@
     color: #DADADA;
 }
 
-.plus {
-    padding: 3px;
-    border-radius: 8px;
-    border: 2px solid var(--version-2-main-color, #2A3647);
-}
+.plus:hover { content: url('/assets/img/Property 1=Variant2.svg'); }
 
 .content-column {
     height: 100vh;
@@ -87,13 +83,18 @@ progress {
 
 .remove-margin { margin: 0 !important; }
 
-#tasks-overlay-view {
+#tasks-overlay-view,
+#edit-task-overlay-view {
     width: 445px;
     padding: 48px 40px;
     border-radius: 30px;
     background: #FFF;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
 }
+
+#edit-task-overlay-view > div > img { margin-right: -16px; }
+
+button:hover > img.tick { content: url('/assets/img/check-white-blue.svg'); }
 
 #tasks-overlay-view > div {
     margin-bottom: 24px;

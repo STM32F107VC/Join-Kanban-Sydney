@@ -38,6 +38,76 @@
 <body id="body-board" onload="init_board('board-link');">
     <div id="side-and-topbar-board" w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
 
+
+
+    <!-- Edit add task form -->
+    <div id="edit-task-overlay-view" class="d-none">
+        <div class="close-cross p-zero flex x-end"><img onclick="closeShowTaskOverlay()" class="p-8px"
+                src="assets/img/close.png" alt="close">
+        </div>
+        <form onsubmit="return false;" class="flex x-center flex-row">
+            <div class="flex flex-column">
+                <div class="flex flex-column mb-32px">
+                    <span class="mb-8px">Title</span>
+                    <input class="login-input fs-20px" placeholder="Enter a title" id="title-editable" required>
+                </div>
+
+                <div class="flex flex-column mb-32px ">
+                    <span class="mb-8px">Description</span>
+                    <textarea placeholder="Enter a description" class="login-input fs-20px" id="textarea-editable"
+                        cols="30" rows="10"></textarea>
+                </div>
+
+                <div class="flex flex-column mb-24px">
+                    <span class="mb-8px">Due date</span>
+                    <input class="login-input fs-20px" type="date" value="2024-01-01" id="date-editable" required>
+                </div>
+
+                <div class="priority flex flex-column mb-24px">
+                    <span class="mb-8px">Prio</span>
+                    <div class="flex x-space-betw gap-16px">
+                        <img class="priorityImg" onclick="savePriorityState('low')" id="prio-low"
+                            src="assets/img/prio-default-low.png" alt="priority low">
+                        <img class="priorityImg" onclick="savePriorityState('medium')" id="prio-medium"
+                            src="assets/img/prio-default-medium.png" alt="priority medium">
+                        <img class="priorityImg" onclick="savePriorityState('high')" id="prio-high"
+                            src="assets/img/prio-default-high.png" alt="priority high">
+                    </div>
+                </div>
+
+                <div class="flex flex-column">
+                    <span class="mb-8px">Assigned to</span>
+                    <select onchange="showAssignedContact(this.value)" role="listbox"
+                        class="login-input fs-20px mb-24px" id="assigned-to">
+                        <option value="" disabled selected hidden>Select contacts to assign</option>
+                    </select>
+                </div>
+
+                <div id="displaySelectedContacts" class="flex"></div>
+
+                <div>
+                    <div class="subtasks-main mb-8px">
+                        <span class="flex flex-column mb-8px">Subtasks</span>
+                        <div onclick="" id="subtasks-content" class="login-input flex x-space-betw">
+                            <input id="subtasks" class="fs-20px" placeholder="Add subtasks" name="subtasks">
+                            <div id="subtask-icons" class="flex flex-row d-none">
+                                <img id="cancle" onclick="" src="assets/img/subtasks_cross.svg" alt="cancle">
+                                <img id="accept" onclick="" src="assets/img/subtasks_tick.svg" alt="cancle">
+                            </div>
+                            <img id="plus-icon" src="assets/img/plus.svg" alt="plus">
+                        </div>
+                    </div>
+                    <div id="displaySubtasks" class="mb-64px"></div>
+
+                    <div class="flex x-end">
+                        <button onclick="" class="flex y-center gap-4px btn-dark fs-21px fw-700">Ok
+                            <img class="tick" src="assets/img/check_white.svg" alt="confirm"></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
     <!-- Add Tasks overlay view -->
     <div id="add-tasks-overlay-view" class="d-none"></div>
 
@@ -61,7 +131,7 @@
             <div>
                 <div class="flex x-space-betw y-center mb-16px">
                     <span class="ft-general fs-20px fw-700">To do</span>
-                    <img class="plus c-pointer" src="assets/img/plus-button.svg" onclick="openAddTaskOverlay();"
+                    <img class="plus c-pointer" src="assets/img/plus-default.svg" onclick="openAddTaskOverlay();"
                         alt="plus">
                 </div>
                 <div class="content-column" id="backlog" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -70,7 +140,7 @@
             <div>
                 <div class="flex x-space-betw y-center mb-16px">
                     <span class="ft-general fs-20px fw-700">In progress</span>
-                    <img class="plus c-pointer" src="assets/img/plus-button.svg" onclick="openAddTaskOverlay();"
+                    <img class="plus c-pointer" src="assets/img/plus-default.svg" onclick="openAddTaskOverlay();"
                         alt="plus">
                 </div>
                 <div class="content-column" id="in-progress" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -79,7 +149,7 @@
             <div>
                 <div class="flex x-space-betw y-center mb-16px">
                     <span class="ft-general fs-20px fw-700"> Await feedback</span>
-                    <img class="plus c-pointer" src="assets/img/plus-button.svg" onclick="openAddTaskOverlay();"
+                    <img class="plus c-pointer" src="assets/img/plus-default.svg" onclick="openAddTaskOverlay();"
                         alt="plus">
                 </div>
                 <div class="content-column" id="await-feedback" ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -89,7 +159,7 @@
             <div>
                 <div class="flex x-space-betw y-center mb-16px">
                     <span class="ft-general fs-20px fw-700">Done</span>
-                    <img class="plus c-pointer" src="assets/img/plus-button.svg" onclick="openAddTaskOverlay();"
+                    <img class="plus c-pointer" src="assets/img/plus-default.svg" onclick="openAddTaskOverlay();"
                         alt="plus">
                 </div>
                 <div class="content-column" id="done" ondragover="allowDrop(event)" ondrop="drop(event)"></div>

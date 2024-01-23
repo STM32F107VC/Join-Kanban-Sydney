@@ -86,3 +86,4 @@ function getAddTaskOverlayMenuTemplate() {
             </div>
         </form>`;
 }
+

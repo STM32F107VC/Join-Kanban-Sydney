@@ -263,7 +263,6 @@ button,
 .go-back:hover {
     background-color: grey; 
     border-radius: 50%;
-    /* background-color:  var(--Style, #D1D1D1); */
     background-color: rgba(0, 0, 0, 0.05);
 }
 
