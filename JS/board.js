@@ -125,7 +125,7 @@ function showTaskOverlay(i) {
                 <div id="renderSubtask${i}"></div>
             </div>
             <div class="flex x-end gap-16px remove-margin">
-                    <img class="delete c-pointer" src="/assets/img/delete_default.png" alt="delete">
+                    <img onclick="deleteTask(${i});" class="delete c-pointer" src="/assets/img/delete_default.png" alt="delete">
                     <img src="/assets/img/subtasks_vector.svg" alt="separator">
                     <img onclick="showEditTaskOverlay('${task}', '${i}')" class="edit c-pointer" src="/assets/img/edit_default.png" alt="edit">
             </div>
@@ -133,6 +133,22 @@ function showTaskOverlay(i) {
     `;
     renderAssignedContacts(task, i, true);
     renderSubtask(task, i);
+}
+
+function deleteTask(j) {
+    tasks.splice(j, 1);
+    // location.reload();
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    tasks = localStorage.getItem('tasks');
+    // loadTasks();
+    location.replace('board.html');
+
+
+    // contacts.splice(j, 1);
+    // await setItem('contacts', JSON.stringify(contacts));
+    // contacts = JSON.parse(await getItem('contacts'));
+    // checkRegister();
+    // location.replace('contacts.html');
 }
 
 function showEditTaskOverlay(task, i) {
