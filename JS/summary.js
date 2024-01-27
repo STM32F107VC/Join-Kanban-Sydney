@@ -21,10 +21,10 @@ async function greetUser() {
     user = user['log'];
     if (user === 'guest') {
         acronym.textContent = 'G';
-        greetingText.textContent = 'Guest';
+        // greetingText.textContent = 'Guest';
     } else {
         let acronymUpperCase = buildAcronymContact(name, true);
         acronym.textContent = acronymUpperCase;
-        greetingText.textContent = name;
+        // greetingText.textContent = name;
     }
 }

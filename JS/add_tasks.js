@@ -19,33 +19,56 @@ async function init_tasks(id) {
     await loadContacts();
     markActiveLink(id);
     greetUser();
-    assignContact('add-task');
+    getAddTaskMenu('basic');
+    assignContact('basic');
 }
+
+//-----
+function getAddTaskMenu(location) {
+    let AddTaskDiv = document.getElementById('add-tasks-' + `${location}` + '-view');
+    AddTaskDiv.innerHTML = getAddTaskOverlayMenuTemplate(location);
+
+    if (AddTaskDiv.id == 'add-tasks-basic-view') {
+        document.querySelector('div.close-cross').remove();
+
+    }
+    if (AddTaskDiv.id == 'add-tasks-overlay-view') {
+
+        // AddTaskDiv.classList.remove('d-none');
+    }
+}
+//-----
+
+
 
 /**
  * Load available contacts
  */
 function assignContact(location) {
-    let assignSection = document.getElementById('assigned-to');
-    let assignSectionOverlay = document.getElementById('assigned-to-overlay');
-    switch (location) {
-        case 'add-task':
-            console.log('add-task');
-            for (let i = 0; i < contacts.length; i++) {
-                let contact = contacts[i];
-                assignSection.innerHTML += /*html*/`
-                <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
-            }
-            break;
-
-        case 'add-task-overlay':
-            for (let i = 0; i < contacts.length; i++) {
-                let contact = contacts[i];
-                assignSectionOverlay.innerHTML += /*html*/`
-                <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
-            }
-            break;
+    let assignSection = document.getElementById('assigned-' + `${location}`);
+    for (let i = 0; i < contacts.length; i++) {
+        let contact = contacts[i];
+        assignSection.innerHTML += /*html*/`
+        <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
     }
+    // switch (location) {
+    //     case 'add-task':
+    //         console.log('add-task');
+    //         for (let i = 0; i < contacts.length; i++) {
+    //             let contact = contacts[i];
+    //             assignSection.innerHTML += /*html*/`
+    //             <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
+    //         }
+    //         break;
+
+    //     case 'add-task-overlay':
+    //         for (let i = 0; i < contacts.length; i++) {
+    //             let contact = contacts[i];
+    //             assignSectionOverlay.innerHTML += /*html*/`
+    //             <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
+    //         }
+    //         break;
+    // }
 }
 
 /**
@@ -53,8 +76,9 @@ function assignContact(location) {
  * @param {variable} i This index (i) is the number for selecting
  * the current contact in the contacts = []; array.
  */
-function showAssignedContact(i) {
-    let selectedContacts = document.getElementById('displaySelectedContacts');
+function showAssignedContact(i, location) {
+    let selectedContacts = document.getElementById('displaySelectedContacts-' + `${location}`);
+    // let selectedContactsOverlay = document.getElementById('displaySelectedContactsOverlay');
     let contact = contacts[i];
     let array = buildAcronym(contact);
     let acronymUpperCase = array[0];

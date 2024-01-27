@@ -7,7 +7,8 @@ async function init_board(id) {
     markActiveLink(id);
     loadTasks();
     greetUser();
-    // assignContact('add-task-overlay');
+    getAddTaskMenu('overlay');
+    assignContact('overlay');
 }
 
 function loadTasks() {
@@ -33,12 +34,12 @@ function loadToBacklog() {
  * Open add new task overlay menu
  * 
  */
-function openAddTaskOverlay() {
+async function openAddTaskOverlay() {
     document.getElementById('add-tasks-overlay-view').classList.remove('d-none');
     document.getElementById('main-div-board').classList.add('d-none');
     document.getElementById('body-board').classList.add("flex", "x-center", "y-center");
     document.getElementById('side-and-topbar-board').classList.add("opacity", "z-ind--1");
-    getAddTaskOverlayMenu();
+    // getAddTaskMenu('overlay');
 }
 
 /**
@@ -281,13 +282,6 @@ function getAmounTOfSubtasks(t) {
  */
 function getSubtasks(t) {
     return t['Subtasks'].length;
-}
-
-function getAddTaskOverlayMenu() {
-    let AddTaskDiv = document.getElementById('add-tasks-overlay-view');
-    // let showTaskDiv = document.getElementById('')
-    AddTaskDiv.innerHTML = getAddTaskOverlayMenuTemplate();
-    assignContact('add-task-overlay');
 }
 
 function allowDrop(ev) {

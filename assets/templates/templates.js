@@ -2,7 +2,7 @@
  * Complete tasks overlay template
  * @returns The complete tasks form
  */
-function getAddTaskOverlayMenuTemplate() {
+function getAddTaskOverlayMenuTemplate(location) {
     return /*html*/`
     <div class="flex x-space-betw">
         <span class="ft-general fs-61px fw-700">Add Task</span>
@@ -24,12 +24,12 @@ function getAddTaskOverlayMenuTemplate() {
                 </div>
                 <div class="flex flex-column">
                     <span class="mb-8px">Assigned to</span>
-                    <select onchange="showAssignedContact(this.value)" role="listbox"
-                        class="login-input fs-20px mb-24px" id="assigned-to-overlay">
+                    <select onchange="showAssignedContact(this.value, '${location}')" role="listbox"
+                        class="login-input fs-20px mb-24px" id="assigned-${location}">
                         <option value="" disabled selected hidden>Select contacts to assign</option>
                     </select>
                 </div>
-                <div id="displaySelectedContacts" class="mb-96px flex"></div>
+                <div id="displaySelectedContacts-${location}" class="mb-96px flex"></div>
                 <div>
                     <span class="col-red">*</span> This field is required
                 </div>
@@ -85,5 +85,6 @@ function getAddTaskOverlayMenuTemplate() {
                 </div>
             </div>
         </form>`;
+
 }
 

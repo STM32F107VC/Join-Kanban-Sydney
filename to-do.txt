@@ -8,13 +8,23 @@ to-do
 - Replace edit and delete icon with span description through pictures from figma ✓
 
 ---Date: 20.01.24 ---
-- Change order of date in detailed task view
-- Remove low opacity
-- Create mobile template
+- Change order of date in detailed task view -
+- Remove low opacity -
+- Create mobile template -
 - Über Modulare Struktur mit ES6-Modulen informieren ✓
 
 ---Date: 22.01.24 ---
 - Assigne contacts to tasks big view ✓
 
 ---Date: 23.01.24 ---
-- Überprüfung auf Verdoppelung von Ids im Code
+- Überprüfung auf Verdoppelung von Ids im Code -
+
+---Date: 26.01.24 ---
+- Add Task overlay im board.html --> priority state nimmt die farbe nicht mehr an
+- Add Task sheet dynamisieren und von mehreren .hmtl datein aufrufbar machen: Code nur über template einbinden für beide seite: add_task.html und board.html
+- Assigne contacts rendern beim overlay menu, kontakte können nicht mehr hinzugefgt werden.
+
+---Date: 27.01.24 ---
+- Bei der Funktion showAssignedContact(location, i) stehen geblieben. Ich habe den parameter location hinzugefügt,
+welcher auskunft darüber gibt, ob die funktion vom basic oder overlay aufgerufen wurde. nun muss ich den fehler beheben, 
+in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben..
