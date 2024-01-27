@@ -229,11 +229,11 @@ function setDefaultPriorityImg(img, id) {
  * Remove plus icon then add cross and tick- icons for canceling and accept
  * subtask
  */
-function toggleIcons() {
-    let div = document.getElementById('subtasks-content');
+function toggleIcons(location) {
+    let div = document.getElementById('subtasks-content-' + `${location}`);
     div.classList.add('blueBorderThin');
-    let plusIcon = document.getElementById('plus-icon');
-    let icons = document.getElementById('subtask-icons');
+    let plusIcon = document.getElementById('plus-icon-' + `${location}`);
+    let icons = document.getElementById('subtask-icons-' + `${location}`);
     plusIcon.classList.add('d-none');
     icons.classList.remove('d-none');
 }
@@ -242,13 +242,13 @@ function toggleIcons() {
  * Add a subtasks. Max. two subtasks possible.
  * Empty subtasks field is not allowed.
  */
-function addSubtask() {
-    let list = document.getElementById('displaySubtasks');
-    let inputValue = document.getElementById('subtasks');
+function addSubtask(location) {
+    let list = document.getElementById('displaySubtasks-' + `${location}`);
+    let inputValue = document.getElementById('subtasks-' + `${location}`);
     if ((list.children.length < 2) && !(inputValue.value === "")) {
         subtasks.push(inputValue.value);
         state = subtasks.length - 1;
-        list.innerHTML += subtaskTemplate(state, inputValue);
+        list.innerHTML += subtaskTemplate(state, inputValue, location);
         let editImg = document.getElementById(`edite${state}`);
         editImg.addEventListener('click', clickHandlerEdit);
     } else { console.log('Reached maximum of insertable subtasks.'); }
@@ -275,9 +275,9 @@ function clickHandlerSave(state) {
  * @param {string} inputValue 
  * @returns 
  */
-function subtaskTemplate(state, inputValue) {
+function subtaskTemplate(state, inputValue, location) {
     return /*html*/ `
-                    <div ondblclick="editSubtask(${state});" id="subtask${state}" class="sub-pseudo c-pointer flex x-space-betw y-center mb-4px">
+                    <div ondblclick="editSubtask(${state});" id="subtask${state}-${location}" class="sub-pseudo c-pointer flex x-space-betw y-center mb-4px">
                         <ul class="w-100 outline-none"><li id="value${state}">${inputValue.value}</li></ul>
                         <div id="subtask-delete-accept" class="flex x-space-betw y-center opacity-zero">
                             <img id="delete${state}" onclick="deleteSubtask(${state});" src="/assets/img/subtasks_bin.svg" alt="delete">
@@ -357,15 +357,15 @@ function cancleSubtask() {
 /**
  * Clear add task form
  */
-function resetAddTaskForm() {
-    document.getElementById('title').value = '';
-    document.getElementById('textarea').value = '';
-    document.getElementById('assigned-to').value = '';
-    document.getElementById('date').value = '';
-    document.getElementById('category').value = '';
-    document.getElementById('subtasks').value = '';
-    document.getElementById('displaySubtasks').replaceChildren();
-    document.getElementById('displaySelectedContacts').replaceChildren();
+function resetAddTaskForm(location) {
+    document.getElementById(`title-${location}`).value = '';
+    document.getElementById(`textarea-${location}`).value = '';
+    document.getElementById(`assigned-to-${location}`).value = '';
+    document.getElementById(`date-${location}`).value = '';
+    document.getElementById(`category-${location}`).value = '';
+    document.getElementById(`subtasks-${location}`).value = '';
+    document.getElementById(`displaySubtasks-${location}`).replaceChildren();
+    document.getElementById(`displaySelectedContacts-${location}`).replaceChildren();
     document.getElementById('prio-' + `${oldImg}`).src = `assets/img/prio-default-${oldImg}.png`;
     subtasks = [];
 }
