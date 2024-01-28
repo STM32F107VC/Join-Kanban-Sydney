@@ -111,12 +111,12 @@ function buildAcronym(contact) {
  * Function to add new tasks and save into tasks JSON-array
  * 
  */
-function addTask() {
-    let title = document.getElementById('title');
-    let description = document.getElementById('textarea');
+function addTask(location) {
+    let title = document.getElementById(`title-${location}`);
+    let description = document.getElementById(`textarea-${location}`);
     // let assignedTo = document.getElementById('assigned-to');
-    let date = document.getElementById('date');
-    let category = document.getElementById('category');
+    let date = document.getElementById(`date-${location}`);
+    let category = document.getElementById(`category`);
     let bgcCode = checkCategory(category);
     document.getElementById('submitBtn').disabled = true;
     tasks.push({
@@ -130,7 +130,7 @@ function addTask() {
         "Subtasks": subtasks
     });
     setToLocalStorage(tasks);
-    resetAddTaskForm();
+    resetAddTaskForm(location);
     document.getElementById('submitBtn').disabled = false;
 }
 

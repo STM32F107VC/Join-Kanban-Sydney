@@ -26,11 +26,11 @@ async function init_contacts(id) {
  */
 async function loadContacts() {
     try {
-        console.log('Kontakte erfolgreich geladen.');
+        // console.log('Kontakte erfolgreich geladen.');
         contacts = JSON.parse(await getItem('contacts'));
         getInitialLetterOfFirstname();
     } catch (error) {
-        console.info('Kontakte konnten nicht geladen werden.');
+        // console.info('Kontakte konnten nicht geladen werden.');
     }
 }
 

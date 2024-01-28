@@ -136,21 +136,17 @@ function showTaskOverlay(i) {
     renderSubtask(task, i);
 }
 
+/**
+ * 
+ * @param {variable} j Is the task index 
+ */
 function deleteTask(j) {
     tasks.splice(j, 1);
-    // location.reload();
     localStorage.setItem('tasks', JSON.stringify(tasks));
     tasks = localStorage.getItem('tasks');
-    // loadTasks();
     location.replace('board.html');
-
-
-    // contacts.splice(j, 1);
-    // await setItem('contacts', JSON.stringify(contacts));
-    // contacts = JSON.parse(await getItem('contacts'));
-    // checkRegister();
-    // location.replace('contacts.html');
 }
+
 
 function showEditTaskOverlay(task, i) {
     let divBigViewTask = document.getElementById('tasks-overlay-view');

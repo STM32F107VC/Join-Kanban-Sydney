@@ -11,7 +11,7 @@ function getAddTaskOverlayMenuTemplate(location) {
                         src="assets/img/close.png" alt="close"></div>
         </div>
     </div>
-        <form onsubmit="addTask(); return false;" class="flex flex-row mt-64px">
+        <form onsubmit="addTask('${location}'); return false;" class="flex flex-row mt-64px">
             <div class="flex flex-column">
                 <div class="flex flex-column mb-32px">
                     <span class="mb-8px">Title<span class="col-red">*</span></span>
@@ -55,7 +55,7 @@ function getAddTaskOverlayMenuTemplate(location) {
                 </div>
                 <div class="flex flex-column mb-24px">
                     <span class="mb-8px">Category<span class="col-red">*</span></span>
-                    <select aria-placeholder="Select Task Category" class="login-input fs-20px" name="" id="category-${location}"
+                    <select aria-placeholder="Select Task Category" class="login-input fs-20px" name="" id="category"
                         required>
                         <option value="" disabled selected hidden>Select task category</option>
                         <option value="Technical Task">Technical Task</option>
