@@ -78,7 +78,6 @@ function assignContact(location) {
  */
 function showAssignedContact(i, location) {
     let selectedContacts = document.getElementById('displaySelectedContacts-' + `${location}`);
-    // let selectedContactsOverlay = document.getElementById('displaySelectedContactsOverlay');
     let contact = contacts[i];
     let array = buildAcronym(contact);
     let acronymUpperCase = array[0];
@@ -164,9 +163,13 @@ function setToLocalStorage(t) {
  * the id can take the value "high", "medium" and "low"
  * @param {string} id Dynamic id of priority images
  */
-function savePriorityState(id) {
-    let priorityImg = document.getElementById('prio-' + `${id}`);
-    let priorityImgOld = document.getElementById('prio-' + `${oldImg}`);
+function savePriorityState(id, location) {
+    let div = document.getElementById(`priority-container-${location}`);
+    let priorityImg = div.querySelector('#prio-' + `${id}`);
+    let priorityImgOld = div.querySelector('#prio-' + `${oldImg}`);
+
+    // let priorityImg = document.getElementById('prio-' + `${id}`);
+    // let priorityImgOld = document.getElementById('prio-' + `${oldImg}`);
     if (oldImg === undefined) setFirstTimePriorityState(priorityImg, id);
     else {
         if (oldImg !== id) setCurrentPriorityState(priorityImg, priorityImgOld, id);

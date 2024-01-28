@@ -27,4 +27,7 @@ to-do
 ---Date: 27.01.24 ---
 - Bei der Funktion showAssignedContact(location, i) stehen geblieben. Ich habe den parameter location hinzugefügt,
 welcher auskunft darüber gibt, ob die funktion vom basic oder overlay aufgerufen wurde. nun muss ich den fehler beheben, 
-in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben..
+in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben ✓
+
+---Date: 29.01.24 ---
+- Add subtask speichern symbol erscheint nicht mehr. problem existiert auf basic und overlay

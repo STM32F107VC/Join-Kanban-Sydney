@@ -137,7 +137,7 @@ function showTaskOverlay(i) {
 }
 
 /**
- * 
+ * Function to delet tasks from board
  * @param {variable} j Is the task index 
  */
 function deleteTask(j) {
