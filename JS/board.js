@@ -4,18 +4,18 @@
 async function init_board(id) {
     await includeHTML();
     await loadContacts();
+    loadTasks();
     markActiveLink(id);
-    await loadTasks();
     greetUser();
     getAddTaskMenu('overlay');
     assignContact('overlay');
 }
 
 async function loadTasks() {
-    // let tasksToString = localStorage.getItem('tasks');
-    let object = JSON.parse(await getItem('tasks'));
-    if (object) {
-        // let object = JSON.parse(tasksToString);
+    let tasksToString = localStorage.getItem('tasks');
+    // let object = JSON.parse(await getItem('tasks'));
+    if (tasksToString) {
+        let object = JSON.parse(tasksToString);
         tasks = object;
         loadToBacklog();
         // console.log(object);

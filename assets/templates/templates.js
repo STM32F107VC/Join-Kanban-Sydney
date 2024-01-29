@@ -67,7 +67,7 @@ function getAddTaskOverlayMenuTemplate(location) {
                     <div onclick="toggleIcons('${location}');" id="subtasks-content-${location}" class="login-input flex x-space-betw">
                         <input id="subtasks-${location}" class="fs-20px" placeholder="Add subtasks" name="subtasks">
                         <div id="subtask-icons-${location}" class="flex flex-row d-none">
-                            <img id="cancle" onclick="cancleSubtask();" src="assets/img/subtasks_cross.svg"
+                            <img id="cancle" onclick="cancleSubtask('${location}');" src="assets/img/subtasks_cross.svg"
                                 alt="cancle">
                             <img id="separator" class="p-4px" src="assets/img/subtasks_vector.svg" alt="separator line">
                             <img id="accept" onclick="addSubtask('${location}');" src="assets/img/subtasks_tick.svg" alt="cancle">

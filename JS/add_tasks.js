@@ -108,8 +108,8 @@ async function addTask(location) {
         "Bgc-Code": bgcCode,
         "Subtasks": subtasks
     });
-    // setToLocalStorage(tasks);
-    await setItem('tasks', JSON.stringify(tasks));
+    setToLocalStorage(tasks);
+    // await setItem('tasks', JSON.stringify(tasks));
     resetAddTaskForm(location);
     document.getElementById('submitBtn').disabled = false;
 }
@@ -133,10 +133,10 @@ function checkCategory(c) {
  * Testwise local storage in workflow use backend
  * 
  */
-// function setToLocalStorage(t) {
-//     let tasksToString = JSON.stringify(t);
-//     localStorage.setItem('tasks', tasksToString);
-// }
+function setToLocalStorage(t) {
+    let tasksToString = JSON.stringify(t);
+    localStorage.setItem('tasks', tasksToString);
+}
 
 
 /**
@@ -232,14 +232,14 @@ function addSubtask(location) {
         subtasks.push(inputValue.value);
         state = subtasks.length - 1;
         list.innerHTML += subtaskTemplate(state, inputValue, location);
-        let editImg = document.getElementById(`edite${state}`);
+        let editImg = document.getElementById(`edite${state}-${location}`);
         editImg.addEventListener('click', clickHandlerEdit);
     } else { console.log('Reached maximum of insertable subtasks.'); }
     clearSubtasks(inputValue);
 }
 
 /**
- * Set the "click" eventlistener for edit tasks
+ * Set the "click" eventlistener for edit subtasks
  */
 function clickHandlerEdit() {
     editSubtask(state);
@@ -248,8 +248,8 @@ function clickHandlerEdit() {
 /**
  * Set the "click" eventlistener for saving tasks
  */
-function clickHandlerSave(state) {
-    saveSubtaskChanges(state);
+function clickHandlerSave(state, location) {
+    saveSubtaskChanges(state, location);
 }
 
 /**
@@ -260,12 +260,12 @@ function clickHandlerSave(state) {
  */
 function subtaskTemplate(state, inputValue, location) {
     return /*html*/ `
-                    <div ondblclick="editSubtask(${state});" id="subtask${state}-${location}" class="sub-pseudo c-pointer flex x-space-betw y-center mb-4px">
-                        <ul class="w-100 outline-none"><li id="value${state}">${inputValue.value}</li></ul>
-                        <div id="subtask-delete-accept" class="flex x-space-betw y-center opacity-zero">
-                            <img id="delete${state}" onclick="deleteSubtask(${state});" src="/assets/img/subtasks_bin.svg" alt="delete">
+                    <div ondblclick="editSubtask('${state}', '${location}');" id="subtask${state}-${location}" class="sub-pseudo c-pointer flex x-space-betw y-center mb-4px">
+                        <ul class="w-100 outline-none"><li id="value${state}-${location}">${inputValue.value}</li></ul>
+                        <div id="subtask-delete-accept-${state}-${location}" class="flex x-space-betw y-center opacity-zero">
+                            <img id="delete${state}-${location}" onclick="deleteSubtask('${state}', '${location}');" src="/assets/img/subtasks_bin.svg" alt="delete">
                             <img class="p-lr" src="/assets/img/Vector 19.svg" alt="separator">
-                            <img id="edite${state}" src="/assets/img/subtasks_pencil.svg" alt="edit">
+                            <img id="edite${state}-${location}" onclick="editSubtask('${state}', '${location}');" src="/assets/img/subtasks_pencil.svg" alt="edit">
                         </div>
                     </div>`;
 }
@@ -274,14 +274,15 @@ function subtaskTemplate(state, inputValue, location) {
  * Make subtask editable to change
  * @param {variable} state Index of the subtask
  */
-function editSubtask(state) {
-    let subtask = document.getElementById(`subtask${state}`);
-    let subtaskValue = document.getElementById(`value${state}`);
-    let replaceImg = document.getElementById(`edite${state}`);
-    let deleteImg = document.getElementById(`delete${state}`);
+function editSubtask(state, location) {
+    document.getElementById(`subtask-delete-accept-${state}-${location}`).classList.remove('opacity-zero');
+    let subtask = document.getElementById(`subtask${state}-${location}`);
+    let subtaskValue = document.getElementById(`value${state}-${location}`);
+    let replaceImg = document.getElementById(`edite${state}-${location}`);
+    let deleteImg = document.getElementById(`delete${state}-${location}`);
     replaceImg.removeEventListener('click', clickHandlerEdit);
     replaceImg.src = 'assets/img/subtasks_tick.svg';
-    replaceImg.addEventListener('click', function () { clickHandlerSave(state) });
+    replaceImg.addEventListener('click', function () { clickHandlerSave(state, location) });
     replaceImg.classList.add('icon-hover');
     deleteImg.classList.add('icon-hover');
     subtaskValue.setAttribute('contenteditable', 'true');
@@ -293,11 +294,13 @@ function editSubtask(state) {
  * Save changes made on a subtask
  * @param {variable} state Index of the subtask
  */
-function saveSubtaskChanges(state) {
-    let subtask = document.getElementById(`subtask${state}`);
-    let subtaskValue = document.getElementById(`value${state}`);
-    let replaceImg = document.getElementById(`edite${state}`);
-    let deleteImg = document.getElementById(`delete${state}`);
+function saveSubtaskChanges(state, location) {
+    document.getElementById(`subtask-delete-accept-${state}-${location}`).classList.add('opacity-zero');
+    let subtask = document.getElementById(`subtask${state}-${location}`);
+    let subtaskValue = document.getElementById(`value${state}-${location}`);
+    console.log(subtaskValue.innerHTML);
+    let replaceImg = document.getElementById(`edite${state}-${location}`);
+    let deleteImg = document.getElementById(`delete${state}-${location}`);
     replaceImg.removeEventListener('click', clickHandlerSave);
     replaceImg.src = '/assets/img/subtasks_pencil.svg';
     replaceImg.addEventListener('click', clickHandlerEdit);
@@ -321,8 +324,8 @@ function clearSubtasks(inputValue) {
  * Function to delete an added subtask
  * @param {variable} x Id number of the subtask
  */
-function deleteSubtask(x) {
-    let div = document.getElementById(`subtask${x}`);
+function deleteSubtask(x, location) {
+    let div = document.getElementById(`subtask${x}-${location}`);
     if (x == 1 && subtasks.length == 1) {
         subtasks.splice(0, 1);
     } else subtasks.splice(x, 1);
@@ -332,8 +335,8 @@ function deleteSubtask(x) {
 /**
  * Cancle subtask and clear input field
  */
-function cancleSubtask() {
-    let subtask = document.getElementById('subtasks');
+function cancleSubtask(location) {
+    let subtask = document.getElementById('subtasks-' + `${location}`);
     subtask.value = '';
 }
 

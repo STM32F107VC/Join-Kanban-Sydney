@@ -84,14 +84,15 @@ div.subtasks-main > div { height: 28px; }
     cursor: pointer;
 }
 
-/* #displaySubtasks > div > div {
-    word-break: break-all;
-} */
-
-#displaySubtasks > div:hover #subtask-delete-accept { 
-    opacity: 1; 
+.sub-pseudo:hover > div {
+    opacity: 1;
     cursor: pointer;
 }
+
+/* #displaySubtasks > div#subtask:hover #subtask-delete-accept { 
+    opacity: 1; 
+    cursor: pointer;
+} */
 
 .no-outline { border-bottom: 1px solid #29ABE2; }
 
