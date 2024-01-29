@@ -38,7 +38,7 @@ div.priority > div img {
     border-radius: 10px;
 }
 
-.priorityImg:hover { box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2) ; }
+.priorityImg:hover { box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2); }
 
 .filter-none { filter: none; }
 
@@ -120,7 +120,7 @@ li {
     display: inline-block;
     margin-right: 16px;
     margin-left: 16px; 
-  }
+}
 
 .icon-hover:hover {
     background-color: rgba(0, 0, 0, 0.1); 

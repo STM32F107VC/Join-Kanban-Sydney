@@ -39,8 +39,6 @@ function getAddTaskMenu(location) {
 }
 //-----
 
-
-
 /**
  * Load available contacts
  */
@@ -51,24 +49,6 @@ function assignContact(location) {
         assignSection.innerHTML += /*html*/`
         <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
     }
-    // switch (location) {
-    //     case 'add-task':
-    //         console.log('add-task');
-    //         for (let i = 0; i < contacts.length; i++) {
-    //             let contact = contacts[i];
-    //             assignSection.innerHTML += /*html*/`
-    //             <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
-    //         }
-    //         break;
-
-    //     case 'add-task-overlay':
-    //         for (let i = 0; i < contacts.length; i++) {
-    //             let contact = contacts[i];
-    //             assignSectionOverlay.innerHTML += /*html*/`
-    //             <option id="${contact['name']}" type="checkbox" value="${i}">${contact['name']}</option>`;
-    //         }
-    //         break;
-    // }
 }
 
 /**
@@ -110,12 +90,12 @@ function buildAcronym(contact) {
  * Function to add new tasks and save into tasks JSON-array
  * 
  */
-function addTask(location) {
+async function addTask(location) {
     let title = document.getElementById(`title-${location}`);
     let description = document.getElementById(`textarea-${location}`);
-    // let assignedTo = document.getElementById('assigned-to');
+    let assignedTo = document.getElementById(`assigned-${location}`);
     let date = document.getElementById(`date-${location}`);
-    let category = document.getElementById(`category`);
+    let category = document.getElementById(`category-${location}`);
     let bgcCode = checkCategory(category);
     document.getElementById('submitBtn').disabled = true;
     tasks.push({
@@ -128,7 +108,8 @@ function addTask(location) {
         "Bgc-Code": bgcCode,
         "Subtasks": subtasks
     });
-    setToLocalStorage(tasks);
+    // setToLocalStorage(tasks);
+    await setItem('tasks', JSON.stringify(tasks));
     resetAddTaskForm(location);
     document.getElementById('submitBtn').disabled = false;
 }
@@ -152,10 +133,11 @@ function checkCategory(c) {
  * Testwise local storage in workflow use backend
  * 
  */
-function setToLocalStorage(t) {
-    let tasksToString = JSON.stringify(t);
-    localStorage.setItem('tasks', tasksToString);
-}
+// function setToLocalStorage(t) {
+//     let tasksToString = JSON.stringify(t);
+//     localStorage.setItem('tasks', tasksToString);
+// }
+
 
 /**
  * Each priority image calls this function and depeneding
@@ -168,8 +150,6 @@ function savePriorityState(id, location) {
     let priorityImg = div.querySelector('#prio-' + `${id}`);
     let priorityImgOld = div.querySelector('#prio-' + `${oldImg}`);
 
-    // let priorityImg = document.getElementById('prio-' + `${id}`);
-    // let priorityImgOld = document.getElementById('prio-' + `${oldImg}`);
     if (oldImg === undefined) setFirstTimePriorityState(priorityImg, id);
     else {
         if (oldImg !== id) setCurrentPriorityState(priorityImg, priorityImgOld, id);
@@ -224,8 +204,8 @@ function replaceDefaultPriorityImg(img, id) {
  * @param {string} id Current id of img
  */
 function setDefaultPriorityImg(img, id) {
-    img.src = `assets/img/prio-default-${id}.png`;
     img.classList.add('priorityImg');
+    img.src = `assets/img/prio-default-${id}.png`;
 }
 
 /**
@@ -363,7 +343,7 @@ function cancleSubtask() {
 function resetAddTaskForm(location) {
     document.getElementById(`title-${location}`).value = '';
     document.getElementById(`textarea-${location}`).value = '';
-    document.getElementById(`assigned-to-${location}`).value = '';
+    document.getElementById(`assigned-${location}`).value = '';
     document.getElementById(`date-${location}`).value = '';
     document.getElementById(`category-${location}`).value = '';
     document.getElementById(`subtasks-${location}`).value = '';

@@ -55,7 +55,7 @@ function getAddTaskOverlayMenuTemplate(location) {
                 </div>
                 <div class="flex flex-column mb-24px">
                     <span class="mb-8px">Category<span class="col-red">*</span></span>
-                    <select aria-placeholder="Select Task Category" class="login-input fs-20px" name="" id="category"
+                    <select aria-placeholder="Select Task Category" class="login-input fs-20px" name="" id="category-${location}"
                         required>
                         <option value="" disabled selected hidden>Select task category</option>
                         <option value="Technical Task">Technical Task</option>

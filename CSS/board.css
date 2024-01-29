@@ -133,3 +133,7 @@ progress::-webkit-progress-bar {
     border-radius: 16px;
     background-color: #F4F4F4; 
 }
+
+#priortiy-container-overlay img {
+    width: 160px;
+}

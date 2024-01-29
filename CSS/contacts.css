@@ -1,7 +1,7 @@
 .main-div-contacts {
     position: absolute;
     top: 96px;
-    left: 220px;
+    left: 242px;
     bottom: 0;  
     right: 0;
 }
@@ -11,15 +11,17 @@
 .contacts-div {
     height: 100vh;
     overflow-y: scroll;
-    min-width: 404px;
+    width: 364px;
+    width: fit-content;
     overflow-x: hidden;
-    padding: 22.5px 52px;
+    padding: 32px 24px; 
+    padding-right: 16px !important;
     background-color: #FFFFFF;
 }
 
 .add-contacts-btn {
     width: 352px;
-    cursor: pointer;
+    cursor: pointer;    
     padding: 12px 0;
 }
 
