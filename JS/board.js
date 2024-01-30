@@ -40,7 +40,6 @@ async function openAddTaskOverlay() {
     document.getElementById('main-div-board').classList.add('d-none');
     document.getElementById('body-board').classList.add("flex", "x-center", "y-center");
     document.getElementById('side-and-topbar-board').classList.add("opacity", "z-ind--1");
-    // getAddTaskMenu('overlay');
 }
 
 /**
@@ -157,23 +156,42 @@ function showEditTaskOverlay(tasks, i) {
     divEditTask.classList.remove('d-none');
     getTaskValues(tasks, i);
 }
-
+let oldState;
 /**
  * 
  * @param {variable} i Is the task index 
  */
 function getTaskValues(i) {
-    console.log(tasks[i]);
-    let title = tasks[i]['Title'];
-    let description = tasks[i]['Description'];
-    let date = tasks[i]['Date'];
+    let task = tasks[i];
+    console.log(task);
+    let title = task['Title'];
+    let description = task['Description'];
+    let date = task['Date'];
+    let category = task['Category'];
+    document.getElementById('prio-low').src = 'assets/img/prio-default-low.png';
+    document.getElementById('prio-medium').src = 'assets/img/prio-default-medium.png';
+    document.getElementById('prio-high').src = 'assets/img/prio-default-high.png';
+
+    let prioState = document.getElementById(`prio-${task['Prio']}`);
+    prioState.src = `assets/img/prio-${task['Prio']}.svg`;
+
+
+
+
+
+    console.log(prioState);
+
+
 
     document.getElementById('title-editable').value = title;
     document.getElementById('textarea-editable').value = description;
     document.getElementById('date-editable').value = date;
 
 
+    oldState = task['Prio'];
+
 }
+
 
 /**
  * Get contacts to render in another step

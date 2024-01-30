@@ -138,7 +138,6 @@ function setToLocalStorage(t) {
     localStorage.setItem('tasks', tasksToString);
 }
 
-
 /**
  * Each priority image calls this function and depeneding
  * on which priority state (image) is clicked/selected, 
@@ -149,8 +148,11 @@ function savePriorityState(id, location) {
     let div = document.getElementById(`priority-container-${location}`);
     let priorityImg = div.querySelector('#prio-' + `${id}`);
     let priorityImgOld = div.querySelector('#prio-' + `${oldImg}`);
+    let priorityImgId = priorityImg.id;
 
-    if (oldImg === undefined) setFirstTimePriorityState(priorityImg, id);
+    if (location == 'edit-overlay') prioEditDefault();
+
+    if (oldImg === undefined) setFirstTimePriorityState(priorityImg, id, location);
     else {
         if (oldImg !== id) setCurrentPriorityState(priorityImg, priorityImgOld, id);
         else {
@@ -162,12 +164,23 @@ function savePriorityState(id, location) {
 }
 
 /**
+ * If edit task is called, after selecting a new priority state, set all to default and
+ * then set new state.
+ */
+function prioEditDefault() {
+    document.getElementById('prio-low').src = `assets/img/prio-default-low.png`;
+    document.getElementById('prio-medium').src = `assets/img/prio-default-medium.png`;
+    document.getElementById('prio-high').src = `assets/img/prio-default-high.png`;
+}
+
+/**
  * First time a priortiy state is clicke, this function will be executed
  * to set current selected priority state
  * @param {img} img Current img
  * @param {string} id Current id of img
  */
-function setFirstTimePriorityState(img, id) {
+function setFirstTimePriorityState(img, id, location) {
+
     img.src = `assets/img/prio-${id}.svg`;
     img.classList.remove('priorityImg');
 }

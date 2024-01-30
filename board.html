@@ -65,13 +65,13 @@
 
                 <div class="priority flex flex-column mb-24px">
                     <span class="mb-8px">Prio</span>
-                    <div class="flex x-space-betw gap-16px">
-                        <img class="priorityImg prio-border" onclick="savePriorityState('low')" id="prio-low"
-                            src="assets/img/prio-default-low.png" alt="priority low">
-                        <img class="priorityImg prio-border" onclick="savePriorityState('medium')" id="prio-medium"
-                            src="assets/img/prio-default-medium.png" alt="priority medium">
-                        <img class="priorityImg prio-border" onclick="savePriorityState('high')" id="prio-high"
-                            src="assets/img/prio-default-high.png" alt="priority high">
+                    <div id='priority-container-edit-overlay' class="flex x-space-betw gap-16px">
+                        <img class="priorityImg prio-border" onclick="savePriorityState('low', 'edit-overlay')"
+                            id="prio-low" src="assets/img/prio-default-low.png" alt="priority low">
+                        <img class="priorityImg prio-border" onclick="savePriorityState('medium', 'edit-overlay')"
+                            id="prio-medium" src="assets/img/prio-default-medium.png" alt="priority medium">
+                        <img class="priorityImg prio-border" onclick="savePriorityState('high', 'edit-overlay')"
+                            id="prio-high" src="assets/img/prio-default-high.png" alt="priority high">
                     </div>
                 </div>
 
@@ -99,14 +99,32 @@
                     </div>
                     <div id="displaySubtasks" class="mb-64px"></div>
 
-                    <div class="flex x-end">
-                        <button onclick="" class="flex y-center gap-4px btn-dark fs-21px fw-700">Ok
-                            <img class="tick" src="assets/img/check_white.svg" alt="confirm"></button>
+                    <div class="flex flex-column mb-24px">
+                        <span class="mb-8px">Category</span>
+                        <input contenteditable="true" class="login-input fs-20px" type="date" value="2024-01-01"
+                            id="category-editable" required>
+                    </div>
+
+                    <div class="flex flex-column mb-24px">
+                        <span class="mb-8px">Category</span>
+                        <select aria-placeholder="Select Task Category" class="login-input fs-20px" name="" required>
+                            <option id="category-editable" contenteditable="true" value="" disabled selected hidden>
+                                Select task category
+                            </option>
+                            <option value="Technical Task">Technical Task</option>
+                            <option value="User Story">User Story</option>
+                        </select>
                     </div>
                 </div>
+
             </div>
+
         </form>
     </div>
+
+    <!--  <div class="flex x-end">
+                        <button onclick="" class="flex y-center gap-4px btn-dark fs-21px fw-700">Ok
+                            <img class="tick" src="assets/img/check_white.svg" alt="confirm"></button> -->
 
     <!-- Add Tasks overlay view -->
     <div id="add-tasks-overlay-view" class="d-none"></div>
