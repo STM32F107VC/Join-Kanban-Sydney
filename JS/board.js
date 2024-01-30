@@ -156,7 +156,7 @@ function showEditTaskOverlay(tasks, i) {
     divEditTask.classList.remove('d-none');
     getTaskValues(tasks, i);
 }
-let oldState;
+
 /**
  * 
  * @param {variable} i Is the task index 
@@ -168,6 +168,20 @@ function getTaskValues(i) {
     let description = task['Description'];
     let date = task['Date'];
     let category = task['Category'];
+    let getSubtasks = task['Subtasks'];
+
+    let renderSubtasks = document.getElementById('displaySubtasks-edit-overlay');
+    let inputValue = document.getElementById('subtasks-edit-overlay');
+    for (let k = 0; k < getSubtasks.length; k++) {
+        subtasks[k] = [];
+        let subtask = getSubtasks[k];
+        inputValue.value = subtask;
+        renderSubtasks.innerHTML += addSubtask('edit-overlay');
+    }
+
+
+
+
     document.getElementById('prio-low').src = 'assets/img/prio-default-low.png';
     document.getElementById('prio-medium').src = 'assets/img/prio-default-medium.png';
     document.getElementById('prio-high').src = 'assets/img/prio-default-high.png';
@@ -175,13 +189,7 @@ function getTaskValues(i) {
     let prioState = document.getElementById(`prio-${task['Prio']}`);
     prioState.src = `assets/img/prio-${task['Prio']}.svg`;
 
-
-
-
-
     console.log(prioState);
-
-
 
     document.getElementById('title-editable').value = title;
     document.getElementById('textarea-editable').value = description;

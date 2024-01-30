@@ -82,55 +82,54 @@
                         <option value="" disabled selected hidden>Select contacts to assign</option>
                     </select>
                 </div>
-
                 <div id="displaySelectedContacts" class="flex"></div>
 
-                <div>
-                    <div class="subtasks-main mb-8px">
-                        <span class="flex flex-column mb-8px">Subtasks</span>
-                        <div onclick="" id="subtasks-content" class="login-input flex x-space-betw">
-                            <input id="subtasks" class="fs-20px" placeholder="Add subtasks" name="subtasks">
-                            <div id="subtask-icons" class="flex flex-row d-none">
-                                <img id="cancle" onclick="" src="assets/img/subtasks_cross.svg" alt="cancle">
-                                <img id="accept" onclick="" src="assets/img/subtasks_tick.svg" alt="cancle">
-                            </div>
-                            <img id="plus-icon" src="assets/img/plus.svg" alt="plus">
+                <!-- <div class="subtasks-main mb-8px">
+                    <span class="flex flex-column mb-8px">Subtasks</span>
+                    <div onclick="" id="subtasks-content" class="login-input flex x-space-betw">
+                        <input id="subtasks" class="fs-20px" placeholder="Add subtasks" name="subtasks">
+                        <div id="subtask-icons" class="flex flex-row d-none">
+                            <img id="cancle" onclick="" src="assets/img/subtasks_cross.svg" alt="cancle">
+                            <img id="accept" onclick="" src="assets/img/subtasks_tick.svg" alt="cancle">
                         </div>
+                        <img id="plus-icon" src="assets/img/plus.svg" alt="plus">
                     </div>
-                    <div id="displaySubtasks" class="mb-64px"></div>
+                </div> -->
 
-                    <div class="flex flex-column mb-24px">
-                        <span class="mb-8px">Category</span>
-                        <input contenteditable="true" class="login-input fs-20px" type="date" value="2024-01-01"
-                            id="category-editable" required>
-                    </div>
-
-                    <div class="flex flex-column mb-24px">
-                        <span class="mb-8px">Category</span>
-                        <select aria-placeholder="Select Task Category" class="login-input fs-20px" name="" required>
-                            <option id="category-editable" contenteditable="true" value="" disabled selected hidden>
-                                Select task category
-                            </option>
-                            <option value="Technical Task">Technical Task</option>
-                            <option value="User Story">User Story</option>
-                        </select>
+                <div class="subtasks-main mb-8px">
+                    <span class="flex flex-column mb-8px">Subtasks</span>
+                    <div onclick="toggleIcons('edit-overlay');" id="subtasks-content-edit-overlay"
+                        class="login-input flex x-space-betw">
+                        <input id="subtasks-edit-overlay" class="fs-20px" placeholder="Add subtasks" name="subtasks">
+                        <div id="subtask-icons-edit-overlay" class="flex flex-row d-none">
+                            <img id="cancle" onclick="cancleSubtask('edit-overlay');"
+                                src="assets/img/subtasks_cross.svg" alt="cancle">
+                            <img id="separator" class="p-4px" src="assets/img/subtasks_vector.svg" alt="separator line">
+                            <img id="accept" onclick="addSubtask('edit-overlay');" src="assets/img/subtasks_tick.svg"
+                                alt="cancle">
+                        </div>
+                        <img id="plus-icon-edit-overlay" src="assets/img/plus.svg" alt="plus">
                     </div>
                 </div>
 
+                <div id="displaySubtasks-edit-overlay"></div>
+
+                <div class="flex x-end">
+                    <button onclick="" class="flex y-center gap-4px btn-dark fs-21px fw-700">Ok
+                        <img class="tick" src="assets/img/check_white.svg" alt="confirm"></button>
+                </div>
             </div>
 
         </form>
     </div>
 
-    <!--  <div class="flex x-end">
-                        <button onclick="" class="flex y-center gap-4px btn-dark fs-21px fw-700">Ok
-                            <img class="tick" src="assets/img/check_white.svg" alt="confirm"></button> -->
+
 
     <!-- Add Tasks overlay view -->
     <div id="add-tasks-overlay-view" class="d-none"></div>
 
     <!-- Tasks overlay view -->
-    <div id="tasks-overlay-view" class="d-none"></div>
+    <div id="tasks-overlay-view" class="tasks-overlay-view d-none"></div>
 
     <!-- Complete board with title, searchfield and drag and drop possible columns -->
     <div id="main-div-board" class="main-div-board">

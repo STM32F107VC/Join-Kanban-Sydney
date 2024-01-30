@@ -83,7 +83,7 @@ progress {
 
 .remove-margin { margin: 0 !important; }
 
-#tasks-overlay-view,
+.tasks-overlay-view,
 #edit-task-overlay-view {
     width: 445px;
     padding: 48px 40px;
@@ -96,7 +96,7 @@ progress {
 
 button:hover > img.tick { content: url('/assets/img/check-white-blue.svg'); }
 
-#tasks-overlay-view > div {
+.tasks-overlay-view > div {
     margin-bottom: 24px;
 }
 

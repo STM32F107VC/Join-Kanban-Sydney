@@ -62,6 +62,7 @@ function getAddTaskOverlayMenuTemplate(location) {
                         <option value="User Story">User Story</option>
                     </select>
                 </div>
+                
                 <div class="subtasks-main mb-8px">
                     <span class="flex flex-column mb-8px">Subtasks</span>
                     <div onclick="toggleIcons('${location}');" id="subtasks-content-${location}" class="login-input flex x-space-betw">
