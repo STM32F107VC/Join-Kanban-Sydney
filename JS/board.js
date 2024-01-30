@@ -101,6 +101,8 @@ function showTaskOverlay(i) {
     let str = task['Prio'];
     let priority = str.charAt(0).toUpperCase() + str.slice(1);
 
+    // console.log(tasks[i]);
+
     let div = document.getElementById('tasks-overlay-view');
     div.classList.remove('d-none');
 
@@ -129,7 +131,7 @@ function showTaskOverlay(i) {
             <div class="flex x-end gap-16px remove-margin">
                     <img onclick="deleteTask(${i});" class="delete c-pointer" src="/assets/img/delete_default.png" alt="delete">
                     <img src="/assets/img/subtasks_vector.svg" alt="separator">
-                    <img onclick="showEditTaskOverlay('${task}', '${i}')" class="edit c-pointer" src="/assets/img/edit_default.png" alt="edit">
+                    <img onclick="showEditTaskOverlay('${i}')" class="edit c-pointer" src="/assets/img/edit_default.png" alt="edit">
             </div>
         </div>
     `;
@@ -138,7 +140,7 @@ function showTaskOverlay(i) {
 }
 
 /**
- * Function to delet tasks from board
+ * Delete tasks from board
  * @param {variable} j Is the task index 
  */
 function deleteTask(j) {
@@ -148,13 +150,29 @@ function deleteTask(j) {
     location.replace('board.html');
 }
 
-
-function showEditTaskOverlay(task, i) {
+function showEditTaskOverlay(tasks, i) {
     let divBigViewTask = document.getElementById('tasks-overlay-view');
     let divEditTask = document.getElementById('edit-task-overlay-view');
     divBigViewTask.classList.add('d-none');
     divEditTask.classList.remove('d-none');
-    console.log('showEditTaskOverlay()');
+    getTaskValues(tasks, i);
+}
+
+/**
+ * 
+ * @param {variable} i Is the task index 
+ */
+function getTaskValues(i) {
+    console.log(tasks[i]);
+    let title = tasks[i]['Title'];
+    let description = tasks[i]['Description'];
+    let date = tasks[i]['Date'];
+
+    document.getElementById('title-editable').value = title;
+    document.getElementById('textarea-editable').value = description;
+    document.getElementById('date-editable').value = date;
+
+
 }
 
 /**

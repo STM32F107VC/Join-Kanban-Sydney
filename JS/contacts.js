@@ -275,19 +275,6 @@ function renderContactInformatons(e, p) {
 }
 
 /**
- * Get values out of contacts JSON array and show them in the input fields to check
- * @param {variable} j J is the index number for accessing a contact in the contacts array
- */
-function getContactValues(j) {
-    let name = contacts[j]['name'];
-    let email = contacts[j]['email'];
-    let phone = contacts[j]['phone'];
-    document.getElementById('edit-name').value = name;
-    document.getElementById('edit-email').value = email;
-    document.getElementById('edit-number').value = phone;
-}
-
-/**
  * Shows detailed information about a contact
  * @param {variable} j J is the index number for accessing a contact in the contacts array
  */
@@ -295,7 +282,7 @@ function editContact(j, auc) {
     getBackgroundColor = contacts[j]['background-color'];
     let editContactForm = document.getElementById('delete-part');
     let avatar = document.getElementById('edit-Overlay-Menu-Avatar');
-    avatar.style = `background-color: ${getBackgroundColor}`;
+    // avatar.style = `background-color: ${getBackgroundColor}`;
     avatar.innerHTML = renderEditOverlayAvatar(auc);
     editContactForm.innerHTML = renderDeletePart(j);
     openEditContactForm();
@@ -311,7 +298,20 @@ function renderEditOverlayAvatar(auc) {
     return /*html*/`
         <div class="ft-general fs-47px fw-500 col-white" style="background-color: #${getBackgroundColor}">
             <span>${auc}</span></div>
-        </div>`;
+        `;
+}
+
+/**
+ * Get values out of contacts JSON array and show them in the input fields to check
+ * @param {variable} j J is the index number for accessing a contact in the contacts array
+ */
+function getContactValues(j) {
+    let name = contacts[j]['name'];
+    let email = contacts[j]['email'];
+    let phone = contacts[j]['phone'];
+    document.getElementById('edit-name').value = name;
+    document.getElementById('edit-email').value = email;
+    document.getElementById('edit-number').value = phone;
 }
 
 /**

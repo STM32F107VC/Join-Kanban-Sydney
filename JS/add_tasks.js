@@ -298,7 +298,6 @@ function saveSubtaskChanges(state, location) {
     document.getElementById(`subtask-delete-accept-${state}-${location}`).classList.add('opacity-zero');
     let subtask = document.getElementById(`subtask${state}-${location}`);
     let subtaskValue = document.getElementById(`value${state}-${location}`);
-    console.log(subtaskValue.innerHTML);
     let replaceImg = document.getElementById(`edite${state}-${location}`);
     let deleteImg = document.getElementById(`delete${state}-${location}`);
     replaceImg.removeEventListener('click', clickHandlerSave);
