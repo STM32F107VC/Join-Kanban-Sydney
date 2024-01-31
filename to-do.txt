@@ -37,4 +37,7 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 
 ---Date: 31.01.24 ---
 - Assigned contacts in edit overlay menu von einem task rendern✓
-- Hover effekt bei kontakten existiert nicht mehr, wieso?
+- Hover effekt bei kontakten existiert nicht mehr, wieso✓
+
+---Date: 01.02.24 ---
+- Probleme beim rendern der subtasks, lassen sich wegen Id nicht immer editieren

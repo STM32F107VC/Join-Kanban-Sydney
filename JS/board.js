@@ -235,23 +235,8 @@ function renderAssignedContacts(t, i, flag) {
         let bgc = array[1];
         if (!flag) showContacts.innerHTML += assigneContactsTemplate(acronymUpperCase, i, bgc);
         else if (flag == true) showContacts.innerHTML += assigneContactsTemplatePreview(contact, acronymUpperCase, i, bgc);
-        else if (flag == 'edit-overlay') showContacts.innerHTML += assigneContactsTemplateEditeOverlay(acronymUpperCase, i, bgc);
+        else if (flag == 'edit-overlay') showContacts.innerHTML += renderSelectedContact(acronymUpperCase, i, bgc);
     }
-}
-
-/**
- * 
- * @param {variable} aUC Includes the acronym of contact
- * @param {variable} i Is the contact index
- * @param {string} bgc Is the background-color code
- * @returns Rendered contact info sign includes acronym and
- *          a background color in a circle
- */
-function assigneContactsTemplateEditeOverlay(aUC, i, bgc) {
-    return /*html*/`
-         <div id='${aUC}${i}' class="acronym acronym-dimensions-medium  flex x-center y-center fs-16px " style="background-color: #${bgc}">${aUC}
-                    </div>
-    `;
 }
 
 /**
