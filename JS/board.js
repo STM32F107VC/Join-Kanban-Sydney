@@ -18,7 +18,6 @@ async function loadTasks() {
         let object = JSON.parse(tasksToString);
         tasks = object;
         loadToBacklog();
-        // console.log(object);
     }
 }
 
@@ -59,6 +58,8 @@ function closeAddTaskOverlay() {
  */
 function closeShowTaskOverlay() {
     document.getElementById('displaySubtasks-edit-overlay').innerHTML = '';
+    document.getElementById('assigned-edit-overlay').innerHTML = '';
+    document.getElementById('displaySelectedContacts-edit-overlay').innerHTML = '';
 
     document.getElementById('tasks-overlay-view').classList.add('d-none');
     document.getElementById('main-div-board').classList.remove('d-none');
@@ -171,6 +172,7 @@ function showEditTaskOverlay(i) {
     let divEditTask = document.getElementById('edit-task-overlay-view');
     divBigViewTask.classList.add('d-none');
     divEditTask.classList.remove('d-none');
+    assignContact('edit-overlay');
     getTaskValues(i);
 }
 
@@ -186,6 +188,10 @@ function getTaskValues(i) {
     let date = task['Date'];
     let category = task['Category'];
     let getSubtasks = task['Subtasks'];
+    // let contact = task['Contacts'];
+
+
+    renderAssignedContacts(task, i, 'edit-overlay');
 
     let renderSubtasks = document.getElementById('displaySubtasks-edit-overlay');
     for (let k = 0; k < task['Subtasks'].length; k++) {
@@ -199,15 +205,8 @@ function getTaskValues(i) {
         // clearSubtasks(inputValue);
     }
     // renderSubtask(task, i, 'overlay');
-    addSubtask('edit-overlay');
+    // addSubtask('edit-overlay');
 
-    let inputValue = document.getElementById('subtasks-edit-overlay');
-    // for (let k = 0; k < getSubtasks.length; k++) {
-    //     subtasks[k] = [];
-    //     let subtask = getSubtasks[k];
-    //     inputValue.value = subtask;
-    //     renderSubtasks.innerHTML += addSubtask('edit-overlay');
-    // }
 
     document.getElementById('prio-low').src = 'assets/img/prio-default-low.png';
     document.getElementById('prio-medium').src = 'assets/img/prio-default-medium.png';
@@ -222,7 +221,7 @@ function getTaskValues(i) {
     document.getElementById('textarea-editable').value = description;
     document.getElementById('date-editable').value = date;
 
-    oldState = task['Prio'];
+    // oldState = task['Prio'];
 }
 
 
@@ -234,14 +233,17 @@ function getTaskValues(i) {
 function renderAssignedContacts(t, i, flag) {
     let showContacts;
     if (!flag) showContacts = document.getElementById(`assignedContact${i}`);
-    else if (flag) showContacts = document.getElementById(`assignedContactPreView${i}`);
+    else if (flag == true) showContacts = document.getElementById(`assignedContactPreView${i}`);
+    else if (flag == 'edit-overlay') showContacts = document.getElementById(`displaySelectedContacts-${flag}`);
+
     for (let j = 0; j < t['Assigned-to'].length; j++) {
         let contact = t['Assigned-to'][j];
         let array = buildAcronym(contact);
         let acronymUpperCase = array[0];
         let bgc = array[1];
         if (!flag) showContacts.innerHTML += assigneContactsTemplate(acronymUpperCase, i, bgc);
-        else if (flag) showContacts.innerHTML += assigneContactsTemplatePreview(contact, acronymUpperCase, i, bgc);
+        else if (flag == true) showContacts.innerHTML += assigneContactsTemplatePreview(contact, acronymUpperCase, i, bgc);
+        else if (flag == 'edit-overlay') showContacts.innerHTML += renderSelectedContact(acronymUpperCase, i, bgc);
     }
 }
 
@@ -277,6 +279,14 @@ function assigneContactsTemplate(aUC, i, bgc) {
                     <div id='${aUC}${i}' class="acronym acronym-dimensions-small flex x-center y-center fs-12px " style="background-color: #${bgc}">${aUC}
                     </div>`;
 }
+
+function assigneContactsTemplateEditeOverlay(aUC, i, bgc) {
+    return /*html*/`
+         <div id='${aUC}${i}' class="acronym  flex x-center y-center fs-12px " style="background-color: #${bgc}">${aUC}
+                    </div>
+    `;
+}
+
 
 /**
 * Render contacts

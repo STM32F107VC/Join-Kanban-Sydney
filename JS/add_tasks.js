@@ -69,9 +69,15 @@ function showAssignedContact(i, location) {
         }, 2000);
     } else {
         assignedContacts.push(contact);
-        selectedContacts.innerHTML += /*html*/`
-        <div id='${acronymUpperCase}${i}' class="acronym p-6px flex x-center y-center mr-4px" style="background-color: #${bgc}">${acronymUpperCase}</div>`;
+        selectedContacts.innerHTML += renderSelectedContact(acronymUpperCase, i, bgc);
     }
+}
+
+function renderSelectedContact(auC, i, bgc) {
+    return /*html*/`
+    <div id='${auC}${i}' class="acronym p-6px flex x-center y-center mr-4px" style="background-color: #${bgc}">
+        ${auC}
+    </div>`;
 }
 
 /**
