@@ -36,5 +36,5 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 - Change text color form input field-
 
 ---Date: 31.01.24 ---
-- Assigned contacts in edit overlay menu von einem task rendern
+- Assigned contacts in edit overlay menu von einem task rendern✓
 - Hover effekt bei kontakten existiert nicht mehr, wieso?

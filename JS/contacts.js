@@ -26,11 +26,10 @@ async function init_contacts(id) {
  */
 async function loadContacts() {
     try {
-        // console.log('Kontakte erfolgreich geladen.');
         contacts = JSON.parse(await getItem('contacts'));
         getInitialLetterOfFirstname();
     } catch (error) {
-        // console.info('Kontakte konnten nicht geladen werden.');
+
     }
 }
 
@@ -224,7 +223,11 @@ function addContactClasses(contact, divDetails, currentId) {
     if (currentId !== oldId) {
         if (oldId === undefined) {
             oldId = currentId;
-        } else { document.getElementById(`${oldId}`).classList.remove('bg-dark-blue', 'col-white', 'contact-details-x-trans'); }
+        } else {
+            let oldContact = document.getElementById(`${oldId}`);
+            oldContact.classList.remove('bg-dark-blue', 'col-white', 'contact-details-x-trans');
+            oldContact.classList.add('contactHover');
+        }
     }
 }
 

@@ -142,20 +142,6 @@ function showTaskOverlay(i) {
     renderSubtask(task, i, 'overlay');
 }
 
-// ${addSubtask('edit')}
-
-// ${subtaskTemplates(i, 'overlay')}
-
-
-// function subtaskTemplates(i, overlay) {
-//     return /*html*/`
-//         <div>
-//                 <div class="mb-8px col-grey-blue">Subtasks</div>
-//                 <div id="renderSubtask${i}-${overlay}"></div>
-//             </div>
-//     `;
-// }
-
 /**
  * Delete tasks from board
  * @param {variable} j Is the task index 
@@ -200,12 +186,18 @@ function getTaskValues(i) {
         let location = 'edit-overlay';
         console.log(subtask);
         renderSubtasks.innerHTML += subtaskTemplate(countUp, subtask, location);
+
+
         // let editImg = document.getElementById(`edite${state}-${location}`);
         // editImg.addEventListener('click', clickHandlerEdit);
         // clearSubtasks(inputValue);
     }
-    // renderSubtask(task, i, 'overlay');
-    // addSubtask('edit-overlay');
+
+
+
+
+
+
 
 
     document.getElementById('prio-low').src = 'assets/img/prio-default-low.png';
@@ -243,8 +235,23 @@ function renderAssignedContacts(t, i, flag) {
         let bgc = array[1];
         if (!flag) showContacts.innerHTML += assigneContactsTemplate(acronymUpperCase, i, bgc);
         else if (flag == true) showContacts.innerHTML += assigneContactsTemplatePreview(contact, acronymUpperCase, i, bgc);
-        else if (flag == 'edit-overlay') showContacts.innerHTML += renderSelectedContact(acronymUpperCase, i, bgc);
+        else if (flag == 'edit-overlay') showContacts.innerHTML += assigneContactsTemplateEditeOverlay(acronymUpperCase, i, bgc);
     }
+}
+
+/**
+ * 
+ * @param {variable} aUC Includes the acronym of contact
+ * @param {variable} i Is the contact index
+ * @param {string} bgc Is the background-color code
+ * @returns Rendered contact info sign includes acronym and
+ *          a background color in a circle
+ */
+function assigneContactsTemplateEditeOverlay(aUC, i, bgc) {
+    return /*html*/`
+         <div id='${aUC}${i}' class="acronym acronym-dimensions-medium  flex x-center y-center fs-16px " style="background-color: #${bgc}">${aUC}
+                    </div>
+    `;
 }
 
 /**
@@ -279,14 +286,6 @@ function assigneContactsTemplate(aUC, i, bgc) {
                     <div id='${aUC}${i}' class="acronym acronym-dimensions-small flex x-center y-center fs-12px " style="background-color: #${bgc}">${aUC}
                     </div>`;
 }
-
-function assigneContactsTemplateEditeOverlay(aUC, i, bgc) {
-    return /*html*/`
-         <div id='${aUC}${i}' class="acronym  flex x-center y-center fs-12px " style="background-color: #${bgc}">${aUC}
-                    </div>
-    `;
-}
-
 
 /**
 * Render contacts
