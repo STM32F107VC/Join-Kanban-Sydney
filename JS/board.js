@@ -1,5 +1,5 @@
 // let tasks = [];
-
+let countUp = -1;
 
 async function init_board(id) {
     await includeHTML();
@@ -58,6 +58,8 @@ function closeAddTaskOverlay() {
  * 
  */
 function closeShowTaskOverlay() {
+    document.getElementById('displaySubtasks-edit-overlay').innerHTML = '';
+
     document.getElementById('tasks-overlay-view').classList.add('d-none');
     document.getElementById('main-div-board').classList.remove('d-none');
     document.getElementById('body-board').classList.remove("flex", "x-center", "y-center");
@@ -125,8 +127,9 @@ function showTaskOverlay(i) {
             </div>
             <div>
                 <div class="mb-8px col-grey-blue">Subtasks</div>
-                <div id="renderSubtask${i}"></div>
+                <div id="renderSubtask${i}-overlay"></div>
             </div>
+
             <div class="flex x-end gap-16px remove-margin">
                     <img onclick="deleteTask(${i});" class="delete c-pointer" src="/assets/img/delete_default.png" alt="delete">
                     <img src="/assets/img/subtasks_vector.svg" alt="separator">
@@ -135,8 +138,22 @@ function showTaskOverlay(i) {
         </div>
     `;
     renderAssignedContacts(task, i, true);
-    renderSubtask(task, i);
+    renderSubtask(task, i, 'overlay');
 }
+
+// ${addSubtask('edit')}
+
+// ${subtaskTemplates(i, 'overlay')}
+
+
+// function subtaskTemplates(i, overlay) {
+//     return /*html*/`
+//         <div>
+//                 <div class="mb-8px col-grey-blue">Subtasks</div>
+//                 <div id="renderSubtask${i}-${overlay}"></div>
+//             </div>
+//     `;
+// }
 
 /**
  * Delete tasks from board
@@ -149,12 +166,12 @@ function deleteTask(j) {
     location.replace('board.html');
 }
 
-function showEditTaskOverlay(tasks, i) {
+function showEditTaskOverlay(i) {
     let divBigViewTask = document.getElementById('tasks-overlay-view');
     let divEditTask = document.getElementById('edit-task-overlay-view');
     divBigViewTask.classList.add('d-none');
     divEditTask.classList.remove('d-none');
-    getTaskValues(tasks, i);
+    getTaskValues(i);
 }
 
 /**
@@ -163,7 +180,7 @@ function showEditTaskOverlay(tasks, i) {
  */
 function getTaskValues(i) {
     let task = tasks[i];
-    console.log(task);
+    console.log(tasks[i]);
     let title = task['Title'];
     let description = task['Description'];
     let date = task['Date'];
@@ -171,16 +188,26 @@ function getTaskValues(i) {
     let getSubtasks = task['Subtasks'];
 
     let renderSubtasks = document.getElementById('displaySubtasks-edit-overlay');
-    let inputValue = document.getElementById('subtasks-edit-overlay');
-    for (let k = 0; k < getSubtasks.length; k++) {
-        subtasks[k] = [];
-        let subtask = getSubtasks[k];
-        inputValue.value = subtask;
-        renderSubtasks.innerHTML += addSubtask('edit-overlay');
+    for (let k = 0; k < task['Subtasks'].length; k++) {
+        let subtask = task['Subtasks'][k];
+        countUp += 1;
+        let location = 'edit-overlay';
+        console.log(subtask);
+        renderSubtasks.innerHTML += subtaskTemplate(countUp, subtask, location);
+        // let editImg = document.getElementById(`edite${state}-${location}`);
+        // editImg.addEventListener('click', clickHandlerEdit);
+        // clearSubtasks(inputValue);
     }
+    // renderSubtask(task, i, 'overlay');
+    addSubtask('edit-overlay');
 
-
-
+    let inputValue = document.getElementById('subtasks-edit-overlay');
+    // for (let k = 0; k < getSubtasks.length; k++) {
+    //     subtasks[k] = [];
+    //     let subtask = getSubtasks[k];
+    //     inputValue.value = subtask;
+    //     renderSubtasks.innerHTML += addSubtask('edit-overlay');
+    // }
 
     document.getElementById('prio-low').src = 'assets/img/prio-default-low.png';
     document.getElementById('prio-medium').src = 'assets/img/prio-default-medium.png';
@@ -195,9 +222,7 @@ function getTaskValues(i) {
     document.getElementById('textarea-editable').value = description;
     document.getElementById('date-editable').value = date;
 
-
     oldState = task['Prio'];
-
 }
 
 
@@ -225,12 +250,13 @@ function renderAssignedContacts(t, i, flag) {
  * @param {JSON} t Includes a complete task
  * @param {variable} i Is the contact index
  */
-function renderSubtask(t, i) {
-    let div = document.getElementById(`renderSubtask${i}`);
+function renderSubtask(t, i, location) {
+    // renderSubtask${i}-${overlay}
+    let div = document.getElementById(`renderSubtask${i}-${location}`);
     let subtasks = t['Subtasks'];
     for (let i = 0; i < subtasks.length; i++) {
         let subtask = subtasks[i];
-        div.innerHTML += /*html*/` 
+        div.innerHTML += /*html*/`
             <div class="subtasks flex gap-16px">
                 <input type="checkbox" id="subtasks${i}">
                 <div>${subtask}</div>

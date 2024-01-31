@@ -240,8 +240,8 @@ function toggleIcons(location) {
  */
 function addSubtask(location) {
     let list = document.getElementById('displaySubtasks-' + `${location}`);
-    let inputValue = document.getElementById('subtasks-' + `${location}`);
-    if ((list.children.length < 2) && !(inputValue.value === "")) {
+    let inputValue = document.getElementById('subtasks-' + `${location}`).value;
+    if ((list.children.length < 2) && !(inputValue === "")) {
         subtasks.push(inputValue.value);
         state = subtasks.length - 1;
         list.innerHTML += subtaskTemplate(state, inputValue, location);
@@ -274,7 +274,7 @@ function clickHandlerSave(state, location) {
 function subtaskTemplate(state, inputValue, location) {
     return /*html*/ `
                     <div ondblclick="editSubtask('${state}', '${location}');" id="subtask${state}-${location}" class="sub-pseudo c-pointer flex x-space-betw y-center mb-4px">
-                        <ul class="w-100 outline-none"><li id="value${state}-${location}">${inputValue.value}</li></ul>
+                        <ul class="w-100 outline-none"><li id="value${state}-${location}">${inputValue}</li></ul>
                         <div id="subtask-delete-accept-${state}-${location}" class="flex x-space-betw y-center opacity-zero">
                             <img id="delete${state}-${location}" onclick="deleteSubtask('${state}', '${location}');" src="/assets/img/subtasks_bin.svg" alt="delete">
                             <img class="p-lr" src="/assets/img/Vector 19.svg" alt="separator">

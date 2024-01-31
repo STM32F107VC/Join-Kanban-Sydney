@@ -85,7 +85,8 @@ progress {
 
 .tasks-overlay-view,
 #edit-task-overlay-view {
-    width: 445px;
+    /* width: 445px; */
+    width: fit-content;
     padding: 48px 40px;
     border-radius: 30px;
     background: #FFF;

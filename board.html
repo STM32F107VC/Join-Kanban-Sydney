@@ -112,7 +112,7 @@
                     </div>
                 </div>
 
-                <div id="displaySubtasks-edit-overlay"></div>
+                <div id="displaySubtasks-edit-overlay" class="mb-8px"></div>
 
                 <div class="flex x-end">
                     <button onclick="" class="flex y-center gap-4px btn-dark fs-21px fw-700">Ok
@@ -122,6 +122,7 @@
 
         </form>
     </div>
+    <!-- -------------------------------------------------------------------------------------- -->
 
 
 
@@ -153,7 +154,8 @@
                     <img class="plus c-pointer" src="assets/img/plus-default.svg" onclick="openAddTaskOverlay();"
                         alt="plus">
                 </div>
-                <div class="content-column" id="backlog" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="content-column" id="backlog" ondrop="drop(event)" ondragover="allowDrop(event)">
+                </div>
             </div>
 
             <div>
@@ -181,7 +183,8 @@
                     <img class="plus c-pointer" src="assets/img/plus-default.svg" onclick="openAddTaskOverlay();"
                         alt="plus">
                 </div>
-                <div class="content-column" id="done" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+                <div class="content-column" id="done" ondragover="allowDrop(event)" ondrop="drop(event)">
+                </div>
             </div>
         </div>
     </div>
