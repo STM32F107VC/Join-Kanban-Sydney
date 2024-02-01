@@ -105,6 +105,8 @@ function showTaskOverlay(i) {
     document.getElementById('body-board').classList.add("flex", "x-center", "y-center");
     document.getElementById('side-and-topbar-board').classList.add("opacity", "z-ind--1");
 
+    taskIndex = i;
+
     let task = tasks[i];
     let str = task['Prio'];
     let priority = str.charAt(0).toUpperCase() + str.slice(1);
@@ -306,7 +308,7 @@ function renderSubtask(t, i, location) {
         let subtask = subtasks[i];
         div.innerHTML += /*html*/`
             <div class="subtasks flex gap-16px">
-                <input type="checkbox" id="subtasks${i}">
+                <input onclick="showOrHidSubtask('${taskIndex}', '${i}')" type="checkbox" id="subtasks${i}">
                 <div>${subtask}</div>
             </div>`;
     }
@@ -379,6 +381,7 @@ function renderPrioImg(t, i) {
  */
 function getAmounTOfSubtasks(t) {
     let length = t['Subtasks'].length;
+    // getPercentage(length);
     if (length == 1) {
         let percent = 50;
         return percent;
@@ -386,6 +389,29 @@ function getAmounTOfSubtasks(t) {
         let percent = 100;
         return percent;
     }
+}
+
+function getPercentage(length) {
+    if (length == 1) {
+        let percent = 50;
+        return percent;
+    } else if (length == 2) {
+        let percent = 100;
+        return percent;
+    }
+}
+
+function showOrHidSubtask(taskIndex, i) {
+    let progressBar = document.getElementById(`progressBar${taskIndex}`);
+    let percent;
+    if (i == 0) {
+        i++;
+        percent = getPercentage(i);
+    } else if (i == 1) {
+        i = 2;
+        percent = getPercentage(i);
+    }
+    progressBar.value = percent;
 }
 
 /**
