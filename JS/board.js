@@ -1,5 +1,8 @@
 // let tasks = [];
 let countUp = -1;
+let getCategory;
+let bgcCode;
+let taskIndex;
 
 async function init_board(id) {
     await includeHTML();
@@ -165,6 +168,7 @@ function showEditTaskOverlay(i) {
     let divEditTask = document.getElementById('edit-task-overlay-view');
     divBigViewTask.classList.add('d-none');
     divEditTask.classList.remove('d-none');
+    renderOkBtn(i);
     assignContact('edit-overlay');
     getTaskValues(i);
 }
@@ -175,12 +179,14 @@ function showEditTaskOverlay(i) {
  */
 function getTaskValues(i) {
     let task = tasks[i];
-    console.log(tasks[i]);
+    // console.log(tasks[i]);
     let title = task['Title'];
     let description = task['Description'];
     let date = task['Date'];
-    let category = task['Category'];
+    getCategory = task['Category'];
+    bgcCode = task['Bgc-Code'];
     let getSubtasks = task['Subtasks'];
+    oldImg = task['Prio'];
     // let contact = task['Contacts'];
 
 
@@ -191,7 +197,7 @@ function getTaskValues(i) {
         let subtask = task['Subtasks'][k];
         countUp += 1;
         let location = 'edit-overlay';
-        console.log(subtask);
+        // console.log(subtask);
         renderSubtasks.innerHTML += subtaskTemplate(countUp, subtask, location);
 
 
@@ -216,8 +222,28 @@ function getTaskValues(i) {
  * Safes changes which were made on a task
  * @param {variable} j J is the index number for accessing a task in the tasks array
  */
-function saveEditTaskChanges() {
+function saveEditTaskChanges(taskIndex) {
+    console.log(taskIndex);
+    document.getElementById('edit-overlay-ok-btn').disabled = true;
 
+    let title = document.getElementById('title-editable');
+    let description = document.getElementById('textarea-editable');
+    let date = document.getElementById('date-editable');
+
+    tasks.splice(taskIndex, 1);
+    tasks.push({
+        "Title": title.value,
+        "Description": description.value,
+        "Assigned-to": assignedContacts,
+        "Date": date.value,
+        "Prio": oldImg,
+        "Category": getCategory,
+        "Bgc-Code": bgcCode,
+        "Subtasks": subtasks
+    });
+    setToLocalStorage(tasks);
+    document.getElementById('edit-overlay-ok-btn').disabled = false;
+    location.reload();
 }
 
 //--------------------------------------------------------------------

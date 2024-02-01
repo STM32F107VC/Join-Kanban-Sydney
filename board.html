@@ -43,7 +43,7 @@
         <div class="close-cross p-zero flex x-end"><img onclick="closeShowTaskOverlay()" class="p-8px"
                 src="assets/img/close.png" alt="close">
         </div>
-        <form onsubmit="return false;" class="flex x-center flex-row">
+        <div class="flex x-center flex-row">
             <div class="flex flex-column">
                 <div class="flex flex-column mb-32px">
                     <span class="mb-8px">Title</span>
@@ -103,12 +103,9 @@
 
                 <div id="displaySubtasks-edit-overlay" class="mb-8px"></div>
 
-                <div class="flex x-end">
-                    <button onclick="" class="flex y-center gap-4px btn-dark fs-21px fw-700">Ok
-                        <img class="tick" src="assets/img/check_white.svg" alt="confirm"></button>
-                </div>
+                <div id="ok-section" class="flex x-end"></div>
             </div>
-        </form>
+        </div>
     </div>
     <!-- -------------------------------------------------------------------------------------- -->
 

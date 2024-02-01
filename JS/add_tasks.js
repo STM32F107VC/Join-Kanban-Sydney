@@ -248,7 +248,7 @@ function addSubtask(location) {
     let list = document.getElementById('displaySubtasks-' + `${location}`);
     let inputValue = document.getElementById('subtasks-' + `${location}`).value;
     if ((list.children.length < 2) && !(inputValue === "")) {
-        subtasks.push(inputValue.value);
+        subtasks.push(inputValue);
         state = subtasks.length - 1;
         list.innerHTML += subtaskTemplate(state, inputValue, location);
         let editImg = document.getElementById(`edite${state}-${location}`);

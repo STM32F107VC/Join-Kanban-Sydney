@@ -88,3 +88,16 @@ function getAddTaskOverlayMenuTemplate(location) {
         </form>`;
 }
 
+/**
+ * Render Ok btn for acceptig changes made on a task
+ * @param {*} i Is the task index
+ */
+function renderOkBtn(i) {
+    taskIndex = i;
+    let div = document.getElementById('ok-section');
+    div.innerHTML = /*html*/`
+        <button onclick="saveEditTaskChanges(${i})" id="edit-overlay-ok-btn"
+                        class="flex y-center gap-4px btn-dark fs-21px fw-700">Ok
+                        <img class="tick" src="assets/img/check_white.svg" alt="confirm">
+        </button>`;
+}
