@@ -198,6 +198,7 @@ function getTaskValues(i) {
         countUp += 1;
         let location = 'edit-overlay';
         // console.log(subtask);
+        subtasks.push(subtask);
         renderSubtasks.innerHTML += subtaskTemplate(countUp, subtask, location);
 
 
