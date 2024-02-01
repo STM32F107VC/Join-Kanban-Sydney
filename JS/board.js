@@ -50,6 +50,8 @@ function closeAddTaskOverlay() {
     document.getElementById('main-div-board').classList.remove('d-none');
     document.getElementById('body-board').classList.remove("flex", "x-center", "y-center");
     document.getElementById('side-and-topbar-board').classList.remove("opacity", "z-ind--1");
+    document.getElementById('displaySelectedContacts-overlay').innerHTML = '';
+    assignedContacts = [];
 }
 
 /**
@@ -66,6 +68,7 @@ function closeShowTaskOverlay() {
     document.getElementById('body-board').classList.remove("flex", "x-center", "y-center");
     document.getElementById('side-and-topbar-board').classList.remove("opacity", "z-ind--1");
     document.getElementById('edit-task-overlay-view').classList.add('d-none');
+    assignedContacts = [];
 }
 
 /**
@@ -153,6 +156,10 @@ function deleteTask(j) {
     location.replace('board.html');
 }
 
+/**
+ * Get div for rendering in information to edit a task and hide normal overlay view
+ * @param {*} i Is the task index
+ */
 function showEditTaskOverlay(i) {
     let divBigViewTask = document.getElementById('tasks-overlay-view');
     let divEditTask = document.getElementById('edit-task-overlay-view');
@@ -193,13 +200,6 @@ function getTaskValues(i) {
         // clearSubtasks(inputValue);
     }
 
-
-
-
-
-
-
-
     document.getElementById('prio-low').src = 'assets/img/prio-default-low.png';
     document.getElementById('prio-medium').src = 'assets/img/prio-default-medium.png';
     document.getElementById('prio-high').src = 'assets/img/prio-default-high.png';
@@ -207,15 +207,39 @@ function getTaskValues(i) {
     let prioState = document.getElementById(`prio-${task['Prio']}`);
     prioState.src = `assets/img/prio-${task['Prio']}.svg`;
 
-    console.log(prioState);
-
     document.getElementById('title-editable').value = title;
     document.getElementById('textarea-editable').value = description;
     document.getElementById('date-editable').value = date;
-
-    // oldState = task['Prio'];
 }
 
+/**
+ * Safes changes which were made on a task
+ * @param {variable} j J is the index number for accessing a task in the tasks array
+ */
+function saveEditTaskChanges() {
+
+}
+
+//--------------------------------------------------------------------
+
+// async function safeEditChanges(j) {
+//     document.getElementById('safe-btn').disabled = true;
+//     let name = document.getElementById('edit-name').value;
+//     let email = document.getElementById('edit-email').value;
+//     let phone = document.getElementById('edit-number').value;
+//     contacts.splice(j, 1);
+//     contacts.push({
+//         'name': name,
+//         'email': email,
+//         'phone': phone,
+//         'background-color': getBackgroundColor
+//     });
+//     await setItem('contacts', JSON.stringify(contacts));
+//     document.getElementById('safe-btn').disabled = false;
+//     location.replace('contacts.html');
+// }
+
+//--------------------------------------------------------------------
 
 /**
  * Get contacts to render in another step
@@ -235,7 +259,10 @@ function renderAssignedContacts(t, i, flag) {
         let bgc = array[1];
         if (!flag) showContacts.innerHTML += assigneContactsTemplate(acronymUpperCase, i, bgc);
         else if (flag == true) showContacts.innerHTML += assigneContactsTemplatePreview(contact, acronymUpperCase, i, bgc);
-        else if (flag == 'edit-overlay') showContacts.innerHTML += renderSelectedContact(acronymUpperCase, i, bgc);
+        else if (flag == 'edit-overlay') {
+            assignedContacts.push(contact);
+            showContacts.innerHTML += renderSelectedContact(acronymUpperCase, i, bgc);
+        }
     }
 }
 

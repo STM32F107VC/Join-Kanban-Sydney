@@ -327,7 +327,7 @@ function renderDeletePart(j) {
         <button onclick="deleteContact(${j})" class="btn-light ft-general fs-21px fw-700 flex y-center gap-4px">
             Delete <img src="assets/img/close.png" alt="cancel">
         </button>
-        <button id="safe-btn" onclick="safeEditChanges(${j})" class="btn-dark ft-general fs-21px fw-700 flex y-center gap-4px">
+        <button id="safe-btn" onclick="saveEditContactChanges(${j})" class="btn-dark ft-general fs-21px fw-700 flex y-center gap-4px">
             Safe <img src="assets/img/check.png" alt="add">
         </button>`;
 }
@@ -336,7 +336,7 @@ function renderDeletePart(j) {
  * Safes changes which were made on a contact
  * @param {variable} j J is the index number for accessing a contact in the contacts array
  */
-async function safeEditChanges(j) {
+async function saveEditContactChanges(j) {
     document.getElementById('safe-btn').disabled = true;
     let name = document.getElementById('edit-name').value;
     let email = document.getElementById('edit-email').value;

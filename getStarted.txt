@@ -1,4 +1,0 @@
-- Prüfungstermin based zürich oder homebased bis 30.04.2024 bescheid geben
-- Matheprüfung muss per Stifeingabe erfolgen
-- Immer Kamera einschalten bei Prüfung
-- Pro Prüfungstag mehr als eine Prüfung

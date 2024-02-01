@@ -41,3 +41,4 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 
 ---Date: 01.02.24 ---
 - Probleme beim rendern der subtasks, lassen sich wegen Id nicht immer editieren
+- Abspeichern des editierten tasks umsetzten
