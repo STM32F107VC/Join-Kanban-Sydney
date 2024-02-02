@@ -285,6 +285,7 @@ function editContact(j, auc) {
     getBackgroundColor = contacts[j]['background-color'];
     let editContactForm = document.getElementById('delete-part');
     let avatar = document.getElementById('edit-Overlay-Menu-Avatar');
+    let overlayForms = document.getElementById('edit-overlay-forms');
     // avatar.style = `background-color: ${getBackgroundColor}`;
     avatar.innerHTML = renderEditOverlayAvatar(auc);
     editContactForm.innerHTML = renderDeletePart(j);

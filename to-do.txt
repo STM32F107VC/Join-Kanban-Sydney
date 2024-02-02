@@ -1,5 +1,12 @@
+---Legende---
+- erledigt = ✓
+- nicht erledigt = -
+- ist das problem behoben = ? (Theoretisch erledigt✓ korrekte funktionalität ungewiss)
+
+Important: local storage durch backend ersetzten
+
 to-do
----Date: ---
+---Date: - ---
 - push all into tasks JSON array ✓
 - display tasks in backlog column ✓
 
@@ -40,5 +47,9 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 - Hover effekt bei kontakten existiert nicht mehr, wieso✓
 
 ---Date: 01.02.24 ---
-- Probleme beim rendern der subtasks, lassen sich wegen Id nicht immer editieren
+- Probleme beim rendern der subtasks, lassen sich wegen Id nicht immer editieren?
 - Abspeichern des editierten tasks umsetzten
+
+---Date: 02.02.24 ---
+- Bei edit contact wird bei enter der contact gelöscht und nicht gespeichert onsubmit ändern, forms als template.js auslaugern und in div rendern
+- Fehler beim drag and drop in der "In-Progress" spalte

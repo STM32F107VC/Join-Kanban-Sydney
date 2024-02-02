@@ -101,6 +101,7 @@ button:hover > img.tick { content: url('/assets/img/check-white-blue.svg'); }
 }
 
 #add-tasks-overlay-view {
+    height: 690px;
     padding: 64px;
     border-radius: 30px;
     background-color: #FFF;
