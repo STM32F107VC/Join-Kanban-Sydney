@@ -81,16 +81,16 @@ function closeShowTaskOverlay() {
  */
 function taskTemplate(task, i) {
     return /*html*/`
-                    <div id="task${i}" onclick="showTaskOverlay(${i})" class="task flex flex-column ft-general" id="drag1" draggable='true'  ondragstart='drag(event)'>
-                        <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-16px fw-400 mb-24px">${task['Category']}</div>
-                        <div id="taskTitle${i}" class="task-title fs-16px fw-700 mb-8px">${task['Title']}</div>
-                        <div id="taskDescription${i}" class="flex x-start mb-24px fs-16px col-grey">${task['Description']}</div>
-                        <div id="progress${i}" class="flex x-space-betw y-center fs-12px mb-24px">
-                            <progress id="progressBar${i}" value="${getAmounTOfSubtasks(task)}" max="100"></progress> 
-                            <span>${getSubtasks(task)}/2 Subtasks</span>
+                    <div id="task${i}" onclick="showTaskOverlay(${i})" class="task flex flex-column ft-general noDrop" id="drag1" draggable='true'  ondragstart='drag(event)'>
+                        <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-16px fw-400 mb-24px noDrop">${task['Category']}</div>
+                        <div id="taskTitle${i}" class="task-title fs-16px fw-700 mb-8px noDrop">${task['Title']}</div>
+                        <div id="taskDescription${i}" class="flex x-start mb-24px fs-16px col-grey noDrop">${task['Description']}</div>
+                        <div id="progress${i}" class="flex x-space-betw y-center fs-12px mb-24px noDrop">
+                            <progress id="progressBar${i}" class="noDrop" value="${getAmounTOfSubtasks(task)}" max="100"></progress> 
+                            <span class="noDrop">${getSubtasks(task)}/2 Subtasks</span>
                         </div>
-                        <div class="flex x-space-betw">
-                            <div id="assignedContact${i}" class="flex pl-6px"></div>
+                        <div class="flex x-space-betw noDrop">
+                            <div id="assignedContact${i}" class="flex pl-6px noDrop"></div>
                             ${renderPrioImg(task, i)}
                         </div>
                     </div>`;
@@ -324,7 +324,7 @@ function renderSubtask(t, i, location) {
  */
 function assigneContactsTemplate(aUC, i, bgc) {
     return /*html*/`
-                    <div id='${aUC}${i}' class="acronym acronym-dimensions-small flex x-center y-center fs-12px " style="background-color: #${bgc}">${aUC}
+                    <div id='${aUC}${i}' class="acronym acronym-dimensions-small flex x-center y-center fs-12px noDrop" style="background-color: #${bgc}">${aUC}
                     </div>`;
 }
 
@@ -366,9 +366,9 @@ function buildAcronym(contact) {
  */
 function renderPrioImg(t, i) {
     if (t['Prio'] !== undefined) {
-        return /*html*/`<img src="assets/img/prio-indicator-${t['Prio']}.svg" alt="prio-${t['Prio']}">`;
+        return /*html*/`<img class="noDrop" src="assets/img/prio-indicator-${t['Prio']}.svg" alt="prio-${t['Prio']}">`;
     } else {
-        return /*html*/`<img class="d-none" src="assets/img/prio-indicator-${t['Prio']}.svg" alt="prio-${t['Prio']}">`;
+        return /*html*/`<img class="d-none noDrop" src="assets/img/prio-indicator-${t['Prio']}.svg" alt="prio-${t['Prio']}">`;
     }
 }
 
@@ -433,10 +433,28 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
+// function drop(ev) {
+//     let target = ev.target.id;
+//     let data = ev.dataTransfer.getData("text");
+//     let task = document.getElementById(`task${i}`);
+//     if (target.classList.contains(noDrop)) {
+//         ev.preventDefault();
+//         console.log('no transfer');
+//     } else {
+//         ev.preventDefault();
+//         ev.target.appendChild(document.getElementById(data));
+//     }
+// }
+
 function drop(ev) {
-    ev.preventDefault();
-    if (ev.target.hasChildNodes()) {
-        let data = ev.dataTransfer.getData("text");
+    let target = ev.target;
+    let data = ev.dataTransfer.getData("text");
+
+    if (target.classList && target.classList.contains('noDrop')) {
+        ev.preventDefault();
+        console.log('no transfer');
+    } else {
+        ev.preventDefault();
         ev.target.appendChild(document.getElementById(data));
     }
 }
