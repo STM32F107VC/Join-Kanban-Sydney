@@ -1,3 +1,5 @@
+let tasks = [];
+
 /**
  * Init function called on body="onload" to load
  * first necessary functions
@@ -5,8 +7,21 @@
 async function init_summary(id) {
     await includeHTML();
     await loadContacts();
+    getFromLocalStorage();
     markActiveLink(id);
     greetUser();
+}
+
+/**
+ * Load tasks from local storage ---------------- change to remote storage later!!
+ */
+async function getFromLocalStorage() {
+    let tasksToString = localStorage.getItem('tasks');
+    if (tasksToString) {
+        let object = JSON.parse(tasksToString);
+        tasks = object;
+    }
+    // console.log(document.getElementById);
 }
 
 /**

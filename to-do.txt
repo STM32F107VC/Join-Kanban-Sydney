@@ -63,4 +63,5 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 - Abspeichern der Tasks in jeder spalte und auch nach neu laden✓
 - Dann alle tasks im summary anzeigen
 - Porgress bar subtasks an und abwählen
+- Problem nach bearbeitung von subtak, verschwindet task vom board
 
