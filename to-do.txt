@@ -5,7 +5,7 @@
 
 Important: local storage durch backend ersetzten
 
-to-do
+to-dos
 ---Date: - ---
 - push all into tasks JSON array ✓
 - display tasks in backlog column ✓
@@ -48,8 +48,19 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 
 ---Date: 01.02.24 ---
 - Probleme beim rendern der subtasks, lassen sich wegen Id nicht immer editieren?
-- Abspeichern des editierten tasks umsetzten
+- Abspeichern des editierten tasks umsetzten✓
 
 ---Date: 02.02.24 ---
-- Bei edit contact wird bei enter der contact gelöscht und nicht gespeichert onsubmit ändern, forms als template.js auslaugern und in div rendern
-- Fehler beim drag and drop in der "In-Progress" spalte
+- Bei edit contact wird bei enter der contact gelöscht und nicht gespeichert onsubmit ändern, forms als template.js auslaugern und in div rendern-
+- Fehler beim drag and drop in der "In-Progress" spalte✓
+
+---Date: 03.02.24 ---
+- Abspeichern der Tasks in jeder spalte und auch nach neu laden✓
+- Dann alle tasks im summary anzeigen-
+- Porgress bar subtasks an und abwählen-
+
+---Date: 05.02.24 ---
+- Abspeichern der Tasks in jeder spalte und auch nach neu laden✓
+- Dann alle tasks im summary anzeigen
+- Porgress bar subtasks an und abwählen
+

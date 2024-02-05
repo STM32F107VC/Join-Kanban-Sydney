@@ -112,7 +112,8 @@ async function addTask(location) {
         "Prio": oldImg,
         "Category": category.value,
         "Bgc-Code": bgcCode,
-        "Subtasks": subtasks
+        "Subtasks": subtasks,
+        "Column-location": 'backlog'
     });
     setToLocalStorage(tasks);
     // await setItem('tasks', JSON.stringify(tasks));

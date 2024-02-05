@@ -4,6 +4,10 @@ let getCategory;
 let bgcCode;
 let taskIndex;
 
+/**
+ * Init function called on body="onload" to load
+ * first necessary functions
+ */
 async function init_board(id) {
     await includeHTML();
     await loadContacts();
@@ -14,21 +18,28 @@ async function init_board(id) {
     assignContact('overlay');
 }
 
+/**
+ * Load tasks from local storage ---------------- change to remote storage later!!
+ */
 async function loadTasks() {
     let tasksToString = localStorage.getItem('tasks');
-    // let object = JSON.parse(await getItem('tasks'));
     if (tasksToString) {
         let object = JSON.parse(tasksToString);
         tasks = object;
-        loadToBacklog();
+        loadToColumn();
     }
 }
 
-function loadToBacklog() {
-    let backlog = document.getElementById('backlog');
+/**
+ * Load tasks to matching column, which they were attached last
+ */
+function loadToColumn() {
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
-        backlog.innerHTML += taskTemplate(task, i);
+        let getTaskLocation = task['Column-location'];
+        console.log(getTaskLocation);
+        let column = document.getElementById(`${getTaskLocation}`);
+        column.innerHTML += taskTemplate(task, i);
         renderAssignedContacts(task, i, false);
     }
 }
@@ -249,27 +260,6 @@ function saveEditTaskChanges(taskIndex) {
     location.reload();
 }
 
-//--------------------------------------------------------------------
-
-// async function safeEditChanges(j) {
-//     document.getElementById('safe-btn').disabled = true;
-//     let name = document.getElementById('edit-name').value;
-//     let email = document.getElementById('edit-email').value;
-//     let phone = document.getElementById('edit-number').value;
-//     contacts.splice(j, 1);
-//     contacts.push({
-//         'name': name,
-//         'email': email,
-//         'phone': phone,
-//         'background-color': getBackgroundColor
-//     });
-//     await setItem('contacts', JSON.stringify(contacts));
-//     document.getElementById('safe-btn').disabled = false;
-//     location.replace('contacts.html');
-// }
-
-//--------------------------------------------------------------------
-
 /**
  * Get contacts to render in another step
  * @param {JSON} t Includes a complete task
@@ -433,28 +423,27 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
-// function drop(ev) {
-//     let target = ev.target.id;
-//     let data = ev.dataTransfer.getData("text");
-//     let task = document.getElementById(`task${i}`);
-//     if (target.classList.contains(noDrop)) {
-//         ev.preventDefault();
-//         console.log('no transfer');
-//     } else {
-//         ev.preventDefault();
-//         ev.target.appendChild(document.getElementById(data));
-//     }
-// }
-
 function drop(ev) {
     let target = ev.target;
     let data = ev.dataTransfer.getData("text");
-
     if (target.classList && target.classList.contains('noDrop')) {
         ev.preventDefault();
-        console.log('no transfer');
     } else {
         ev.preventDefault();
         ev.target.appendChild(document.getElementById(data));
+        changeTaskLocation(data, target);
     }
+}
+
+/**
+ * After shifting a task into an other column (backlog, in-progress, await feedback and done)
+ * save the location of the task. So it can be rendered in the correct column after body onload
+ * @param {string} data Is the task name and number
+ * @param {HTMLAllCollection} target Target is the collectio of the target row where the task should be dropped
+ */
+function changeTaskLocation(data, target) {
+    let columnId = target.id;
+    let index = data.slice(-1);
+    tasks[index]['Column-location'] = columnId;
+    setToLocalStorage(tasks);
 }
