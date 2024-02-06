@@ -83,6 +83,7 @@ function closeShowTaskOverlay() {
     document.getElementById('side-and-topbar-board').classList.remove("opacity", "z-ind--1");
     document.getElementById('edit-task-overlay-view').classList.add('d-none');
     assignedContacts = [];
+    subtasks = [];
 }
 
 /**
@@ -192,7 +193,6 @@ function showEditTaskOverlay(i) {
  */
 function getTaskValues(i) {
     let task = tasks[i];
-    // console.log(tasks[i]);
     let title = task['Title'];
     let description = task['Description'];
     let date = task['Date'];
@@ -202,7 +202,6 @@ function getTaskValues(i) {
     oldImg = task['Prio'];
     // let contact = task['Contacts'];
 
-
     renderAssignedContacts(task, i, 'edit-overlay');
 
     let renderSubtasks = document.getElementById('displaySubtasks-edit-overlay');
@@ -210,10 +209,10 @@ function getTaskValues(i) {
         let subtask = task['Subtasks'][k];
         countUp += 1;
         let location = 'edit-overlay';
-        // console.log(subtask);
         subtasks.push(subtask);
         renderSubtasks.innerHTML += subtaskTemplate(countUp, subtask, location);
 
+        // subtasks = [];
 
         // let editImg = document.getElementById(`edite${state}-${location}`);
         // editImg.addEventListener('click', clickHandlerEdit);
@@ -243,7 +242,7 @@ function saveEditTaskChanges(taskIndex) {
     let title = document.getElementById('title-editable');
     let description = document.getElementById('textarea-editable');
     let date = document.getElementById('date-editable');
-
+    let columnLocation = tasks[taskIndex]['Column-location'];
     tasks.splice(taskIndex, 1);
     tasks.push({
         "Title": title.value,
@@ -253,12 +252,14 @@ function saveEditTaskChanges(taskIndex) {
         "Prio": oldImg,
         "Category": getCategory,
         "Bgc-Code": bgcCode,
-        "Subtasks": subtasks
+        "Subtasks": subtasks,
+        "Column-location": columnLocation
     });
     setToLocalStorage(tasks);
     document.getElementById('edit-overlay-ok-btn').disabled = false;
     location.reload();
 }
+
 
 /**
  * Get contacts to render in another step

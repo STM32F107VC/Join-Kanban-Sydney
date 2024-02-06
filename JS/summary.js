@@ -1,4 +1,4 @@
-let tasks = [];
+/* Declare global variables and arrays */
 
 /**
  * Init function called on body="onload" to load
