@@ -61,9 +61,9 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 
 ---Date: 05.02.24 ---
 - Abspeichern der Tasks in jeder spalte und auch nach neu laden✓
-- Dann alle tasks im summary anzeigen
-- Porgress bar subtasks an und abwählen
-- Problem nach bearbeitung von subtak, verschwindet task vom board
+- Dann alle tasks im summary anzeigen-
+- Porgress bar subtasks an und abwählen-
+- Problem nach bearbeitung von subtak, verschwindet task vom board✓
 
 ---Date: 06.02.24 ---
 - greetUser() funktioniert auf board nicht mehr

@@ -45,11 +45,11 @@ function getAddTaskOverlayMenuTemplate(location) {
                 <div class="priority flex flex-column mb-24px">
                     <span class="mb-8px">Prio</span>
                     <div id='priority-container-${location}' class="flex x-space-betw gap-16px">
-                        <img class="priorityImg prio-border" onclick="savePriorityState('low', '${location}')" id="prio-low"
+                        <img class="priorityImg prio-border" onclick="savePriorityState('low', '${location}')" id="prio-low-${location}"
                             src="assets/img/prio-default-low.png" alt="priority low">
-                        <img class="priorityImg prio-border" onclick="savePriorityState('medium', '${location}')" id="prio-medium"
+                        <img class="priorityImg prio-border" onclick="savePriorityState('medium', '${location}')" id="prio-medium-${location}"
                             src="assets/img/prio-default-medium.png" alt="priority medium">
-                        <img class="priorityImg prio-border" onclick="savePriorityState('high', '${location}')" id="prio-high"
+                        <img class="priorityImg prio-border" onclick="savePriorityState('high', '${location}')" id="prio-high-${location}"
                             src="assets/img/prio-default-high.png" alt="priority high">
                     </div>
                 </div>

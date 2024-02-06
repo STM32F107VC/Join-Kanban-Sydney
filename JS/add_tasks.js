@@ -153,18 +153,21 @@ function setToLocalStorage(t) {
  */
 function savePriorityState(id, location) {
     let div = document.getElementById(`priority-container-${location}`);
-    let priorityImg = div.querySelector('#prio-' + `${id}`);
-    let priorityImgOld = div.querySelector('#prio-' + `${oldImg}`);
-    let priorityImgId = priorityImg.id;
+    let priorityImg = div.querySelector('#prio-' + `${id}-` + `${location}`);
+    let priorityImgOld = div.querySelector('#prio-' + `${oldImg}-` + `${location}`);
+    // let priorityImgId = priorityImg.id;
 
-    if (location == 'edit-overlay') prioEditDefault();
+    if (location == 'edit-overlay') prioEditDefault(location);
 
     if (oldImg === undefined) setFirstTimePriorityState(priorityImg, id, location);
     else {
         if (oldImg !== id) setCurrentPriorityState(priorityImg, priorityImgOld, id);
         else {
             if (priorityImg.src.includes(`assets/img/prio-default-${id}.png`)) replaceDefaultPriorityImg(priorityImg, id);
-            else setDefaultPriorityImg(priorityImg, id);
+            else {
+                setDefaultPriorityImg(priorityImg, id);
+                id = undefined;
+            }
         }
     }
     oldImg = id;
@@ -174,10 +177,10 @@ function savePriorityState(id, location) {
  * If edit task is called, after selecting a new priority state, set all to default and
  * then set new state.
  */
-function prioEditDefault() {
-    document.getElementById('prio-low').src = `assets/img/prio-default-low.png`;
-    document.getElementById('prio-medium').src = `assets/img/prio-default-medium.png`;
-    document.getElementById('prio-high').src = `assets/img/prio-default-high.png`;
+function prioEditDefault(location) {
+    document.getElementById(`prio-low-${location}`).src = `assets/img/prio-default-low.png`;
+    document.getElementById(`prio-medium-${location}`).src = `assets/img/prio-default-medium.png`;
+    document.getElementById(`prio-high-${location}`).src = `assets/img/prio-default-high.png`;
 }
 
 /**
@@ -187,7 +190,6 @@ function prioEditDefault() {
  * @param {string} id Current id of img
  */
 function setFirstTimePriorityState(img, id, location) {
-
     img.src = `assets/img/prio-${id}.svg`;
     img.classList.remove('priorityImg');
 }
@@ -371,6 +373,9 @@ function resetAddTaskForm(location) {
     document.getElementById(`subtasks-${location}`).value = '';
     document.getElementById(`displaySubtasks-${location}`).replaceChildren();
     document.getElementById(`displaySelectedContacts-${location}`).replaceChildren();
-    document.getElementById('prio-' + `${oldImg}`).src = `assets/img/prio-default-${oldImg}.png`;
+    let img = document.getElementById('prio-' + `${oldImg}-` + `${location}`).src = `assets/img/prio-default-${oldImg}.png`;
+
+    console.log(img);
+
     subtasks = [];
 }

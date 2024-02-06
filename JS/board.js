@@ -66,6 +66,7 @@ function closeAddTaskOverlay() {
     document.getElementById('side-and-topbar-board').classList.remove("opacity", "z-ind--1");
     document.getElementById('displaySelectedContacts-overlay').innerHTML = '';
     assignedContacts = [];
+    window.location.reload();
 }
 
 /**
@@ -121,7 +122,10 @@ function showTaskOverlay(i) {
 
     let task = tasks[i];
     let str = task['Prio'];
-    let priority = str.charAt(0).toUpperCase() + str.slice(1);
+    let priority;
+    if (str !== undefined) {
+        priority = str.charAt(0).toUpperCase() + str.slice(1);
+    }
 
     // console.log(tasks[i]);
 
@@ -139,7 +143,7 @@ function showTaskOverlay(i) {
             <div class="fs-61px fw-700">${task['Title']}</div>
             <div class="fs-20px fw-400">${task['Description']}</div>
             <div><span class="col-grey-blue">Due date:</span>&nbsp;&nbsp;&nbsp;${task['Date']}</div>
-            <div class="flex y-center">
+            <div id='priority-state-overlay' class="flex y-center">
                 <span class="col-grey-blue">Priority:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${priority}&nbsp;
                 <img src="assets/img/prio-indicator-${priority}.svg" alt="prio-${priority}">
             </div>
@@ -158,6 +162,10 @@ function showTaskOverlay(i) {
             </div>
         </div>
     `;
+
+    if (str == undefined) {
+        document.getElementById('priority-state-overlay').classList.add('d-none');
+    }
     renderAssignedContacts(task, i, true);
     renderSubtask(task, i, 'overlay');
 }
@@ -198,7 +206,7 @@ function getTaskValues(i) {
     let date = task['Date'];
     getCategory = task['Category'];
     bgcCode = task['Bgc-Code'];
-    let getSubtasks = task['Subtasks'];
+    // let getSubtasks = task['Subtasks'];
     oldImg = task['Prio'];
     // let contact = task['Contacts'];
 
@@ -219,12 +227,14 @@ function getTaskValues(i) {
         // clearSubtasks(inputValue);
     }
 
-    document.getElementById('prio-low').src = 'assets/img/prio-default-low.png';
-    document.getElementById('prio-medium').src = 'assets/img/prio-default-medium.png';
-    document.getElementById('prio-high').src = 'assets/img/prio-default-high.png';
+    document.getElementById('prio-low-edit-overlay').src = 'assets/img/prio-default-low.png';
+    document.getElementById('prio-medium-edit-overlay').src = 'assets/img/prio-default-medium.png';
+    document.getElementById('prio-high-edit-overlay').src = 'assets/img/prio-default-high.png';
 
-    let prioState = document.getElementById(`prio-${task['Prio']}`);
+    let prioState = document.getElementById(`prio-${task['Prio']}-edit-overlay`);
     prioState.src = `assets/img/prio-${task['Prio']}.svg`;
+
+    oldImg = undefined;
 
     document.getElementById('title-editable').value = title;
     document.getElementById('textarea-editable').value = description;
@@ -236,7 +246,6 @@ function getTaskValues(i) {
  * @param {variable} j J is the index number for accessing a task in the tasks array
  */
 function saveEditTaskChanges(taskIndex) {
-    console.log(taskIndex);
     document.getElementById('edit-overlay-ok-btn').disabled = true;
 
     let title = document.getElementById('title-editable');
