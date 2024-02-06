@@ -66,4 +66,4 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 - Problem nach bearbeitung von subtak, verschwindet task vom board✓
 
 ---Date: 06.02.24 ---
-- greetUser() funktioniert auf board nicht mehr
+- greetUser() funktioniert auf board nicht mehr✓

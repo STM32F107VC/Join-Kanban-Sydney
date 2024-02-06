@@ -77,7 +77,6 @@ function closeShowTaskOverlay() {
     document.getElementById('displaySubtasks-edit-overlay').innerHTML = '';
     document.getElementById('assigned-edit-overlay').innerHTML = '';
     document.getElementById('displaySelectedContacts-edit-overlay').innerHTML = '';
-
     document.getElementById('tasks-overlay-view').classList.add('d-none');
     document.getElementById('main-div-board').classList.remove('d-none');
     document.getElementById('body-board').classList.remove("flex", "x-center", "y-center");
@@ -425,9 +424,14 @@ function getSubtasks(t) {
     return t['Subtasks'].length;
 }
 
+/**
+ * Allow drop action
+ * @param {} ev 
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
+
 
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);

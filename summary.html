@@ -15,6 +15,7 @@
     <script src="JS/summary.js"></script>
     <script src="JS/includeHTML.js"></script>
     <script async src="JS/storage.js"></script>
+    <script src="JS/board.js"></script>
 
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/summary.css">
@@ -37,7 +38,8 @@
             <div class="flex y-center">
                 <div>
                     <div class="flex y-center mb-28px">
-                        <div class="flex x-center y-center mr-32px general-box-style spacing-to-do">
+                        <div onclick="forwardingToBoard();"
+                            class="flex x-center y-center mr-32px general-box-style spacing-to-do">
                             <div class="mr-16px">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="69" height="70" viewBox="0 0 69 70"
                                     fill="none">
@@ -54,12 +56,13 @@
                                 </svg>
                             </div>
                             <div class="flex flex-column x-center y-center">
-                                <div>JS value</div>
-                                <div>To-do</div>
+                                <div></div>
+                                <span>To-do</span>
                             </div>
                         </div>
 
-                        <div class="flex x-center y-center general-box-style spacing-done">
+                        <div onclick="forwardingToBoard();"
+                            class="flex x-center y-center general-box-style spacing-done">
                             <div class="mr-16px">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70"
                                     fill="none">
@@ -69,13 +72,14 @@
                                 </svg>
                             </div>
                             <div class="flex flex-column x-center y-center">
-                                <div>JS value</div>
-                                <div>Done</div>
+                                <div></div>
+                                <span>Done</span>
                             </div>
                         </div>
                     </div>
 
-                    <div id="urgent-tasks" class="flex x-space-betw mb-28px urgency-summary general-box-style ">
+                    <div onclick="forwardingToBoard();" id="urgent-tasks"
+                        class="flex x-space-betw mb-28px urgency-summary general-box-style ">
                         <div class="flex y-center">
                             <div>
                                 <img src="assets/img/Frame 59.png" alt="urgent">
@@ -90,17 +94,20 @@
                     </div>
 
                     <div id="progress-overview" class="flex x-space-betw">
-                        <div class="flex-column flex x-center y-center progress-view general-box-style">
-                            <span>1</span>
-                            Tasks in Board
+                        <div onclick="forwardingToBoard();"
+                            class="flex-column flex x-center y-center progress-view general-box-style">
+                            <div></div>
+                            <span>Tasks in Board</span>
                         </div>
-                        <div class="flex-column flex x-center y-center progress-view general-box-style">
-                            <span>2</span>
-                            Tasks in Progress
+                        <div onclick="forwardingToBoard();"
+                            class="flex-column flex x-center y-center progress-view general-box-style">
+                            <div></div>
+                            <span>Tasks in Progress</span>
                         </div>
-                        <div class="flex flex-column x-center y-center progress-view general-box-style">
-                            <span>3</span>
-                            Awaiting Feedback
+                        <div onclick="forwardingToBoard();"
+                            class="flex flex-column x-center y-center progress-view general-box-style">
+                            <div></div>
+                            <span>Awaiting Feedback</span>
                         </div>
                     </div>
                 </div>

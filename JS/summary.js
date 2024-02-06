@@ -8,6 +8,7 @@ async function init_summary(id) {
     await includeHTML();
     await loadContacts();
     getFromLocalStorage();
+    loadAmountOfTasks();
     markActiveLink(id);
     greetUser();
 }
@@ -21,7 +22,6 @@ async function getFromLocalStorage() {
         let object = JSON.parse(tasksToString);
         tasks = object;
     }
-    // console.log(document.getElementById);
 }
 
 /**
@@ -42,4 +42,12 @@ async function greetUser() {
         acronym.textContent = acronymUpperCase;
         // greetingText.textContent = name;
     }
+}
+
+function forwardingToBoard() {
+    window.location.href = 'board.html';
+}
+
+function loadAmountOfTasks() {
+
 }
