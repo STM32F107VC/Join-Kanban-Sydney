@@ -8,7 +8,7 @@ async function init_summary(id) {
     await includeHTML();
     await loadContacts();
     getFromLocalStorage();
-    loadAmountOfTasks();
+    // loadAmountOfTasks();
     markActiveLink(id);
     greetUser();
 }
@@ -32,7 +32,7 @@ async function greetUser() {
     let acronym = document.getElementById('acronym');
     let user = JSON.parse(await getItem('guestOrAccount'));
     let name = user['log']['Name'];
-    console.log(user['log']['Name']);
+    // console.log(user['log']['Name']);
     user = user['log'];
     if (user === 'guest') {
         acronym.textContent = 'G';
@@ -44,10 +44,15 @@ async function greetUser() {
     }
 }
 
+/**
+ * Forwarding to board.html
+ */
 function forwardingToBoard() {
     window.location.href = 'board.html';
 }
 
-function loadAmountOfTasks() {
+// function loadAmountOfTasks() {
+//     let toDos = document.getElementById('in-progress').innerHTML;
+//     console.log(toDos);
 
-}
+// }

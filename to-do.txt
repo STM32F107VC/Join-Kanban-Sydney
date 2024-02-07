@@ -67,3 +67,9 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 
 ---Date: 06.02.24 ---
 - greetUser() funktioniert auf board nicht mehr✓
+
+---Date: 07.02.24 ---
+- Dann alle tasks im summary anzeigen-
+- Porgress bar subtasks an und abwählen-
+- Begrüssungstext anhand von tageszeit definieren: good morning, good afternoon, good evening
+- Summary svg tag durch svg bilder ersetzten

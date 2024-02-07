@@ -3,6 +3,7 @@ let countUp = -1;
 let getCategory;
 let bgcCode;
 let taskIndex;
+let saveDate;
 
 /**
  * Init function called on body="onload" to load
@@ -16,7 +17,55 @@ async function init_board(id) {
     greetUser();
     getAddTaskMenu('overlay');
     assignContact('overlay');
+    howManyTasksPerColumn();
 }
+
+//-------------------------------------
+function howManyTasksPerColumn() {
+    let prioHigh = 'high'
+    let increment = 0;
+    saveDate = [];
+    let toDo = document.getElementById('backlog').children.length;
+    let inProgress = document.getElementById('in-progress').children.length;
+    let awaitFeedback = document.getElementById('await-feedback').children.length;
+    let done = document.getElementById('done').children.length;
+    let amountOfTasks = tasks.length;
+    // console.log('Todo:' + toDo);
+    // console.log('In-progress:' + inProgress);
+    // console.log('Await-Feedback:' + awaitFeedback);
+    // console.log('Done:' + done);
+    // console.log('Total amount of tasks:' + amountOfTasks);
+
+    //--- How many urgent value, the most urgent date and the most current date
+    for (let i = 0; i < tasks.length; i++) {
+        let task = tasks[i];
+        let prio = task['Prio'];
+
+        // console.log(mostUrgentDate);
+        // console.log(prio);
+        if (prio == prioHigh) {
+            increment++;
+            // console.log(increment);
+
+
+            let currentDate = task['Date'];
+            saveDate.push({ date: new Date(currentDate) });
+
+        }
+    }
+
+    let mostUrgentDate = saveDate.sort((objA, objB) => Number(objA.date) - Number(objB.date),).reverse();
+    // let day = mostUrgentDate.getDate();
+    // console.log(day);
+    // console.log(mostUrgentDate);
+
+    // console.log(mostUrgentDate[0]);
+
+
+
+}
+
+//-------------------------------------
 
 /**
  * Load tasks from local storage ---------------- change to remote storage later!!
@@ -37,7 +86,6 @@ function loadToColumn() {
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         let getTaskLocation = task['Column-location'];
-        console.log(getTaskLocation);
         let column = document.getElementById(`${getTaskLocation}`);
         column.innerHTML += taskTemplate(task, i);
         renderAssignedContacts(task, i, false);
@@ -375,7 +423,7 @@ function renderPrioImg(t, i) {
  * Check if there are one or two subtasks to return
  * the number for progress bar. 1 Subtask: value = 50;
  * 2. Subtask: value = 100;
- * @param {*} t Is a JSON with all feature of one task in it 
+ * @param {JSON} t Is a JSON with all feature of one task in it 
  * @returns Returns the percent value
  */
 function getAmounTOfSubtasks(t) {
@@ -400,6 +448,12 @@ function getPercentage(length) {
     }
 }
 
+/**
+ * 
+ * @param {variable} taskIndex Is the index of the current task
+ * @param {*} i Is the number depending on the amount of subtasks 
+ *              i = 0 => 1 subtask | i = 1 => 2 subtasks
+ */
 function showOrHidSubtask(taskIndex, i) {
     let progressBar = document.getElementById(`progressBar${taskIndex}`);
     let percent;
@@ -432,7 +486,6 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
@@ -460,4 +513,5 @@ function changeTaskLocation(data, target) {
     let index = data.slice(-1);
     tasks[index]['Column-location'] = columnId;
     setToLocalStorage(tasks);
+    howManyTasksPerColumn();
 }
