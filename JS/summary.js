@@ -18,9 +18,13 @@ async function init_summary(id) {
  */
 async function getFromLocalStorage() {
     let tasksToString = localStorage.getItem('tasks');
+    let summaryInformationsToString = localStorage.getItem('summary-informations');
     if (tasksToString) {
         let object = JSON.parse(tasksToString);
         tasks = object;
+    }
+    if (summaryInformationsToString) {
+        console.log(JSON.parse(summaryInformationsToString));
     }
 }
 
