@@ -115,7 +115,7 @@ async function addTask(location) {
         "Subtasks": subtasks,
         "Column-location": 'backlog'
     });
-    setToLocalStorage(tasks);
+    setToLocalStorage(tasks, 'tasks');
     // await setItem('tasks', JSON.stringify(tasks));
     resetAddTaskForm(location);
     document.getElementById('submitBtn').disabled = false;
@@ -140,9 +140,9 @@ function checkCategory(c) {
  * Testwise local storage in workflow use backend
  * 
  */
-function setToLocalStorage(t) {
+function setToLocalStorage(t, n) {
     let tasksToString = JSON.stringify(t);
-    localStorage.setItem('tasks', tasksToString);
+    localStorage.setItem(`${n}`, tasksToString);
 }
 
 /**

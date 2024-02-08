@@ -71,5 +71,11 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 ---Date: 07.02.24 ---
 - Dann alle tasks im summary anzeigen-
 - Porgress bar subtasks an und abwählen-
-- Begrüssungstext anhand von tageszeit definieren: good morning, good afternoon, good evening
-- Summary svg tag durch svg bilder ersetzten
+- Begrüssungstext anhand von tageszeit definieren: good morning, good afternoon, good evening-
+- Summary svg tag durch svg bilder ersetzten-
+
+---Date: 08.02.24 ---
+- Dann alle tasks im summary anzeigen-
+- Porgress bar subtasks an und abwählen-
+- Begrüssungstext anhand von tageszeit definieren: good morning, good afternoon, good evening-
+- Summary svg tag durch svg bilder ersetzten-

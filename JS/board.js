@@ -4,7 +4,7 @@ let getCategory;
 let bgcCode;
 let taskIndex;
 let saveDate;
-
+let summaryInformations;
 /**
  * Init function called on body="onload" to load
  * first necessary functions
@@ -31,59 +31,37 @@ function howManyTasksPerColumn() {
     let done = document.getElementById('done').children.length;
     let amountOfTasks = tasks.length;
     let dateObject;
-    let date;
     let month;
     let year;
     let formatDate;
-    // console.log('Todo:' + toDo);
-    // console.log('In-progress:' + inProgress);
-    // console.log('Await-Feedback:' + awaitFeedback);
-    // console.log('Done:' + done);
-    // console.log('Total amount of tasks:' + amountOfTasks);
-
-    //--- How many urgent value, the most urgent date and the most current date
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         let prio = task['Prio'];
-
-        // console.log(mostUrgentDate);
-        // console.log(prio);
         if (prio == prioHigh) {
             increment++;
-            // console.log(increment);
-
-
             let currentDate = task['Date'];
             saveDate.push({ date: new Date(currentDate) });
             saveDate.sort((objA, objB) => Number(objA.date) - Number(objB.date),).reverse();
             for (let j = 0; j < saveDate.length; j++) {
                 let date = saveDate[j];
                 dateObject = date.date;
-
             }
-            // console.log(dateObject);
-            // console.log(currentDate);
-            // let mostUrgentDate = saveDate.sort((objA, objB) => Number(objA.date) - Number(objB.date),);
-            // let dateObject = mostUrgentDate.date;
-
-            // console.log([mostUrgentDate[0]]);
         }
     }
     day = ('0' + dateObject.getDate()).slice(-2);
     month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
     year = dateObject.getFullYear();
     formatDate = `${day}.${month}.${year}`;
-    console.log(formatDate);
-
-    console.log(saveDate);
-    // let day = mostUrgentDate.getDate();
-    // console.log(day);
-    // console.log(mostUrgentDate);
-
-    // console.log(mostUrgentDate[0]);
-
-
-
+    summaryInformations = {
+        'To-Do': toDo,
+        'In-Progress': inProgress,
+        'Await-Feedback': awaitFeedback,
+        'Done': done,
+        'Amount-Of-Tasks': amountOfTasks,
+        'Amount-Of-Urgent-Tasks': increment,
+        'Date': formatDate
+    };
+    setToLocalStorage(summaryInformations, 'summary-informations');
 }
 
 //-------------------------------------
@@ -332,7 +310,7 @@ function saveEditTaskChanges(taskIndex) {
         "Subtasks": subtasks,
         "Column-location": columnLocation
     });
-    setToLocalStorage(tasks);
+    setToLocalStorage(tasks, 'tasks');
     document.getElementById('edit-overlay-ok-btn').disabled = false;
     location.reload();
 }
@@ -533,6 +511,6 @@ function changeTaskLocation(data, target) {
     let columnId = target.id;
     let index = data.slice(-1);
     tasks[index]['Column-location'] = columnId;
-    setToLocalStorage(tasks);
+    setToLocalStorage(tasks, 'tasks');
     howManyTasksPerColumn();
 }
