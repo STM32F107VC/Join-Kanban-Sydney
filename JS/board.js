@@ -30,6 +30,11 @@ function howManyTasksPerColumn() {
     let awaitFeedback = document.getElementById('await-feedback').children.length;
     let done = document.getElementById('done').children.length;
     let amountOfTasks = tasks.length;
+    let dateObject;
+    let date;
+    let month;
+    let year;
+    let formatDate;
     // console.log('Todo:' + toDo);
     // console.log('In-progress:' + inProgress);
     // console.log('Await-Feedback:' + awaitFeedback);
@@ -50,11 +55,27 @@ function howManyTasksPerColumn() {
 
             let currentDate = task['Date'];
             saveDate.push({ date: new Date(currentDate) });
+            saveDate.sort((objA, objB) => Number(objA.date) - Number(objB.date),).reverse();
+            for (let j = 0; j < saveDate.length; j++) {
+                let date = saveDate[j];
+                dateObject = date.date;
 
+            }
+            // console.log(dateObject);
+            // console.log(currentDate);
+            // let mostUrgentDate = saveDate.sort((objA, objB) => Number(objA.date) - Number(objB.date),);
+            // let dateObject = mostUrgentDate.date;
+
+            // console.log([mostUrgentDate[0]]);
         }
     }
+    day = ('0' + dateObject.getDate()).slice(-2);
+    month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
+    year = dateObject.getFullYear();
+    formatDate = `${day}.${month}.${year}`;
+    console.log(formatDate);
 
-    let mostUrgentDate = saveDate.sort((objA, objB) => Number(objA.date) - Number(objB.date),).reverse();
+    console.log(saveDate);
     // let day = mostUrgentDate.getDate();
     // console.log(day);
     // console.log(mostUrgentDate);
