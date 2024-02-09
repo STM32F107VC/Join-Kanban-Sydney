@@ -26,7 +26,7 @@
     <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
 
     <!-- Main div -->
-    <div class="summary-container flex x-center y-center">
+    <div class="summary-container flex x-center y-center ft-general">
         <!-- Left div with project title and tasks overview -->
         <div>
             <div class="flex y-center x-space-betw mb-48px">
@@ -56,7 +56,7 @@
                                 </svg>
                             </div>
                             <div class="flex flex-column x-center y-center">
-                                <div></div>
+                                <div id="to-do" class="fs-61px fw-700 mb-16px"></div>
                                 <span>To-do</span>
                             </div>
                         </div>
@@ -72,41 +72,49 @@
                                 </svg>
                             </div>
                             <div class="flex flex-column x-center y-center">
-                                <div></div>
+                                <div id="done" class="fs-61px fw-700 mb-16px"></div>
                                 <span>Done</span>
                             </div>
                         </div>
                     </div>
 
                     <div onclick="forwardingToBoard();" id="urgent-tasks"
-                        class="flex x-space-betw mb-28px urgency-summary general-box-style ">
+                        class="flex x-space-evenly y-center mb-28px urgency-summary general-box-style ">
                         <div class="flex y-center">
-                            <div>
-                                <img src="assets/img/Frame 59.png" alt="urgent">
+                            <div class="flex x-center y-center">
+                                <div class="mr-16px">
+                                    <img src="assets/img/Frame 59.png" alt="urgent">
+                                </div>
+                                <div class="flex flex-column x-center y-center">
+                                    <div id="urgent" class="fs-61px fw-700 mb-16px"></div>
+                                    <span>Urgent</span>
+                                </div>
                             </div>
                             <div>
                                 <img class="vertical-gr-line" src="assets/img/Vector_vertical.png"
                                     alt="vertical grey line">
                             </div>
                         </div>
-                        <div></div>
-                        <div></div>
+                        <div class="flex flex-column">
+                            <div id="upcoming-deadline" class="fs-27px fw-700 mb-16px"></div>
+                            <div>Upcoming deadline</div>
+                        </div>
                     </div>
 
                     <div id="progress-overview" class="flex x-space-betw">
                         <div onclick="forwardingToBoard();"
                             class="flex-column flex x-center y-center progress-view general-box-style">
-                            <div></div>
+                            <span id="total-tasks" class="fs-61px fw-700 mb-16px"></span>
                             <span>Tasks in Board</span>
                         </div>
                         <div onclick="forwardingToBoard();"
                             class="flex-column flex x-center y-center progress-view general-box-style">
-                            <div></div>
+                            <span id="progress" class="fs-61px fw-700 mb-16px"></span>
                             <span>Tasks in Progress</span>
                         </div>
                         <div onclick="forwardingToBoard();"
                             class="flex flex-column x-center y-center progress-view general-box-style">
-                            <div></div>
+                            <span id="feedback" class="fs-61px fw-700 mb-16px"></span>
                             <span>Awaiting Feedback</span>
                         </div>
                     </div>

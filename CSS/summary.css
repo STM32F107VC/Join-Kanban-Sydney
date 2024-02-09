@@ -58,3 +58,7 @@
     width: 69px;
     height: 69px;
 }
+
+.urgent-symbol-left {
+    margin-left: -22px;
+}

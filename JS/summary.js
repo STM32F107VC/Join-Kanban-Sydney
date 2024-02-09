@@ -24,8 +24,40 @@ async function getFromLocalStorage() {
         tasks = object;
     }
     if (summaryInformationsToString) {
-        console.log(JSON.parse(summaryInformationsToString));
+        // console.log(JSON.parse(summaryInformationsToString));
+        let informationObj = JSON.parse(summaryInformationsToString);
+        loadSummaryInformations(informationObj);
     }
+}
+
+function loadSummaryInformations(informations) {
+
+    let totalAmount = document.getElementById('total-tasks');
+    let totalUrgent = document.getElementById('urgent');
+    let awaitFeedback = document.getElementById('feedback');
+    let date = document.getElementById('upcoming-deadline');
+    let done = document.getElementById('done');
+    let inProgress = document.getElementById('progress');
+    let toDo = document.getElementById('to-do');
+
+    totalAmount.innerHTML = informations['Amount-Of-Tasks'];
+    done.innerHTML = informations['Done'];
+    toDo.innerHTML = informations['To-Do'];
+    totalUrgent.innerHTML = informations['Amount-Of-Urgent-Tasks'];
+    date.innerHTML = informations['Date'];
+    inProgress.innerHTML = informations['In-Progress'];
+    awaitFeedback.innerHTML = informations['Await-Feedback'];
+
+    console.log(informations['Amount-Of-Tasks']);
+    /**
+     * informations['Amount-Of-Tasks'];
+     * informations['Amount-Of-Urgent-Tasks'];
+     * informations['Await-Feedback'];
+     * informations['Date'];
+     * informations['Done'];
+     * informations['In-Progress'];
+     * informations['To-Do'];
+     */
 }
 
 /**

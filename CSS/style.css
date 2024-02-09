@@ -29,6 +29,8 @@ a { text-decoration: none; }
 
 .x-space-betw { justify-content: space-between; }
 
+.x-space-evenly { justify-content: space-evenly; }
+
 .x-space-around { justify-content: space-around; }
 
 .x-start { justify-content: flex-start; }
