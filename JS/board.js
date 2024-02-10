@@ -353,7 +353,7 @@ function renderSubtask(t, i, location) {
     for (let i = 0; i < subtasks.length; i++) {
         let subtask = subtasks[i];
         div.innerHTML += /*html*/`
-            <div class="subtasks flex gap-16px">
+            <div class="subtasks flex y-center gap-16px">
                 <input onclick="showOrHidSubtask('${taskIndex}', '${i}')" type="checkbox" id="subtasks${i}">
                 <div>${subtask}</div>
             </div>`;

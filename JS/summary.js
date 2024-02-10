@@ -23,7 +23,6 @@ async function getFromLocalStorage() {
         tasks = object;
     }
     if (summaryInformationsToString) {
-        // console.log(JSON.parse(summaryInformationsToString));
         let informationObj = JSON.parse(summaryInformationsToString);
         loadSummaryInformations(informationObj);
     }

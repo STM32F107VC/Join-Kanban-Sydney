@@ -222,6 +222,17 @@ input::-webkit-inner-spin-button {
 
 ::placeholder { color: #DADADA; }
 
+input[type="checkbox"] {
+    appearance: none; /* Setze das Aussehen zurück */
+    -webkit-appearance: none; 
+
+    width: 25px; /* Breite der Checkbox anpassen */
+    height: 25px; /* Höhe der Checkbox anpassen */
+    cursor: pointer; /* Zeige den Zeiger beim Überfahren an */
+    border: 3px solid #2A3647;
+    border-radius: 4px;
+}
+
 /* Classes for buttons */
 .btn-light {
     border-radius: 8px;
