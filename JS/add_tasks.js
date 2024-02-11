@@ -113,12 +113,32 @@ async function addTask(location) {
         "Category": category.value,
         "Bgc-Code": bgcCode,
         "Subtasks": subtasks,
+        "Active-Subtasks": array = setHowManySubtasks(),
+        "Progressbar-Value": percent,
         "Column-location": 'backlog'
     });
     setToLocalStorage(tasks, 'tasks');
     // await setItem('tasks', JSON.stringify(tasks));
     resetAddTaskForm(location);
     document.getElementById('submitBtn').disabled = false;
+}
+
+/**
+ * Check how many subtasks added to a task
+ * The array exists out of two place. If there is a 0
+ * there is no subtask if there is a 1 there is a subtask added
+ */
+function setHowManySubtasks() {
+    if (subtasks.length == 0) {
+        percent = 0;
+        return [0, 0];
+    } else if (subtasks.length == 1) {
+        percent = 50;
+        return [1, 0];
+    } else if (subtasks.length == 2) {
+        percent = 100;
+        return [1, 1];
+    }
 }
 
 /**

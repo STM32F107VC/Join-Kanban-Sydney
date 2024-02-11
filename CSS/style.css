@@ -222,7 +222,32 @@ input::-webkit-inner-spin-button {
 
 ::placeholder { color: #DADADA; }
 
-input[type="checkbox"] {
+.checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px; 
+    height: 20px;
+    cursor: pointer; 
+    border: 2px solid #2A3647;
+    border-radius: 4px;
+    margin: 0;
+}
+
+.checkbox-checked {
+    background-image: url('/assets/img/subtasks_tick.svg');
+    background-position-x: 40%;
+    background-position-y: 50%;
+}
+
+/* .checkbox:checked::before {
+    background-image: url('/assets/img/subtasks_tick.svg');
+    color: #2A3647;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none; 
     width: 20px; 
@@ -239,7 +264,7 @@ input[type="checkbox"]:checked::before {
     display: flex;
     justify-content: center;
     align-items: center;
-}   
+}    */
 
 /* Classes for buttons */
 .btn-light {

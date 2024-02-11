@@ -5,6 +5,11 @@ let bgcCode;
 let taskIndex;
 let saveDate;
 let summaryInformations;
+let subtasksLength;
+let percent;
+let percentage;
+let currentSubtask;
+
 /**
  * Init function called on body="onload" to load
  * first necessary functions
@@ -131,6 +136,7 @@ function closeShowTaskOverlay() {
     document.getElementById('edit-task-overlay-view').classList.add('d-none');
     assignedContacts = [];
     subtasks = [];
+    window.location.reload();
 }
 
 /**
@@ -206,8 +212,7 @@ function showTaskOverlay(i) {
                     <img src="/assets/img/subtasks_vector.svg" alt="separator">
                     <img onclick="showEditTaskOverlay('${i}')" class="edit c-pointer" src="/assets/img/edit_default.png" alt="edit">
             </div>
-        </div>
-    `;
+        </div>`;
 
     if (str == undefined) {
         document.getElementById('priority-state-overlay').classList.add('d-none');
@@ -308,6 +313,8 @@ function saveEditTaskChanges(taskIndex) {
         "Category": getCategory,
         "Bgc-Code": bgcCode,
         "Subtasks": subtasks,
+        "Active-Subtasks": array = setHowManySubtasks(),
+        "Progressbar-Value": percent,
         "Column-location": columnLocation
     });
     setToLocalStorage(tasks, 'tasks');
@@ -347,17 +354,52 @@ function renderAssignedContacts(t, i, flag) {
  * @param {variable} i Is the contact index
  */
 function renderSubtask(t, k, location) {
-    // renderSubtask${i}-${overlay}
     let div = document.getElementById(`renderSubtask${k}-${location}`);
     let subtasks = t['Subtasks'];
     for (let i = 0; i < subtasks.length; i++) {
+        percentage = subtasks.length;
         let subtask = subtasks[i];
         div.innerHTML += /*html*/`
             <div class="subtasks flex y-center gap-16px">
-                <input class="flex x-center y-center" onclick="showOrHidSubtask('${taskIndex}', '${i}')" type="checkbox" id="subtasks${k}${i}">
+                <input class="flex x-center y-center checkbox" onclick="activeSubtasks('${k}', ${i})" type="checkbox" id="subtasks${k}${i}">
                 <div>${subtask}</div>
             </div>`;
+        loadActiveSubtasks(t, k, i);
     }
+}
+
+function loadActiveSubtasks(t, k, i) {
+    let activeSubtask = t['Active-Subtasks'][i];
+    let subtask = document.getElementById(`subtasks${k}${i}`);
+    if (activeSubtask == 1) {
+        subtask.classList.add('checkbox-checked');
+    } else if (activeSubtask == 0) {
+        subtask.classList.remove('checkbox-checked');
+    }
+
+}
+
+/**
+ * Checks the checkbox of the subtask 
+ * @param {*} k Is the contact index
+ * @param {*} i Is the index of the subtak
+ */
+function activeSubtasks(k, i) {
+    let task = tasks[k];
+    let subtask = document.getElementById(`subtasks${k}${i}`);
+    let completeSubtaskStatus = task['Active-Subtasks'];
+    if (!subtask.classList.contains('checkbox-checked')) {
+        subtask.classList.add('checkbox-checked');
+        completeSubtaskStatus[i] = 1;
+    } else if (subtask.classList.contains('checkbox-checked')) {
+        subtask.classList.remove('checkbox-checked');
+        completeSubtaskStatus[i] = 0;
+    }
+    task['Active-Subtasks'] = completeSubtaskStatus;
+    task['Progressbar-Value'] = getAmounTOfSubtasks(task);
+    tasks.splice(k, 1);
+    tasks.push(task);
+    setToLocalStorage(tasks, 'tasks');
 }
 
 /**
@@ -426,43 +468,20 @@ function renderPrioImg(t, i) {
  * @returns Returns the percent value
  */
 function getAmounTOfSubtasks(t) {
-    let length = t['Subtasks'].length;
-    if (length == 1) {
-        let percent = 50;
+    let length = t['Active-Subtasks'];
+    let firstVar = [0, 0];
+    let secondVar = [1, 0];
+    let thirdVar = [1, 1];
+    if (length[0] == firstVar[0] && length[1] == firstVar[1]) {
+        percent = 0;
+        return 0;
+    } else if (length[0] == secondVar[0] && length[1] == secondVar[1]) {
+        percent = 50;
         return percent;
-    } else if (length == 2) {
-        let percent = 100;
-        return percent;
-    }
-}
-
-function getPercentage(length) {
-    if (length == 1) {
-        let percent = 50;
-        return percent;
-    } else if (length == 2) {
-        let percent = 100;
+    } else if (length[0] == thirdVar[0] && length[1] == thirdVar[1]) {
+        percent = 100;
         return percent;
     }
-}
-
-/**
- * 
- * @param {variable} taskIndex Is the index of the current task
- * @param {*} i Is the number depending on the amount of subtasks 
- *              i = 0 => 1 subtask | i = 1 => 2 subtasks
- */
-function showOrHidSubtask(taskIndex, i) {
-    let progressBar = document.getElementById(`progressBar${taskIndex}`);
-    let percent;
-    if (i == 0) {
-        i++;
-        percent = getPercentage(i);
-    } else if (i == 1) {
-        i = 2;
-        percent = getPercentage(i);
-    }
-    progressBar.value = percent;
 }
 
 /**
@@ -473,7 +492,8 @@ function showOrHidSubtask(taskIndex, i) {
  * If it's 0 there is no additional subtak added to the task.
  */
 function getSubtasks(t) {
-    return t['Subtasks'].length;
+    subtasksLength = t['Subtasks'].length;
+    return subtasksLength;
 }
 
 /**
