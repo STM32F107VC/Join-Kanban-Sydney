@@ -27,7 +27,7 @@ async function init_board(id) {
 
 //-------------------------------------
 function howManyTasksPerColumn() {
-    let prioHigh = 'high'
+    let prioHigh = 'high';
     let increment = 0;
     saveDate = [];
     let toDo = document.getElementById('backlog').children.length;
@@ -51,12 +51,15 @@ function howManyTasksPerColumn() {
                 let date = saveDate[j];
                 dateObject = date.date;
             }
+            day = ('0' + dateObject.getDate()).slice(-2);
+            month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
+            year = dateObject.getFullYear();
+            formatDate = `${day}.${month}.${year}`;
         }
     }
-    day = ('0' + dateObject.getDate()).slice(-2);
-    month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
-    year = dateObject.getFullYear();
-    formatDate = `${day}.${month}.${year}`;
+    if (formatDate == undefined) {
+        formatDate = 'No urgent task';
+    }
     summaryInformations = {
         'To-Do': toDo,
         'In-Progress': inProgress,
@@ -91,7 +94,11 @@ function loadToColumn() {
         let task = tasks[i];
         let getTaskLocation = task['Column-location'];
         let column = document.getElementById(`${getTaskLocation}`);
-        column.innerHTML += taskTemplate(task, i);
+        if (column.childNodes === 0) {
+            console.log('This column is empty.');
+        } else {
+            column.innerHTML += taskTemplate(task, i);
+        }
         renderAssignedContacts(task, i, false);
     }
 }
@@ -376,7 +383,6 @@ function loadActiveSubtasks(t, k, i) {
     } else if (activeSubtask == 0) {
         subtask.classList.remove('checkbox-checked');
     }
-
 }
 
 /**
@@ -471,14 +477,16 @@ function getAmounTOfSubtasks(t) {
     let length = t['Active-Subtasks'];
     let firstVar = [0, 0];
     let secondVar = [1, 0];
-    let thirdVar = [1, 1];
+    let thirdVar = [0, 1];
+    let fourthVar = [1, 1];
     if (length[0] == firstVar[0] && length[1] == firstVar[1]) {
         percent = 0;
         return 0;
-    } else if (length[0] == secondVar[0] && length[1] == secondVar[1]) {
+    } else if ((length[0] == secondVar[0] && length[1] == secondVar[1]) ||
+        (length[0] == thirdVar[0] && length[1] == thirdVar[1])) {
         percent = 50;
         return percent;
-    } else if (length[0] == thirdVar[0] && length[1] == thirdVar[1]) {
+    } else if (length[0] == fourthVar[0] && length[1] == fourthVar[1]) {
         percent = 100;
         return percent;
     }

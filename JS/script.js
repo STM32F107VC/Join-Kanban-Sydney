@@ -113,7 +113,8 @@ function openLogoutMenu() {
  */
 function goBack() {
     // location.replace('summary.html');
-    window.location.href = 'summary.html';
+    // window.location.href = 'summary.html';
+    history.go(-1);
 }
 
 /**
