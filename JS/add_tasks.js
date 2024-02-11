@@ -269,7 +269,10 @@ function toggleIcons(location) {
  */
 function addSubtask(location) {
     let list = document.getElementById('displaySubtasks-' + `${location}`);
-    let inputValue = document.getElementById('subtasks-' + `${location}`).value;
+
+    let input = document.getElementById('subtasks-' + `${location}`);
+    let inputValue = input.value;
+
     if ((list.children.length < 2) && !(inputValue === "")) {
         subtasks.push(inputValue);
         state = subtasks.length - 1;
@@ -277,7 +280,7 @@ function addSubtask(location) {
         let editImg = document.getElementById(`edite${state}-${location}`);
         editImg.addEventListener('click', clickHandlerEdit);
     } else { console.log('Reached maximum of insertable subtasks.'); }
-    clearSubtasks(inputValue);
+    clearSubtasks(input);
 }
 
 /**
@@ -357,8 +360,8 @@ function saveSubtaskChanges(state, location) {
  * Clear subtasks input field
  * @param {string} inputValue
  */
-function clearSubtasks(inputValue) {
-    inputValue.value = '';
+function clearSubtasks(input) {
+    input.value = '';
 }
 
 /**
