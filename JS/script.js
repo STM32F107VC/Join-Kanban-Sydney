@@ -157,7 +157,8 @@ function markCheckbox() {
 }
 
 /**
- * 
+ * Check if password set is the same with confirm passowrd field
+ * then register new user
  * @param {string} name This is the name of the person registering
  * @param {string} email This is the email of the person registering 
  * @param {string} password This is the password of the person registering

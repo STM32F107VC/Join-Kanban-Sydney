@@ -4,42 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
-
     <style>
+        /* Stil für das Checkbox-Input-Feld */
+        .custom-checkbox-container {
+            position: relative;
+            /* Position relativ für die absolute Positionierung des Häkchens */
+            padding-left: 30px;
+            /* Platz für das Häkchen einplanen */
+            line-height: 20px;
+            /* Vertikal ausrichten */
 
+            display: inline-block;
+        }
+
+        /* Stil für die eigentliche Checkbox ausblenden */
+        .custom-checkbox-container input[type="checkbox"] {
+            display: none;
+        }
+
+        /* Stil für das benutzerdefinierte Häkchen-Symbol */
+        .custom-checkbox-container:before {
+            content: '\2713';
+            /* Unicode für das Häkchen-Symbol */
+            font-size: 18px;
+            /* Größe des Häkchens */
+            color: transparent;
+            /* Anfangs unsichtbar machen */
+            position: absolute;
+            /* Absolute Positionierung relativ zum Elternelement (.custom-checkbox-container) */
+            left: 0;
+            /* Horizontal ausrichten */
+            top: 0;
+            /* Vertikal ausrichten */
+        }
+
+        /* Stil für das Häkchen (bei aktivierter Checkbox) */
+        .custom-checkbox-container input[type="checkbox"]:checked+.custom-checkbox-container:before {
+            color: green;
+            /* Farbe des Häkchens ändern, wenn die Checkbox aktiviert ist */
+        }
     </style>
-
 </head>
 
-<body style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <!-- <input onclick="checkCheckbox();" id="checkbox" type="checkbox" name="" id=""> -->
+<body>
 
-    <div class="round">
-        <span>hallo</span>
+    <!-- Beispiel für das Checkbox-Input-Feld ohne <label> -->
+    <div class="custom-checkbox-container">
+        <input type="checkbox"> Checkbox-Text
     </div>
-    <script>
-        // function checkCheckbox() {
-        //     let checkbox = document.getElementById('checkbox');
-        //     if (checkbox.checked == true) {
-        //         console.log('Checkbox is checked.');
-        //     } else {
-        //         console.log('Checkbox is not checked.');
-        //     }
-        // }
 
-        // Bestehendes JSON-Objekt
-        var bestehendesJson = {
-            name: "John Doe",
-            age: 25
-        };
-
-        // Neues Feld hinzufügen
-        bestehendesJson.location = "Berlin";
-
-        // Ausgabe des aktualisierten Objekts
-        console.log(bestehendesJson);
-    </script>
 </body>
 
 </html>

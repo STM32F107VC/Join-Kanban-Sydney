@@ -223,15 +223,23 @@ input::-webkit-inner-spin-button {
 ::placeholder { color: #DADADA; }
 
 input[type="checkbox"] {
-    appearance: none; /* Setze das Aussehen zurück */
+    appearance: none;
     -webkit-appearance: none; 
-
-    width: 25px; /* Breite der Checkbox anpassen */
-    height: 25px; /* Höhe der Checkbox anpassen */
-    cursor: pointer; /* Zeige den Zeiger beim Überfahren an */
-    border: 3px solid #2A3647;
+    width: 20px; 
+    height: 20px;
+    cursor: pointer; 
+    border: 2px solid #2A3647;
     border-radius: 4px;
+    margin: 0;
 }
+
+input[type="checkbox"]:checked::before {
+    content: '\2713';
+    color: #2A3647;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}   
 
 /* Classes for buttons */
 .btn-light {

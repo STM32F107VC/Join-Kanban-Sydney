@@ -346,15 +346,15 @@ function renderAssignedContacts(t, i, flag) {
  * @param {JSON} t Includes a complete task
  * @param {variable} i Is the contact index
  */
-function renderSubtask(t, i, location) {
+function renderSubtask(t, k, location) {
     // renderSubtask${i}-${overlay}
-    let div = document.getElementById(`renderSubtask${i}-${location}`);
+    let div = document.getElementById(`renderSubtask${k}-${location}`);
     let subtasks = t['Subtasks'];
     for (let i = 0; i < subtasks.length; i++) {
         let subtask = subtasks[i];
         div.innerHTML += /*html*/`
             <div class="subtasks flex y-center gap-16px">
-                <input onclick="showOrHidSubtask('${taskIndex}', '${i}')" type="checkbox" id="subtasks${i}">
+                <input class="flex x-center y-center" onclick="showOrHidSubtask('${taskIndex}', '${i}')" type="checkbox" id="subtasks${k}${i}">
                 <div>${subtask}</div>
             </div>`;
     }
@@ -427,7 +427,6 @@ function renderPrioImg(t, i) {
  */
 function getAmounTOfSubtasks(t) {
     let length = t['Subtasks'].length;
-    // getPercentage(length);
     if (length == 1) {
         let percent = 50;
         return percent;

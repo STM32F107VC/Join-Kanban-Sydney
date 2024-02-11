@@ -69,13 +69,12 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 - greetUser() funktioniert auf board nicht mehr✓
 
 ---Date: 07.02.24 ---
-- Dann alle tasks im summary anzeigen-
 - Porgress bar subtasks an und abwählen-
 - Begrüssungstext anhand von tageszeit definieren: good morning, good afternoon, good evening-
 - Summary svg tag durch svg bilder ersetzten-
 
 ---Date: 08.02.24 ---
-- Dann alle tasks im summary anzeigen-
+- Dann alle tasks im summary anzeigen✓
 - Porgress bar subtasks an und abwählen-
 - Begrüssungstext anhand von tageszeit definieren: good morning, good afternoon, good evening-
 - Summary svg tag durch svg bilder ersetzten-
