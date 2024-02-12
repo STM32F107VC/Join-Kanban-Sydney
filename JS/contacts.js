@@ -225,7 +225,7 @@ function addContactClasses(contact, divDetails, currentId) {
             oldId = currentId;
         } else {
             let oldContact = document.getElementById(`${oldId}`);
-            oldContact.classList.remove('bg-dark-blue', 'col-white', 'contact-details-x-trans');
+            oldContact.classList.remove('bg-dark-blue', 'col-white');
             oldContact.classList.add('contactHover');
         }
     }

@@ -329,6 +329,10 @@ button,
     transform: translateX(500vh);
 }
 
+.x-translate-task {
+    transform: translateX(550vh);
+}
+
 .x-transition {
     transition: transform 250ms ease-in-out;
 }
