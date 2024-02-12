@@ -159,13 +159,19 @@ function taskTemplate(task, i) {
                         <div id="taskDescription${i}" class="flex x-start mb-24px fs-16px col-grey noDrop">${task['Description']}</div>
                         <div id="progress${i}" class="flex x-space-betw y-center fs-12px mb-24px noDrop">
                             <progress id="progressBar${i}" class="noDrop" value="${getAmounTOfSubtasks(task)}" max="100"></progress> 
-                            <span class="noDrop">${getSubtasks(task)}/2 Subtasks</span>
+                            <span class="noDrop">${setCurrentSubtaskLength()}/${getSubtasks(task)}</span>
                         </div>
                         <div class="flex x-space-betw noDrop">
                             <div id="assignedContact${i}" class="flex pl-6px noDrop"></div>
                             ${renderPrioImg(task, i)}
                         </div>
                     </div>`;
+}
+
+function setCurrentSubtaskLength() {
+    if (percent == 0) return 0;
+    else if (percent == 50) return 1;
+    else if (percent == 100) return 2;
 }
 
 /**
