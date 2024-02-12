@@ -168,6 +168,10 @@ function taskTemplate(task, i) {
                     </div>`;
 }
 
+/**
+ * Check how many subtasks are clicked active over checkbox
+ * @returns The a number for the amount of subtasks acitve in a task
+ */
 function setCurrentSubtaskLength() {
     if (percent == 0) return 0;
     else if (percent == 50) return 1;
