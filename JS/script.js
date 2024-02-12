@@ -102,9 +102,9 @@ function closeSignUpSection() {
  */
 function openLogoutMenu() {
     let addClassList = document.getElementById('log-out');
-    if (addClassList.classList.contains('d-none'))
-        document.getElementById('log-out').classList.remove('d-none');
-    else document.getElementById('log-out').classList.add('d-none');
+    if (addClassList.classList.contains('x-translate'))
+        addClassList.classList.remove('x-translate');
+    else addClassList.classList.add('x-translate');
 }
 
 /**

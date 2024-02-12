@@ -326,7 +326,10 @@ button,
 
 /* Classes with transformation effects */
 .x-translate {
-    transform: translateX(200vh);
+    transform: translateX(500vh);
+}
+
+.x-transition {
     transition: transform 250ms ease-in-out;
 }
 
