@@ -125,7 +125,6 @@ function closeAddTaskOverlay() {
     document.getElementById('side-and-topbar-board').classList.remove("opacity", "z-ind--1");
     document.getElementById('displaySelectedContacts-overlay').innerHTML = '';
     assignedContacts = [];
-    window.location.reload();
 }
 
 /**
@@ -143,7 +142,7 @@ function closeShowTaskOverlay() {
     document.getElementById('edit-task-overlay-view').classList.add('d-none');
     assignedContacts = [];
     subtasks = [];
-    window.location.reload();
+    window.location = window.location;
 }
 
 /**
@@ -545,6 +544,19 @@ function drop(ev) {
  * @param {HTMLAllCollection} target Target is the collectio of the target row where the task should be dropped
  */
 function changeTaskLocation(data, target) {
+    // let locations = ['backlog', 'in-progress', 'await-feedback', 'done'];
+    // let getLocation;
+    // for (let t = 0; t < locations.length; t++) {
+    //     let location = locations[t];
+    //     getLocation = document.getElementById(location);
+    //     if (getLocation.childNodes.length === 0) {
+    //         let nothingInside = document.createElement('img');
+    //         nothingInside.src = './assets/img/no_task_in_column.svg';
+    //         getLocation.appendChild(nothingInside);
+    //     } else {
+    //         console.log('Has child nodes.');
+    //     }
+    // }
     let columnId = target.id;
     let index = data.slice(-1);
     tasks[index]['Column-location'] = columnId;
