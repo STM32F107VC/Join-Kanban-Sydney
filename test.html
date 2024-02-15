@@ -4,55 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/fonts_inter.css">
+    <link rel="stylesheet" href="CSS/side-and-topbar-template.css">
+    <link rel="stylesheet" href="CSS/add_tasks.css">
+    <link rel="stylesheet" href="CSS/board.css">
+    <link rel="stylesheet" href="CSS/contacts.css">
     <style>
-        /* Stil für das Checkbox-Input-Feld */
-        .custom-checkbox-container {
-            position: relative;
-            /* Position relativ für die absolute Positionierung des Häkchens */
-            padding-left: 30px;
-            /* Platz für das Häkchen einplanen */
-            line-height: 20px;
-            /* Vertikal ausrichten */
 
-            display: inline-block;
-        }
-
-        /* Stil für die eigentliche Checkbox ausblenden */
-        .custom-checkbox-container input[type="checkbox"] {
-            display: none;
-        }
-
-        /* Stil für das benutzerdefinierte Häkchen-Symbol */
-        .custom-checkbox-container:before {
-            content: '\2713';
-            /* Unicode für das Häkchen-Symbol */
-            font-size: 18px;
-            /* Größe des Häkchens */
-            color: transparent;
-            /* Anfangs unsichtbar machen */
-            position: absolute;
-            /* Absolute Positionierung relativ zum Elternelement (.custom-checkbox-container) */
-            left: 0;
-            /* Horizontal ausrichten */
-            top: 0;
-            /* Vertikal ausrichten */
-        }
-
-        /* Stil für das Häkchen (bei aktivierter Checkbox) */
-        .custom-checkbox-container input[type="checkbox"]:checked+.custom-checkbox-container:before {
-            color: green;
-            /* Farbe des Häkchens ändern, wenn die Checkbox aktiviert ist */
-        }
     </style>
+
 </head>
 
 <body>
-
-    <!-- Beispiel für das Checkbox-Input-Feld ohne <label> -->
-    <div class="custom-checkbox-container">
-        <input type="checkbox"> Checkbox-Text
+    <div class="flex x-space-betw bg-dark-blue">
+        <div id="flex flex-row" class="ft-general fs-16px fw-400 w-100">
+            <a id="summary-link" class="link-col flex y-center gap-8px mb-16px menu-choose" href="/summary.html">
+                <img src="/assets/img/summary.png" alt="summary">
+                <span>Summary</span>
+            </a>
+            <a id="add-task-link" class="link-col flex y-center gap-8px mb-16px menu-choose" href="/add_task.html">
+                <img src="/assets/img/add_task.png" alt="add task">
+                <span>Add Task</span>
+            </a>
+            <a id="board-link" class="link-col flex y-center gap-8px mb-16px menu-choose" href="/board.html">
+                <img src="/assets/img/board.png" alt="board">
+                <span>Board</span>
+            </a>
+            <a id="contacts-link" class="link-col flex y-center gap-8px mb-16px menu-choose" href="/contacts.html">
+                <img src="/assets/img/contacts.png" alt="contacts">
+                <span>Contacts</span>
+            </a>
+        </div>
     </div>
-
 </body>
 
 </html>

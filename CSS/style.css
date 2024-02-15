@@ -151,7 +151,7 @@ a { text-decoration: none; }
 
 .dark-blue { color: #2A3647; }
 
-.bg-dark-blue { background: #2A3647; }
+.bg-dark-blue { background-color: #2A3647; }
 
 .bg-white { background-color: white; }
 
@@ -333,3 +333,33 @@ button,
     transform: translateX(0) !important;
     transition: transform 250ms ease-in-out;
 } */
+
+/* Media Queries */
+@media only screen and (max-width: 800px) {
+    .sidebar {
+        display: none;
+    }
+
+    .topbar > span {
+        display: none;
+    }
+
+    .topbar > img {
+        /* display: unset; */
+        opacity: 1;
+        z-index: 1;
+        margin-left: 40px;
+        width: 62px;
+    }
+
+    #contacts,
+    .summary-container,
+    .main-div-add-tasks,
+    .main-div-board {
+        left: 0;
+    }
+
+    
+
+    
+}
