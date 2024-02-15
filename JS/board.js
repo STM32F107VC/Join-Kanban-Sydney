@@ -96,11 +96,14 @@ function loadToColumn() {
         let column = document.getElementById(`${getTaskLocation}`);
         if (column.childNodes === 0) {
             console.log('This column is empty.');
+
         } else {
             column.innerHTML += taskTemplate(task, i);
         }
         renderAssignedContacts(task, i, false);
     }
+    noTaskToDo();
+
 }
 
 /**
@@ -525,6 +528,10 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
+/**
+ * 
+ * @param {*} ev 
+ */
 function drop(ev) {
     let target = ev.target;
     let data = ev.dataTransfer.getData("text");
@@ -544,33 +551,46 @@ function drop(ev) {
  * @param {HTMLAllCollection} target Target is the collectio of the target row where the task should be dropped
  */
 function changeTaskLocation(data, target) {
-    /* -------------------------------------------- */
     let columnId = target.id;
     let index = data.slice(-1);
     tasks[index]['Column-location'] = columnId;
     setToLocalStorage(tasks, 'tasks');
-    checkParentDivsChildren();
+    checkParentDivsChildren(columnId);
     howManyTasksPerColumn();
-    /* -------------------------------------------- */
-
 }
 
-function checkParentDivsChildren() {
+/**
+ * Check after body onload if column has taks inside when not
+ * insert img no_task_in_column.svg
+ *
+ */
+function noTaskToDo() {
     let locations = ['backlog', 'in-progress', 'await-feedback', 'done'];
     let getLocation;
-
     for (let t = 0; t < locations.length; t++) {
         let location = locations[t];
         getLocation = document.getElementById(location);
-        if (getLocation.children.length == 0) {
+        if (getLocation.children.length === 0) {
             let nothingInside = document.createElement('img');
-            nothingInside.id = 'nothing-to-do';
             nothingInside.src = './assets/img/no_task_in_column.svg';
+            nothingInside.classList.add('noDrop', 'noTask');
             getLocation.appendChild(nothingInside);
-        } else if (getLocation.children.length > 0) {
-            let child = document.getElementById('nothing-to-do');
-            getLocation.removeChild(child);
-            console.log('Has child nodes.');
         }
+    }
+}
+
+/**
+ * Check after drop event if target column has already children
+ * when yes remove child element with class name no-task because task
+ * was added to column then check again which column has no tasks to insert
+ * img no_task_in_column.svg if necessary
+ * @param {string} columnId Contains the id of the column where drop event occured
+ */
+function checkParentDivsChildren(columnId) {
+    let targetColumn = document.getElementById(columnId);
+    if (targetColumn.children.length > 0) {
+        let child = targetColumn.getElementsByClassName('noTask');
+        noTaskToDo();
+        targetColumn.removeChild(child[0]);
     }
 }

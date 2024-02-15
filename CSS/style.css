@@ -239,33 +239,6 @@ input::-webkit-inner-spin-button {
     background-position-y: 50%;
 }
 
-/* .checkbox:checked::before {
-    background-image: url('/assets/img/subtasks_tick.svg');
-    color: #2A3647;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
-/* input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none; 
-    width: 20px; 
-    height: 20px;
-    cursor: pointer; 
-    border: 2px solid #2A3647;
-    border-radius: 4px;
-    margin: 0;
-}
-
-input[type="checkbox"]:checked::before {
-    content: '\2713';
-    color: #2A3647;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}    */
-
 /* Classes for buttons */
 .btn-light {
     border-radius: 8px;
@@ -355,7 +328,6 @@ button,
 .edit:hover {
     content: url('/assets/img/edit_onhover.png');
 }
-
 
 /* .x-translate-zero {
     transform: translateX(0) !important;
