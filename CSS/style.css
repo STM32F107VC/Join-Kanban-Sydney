@@ -339,14 +339,17 @@ button,
     .sidebar > img,
     .topbar > span,
     #legal-notice,
-    .greet
+    .greet,
+    .vertical-bl-line
+    /* .summary-container > div > div > img:first-child */
+
      {
         display: none;
     }
 
     .sidebar {
         position: absolute !important;
-        top: 100% !important;
+        top: 100vh !important;
         width: 100% !important;
         min-height: 10vh !important;
     }
@@ -363,9 +366,8 @@ button,
         border-radius: 24px;
         margin-bottom: 0;
         padding: 16px 12px;
+        min-width: 68px;
     }
-
-
 
     .topbar > img {
         display: unset;
@@ -385,5 +387,16 @@ button,
         top: 50%;
         bottom: 50%;
         padding-bottom: 0;
+    }
+
+    .summary-container > div > div {
+        flex-direction: column;
+    }
+
+
+    .vector-bl-horizontal {
+        display: unset;
+        transform: rotate(90deg);
+        /* transform: translateY(90deg); */
     }
 }
