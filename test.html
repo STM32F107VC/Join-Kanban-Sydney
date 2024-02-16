@@ -17,8 +17,11 @@
 </head>
 
 <body>
-    <div class="flex x-space-betw bg-dark-blue">
-        <div id="flex flex-row" class="ft-general fs-16px fw-400 w-100">
+    <!-- Side bar -->
+    <div class="sidebar flex flex-column x-space-around y-center">
+        <img src="/assets/img/Capa_2_light.png" alt="Join Logo">
+
+        <div id="sidebar" class="ft-general fs-16px fw-400 w-100">
             <a id="summary-link" class="link-col flex y-center gap-8px mb-16px menu-choose" href="/summary.html">
                 <img src="/assets/img/summary.png" alt="summary">
                 <span>Summary</span>
@@ -35,6 +38,18 @@
                 <img src="/assets/img/contacts.png" alt="contacts">
                 <span>Contacts</span>
             </a>
+        </div>
+
+        <!-- Go to Privacy Policy or Legal Notice -->
+        <div id="legal-notice" class="flex flex-column fs-16px">
+            <div class="p-8px">
+                <a class="ft-general fs-16px fw-400 link-col" href="/privacy_policy.html">Privacy
+                    Policy</a>
+            </div>
+            <div class="p-8px">
+                <a class="ft-general fs-16px fw-400 link-col" href="/legal_notice.html">Legal
+                    Notice</a>
+            </div>
         </div>
     </div>
 </body>

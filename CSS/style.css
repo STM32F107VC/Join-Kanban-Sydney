@@ -336,30 +336,54 @@ button,
 
 /* Media Queries */
 @media only screen and (max-width: 800px) {
-    .sidebar {
+    .sidebar > img,
+    .topbar > span,
+    #legal-notice,
+    .greet
+     {
         display: none;
     }
 
-    .topbar > span {
-        display: none;
+    .sidebar {
+        position: absolute !important;
+        top: 100% !important;
+        width: 100% !important;
+        min-height: 10vh !important;
     }
+
+    #sidebar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #sidebar > a {
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 24px;
+        margin-bottom: 0;
+        padding: 16px 12px;
+    }
+
+
 
     .topbar > img {
-        /* display: unset; */
-        opacity: 1;
-        z-index: 1;
+        display: unset;
         margin-left: 40px;
         width: 62px;
     }
 
     #contacts,
-    .summary-container,
     .main-div-add-tasks,
     .main-div-board {
-        left: 0;
+        left: 0px;
     }
 
-    
-
-    
+    .summary-container {
+        left: 50%;
+        right: 50%;
+        top: 50%;
+        bottom: 50%;
+        padding-bottom: 0;
+    }
 }
