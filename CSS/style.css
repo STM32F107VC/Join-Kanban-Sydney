@@ -346,8 +346,6 @@ button,
         display: none;
     }
 
-    
-
     #sidebar {
         display: flex;
         flex-direction: row;
@@ -378,18 +376,24 @@ button,
     .summary-container {
         left: 50%;
         right: 50%;
-        top: 50%;
-        bottom: 50%;
+        top: 200px;
         padding-bottom: 0;
+        margin-bottom: 150px;
     }
 
     .summary-container > div > div {
         flex-direction: column;
+        align-items: flex-start;
     }
+
+    /* .summary-container > div  {
+        margin-left: 30px;
+    } */
 
     .vector-bl-horizontal {
         display: unset;
         transform: rotate(90deg);
+        margin-left: 30px;
         /* transform: translateY(90deg); */
     }
 }
