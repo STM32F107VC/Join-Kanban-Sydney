@@ -109,4 +109,6 @@ footer > a:hover
         top: auto;
         bottom: 0;
     }
+
+    #log-out { top: 116px; }
 }

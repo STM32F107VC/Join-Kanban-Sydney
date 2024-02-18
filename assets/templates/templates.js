@@ -30,7 +30,7 @@ function getAddTaskOverlayMenuTemplate(location) {
                     </select>
                 </div>
                 <div id="displaySelectedContacts-${location}" class="mb-96px flex"></div>
-                <div>
+                <div id="required-span">
                     <span class="col-red">*</span> This field is required
                 </div>
             </div>
