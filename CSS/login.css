@@ -131,7 +131,7 @@ div.log-in > div {
     }
 
     .sign-up-section {
-        top: 820px;
+        top: 715px;
         left: 50%;
         right: 50%;
         display: flex;
@@ -167,4 +167,8 @@ div.log-in > div {
     div.login-input { width: 230px; }
 
     .capa-2 { transform: translate(-8vh, -40vh); }
+
+    .log-in { padding: 32px 12px; }
+
+    .sign-up-section > span { margin-right: 24px; }
 }

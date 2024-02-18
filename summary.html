@@ -26,21 +26,21 @@
     <div w3-include-html="assets/templates/sid-and-topbar-template.html"></div>
 
     <!-- Main div -->
-    <div class="summary-container flex x-center y-center ft-general">
+    <div class="summary-container flex x-center y-center ft-general gap-32px">
         <!-- Left div with project title and tasks overview -->
         <div>
             <div class="flex y-center x-space-betw mb-48px">
-                <div><span class="ft-general fs-61px fw-700">Join 360</span></div>
+                <div><span class="join-title ft-general fs-61px fw-700">Join 360</span></div>
                 <div><img class="vertical-bl-line" src="assets/img/Vector_blue_vertical.png" alt="vertical blue line">
                 </div>
-                <div><span class=".dark-blue ft-general fs-27px">Key Metrics at a Glance</span></div>
+                <div><span class="dark-blue ft-general fs-27px">Key Metrics at a Glance</span></div>
                 <div><img class="d-none vector-bl-horizontal" src="assets/img/Vector_blue_vertical.png"
                         alt="vertical blue line"></div>
             </div>
 
             <div class="flex y-center">
                 <div>
-                    <div class="flex y-center mb-28px">
+                    <div id="first-section" class="ft-section flex y-center mb-28px">
                         <div onclick="forwardingToBoard();"
                             class="flex x-center y-center mr-32px general-box-style spacing-to-do">
                             <div class="mr-16px">
@@ -82,7 +82,7 @@
                     </div>
 
                     <div onclick="forwardingToBoard();" id="urgent-tasks"
-                        class="flex x-space-evenly y-center mb-28px urgency-summary general-box-style ">
+                        class="flex x-space-evenly y-center mb-28px urgency-summary general-box-style txt-center">
                         <div class="flex y-center">
                             <div class="flex x-center y-center">
                                 <div class="mr-16px">
@@ -104,7 +104,7 @@
                         </div>
                     </div>
 
-                    <div id="progress-overview" class="flex x-space-betw">
+                    <div id="progress-overview" class="flex x-space-betw txt-center">
                         <div onclick="forwardingToBoard();"
                             class="flex-column flex x-center y-center progress-view general-box-style">
                             <span id="total-tasks" class="fs-61px fw-700 mb-16px"></span>

@@ -143,6 +143,8 @@ a { text-decoration: none; }
 
 .fw-700 { font-weight: 700; }
 
+.txt-center { text-align: center; }
+
 .col-white { color: #FFFFFF; }
 
 .col-black { color: #000000; }
@@ -335,16 +337,65 @@ button,
 } */
 
 /* Media Queries */
+
+@media only screen and (max-width: 1200px) {
+    /* .summary-container {
+        left: 290px;
+    }     */
+}
+
+@media only screen and (max-width: 1100px) {
+    .greet { display: none; }    
+}
+
+@media only screen and (max-width: 1000px) {
+    .join-title {font-size: 47px; }
+
+    .vertical-bl-line { padding: 0 20px; }
+
+    .summary-container { left: 290px; }
+
+    #progress-overview div { width: 163px; }
+}
+
+@media only screen and (max-width: 900px) {
+    .summary-container > div > div > div > span.dark-blue  {font-size: 21px;}
+
+    /* #first-section { justify-content: space-between; } */
+
+    #first-section > div:first-of-type { width: 196px; }
+
+    #first-section > div:last-of-type { width: 118px; }
+
+    #urgent-tasks { width: 404px; }
+
+    #progress-overview div { width: 158px; }
+}
+
 @media only screen and (max-width: 800px) {
+    .join-title {font-size: 61px; }
+
+    .summary-container > div > div > div > span.dark-blue  {font-size: 27px;}
+
+    #first-section > div:first-of-type { 
+        width: 186px;
+        gap: 8px;
+    }
+
+    #first-section > div:last-of-type { 
+        width: 108px; 
+        gap: 8px;
+    }
+
+    #urgent-tasks { width: 384px; }
+
+    #progress-overview div { width: 148px; }
+
     .sidebar > img,
     .topbar > span,
     #legal-notice,
     .greet,
-    .vertical-bl-line
-    /* .summary-container > div > div > img:first-child */
-    {
-        display: none;
-    }
+    .vertical-bl-line { display: none; }
 
     #sidebar {
         display: flex;
@@ -376,8 +427,7 @@ button,
     .summary-container {
         left: 50%;
         right: 50%;
-        top: 200px;
-        padding-bottom: 0;
+        padding-bottom: 144px;
         margin-bottom: 150px;
     }
 
@@ -386,14 +436,108 @@ button,
         align-items: flex-start;
     }
 
-    /* .summary-container > div  {
-        margin-left: 30px;
-    } */
-
     .vector-bl-horizontal {
         display: unset;
         transform: rotate(90deg);
         margin-left: 30px;
-        /* transform: translateY(90deg); */
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #to-do,
+    #done,
+    #urgent,
+    #total-tasks,
+    #progress,
+    #feedback { font-size: 41px; }
+
+    .vertical-gr-line { padding: 0 32px; }
+
+    #first-section > div:first-of-type { width: 166px; }
+
+    #first-section > div:last-of-type { width: 88px; }
+
+    #urgent-tasks { width: 344px; }
+
+    #progress-overview div {
+        width: 130px; 
+        height: 100px;
+    }
+
+    .spacing-to-do:hover,
+    .spacing-done:hover,
+    #urgent-tasks:hover,
+    #progress-overview div:hover { transform: scale(1); }
+}
+
+@media only screen and (max-width: 500px) {
+    #first-section > div:first-of-type svg,
+    #first-section > div:last-of-type svg {
+        width: 60px;
+        height: 60px
+    }
+
+    #first-section > div:first-of-type { width: 146px; }
+
+    #first-section > div:last-of-type { width: 68px; }
+
+    #urgent-tasks { width: 304px; }
+
+    #progress-overview div { width: 120px; }
+
+    #sidebar > a {
+        padding: 16px 8px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #to-do,
+    #done,
+    #urgent,
+    #total-tasks,
+    #progress,
+    #feedback,
+    .join-title { font-size: 47px; }
+
+    .summary-container > div > div > div > span.dark-blue, 
+    #upcoming-deadline  {font-size: 21px;}
+
+    #first-section > div:first-of-type svg,
+    #first-section > div:last-of-type svg,
+    #urgent-tasks > div > div > div img {
+        width: 50px;
+        height: 50px
+    }
+
+    .vertical-gr-line { padding: 0 10px; }
+
+    #first-section > div:first-of-type { 
+        width: 98px;
+        padding: 24px 11px;    
+    }
+
+    #first-section > div:last-of-type { 
+        width: 40px; 
+        padding: 24px 40px;
+    }
+
+    #urgent-tasks { 
+        width: 176px;
+        /* padding: 38px 45px;  */
+    }
+
+    #progress-overview {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    #progress-overview div {
+        width: 100%; 
+        /* width: 110px;  */
+        /* width: calc(33.33% - 10px); */
+    }
+
+    #sidebar > a {
+        padding: 16px 0px;
     }
 }

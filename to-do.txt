@@ -82,3 +82,15 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 ---Date: 12.02.24 ---
 - Begrüssungstext anhand von tageszeit definieren: good morning, good afternoon, good evening-
 - Summary svg tag durch svg bilder ersetzten-
+
+---Date: 19.02.24 ---
+- Begrüssungstext anhand von tageszeit definieren: good morning, good afternoon, good evening
+- Summary svg tag durch svg bilder ersetzten
+- Alle seiten responsiv machen
+    - summary.html
+    - add_task.html
+    - board.html
+    - contacts.html
+    - help.html
+    - legal_notice.html
+    - privacy_policy.html

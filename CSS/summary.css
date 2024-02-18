@@ -62,3 +62,15 @@
 .urgent-symbol-left {
     margin-left: -22px;
 }
+
+.spacing-to-do:hover,
+.spacing-done:hover,
+#urgent-tasks:hover,
+#progress-overview div:hover
+ {
+    color: white;
+    background-color: #2A3647;
+    transform: scale(1.1);
+    transition: transform 80ms ease-out;
+    cursor: pointer;
+}
