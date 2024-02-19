@@ -350,6 +350,7 @@ button,
 
     .main-div-add-tasks > form {
         flex-direction: column;
+        justify-content: center;
         padding-right: 0;
     }
 
@@ -372,8 +373,7 @@ button,
 
     .vertical-bl-line { padding: 0 20px; }
 
-    .summary-container,
-    .main-div-add-tasks { left: 290px; }
+    .summary-container { left: 290px; }
 
     #progress-overview div { width: 163px; }
 }
@@ -498,6 +498,8 @@ button,
     .spacing-done:hover,
     #urgent-tasks:hover,
     #progress-overview div:hover { transform: scale(1); }
+
+    #subtasks-content-basic { width: unset; }
 }
 
 @media only screen and (max-width: 500px) {
@@ -507,6 +509,26 @@ button,
         height: 60px
     }
 
+    .main-div-add-tasks > form {
+        align-items: center;
+    }
+
+    .main-div-add-tasks > form input,
+    .main-div-add-tasks > form textarea, 
+    #subtasks-content-basic {
+        width: 300px !important;
+    }
+
+    #form-low-part div.priority {
+        width: 348px !important;
+    }
+
+    .main-div-add-tasks > form select {
+        width: 100%;
+    }
+
+    #category { width: 342px; }
+
     #first-section > div:first-of-type { width: 146px; }
 
     #first-section > div:last-of-type { width: 68px; }
@@ -515,19 +537,52 @@ button,
 
     #progress-overview div { width: 120px; }
 
-    #sidebar > a {
-        padding: 16px 8px;
+    #sidebar > a { padding: 16px 8px; }
+
+    #priority-container-basic {
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    #form-low-part {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .submit-section {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 250px;
+    }
+
+    .submit-section > button {
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
 }
 
 @media only screen and (max-width: 400px) {
+    .main-div-add-tasks > form input,
+    .main-div-add-tasks > form textarea, 
+    #subtasks-content-basic
+     {
+        width: 250px !important;
+    }
+
+    #form-low-part div.priority {
+        width: 348px !important;
+    }
+
     #to-do,
     #done,
     #urgent,
     #total-tasks,
     #progress,
     #feedback,
-    .join-title { font-size: 47px; }
+    .join-title,
+    .main-div-add-tasks > div > span { font-size: 47px; }
 
     .summary-container > div > div > div > span.dark-blue, 
     #upcoming-deadline  {font-size: 21px;}
@@ -555,7 +610,6 @@ button,
 
     #urgent-tasks { 
         width: 176px;
-        /* padding: 38px 45px;  */
     }
 
     #progress-overview {

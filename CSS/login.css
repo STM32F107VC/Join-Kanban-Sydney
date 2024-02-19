@@ -111,9 +111,9 @@ div.log-in > div {
     transition: scale 500ms ease-in-out;
 }
 
-/* @media only screen and (max-width: 1600px) {
-    .capa-2 { transform: translate(-75vh, -34vh); }
-} */
+@media only screen and (max-width: 1400px) {
+    .capa-2 { transform: translate(-30vh, -34vh); }
+}
 
 @media only screen and (max-width: 1000px) {
     .capa-2 { transform: translate(-26vh, -34vh); }

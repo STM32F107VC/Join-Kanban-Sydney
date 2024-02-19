@@ -37,7 +37,7 @@ function getAddTaskOverlayMenuTemplate(location) {
 
             <div class="vertical-line"><img src="assets/img/vertical_line.png" alt="vertical grey line"></div>
 
-            <div>
+            <div id="form-low-part">
                 <div class="flex flex-column mb-24px">
                     <span class="mb-8px">Due date<span class="col-red">*</span></span>
                     <input class="login-input fs-20px" type="date" value="2024-01-01" name="" id="date-${location}" required>
@@ -53,7 +53,7 @@ function getAddTaskOverlayMenuTemplate(location) {
                             src="assets/img/prio-default-high.png" alt="priority high">
                     </div>
                 </div>
-                <div class="flex flex-column mb-24px">
+                <div id="category" class="flex flex-column mb-24px">
                     <span class="mb-8px">Category<span class="col-red">*</span></span>
                     <select aria-placeholder="Select Task Category" class="login-input fs-20px" name="" id="category-${location}"
                         required>
