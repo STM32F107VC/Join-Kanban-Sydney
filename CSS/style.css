@@ -385,12 +385,16 @@ button,
 }
 
 @media only screen and (max-width: 800px) {
-    #body-legal-notice {
+    #body-legal-notice,
+    #body-privacy-policy,
+    #body-help {
         display: flex;
         justify-content: center;
     }
 
-    .main-div-legal-notice {
+    .main-div-legal-notice,
+    .main-div-privacy-policy, 
+    .main-div-help {
         padding: 180px 24px 0 24px;
         position: unset;
     }
@@ -556,6 +560,8 @@ button,
     #form-low-part div.priority { width: 265px !important; }
     
     .main-div-add-tasks > form { align-items: center; }
+
+    div.sign-up { margin-right: 16px; }
 
     #plus-icon-basic,
     #subtask-icons-basic {
