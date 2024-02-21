@@ -123,7 +123,11 @@
 
         <!-- Titel and search field -->
         <div class="search-section flex x-space-betw">
-            <span class="ft-general fs-61px fw-700">Board</span>
+            <div>
+                <span class="ft-general fs-61px fw-700">Board</span>
+                <img onclick="openAddTaskOverlay();" src="/assets/img/plus_white_small.png" alt="add task"
+                    class="bg-dark-blue addTask-btn-small p-8px opacity-zero c-pointer">
+            </div>
             <div class="flex y-center gap-32px">
                 <input class="search-field fs-20px fw-400" placeholder="Find Task" type="text" id="">
                 <button onclick="openAddTaskOverlay();"

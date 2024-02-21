@@ -89,9 +89,9 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 - Alle seiten responsiv machen
     - summary.html✓
     - add_task.html✓
-    - board.html
+    - board.html✓
     - contacts.html
-    - help.html
-    - legal_notice.html
-    - privacy_policy.html
+    - help.html✓
+    - legal_notice.html✓
+    - privacy_policy.html✓
 - Media queries in entsprechende .css dateien auslagern

@@ -11,6 +11,10 @@
     height: 50px;
 }
 
+.addTask-btn-small {
+    border-radius: 12px;
+}
+
 .search-field {
     border-radius: 10px;
     border: 1px solid var(--icon, #A8A8A8);
@@ -85,6 +89,7 @@ progress {
 
 .tasks-overlay-view,
 #edit-task-overlay-view {
+    word-break: break-word;
     width: 466px;
     padding: 48px 40px;
     border-radius: 30px;

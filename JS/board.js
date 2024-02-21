@@ -94,16 +94,10 @@ function loadToColumn() {
         let task = tasks[i];
         let getTaskLocation = task['Column-location'];
         let column = document.getElementById(`${getTaskLocation}`);
-        if (column.childNodes === 0) {
-            console.log('This column is empty.');
-
-        } else {
-            column.innerHTML += taskTemplate(task, i);
-        }
+        if (column.childNodes !== 0) { column.innerHTML += taskTemplate(task, i); }
         renderAssignedContacts(task, i, false);
     }
     noTaskToDo();
-
 }
 
 /**
@@ -128,6 +122,7 @@ function closeAddTaskOverlay() {
     document.getElementById('side-and-topbar-board').classList.remove("opacity", "z-ind--1");
     document.getElementById('displaySelectedContacts-overlay').innerHTML = '';
     assignedContacts = [];
+    // history.replaceState();
 }
 
 /**
@@ -188,21 +183,13 @@ function showTaskOverlay(i) {
     document.getElementById('main-div-board').classList.add('d-none');
     document.getElementById('body-board').classList.add("flex", "x-center", "y-center");
     document.getElementById('side-and-topbar-board').classList.add("opacity", "z-ind--1");
-
     taskIndex = i;
-
     let task = tasks[i];
     let str = task['Prio'];
     let priority;
-    if (str !== undefined) {
-        priority = str.charAt(0).toUpperCase() + str.slice(1);
-    }
-
-    // console.log(tasks[i]);
-
+    if (str !== undefined) { priority = str.charAt(0).toUpperCase() + str.slice(1); }
     let div = document.getElementById('tasks-overlay-view');
     div.classList.remove('d-none');
-
     div.innerHTML = /*html*/`
         <div class="ft-general">
             <div class="flex x-space-betw y-center">
@@ -232,10 +219,7 @@ function showTaskOverlay(i) {
                     <img onclick="showEditTaskOverlay('${i}')" class="edit c-pointer" src="/assets/img/edit_default.png" alt="edit">
             </div>
         </div>`;
-
-    if (str == undefined) {
-        document.getElementById('priority-state-overlay').classList.add('d-none');
-    }
+    if (str == undefined) { document.getElementById('priority-state-overlay').classList.add('d-none'); }
     renderAssignedContacts(task, i, true);
     renderSubtask(task, i, 'overlay');
 }
@@ -279,9 +263,7 @@ function getTaskValues(i) {
     // let getSubtasks = task['Subtasks'];
     oldImg = task['Prio'];
     // let contact = task['Contacts'];
-
     renderAssignedContacts(task, i, 'edit-overlay');
-
     let renderSubtasks = document.getElementById('displaySubtasks-edit-overlay');
     for (let k = 0; k < task['Subtasks'].length; k++) {
         let subtask = task['Subtasks'][k];
@@ -289,23 +271,13 @@ function getTaskValues(i) {
         let location = 'edit-overlay';
         subtasks.push(subtask);
         renderSubtasks.innerHTML += subtaskTemplate(countUp, subtask, location);
-
-        // subtasks = [];
-
-        // let editImg = document.getElementById(`edite${state}-${location}`);
-        // editImg.addEventListener('click', clickHandlerEdit);
-        // clearSubtasks(inputValue);
     }
-
     document.getElementById('prio-low-edit-overlay').src = 'assets/img/prio-default-low.png';
     document.getElementById('prio-medium-edit-overlay').src = 'assets/img/prio-default-medium.png';
     document.getElementById('prio-high-edit-overlay').src = 'assets/img/prio-default-high.png';
-
     let prioState = document.getElementById(`prio-${task['Prio']}-edit-overlay`);
     prioState.src = `assets/img/prio-${task['Prio']}.svg`;
-
     oldImg = undefined;
-
     document.getElementById('title-editable').value = title;
     document.getElementById('textarea-editable').value = description;
     document.getElementById('date-editable').value = date;
@@ -317,7 +289,6 @@ function getTaskValues(i) {
  */
 function saveEditTaskChanges(taskIndex) {
     document.getElementById('edit-overlay-ok-btn').disabled = true;
-
     let title = document.getElementById('title-editable');
     let description = document.getElementById('textarea-editable');
     let date = document.getElementById('date-editable');
@@ -352,7 +323,6 @@ function renderAssignedContacts(t, i, flag) {
     if (!flag) showContacts = document.getElementById(`assignedContact${i}`);
     else if (flag == true) showContacts = document.getElementById(`assignedContactPreView${i}`);
     else if (flag == 'edit-overlay') showContacts = document.getElementById(`displaySelectedContacts-${flag}`);
-
     for (let j = 0; j < t['Assigned-to'].length; j++) {
         let contact = t['Assigned-to'][j];
         let array = buildAcronym(contact);
@@ -399,22 +369,14 @@ function loadActiveSubtasks(t, k, i) {
 
 /**
  * Checks the checkbox of the subtask 
- * @param {*} k Is the contact index
- * @param {*} i Is the index of the subtak
+ * @param {variable} k Is the contact index
+ * @param {variable} i Is the index of the subtak
  */
 function activeSubtasks(k, i) {
     let task = tasks[k];
     let subtask = document.getElementById(`subtasks${k}${i}`);
     let completeSubtaskStatus = task['Active-Subtasks'];
-    isCheckboxChecked(subtask, completeSubtaskStatus, i);
-    // if (!subtask.classList.contains('checkbox-checked')) {
-    //     subtask.classList.add('checkbox-checked');
-    //     completeSubtaskStatus[i] = 1;
-    // } else if (subtask.classList.contains('checkbox-checked')) {
-    //     subtask.classList.remove('checkbox-checked');
-    //     completeSubtaskStatus[i] = 0;
-    // }
-
+    isSubtaskCheckboxChecked(subtask, completeSubtaskStatus, i);
     task['Active-Subtasks'] = completeSubtaskStatus;
     task['Progressbar-Value'] = getAmounTOfSubtasks(task);
     tasks.splice(k, 1);
@@ -422,7 +384,14 @@ function activeSubtasks(k, i) {
     setToLocalStorage(tasks, 'tasks');
 }
 
-function isCheckboxChecked(subtask, completeSubtaskStatus, i) {
+/**
+ * If subtask is checked
+ * @param {div} subtask Is the div of one of this two subtasks divs
+ * @param {array} completeSubtaskStatus Shows if a subtask is active or not
+ * @param {variable} i Is the index of the subtak
+ * @returns 
+ */
+function isSubtaskCheckboxChecked(subtask, completeSubtaskStatus, i) {
     if (!subtask.classList.contains('checkbox-checked')) {
         subtask.classList.add('checkbox-checked');
         return completeSubtaskStatus[i] = 1;
@@ -431,7 +400,6 @@ function isCheckboxChecked(subtask, completeSubtaskStatus, i) {
         return completeSubtaskStatus[i] = 0;
     }
 }
-
 
 /**
  * Render contacts
