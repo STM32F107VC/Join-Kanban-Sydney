@@ -39,7 +39,7 @@
 }
 
 .log-in {
-    margin: 400px 0 0 0;
+    margin: 400px 0 64px 0;
     padding: 48px 115px;
     gap: 32px;
     border-radius: 30px;
@@ -124,6 +124,13 @@ div.log-in > div {
 }
 
 @media only screen and (max-width: 600px) {
+    #sign-up-section {display: none; }
+
+    #sign-up-section-responsive { 
+        opacity: 1;
+    }
+
+
     .capa-2 {
         height: 78px;
         width: 64px;
@@ -161,6 +168,13 @@ div.log-in > div {
     div.log-in > div > span { font-size: 47px; }
 
     div.log-in > div > img { width: 88px; }
+}
+
+@media only screen and (max-width: 500px) {
+    .arrow-back {
+        top: 45px;
+        left: 16px;
+    }
 }
 
 @media only screen and (max-width: 400px) {

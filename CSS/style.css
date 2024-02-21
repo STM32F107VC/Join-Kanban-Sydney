@@ -385,6 +385,16 @@ button,
 }
 
 @media only screen and (max-width: 800px) {
+    #body-legal-notice {
+        display: flex;
+        justify-content: center;
+    }
+
+    .main-div-legal-notice {
+        padding: 180px 24px 0 24px;
+        position: unset;
+    }
+
     .join-title { font-size: 61px; }
 
     .main-div-add-tasks { left: unset;}
@@ -538,7 +548,6 @@ button,
     .main-div-add-tasks > form input,
     .main-div-add-tasks > form textarea, 
     #subtasks-content-basic { width: 220px !important; }
-
     
     #assigned-basic,
     #category-basic,

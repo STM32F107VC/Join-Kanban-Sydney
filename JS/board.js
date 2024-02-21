@@ -406,19 +406,32 @@ function activeSubtasks(k, i) {
     let task = tasks[k];
     let subtask = document.getElementById(`subtasks${k}${i}`);
     let completeSubtaskStatus = task['Active-Subtasks'];
-    if (!subtask.classList.contains('checkbox-checked')) {
-        subtask.classList.add('checkbox-checked');
-        completeSubtaskStatus[i] = 1;
-    } else if (subtask.classList.contains('checkbox-checked')) {
-        subtask.classList.remove('checkbox-checked');
-        completeSubtaskStatus[i] = 0;
-    }
+    isCheckboxChecked(subtask, completeSubtaskStatus, i);
+    // if (!subtask.classList.contains('checkbox-checked')) {
+    //     subtask.classList.add('checkbox-checked');
+    //     completeSubtaskStatus[i] = 1;
+    // } else if (subtask.classList.contains('checkbox-checked')) {
+    //     subtask.classList.remove('checkbox-checked');
+    //     completeSubtaskStatus[i] = 0;
+    // }
+
     task['Active-Subtasks'] = completeSubtaskStatus;
     task['Progressbar-Value'] = getAmounTOfSubtasks(task);
     tasks.splice(k, 1);
     tasks.push(task);
     setToLocalStorage(tasks, 'tasks');
 }
+
+function isCheckboxChecked(subtask, completeSubtaskStatus, i) {
+    if (!subtask.classList.contains('checkbox-checked')) {
+        subtask.classList.add('checkbox-checked');
+        return completeSubtaskStatus[i] = 1;
+    } else if (subtask.classList.contains('checkbox-checked')) {
+        subtask.classList.remove('checkbox-checked');
+        return completeSubtaskStatus[i] = 0;
+    }
+}
+
 
 /**
  * Render contacts

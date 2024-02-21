@@ -88,7 +88,7 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 - Summary svg tag durch svg bilder ersetzten
 - Alle seiten responsiv machen
     - summary.html✓
-    - add_task.html
+    - add_task.html✓
     - board.html
     - contacts.html
     - help.html
