@@ -17,6 +17,7 @@ let assignedContacts = [];
 async function init_tasks(id) {
     await includeHTML();
     await loadContacts();
+    // accountOrGuestLogin();
     markActiveLink(id);
     greetUser();
     getAddTaskMenu('basic');
@@ -94,7 +95,7 @@ function buildAcronym(contact) {
 
 /**
  * Function to add new tasks and save into tasks JSON-array
- * 
+ *
  */
 async function addTask(location) {
     let title = document.getElementById(`title-${location}`);
@@ -142,7 +143,7 @@ function setHowManySubtasks() {
 }
 
 /**
- * 
+ *
  * @param {*} c Includes the current category either 'User Story' or 'Technical Task'
  * @returns The hexadecimal background color code
  */
@@ -158,7 +159,7 @@ function checkCategory(c) {
 
 /**
  * Testwise local storage in workflow use backend
- * 
+ *
  */
 function setToLocalStorage(t, n) {
     let tasksToString = JSON.stringify(t);
@@ -167,7 +168,7 @@ function setToLocalStorage(t, n) {
 
 /**
  * Each priority image calls this function and depeneding
- * on which priority state (image) is clicked/selected, 
+ * on which priority state (image) is clicked/selected,
  * the id can take the value "high", "medium" and "low"
  * @param {string} id Dynamic id of priority images
  */
@@ -215,11 +216,11 @@ function setFirstTimePriorityState(img, id, location) {
 }
 
 /**
- * Sets the current priority state and mark them and 
+ * Sets the current priority state and mark them and
  * remove the old state and marked one
- * @param {img} img 
- * @param {string} imgOld 
- * @param {string} id 
+ * @param {img} img
+ * @param {string} imgOld
+ * @param {string} id
  */
 function setCurrentPriorityState(img, imgOld, id) {
     img.src = `assets/img/prio-${id}.svg`;
@@ -300,8 +301,8 @@ function clickHandlerSave(state, location) {
 /**
  * Template to render new subtask
  * @param {variable} state Index of the subtask
- * @param {string} inputValue 
- * @returns 
+ * @param {string} inputValue
+ * @returns
  */
 function subtaskTemplate(state, inputValue, location) {
     return /*html*/ `

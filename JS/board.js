@@ -17,6 +17,7 @@ let currentSubtask;
 async function init_board(id) {
     await includeHTML();
     await loadContacts();
+    // accountOrGuestLogin();
     loadTasks();
     markActiveLink(id);
     greetUser();

@@ -182,10 +182,11 @@ a { text-decoration: none; }
 
 .c-pointer { cursor: pointer; }
 
-.outline-none {
-    outline: none;
-}
+.outline-none { outline: none; }
 
+.pos-sticky { position: sticky; }
+
+.width-fit-content { width: fit-content; }
 /* ------------------------------------- */
 
 /* Classes for input fields */
@@ -291,7 +292,8 @@ button,
 .go-back { cursor: pointer; }
 
 /* Classses for blue seperators */
-.vertical-bl-line { padding: 0 30px; }
+.vertical-bl-line,
+.vertical-bl-line-contacts { padding: 0 30px; }
 
 .vertical-gr-line { padding: 0 61px; }
 
@@ -341,21 +343,23 @@ button,
 @media only screen and (max-width: 1400px) {
     .vertical-line { padding: 0 32px; }
 
+    .vector-bl-horizontal-contacts {
+        display: unset;
+        transform: rotate(90deg);
+        margin-left: 30px;
+    }
+
     #main-div-board { 
         left: 290px; 
         width: -webkit-fill-available;
         padding-right: 24px;
     }
 
-    .drag-drop {
-        flex-direction: column;
-    }
+    .drag-drop { flex-direction: column; }
 
     .drag-drop,
     .drag-drop > div,
-    .content-column {
-        width: 100%;
-    }
+    .content-column { width: 100%; }
 
     .search-section > div {
         display: flex;
@@ -370,6 +374,28 @@ button,
         gap: 16px;
         flex-wrap: wrap;
     }
+
+    div.team-slogan > div,
+    #modify-contact {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 16px;
+    }
+
+    .vertical-bl-line-contacts { display: none; }
+
+    #modify-contact > div {
+        width: 100px;
+        height: 100px;
+    }
+
+    #modify-contact > div > span { font-size: 41px; };
+
+    div.team-slogan { padding: 24px; }
+
+    #modify-contact { margin-bottom: 64px; }
+
+    #contacts-title { font-size: 47px; }
 }
 
 @media only screen and (max-width: 1300px) {
@@ -387,11 +413,22 @@ button,
     #displaySelectedContacts-basic { margin-bottom: 32px; }
 }
 
+@media only screen and (min-width: 1100px) {
+    #back-to-contacts {
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 1100px) {
-    .greet { display: none; }
-    
+    .greet,
     .addTask-btn { display: none; }
 
+    /* #detailed-contact-responsive {
+        position: absolute;
+        left: 0;
+
+    } */
+    
     .search-section > div > img { opacity: 1; }
 
     .search-section { flex-direction: column; }
@@ -400,6 +437,8 @@ button,
         width: 100%; 
         background-position-x: 84%, 94%;
     }
+
+    div.contacts-div { width: 100%; }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -425,6 +464,14 @@ button,
 }
 
 @media only screen and (max-width: 800px) {
+    #add-contac-responsive { 
+        opacity: 1;
+        position: sticky;
+        bottom: 110px;
+        left: 100%;
+        margin-right: 32px;
+    }
+
     .search-field { background-position-x: 80%, 92%; }
 
     #main-div-board { 
@@ -509,7 +556,8 @@ button,
         margin-bottom: 150px;
     }
 
-    .summary-container > div > div {
+    .summary-container > div > div,
+    div.team-slogan > div {
         flex-direction: column;
         align-items: flex-start;
         margin-bottom: 16px;
@@ -607,6 +655,10 @@ button,
 @media only screen and (max-width: 400px) {
     .search-field { background-position-x: 72%, 90%; }
 
+    .search-section > div > img { padding: 4px; }
+
+    .search-section > div { margin-bottom: 4px; }
+
     .main-div-add-tasks > form input,
     .main-div-add-tasks > form textarea, 
     #subtasks-content-basic { width: 220px !important; }
@@ -642,7 +694,8 @@ button,
     #progress,
     #feedback,
     .join-title,
-    .main-div-add-tasks > div > span { font-size: 47px; }
+    .main-div-add-tasks > div > span,
+    .search-section > div > span { font-size: 47px; }
 
     .summary-container > div > div > div > span.dark-blue, 
     #upcoming-deadline  { font-size: 21px; }

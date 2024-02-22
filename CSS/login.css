@@ -101,8 +101,8 @@ div.log-in > div {
     cursor: pointer;
 }
 
-.checkbox {
-    scale: 1.2;
+.checkbox-hint {
+    scale: 1.1;
     transition: scale 1000ms ease-in-out;
 }
 
@@ -124,12 +124,9 @@ div.log-in > div {
 }
 
 @media only screen and (max-width: 600px) {
-    #sign-up-section {display: none; }
+    #sign-up-section { display: none; }
 
-    #sign-up-section-responsive { 
-        opacity: 1;
-    }
-
+    #sign-up-section-responsive { opacity: 1; }
 
     .capa-2 {
         height: 78px;

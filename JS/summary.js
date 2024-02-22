@@ -7,10 +7,22 @@
 async function init_summary(id) {
     await includeHTML();
     await loadContacts();
+    // accountOrGuestLogin();
     getFromLocalStorage();
     markActiveLink(id);
     greetUser('summary');
 }
+
+// async function accountOrGuestLogin() {
+//     let profilType = JSON.parse(await getItem('guestOrAccount'));
+//     profilValue = profilType.log
+//     let sidebarMenu = document.getElementById('sidebar');
+//     if (profilValue == "guest") {
+//         sidebarMenu.classList.add('d-none');
+//     } else {
+//         sidebarMenu.classList.remove('d-none');
+//     }
+// }
 
 /**
  * Load tasks from local storage ---------------- change to remote storage later!!

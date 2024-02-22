@@ -116,3 +116,7 @@ div.col-black  {
     height: 24px;
 }
 
+.contact-view-responsive {
+    position: absolute;
+    left: 0;
+}

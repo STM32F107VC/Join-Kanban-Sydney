@@ -4,6 +4,7 @@ let bgcState = false;
 let oldNumericId;
 let oldLetterId;
 let oldId;
+let trackWindowWidth;
 
 /* Declare arrays */
 let contacts = [];
@@ -16,9 +17,26 @@ async function init_contacts(id) {
     await includeHTML();
     await loadUsers();
     await loadContacts();
+    // accountOrGuestLogin();
     markActiveLink(id);
     greetUser();
 }
+
+addEventListener("resize", (event) => {
+    trackWindowWidth = window.innerWidth;
+    console.log(trackWindowWidth);
+    let detailedContact = document.getElementById('contact-view-basic');
+    let contactBook = document.querySelector('.contacts-div');
+    contactBook.classList.remove('d-none');
+
+    if (trackWindowWidth < 1100) {
+        detailedContact.classList.add('d-none');
+    } else {
+        detailedContact.classList.remove('d-none', 'contact-view-responsive');
+        detailedContact.classList.add('d-none');
+        // contactBook.classList.remove('d-none');
+    }
+});
 
 /**
  * Load contacts from backend
@@ -187,6 +205,17 @@ function renderContacts(j, id, n, e, auc, p, bgc) {
         </div>`;
 }
 
+function showContactBook() {
+    let completeDivDetails = document.getElementById('contact-view-basic');
+    let contactBook = document.querySelector('.contacts-div');
+    let backArrow = document.getElementById('back-to-contacts');
+    if (trackWindowWidth < 1100)
+        backArrow.classList.add('d-none');
+    completeDivDetails.classList.remove('contact-view-responsive');
+    completeDivDetails.classList.add('d-none');
+    contactBook.classList.remove('d-none');
+}
+
 /**
  * Function to show contact details
  * @param {variable} n Contact name
@@ -197,11 +226,22 @@ function renderContacts(j, id, n, e, auc, p, bgc) {
  * @param {variable} j J is the index number for accessing a contact in the contacts array
  */
 function contactDetails(n, e, auc, p, id, j) {
+    let completeDivDetails = document.getElementById('contact-view-basic');
     let divDetails = document.getElementById('contact-details');
+    let contactBook = document.querySelector('.contacts-div');
+    let backArrow = document.getElementById('back-to-contacts');
     let contact = document.getElementById(`${id}${j}`);
     let currentId = id + j;
     if (!contact.classList.contains('bg-dark-blue', 'col-white') && currentId) {
         addContactClasses(contact, divDetails, currentId);
+        if (trackWindowWidth < 1100) {
+            backArrow.classList.remove('d-none');
+            completeDivDetails.classList.add('contact-view-responsive');
+            completeDivDetails.classList.remove('d-none');
+            contactBook.classList.add('d-none');
+            contact.classList.remove('bg-dark-blue', 'col-white');
+            contact.classList.add('contactHover');
+        }
     } else {
         contact.classList.remove('bg-dark-blue', 'col-white');
         divDetails.classList.add('x-translate');

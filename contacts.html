@@ -126,16 +126,27 @@
                 </div>
             </div>
 
-            <div class="team-slogan">
+            <div id="contact-view-basic" class="team-slogan">
                 <div class="flex x-start y-center mb-48px">
-                    <span class="ft-general fs-61px fw-700">Contacts</span>
-                    <img class="vertical-bl-line" src="assets/img/Vector_blue_vertical.png" alt="vertical blue line">
-                    <span class="ft-general fs-27px fw-400">Better with a Team!</span>
+                    <div id="contacts-header">
+                        <span id="contacts-title" class="ft-general fs-61px fw-700">Contacts</span>
+                        <div id="back-to-contacts" onclick="showContactBook()" class="d-none"><img
+                                src="/assets/img/arrow-left-line.png" alt="go back"></div>
+                    </div>
+                    <div><img class="vertical-bl-line-contacts" src="assets/img/Vector_blue_vertical.png"
+                            alt="vertical blue line"></div>
+                    <div><span class="ft-general fs-27px fw-400">Better with a Team!</span></div>
+                    <div><img class="d-none vector-bl-horizontal-contacts" src="assets/img/Vector_blue_vertical.png"
+                            alt="vertical blue line"></div>
                 </div>
                 <div id="contact-details" class="x-translate x-transition">
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="add-contac-responsive" class="opacity-zero pos-sticky width-fit-content c-pointer">
+        <img class="bg-dark-blue p-12px border-round" src="assets/img/addAccount_white.png" alt="add new account">
     </div>
 
     <!-- Overlay contacts menu -->
@@ -188,16 +199,12 @@
             <img src="assets/img/Vector 5.png" alt="blue horizontal line">
         </div>
 
-        <!-- ----------------------------------------------------------------- -->
         <div class="flex flex-row w-100 overlay-forms">
             <div id="edit-Overlay-Menu-Avatar" class="flex y-center"></div>
-
 
             <div id="edit-overlay-forms" class="flex flex-column x-center y-center w-100">
                 <div class="flex w-100 x-end close-cross mb-32px"><img onclick="closeEditContactForm()" class="p-8px"
                         src="assets/img/close.png" alt="close"></div>
-
-
                 <form onsubmit="return false;" class="flex flex-column">
                     <div class="login-input mb-32px flex x-space-betw y-center">
                         <input contenteditable="true" class="ft-general fs-20px fw-400 input-icon-pos icon-name w-100"
@@ -216,8 +223,6 @@
                 </form>
             </div>
         </div>
-
-        <!-- ----------------------------------------------------------------- -->
     </div>
 </body>
 

@@ -139,6 +139,7 @@ async function addNewUser() {
         let email = document.getElementById("new-email");
         let password = document.getElementById("new-password");
         let comparePassword = document.getElementById("compare-password");
+        checkbox.classList.remove('checkbox-checked');
         saveNewUser(name, email, password, comparePassword);
         await setItem('users', JSON.stringify(users));
     } else markCheckbox();
@@ -151,10 +152,10 @@ async function addNewUser() {
  */
 function markCheckbox() {
     let div = document.getElementById('div-privavy-policy');
-    div.classList.add('checkbox');
+    div.classList.add('checkbox-hint');
     setTimeout(() => {
         div.classList.add('checkbox-default');
-    }, 500);
+    }, 1000);
 }
 
 /**
@@ -188,4 +189,17 @@ function resetRegisterForm(n, e, p, cp) {
     e.value = "";
     p.value = "";
     cp.value = "";
+}
+
+/**
+ * Check if a input[type=checkbox] is checkd or not
+ * @param {id} cB Contains the clicked id 
+ */
+function checkedCheckbox(cB) {
+    let checkbox = document.getElementById(cB);
+    if (!checkbox.classList.contains('checkbox-checked')) {
+        checkbox.classList.add('checkbox-checked');
+    } else if (checkbox.classList.contains('checkbox-checked')) {
+        checkbox.classList.remove('checkbox-checked');
+    }
 }
