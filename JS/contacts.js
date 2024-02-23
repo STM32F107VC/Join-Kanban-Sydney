@@ -31,10 +31,10 @@ addEventListener("resize", (event) => {
 
     if (trackWindowWidth < 1100) {
         detailedContact.classList.add('d-none');
-    } else {
+    } else if (trackWindowWidth > 1100) {
         detailedContact.classList.remove('d-none', 'contact-view-responsive');
-        detailedContact.classList.add('d-none');
-        // contactBook.classList.remove('d-none');
+        // detailedContact.classList.add('d-none');
+        contactBook.classList.remove('d-none');
     }
 });
 

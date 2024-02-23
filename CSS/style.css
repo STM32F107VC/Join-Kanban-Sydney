@@ -522,7 +522,8 @@ button,
     .topbar > span,
     #legal-notice,
     .greet,
-    .vertical-bl-line { display: none; }
+    .vertical-bl-line,
+    .contacts-div > div > button { display: none; }
 
     #sidebar {
         display: flex;
