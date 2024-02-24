@@ -128,9 +128,9 @@
 
             <div id="contact-view-basic" class="team-slogan">
                 <div class="flex x-start y-center mb-48px">
-                    <div id="contacts-header">
+                    <div id="contacts-header" class="flex x-space-betw y-center">
                         <span id="contacts-title" class="ft-general fs-61px fw-700">Contacts</span>
-                        <div id="back-to-contacts" onclick="showContactBook()" class="d-none"><img
+                        <div id="back-to-contacts" onclick="showContactBook()" class="d-none go-back"><img
                                 src="/assets/img/arrow-left-line.png" alt="go back"></div>
                     </div>
                     <div><img class="vertical-bl-line-contacts" src="assets/img/Vector_blue_vertical.png"
@@ -153,6 +153,8 @@
     <!-- Overlay contacts menu -->
     <div id="overlay-contacts" class="contacts-overlay d-none z-ind-1 flex">
         <div class="bg-dark-blue flex flex-column x-center y-start">
+            <div class="flex w-100 x-end close-cross mb-48px d-none"><img onclick="closeContactOverlay()" class="p-8px"
+                    src="assets/img/close.png" alt="close"></div>
             <img src="assets/img/Capa_2_light.png" alt="Join logo" class="join-logo-small mb-16px">
             <span class="ft-general fs-61px fw-700 mb-8px">Add contact</span>
             <span class="ft-general fs-27px fw-400 mb-16px">Tasks are better with a team!</span>

@@ -384,16 +384,19 @@ button,
 
     .vertical-bl-line-contacts { display: none; }
 
-    #modify-contact > div {
+    /* #modify-contact > div {
         width: 100px;
         height: 100px;
-    }
+    } */
 
     #modify-contact > div > span { font-size: 41px; };
 
     div.team-slogan { padding: 24px; }
 
-    #modify-contact { margin-bottom: 64px; }
+    #modify-contact { 
+        margin-bottom: 64px;
+        word-wrap: break-word;
+    }
 
     #contacts-title { font-size: 47px; }
 }
@@ -414,11 +417,28 @@ button,
 }
 
 @media only screen and (max-width: 1200px) {
-    #overlay-contacts > div.bg-dark-blue { padding: 48px 24px; }
+    #overlay-contacts > div.bg-dark-blue { 
+        padding: 48px 24px; 
+        border-radius: 0;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+    }
 
     #overlay-contacts > div > div:first-of-type { padding: 32px; }
 
     #overlay-contacts > div > div:last-of-type { padding: 32px 32px 32px 0; }
+
+    #overlay-contacts,
+    #overlay-contacts > div:last-of-type { flex-direction: column; }
+
+    #overlay-contacts > div:last-of-type > div { 
+        justify-content: center;
+        padding: 0;
+        margin-top: -48px;
+    }
+
+    #overlay-contacts:last-of-type {}
+
 }
 
 @media only screen and (min-width: 1100px) {
@@ -440,7 +460,10 @@ button,
         background-position-x: 84%, 94%;
     }
 
-    div.contacts-div { width: 100%; }
+    div.contacts-div,
+    #contacts-header { width: 100%; }
+
+    #contact-view-basic { width: -webkit-fill-available; }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -655,21 +678,44 @@ button,
         justify-content: center;
     }
 
-    #contact-book > tr > div {
+    /* #contact-book > tr {
+        width: 300px;
+    } */
+
+    .contact,
+    #contact-book > tr > td { 
+        width: 300px;
         padding: 8px 16px;
+        font-weight: 700;
     }
 
-    #contact-book > tr > div > div {
-        gap: 24px;
-    }
+    #contact-book > tr > div > div { gap: 24px; }
 
-    #contact-book > tr > div > div > div {
-        padding: 8px;
-    }
+    #contact-book > tr > div > div > div { padding: 8px; }
 
+    .contacts-div { align-items: flex-start; }
 }
 
 @media only screen and (max-width: 400px) {
+    .contacts-div { align-items: center; }
+
+    #contact-view-basic { 
+        padding: 24px; 
+        margin-top: 16px;
+    }
+
+    #contacts-title { 
+        font-size: 41px; 
+        width: 100%;
+    }
+
+    #contact-book > tr > div > div { gap: 16px; }
+
+    #contact-book > tr > div > div > div { padding: 4px; }
+
+    .contact,
+    #contact-book > tr > td { width: 250px; }
+
     .search-field { background-position-x: 72%, 90%; }
 
     .search-section > div > img { padding: 4px; }
@@ -755,10 +801,9 @@ button,
     div.priority > div img { width: 128px; }
 
     #body-add-tasks { overflow-x: hidden; }
-
-    .contacts-div { padding-left: 128px; }
 }
 
 @media only screen and (max-width: 350px) {
-    
+    .contact,
+    #contact-book > tr > td { width: 225px; }
 }
