@@ -384,11 +384,6 @@ button,
 
     .vertical-bl-line-contacts { display: none; }
 
-    /* #modify-contact > div {
-        width: 100px;
-        height: 100px;
-    } */
-
     #modify-contact > div > span { font-size: 41px; };
 
     div.team-slogan { padding: 24px; }
@@ -404,26 +399,19 @@ button,
 @media only screen and (max-width: 1300px) {
     .main-div-add-tasks { padding-right: 0; }
 
-    .main-div-add-tasks > form {
-        flex-direction: column;
-        justify-content: center;
-        padding-right: 0;
-    }
+    #displaySelectedContacts-basic { margin-bottom: 32px; }
 
     .vertical-line, 
     #required-span { display: none; }
 
-    #displaySelectedContacts-basic { margin-bottom: 32px; }
+    .main-div-add-tasks > form {
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 0;
+    }    
 }
 
 @media only screen and (max-width: 1200px) {
-    #overlay-contacts > div.bg-dark-blue { 
-        padding: 48px 24px; 
-        border-radius: 0;
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
-    }
-
     #overlay-contacts > div > div:first-of-type { padding: 32px; }
 
     #overlay-contacts > div > div:last-of-type { padding: 32px 32px 32px 0; }
@@ -431,20 +419,22 @@ button,
     #overlay-contacts,
     #overlay-contacts > div:last-of-type { flex-direction: column; }
 
+    #overlay-contacts > div.bg-dark-blue { 
+        padding: 48px 24px; 
+        border-radius: 0;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+    }
+
     #overlay-contacts > div:last-of-type > div { 
         justify-content: center;
         padding: 0;
         margin-top: -48px;
     }
-
-    #overlay-contacts:last-of-type {}
-
 }
 
 @media only screen and (min-width: 1100px) {
-    #back-to-contacts {
-        display: none;
-    }
+    #back-to-contacts { display: none; }
 }
 
 @media only screen and (max-width: 1100px) {
@@ -455,15 +445,15 @@ button,
 
     .search-section { flex-direction: column; }
 
-    .search-field { 
-        width: 100%; 
-        background-position-x: 84%, 94%;
-    }
-
     div.contacts-div,
     #contacts-header { width: 100%; }
 
     #contact-view-basic { width: -webkit-fill-available; }
+
+    .search-field { 
+        width: 100%; 
+        background-position-x: 84%, 94%;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -489,19 +479,57 @@ button,
 }
 
 @media only screen and (max-width: 800px) {
+    .search-field { background-position-x: 80%, 92%; }
+
+    .summary-container > div > div > div > span.dark-blue  { font-size: 27px; }
+
+    .join-title { font-size: 61px; }
+
+    .main-div-add-tasks { left: unset;}
+
+    .contacts-div { min-width: unset; }
+
+    #urgent-tasks { width: 384px; }
+
+    #progress-overview div { width: 148px; }
+
+    #contacts { left: 0px; }
+
+    .main-div-board { left: 24px; }
+
+    .sidebar > img,
+    .topbar > span,
+    #legal-notice,
+    .greet,
+    .vertical-bl-line,
+    .contacts-div > div > button { display: none; }
+
+    #main-div-board { 
+        left: 0px; 
+        padding: 24px;
+    }
+
+    #body-add-tasks {
+        display: flex;
+        justify-content: center;
+    }
+
+    #first-section > div:first-of-type { 
+        width: 186px;
+        gap: 8px;
+    }
+
+    #first-section > div:last-of-type { 
+        width: 108px; 
+        gap: 8px;
+    }
+
     #add-contac-responsive { 
         opacity: 1;
         position: sticky;
         bottom: 110px;
         left: 100%;
         margin-right: 32px;
-    }
-
-    .search-field { background-position-x: 80%, 92%; }
-
-    #main-div-board { 
-        left: 0px; 
-        padding: 24px;
     }
 
     #body-legal-notice,
@@ -517,38 +545,6 @@ button,
         padding: 180px 24px 0 24px;
         position: unset;
     }
-
-    .join-title { font-size: 61px; }
-
-    .main-div-add-tasks { left: unset;}
-
-    #body-add-tasks {
-        display: flex;
-        justify-content: center;
-    }
-
-    .summary-container > div > div > div > span.dark-blue  { font-size: 27px;}
-
-    #first-section > div:first-of-type { 
-        width: 186px;
-        gap: 8px;
-    }
-
-    #first-section > div:last-of-type { 
-        width: 108px; 
-        gap: 8px;
-    }
-
-    #urgent-tasks { width: 384px; }
-
-    #progress-overview div { width: 148px; }
-
-    .sidebar > img,
-    .topbar > span,
-    #legal-notice,
-    .greet,
-    .vertical-bl-line,
-    .contacts-div > div > button { display: none; }
 
     #sidebar {
         display: flex;
@@ -571,10 +567,6 @@ button,
         width: 62px;
     }
 
-    #contacts { left: 0px; }
-
-    .main-div-board { left: 24px; }
-
     .summary-container {
         left: 50%;
         right: 50%;
@@ -594,8 +586,6 @@ button,
         transform: rotate(90deg);
         margin-left: 30px;
     }
-
-    .contacts-div { min-width: unset; }
 }
 
 @media only screen and (max-width: 600px) {
@@ -636,20 +626,7 @@ button,
 
     .search-field { background-position-x: 76%, 90%; }
 
-    #first-section > div:first-of-type svg,
-    #first-section > div:last-of-type svg {
-        width: 60px;
-        height: 60px
-    }
-
     .submit-section > button { width: 250px; }
-
-    .main-div-add-tasks > form input,
-    .main-div-add-tasks > form textarea, 
-    #subtasks-content-basic { width: 300px !important; }
-
-    #form-low-part div.priority, 
-    .submit-section button { width: 348px !important; }
 
     #category { width: 342px; }
 
@@ -662,6 +639,25 @@ button,
     #progress-overview div { width: 120px; }
 
     #sidebar > a { padding: 16px 8px; }
+
+    #contact-book > tr > div > div { gap: 24px; }
+
+    #contact-book > tr > div > div > div { padding: 8px; }
+
+    .contacts-div { align-items: flex-start; }
+
+    .main-div-add-tasks > form input,
+    .main-div-add-tasks > form textarea, 
+    #subtasks-content-basic { width: 300px !important; }
+
+    #form-low-part div.priority, 
+    .submit-section button { width: 348px !important; }
+
+    #first-section > div:first-of-type svg,
+    #first-section > div:last-of-type svg {
+        width: 60px;
+        height: 60px
+    }
 
     #priority-container-basic {
         flex-wrap: wrap;
@@ -678,36 +674,16 @@ button,
         justify-content: center;
     }
 
-    /* #contact-book > tr {
-        width: 300px;
-    } */
-
     .contact,
     #contact-book > tr > td { 
         width: 300px;
         padding: 8px 16px;
         font-weight: 700;
     }
-
-    #contact-book > tr > div > div { gap: 24px; }
-
-    #contact-book > tr > div > div > div { padding: 8px; }
-
-    .contacts-div { align-items: flex-start; }
 }
 
 @media only screen and (max-width: 400px) {
     .contacts-div { align-items: center; }
-
-    #contact-view-basic { 
-        padding: 24px; 
-        margin-top: 16px;
-    }
-
-    #contacts-title { 
-        font-size: 41px; 
-        width: 100%;
-    }
 
     #contact-book > tr > div > div { gap: 16px; }
 
@@ -722,6 +698,25 @@ button,
 
     .search-section > div { margin-bottom: 4px; }
 
+    div.sign-up { margin-right: 16px; }
+
+    .main-div-add-tasks > form { align-items: center; }
+
+    .vertical-gr-line { padding: 0 10px; }
+
+    #first-section > div:last-of-type > div.mr-16px { margin: 0; }
+
+    #urgent-tasks { width: 176px; }
+
+    #sidebar > a { padding: 16px 0px; }
+
+    div.priority > div img { width: 128px; }
+
+    #body-add-tasks { overflow-x: hidden; }
+
+    .summary-container > div > div > div > span.dark-blue, 
+    #upcoming-deadline  { font-size: 21px; }
+
     .main-div-add-tasks > form input,
     .main-div-add-tasks > form textarea, 
     #subtasks-content-basic { width: 220px !important; }
@@ -732,9 +727,52 @@ button,
     .submit-section button,
     #form-low-part div.priority { width: 265px !important; }
     
-    .main-div-add-tasks > form { align-items: center; }
+    #contact-view-basic { 
+        padding: 24px; 
+        margin-top: 16px;
+    }
 
-    div.sign-up { margin-right: 16px; }
+    #contacts-title { 
+        font-size: 41px; 
+        width: 100%;
+    }
+
+    #to-do,
+    #done,
+    #urgent,
+    #total-tasks,
+    #progress,
+    #feedback,
+    .join-title,
+    .main-div-add-tasks > div > span,
+    .search-section > div > span { font-size: 47px; }
+
+    #first-section > div:first-of-type svg,
+    #first-section > div:last-of-type svg,
+    #urgent-tasks > div > div > div img {
+        width: 50px;
+        height: 50px
+    }
+
+    #first-section > div:first-of-type { 
+        width: 98px;
+        padding: 24px 11px;    
+    }
+
+    #first-section > div:last-of-type { 
+        width: 40px; 
+        padding: 24px 40px;
+    }
+
+    #progress-overview {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    #progress-overview div {
+        width: 100%;
+        height: 60px; 
+    }
 
     #plus-icon-basic,
     #subtask-icons-basic {
@@ -749,61 +787,33 @@ button,
         flex-direction: column;
         align-items: center;
     }
-
-    #to-do,
-    #done,
-    #urgent,
-    #total-tasks,
-    #progress,
-    #feedback,
-    .join-title,
-    .main-div-add-tasks > div > span,
-    .search-section > div > span { font-size: 47px; }
-
-    .summary-container > div > div > div > span.dark-blue, 
-    #upcoming-deadline  { font-size: 21px; }
-
-    #first-section > div:first-of-type svg,
-    #first-section > div:last-of-type svg,
-    #urgent-tasks > div > div > div img {
-        width: 50px;
-        height: 50px
-    }
-
-    .vertical-gr-line { padding: 0 10px; }
-
-    #first-section > div:first-of-type { 
-        width: 98px;
-        padding: 24px 11px;    
-    }
-
-    #first-section > div:last-of-type { 
-        width: 40px; 
-        padding: 24px 40px;
-    }
-
-    #first-section > div:last-of-type > div.mr-16px { margin: 0; }
-
-    #urgent-tasks { width: 176px; }
-
-    #progress-overview {
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    #progress-overview div {
-        width: 100%;
-        height: 60px; 
-    }
-
-    #sidebar > a { padding: 16px 0px; }
-
-    div.priority > div img { width: 128px; }
-
-    #body-add-tasks { overflow-x: hidden; }
 }
 
 @media only screen and (max-width: 350px) {
     .contact,
     #contact-book > tr > td { width: 225px; }
 }
+
+/* ------------------------------------------- */
+@media only screen and (max-width: 1400px) {}
+
+@media only screen and (max-width: 1300px) {}
+
+@media only screen and (max-width: 1200px) {}
+
+@media only screen and (max-width: 1100px) {}
+
+@media only screen and (max-width: 1000px) {}
+
+@media only screen and (max-width: 900px) {}
+
+@media only screen and (max-width: 800px) {}
+
+@media only screen and (max-width: 600px) {}
+
+@media only screen and (max-width: 500px) {}
+
+@media only screen and (max-width: 400px) {}
+
+@media only screen and (max-width: 350px) {}
+/* ------------------------------------------- */

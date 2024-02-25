@@ -76,7 +76,6 @@
 .contactHover:hover { background-color: rgba(0, 0, 0, 0.1); }
 
 #contact-book > tr > div { border-radius: 10px; }
-/* #contact-book > tr > div:hover { background-color: rgba(0, 0, 0, 0.1); } */
 #contact-book > tr > div { cursor: pointer; }
 #contact-book > tr > td > span { margin-left: 12px; }
 a { color: #007CEE; }

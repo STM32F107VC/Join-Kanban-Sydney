@@ -27,7 +27,7 @@ addEventListener("resize", (event) => {
     console.log(trackWindowWidth);
     let detailedContact = document.getElementById('contact-view-basic');
     let contactBook = document.querySelector('.contacts-div');
-    contactBook.classList.remove('d-none');
+    // contactBook.classList.remove('d-none');
 
     if (trackWindowWidth < 1100) {
         detailedContact.classList.add('d-none');
@@ -56,6 +56,7 @@ async function loadContacts() {
  * 
  */
 function openContactsOverlay() {
+    document.getElementById('add-contac-responsive').classList.add('d-none');
     document.getElementById('contacts').classList.add('d-none');
     document.getElementById('body-contacts').classList.add("flex", "x-center", "y-center");
     document.getElementById('side-and-topbar-contacts').classList.add("opacity", "z-ind--1");
@@ -78,6 +79,7 @@ function openEditContactForm() {
  * 
  */
 function closeContactOverlay() {
+    document.getElementById('add-contac-responsive').classList.remove('d-none');
     document.getElementById('contacts').classList.remove('d-none');
     document.getElementById('body-contacts').classList.remove("flex", "x-center", "y-center");
     document.getElementById('side-and-topbar-contacts').classList.remove("opacity", "z-ind--1");
