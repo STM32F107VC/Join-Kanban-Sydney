@@ -412,25 +412,55 @@ button,
 }
 
 @media only screen and (max-width: 1200px) {
-    #overlay-contacts > div > div:first-of-type { padding: 32px; }
+    .contacts-overlay { height: initial; }
 
-    #overlay-contacts > div > div:last-of-type { padding: 32px 32px 32px 0; }
+    #close-add-contact-responsive,
+    #close-edit-contact-responsive { 
+        display: flex;
+        padding: 0; 
+    }
+
+    #close-add-contact-default,
+    #close-edit-contact-default,
+    #overlay-contacts img.join-logo-small,
+    #edit-contacts img.join-logo-small,
+    #overlay-contacts > div:last-of-type form > div.gap-35px > button.btn-light { display: none; }
+
+    #overlay-contacts > div:last-of-type form > div.gap-35px,
+    #edit-contacts > div:last-of-type form > div.gap-35px {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .overlay-forms {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+    }
 
     #overlay-contacts,
+    #edit-contacts,
+    #edit-contacts > div:last-of-type,
     #overlay-contacts > div:last-of-type { flex-direction: column; }
 
-    #overlay-contacts > div.bg-dark-blue { 
-        padding: 48px 24px; 
+    #overlay-contacts > div.bg-dark-blue,
+    #edit-contacts > div.bg-dark-blue { 
+        padding: 48px 24px 112px 24px; 
         border-radius: 0;
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
     }
 
-    #overlay-contacts > div:last-of-type > div { 
+    #overlay-contacts > div:last-of-type > div,
+    #edit-contacts > div:last-of-type > div { 
         justify-content: center;
         padding: 0;
-        margin-top: -48px;
+        margin-top: -64px;
+        margin-bottom: 81px;
     }
+
+    #overlay-contacts form,
+    #edit-contacts form { align-items: center; }
 }
 
 @media only screen and (min-width: 1100px) {
@@ -679,6 +709,11 @@ button,
         width: 300px;
         padding: 8px 16px;
         font-weight: 700;
+    }
+
+    #overlay-contacts form > div,
+    #edit-contacts form > div {
+        width: 300px;
     }
 }
 

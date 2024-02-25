@@ -153,8 +153,9 @@
     <!-- Overlay contacts menu -->
     <div id="overlay-contacts" class="contacts-overlay d-none z-ind-1 flex">
         <div class="bg-dark-blue flex flex-column x-center y-start">
-            <div class="flex w-100 x-end close-cross mb-48px d-none"><img onclick="closeContactOverlay()" class="p-8px"
-                    src="assets/img/close.png" alt="close"></div>
+            <div id="close-add-contact-responsive" class="flex w-100 x-end close-cross d-none mb-48px"><img
+                    onclick="closeContactOverlay()" class="p-8px" src="assets/img/close_cross_white.png" alt="close">
+            </div>
             <img src="assets/img/Capa_2_light.png" alt="Join logo" class="join-logo-small mb-16px">
             <span class="ft-general fs-61px fw-700 mb-8px">Add contact</span>
             <span class="ft-general fs-27px fw-400 mb-16px">Tasks are better with a team!</span>
@@ -166,8 +167,8 @@
                 <img src="assets/img/contact_person.png" alt="avatar">
             </div>
             <div class="flex flex-column x-center y-center w-100">
-                <div class="flex w-100 x-end close-cross mb-48px"><img onclick="closeContactOverlay()" class="p-8px"
-                        src="assets/img/close.png" alt="close"></div>
+                <div id="close-add-contact-default" class="flex w-100 x-end close-cross mb-48px"><img
+                        onclick="closeContactOverlay()" class="p-8px" src="assets/img/close.png" alt="close"></div>
 
                 <form onsubmit="addContact(); return false;" class="flex flex-column">
                     <div class="login-input mb-32px flex x-space-betw y-center">
@@ -197,6 +198,9 @@
     <!-- Edit contact form -->
     <div id="edit-contacts" class="contacts-overlay d-none z-ind-1 flex">
         <div class="bg-dark-blue flex flex-column x-center y-start">
+            <div id="close-edit-contact-responsive" class="flex w-100 x-end close-cross d-none mb-48px"><img
+                    onclick="closeEditContactForm()" class="p-8px" src="assets/img/close_cross_white.png" alt="close">
+            </div>
             <img src="assets/img/Capa_2_light.png" alt="Join logo" class="join-logo-small mb-16px">
             <span class="ft-general fs-61px fw-700 mb-8px">Edit contact</span>
             <img src="assets/img/Vector 5.png" alt="blue horizontal line">
@@ -206,8 +210,8 @@
             <div id="edit-Overlay-Menu-Avatar" class="flex y-center"></div>
 
             <div id="edit-overlay-forms" class="flex flex-column x-center y-center w-100">
-                <div class="flex w-100 x-end close-cross mb-32px"><img onclick="closeEditContactForm()" class="p-8px"
-                        src="assets/img/close.png" alt="close"></div>
+                <div id="close-edit-contact-default" class="flex w-100 x-end close-cross mb-32px"><img
+                        onclick="closeEditContactForm()" class="p-8px" src="assets/img/close.png" alt="close"></div>
                 <form onsubmit="return false;" class="flex flex-column">
                     <div class="login-input mb-32px flex x-space-betw y-center">
                         <input contenteditable="true" class="ft-general fs-20px fw-400 input-icon-pos icon-name w-100"
