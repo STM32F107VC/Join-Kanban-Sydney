@@ -11,6 +11,7 @@ async function init_summary(id) {
     getFromLocalStorage();
     markActiveLink(id);
     greetUser('summary');
+    dayGreeting();
 }
 
 // async function accountOrGuestLogin() {
@@ -54,6 +55,18 @@ function loadSummaryInformations(informations) {
     let inProgress = document.getElementById('progress');
     let toDo = document.getElementById('to-do');
     setSummaryInformations(informations, totalAmount, totalUrgent, awaitFeedback, date, done, inProgress, toDo);
+}
+
+/**
+ * Get current time number between 0 - 24 and greet make day greeting depeneding on number value
+ */
+function dayGreeting() {
+    let greet = document.getElementById('day-greeting');
+    var d = new Date();
+    var time = d.getHours();
+    if (time < 6 || time > 18) greet.textContent = 'Good Evening';
+    else if (time < 12) greet.textContent = 'Good Morning';
+    else if (time > 12) greet.textContent = 'Good Afternoon';
 }
 
 /**

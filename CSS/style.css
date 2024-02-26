@@ -414,7 +414,7 @@ button,
         height: initial;
     }
 
-    #add-tasks-overlay-view form { 
+    /* #add-tasks-overlay-view form { 
         margin-top: 32px; 
         align-items: center;
     }
@@ -442,7 +442,7 @@ button,
     #add-tasks-overlay-view form > div > div textarea,
     #add-tasks-overlay-view form > div > div input { width: 375px !important; }
 
-    #displaySelectedContacts-overlay { margin-bottom: 0; }
+    #displaySelectedContacts-overlay { margin-bottom: 0; } */
 
     .contacts-overlay { height: initial; }
 
