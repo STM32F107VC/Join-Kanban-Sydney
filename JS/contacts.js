@@ -24,17 +24,19 @@ async function init_contacts(id) {
 
 addEventListener("resize", (event) => {
     trackWindowWidth = window.innerWidth;
-    console.log(trackWindowWidth);
+    // console.log(trackWindowWidth);
     let detailedContact = document.getElementById('contact-view-basic');
     let contactBook = document.querySelector('.contacts-div');
     // contactBook.classList.remove('d-none');
 
-    if (trackWindowWidth < 1100) {
-        detailedContact.classList.add('d-none');
-    } else if (trackWindowWidth > 1100) {
-        detailedContact.classList.remove('d-none', 'contact-view-responsive');
-        // detailedContact.classList.add('d-none');
-        contactBook.classList.remove('d-none');
+    if ((detailedContact || contactBook) != null) {
+        if (trackWindowWidth < 1100) {
+            detailedContact.classList.add('d-none');
+        } else if (trackWindowWidth > 1100) {
+            detailedContact.classList.remove('d-none', 'contact-view-responsive');
+            // detailedContact.classList.add('d-none');
+            contactBook.classList.remove('d-none');
+        }
     }
 });
 
@@ -248,6 +250,7 @@ function contactDetails(n, e, auc, p, id, j) {
         }
     } else {
         contact.classList.remove('bg-dark-blue', 'col-white');
+        contact.classList.remove('contactHover');
         divDetails.classList.add('x-translate');
     }
     divDetails.innerHTML = renderContactDetails(n, e, auc, p, id, j);
@@ -329,8 +332,6 @@ function editContact(j, auc) {
     getBackgroundColor = contacts[j]['background-color'];
     let editContactForm = document.getElementById('delete-part');
     let avatar = document.getElementById('edit-Overlay-Menu-Avatar');
-    let overlayForms = document.getElementById('edit-overlay-forms');
-    // avatar.style = `background-color: ${getBackgroundColor}`;
     avatar.innerHTML = renderEditOverlayAvatar(auc);
     editContactForm.innerHTML = renderDeletePart(j);
     openEditContactForm();

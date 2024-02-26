@@ -99,3 +99,5 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 ---Date: 25.02.24 ---
 - Beim add contacts overlay im responsive design den close button einfügen und ursprünglichen ausblenden
 
+--- Note:  ---
+- trackWindowWidth in cdl: 7, 26, 216, 241 
