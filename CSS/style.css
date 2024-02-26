@@ -401,9 +401,6 @@ button,
 
     #displaySelectedContacts-basic { margin-bottom: 32px; }
 
-    .vertical-line, 
-    #required-span { display: none; }
-
     .main-div-add-tasks > form {
         flex-direction: column;
         justify-content: center;
@@ -412,6 +409,41 @@ button,
 }
 
 @media only screen and (max-width: 1200px) {
+    #add-tasks-overlay-view { 
+        padding: 32px; 
+        height: initial;
+    }
+
+    #add-tasks-overlay-view form { 
+        margin-top: 32px; 
+        align-items: center;
+    }
+
+    #form-low-part {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #add-tasks-overlay-view form > div.priority
+     { 
+        width: 100%;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    #add-tasks-overlay-view form > div > div:last-of-type > select { width: 100% !important;  }
+
+    div.submit-section { align-items: center; }
+
+    #subtasks-content-overlay,
+    #form-low-part div.priority,
+    #form-low-part > div > div input,
+    #add-tasks-overlay-view form > div > div textarea,
+    #add-tasks-overlay-view form > div > div input { width: 375px !important; }
+
+    #displaySelectedContacts-overlay { margin-bottom: 0; }
+
     .contacts-overlay { height: initial; }
 
     #close-add-contact-responsive,
@@ -420,6 +452,8 @@ button,
         padding: 0; 
     }
 
+    #required-span,
+    .vertical-line,
     #close-add-contact-default,
     #close-edit-contact-default,
     #overlay-contacts img.join-logo-small,
@@ -437,7 +471,8 @@ button,
         border-bottom-right-radius: 30px;
         border-bottom-left-radius: 30px;
     }
-
+    
+    #add-tasks-overlay-view form,
     #overlay-contacts,
     #edit-contacts,
     #edit-contacts > div:last-of-type,
@@ -469,16 +504,7 @@ button,
 @media only screen and (min-width: 1100px) {
     #back-to-contacts { display: none; }
 
-    /* ----------------- */
-    #contact-view-basic { 
-        width: -webkit-fill-available;
-        /* display: none;  */
-    }
-
-    /* .contacts-div {
-        display: initial;
-    } */
-    /* ----------------- */
+    #contact-view-basic {  width: -webkit-fill-available; }
 }
 
 @media only screen and (max-width: 1100px) {
@@ -486,11 +512,7 @@ button,
 
     .search-section { flex-direction: column; }
 
-    /* ----------------- */
     #contact-view-basic { width: -webkit-fill-available; }
-
-    /* ----------------- */
-
     
     div.contacts-div,
     #contacts-header { width: 100%; }
@@ -870,7 +892,7 @@ button,
 }
 
 /* ------------------------------------------- */
-@media only screen and (max-width: 1400px) {}
+/* @media only screen and (max-width: 1400px) {}
 
 @media only screen and (max-width: 1300px) {}
 
@@ -890,5 +912,5 @@ button,
 
 @media only screen and (max-width: 400px) {}
 
-@media only screen and (max-width: 350px) {}
+@media only screen and (max-width: 350px) {} */
 /* ------------------------------------------- */

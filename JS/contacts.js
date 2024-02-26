@@ -41,16 +41,20 @@ function tackInitialScreenWidth() {
  */
 addEventListener("resize", (event) => {
     trackWindowWidth = window.innerWidth;
-    console.log(trackWindowWidth);
     let detailedContact = document.getElementById('contact-view-basic');
     let contactBook = document.querySelector('.contacts-div');
-    contactBook.classList.remove('d-none');
-    if (detailedContact !== null && contactBook !== null) {
-        if (trackWindowWidth < 1100) {
-            detailedContact.classList.add('d-none');
-        } else if (trackWindowWidth > 1100) {
-            detailedContact.classList.remove('d-none', 'contact-view-responsive');
-            contactBook.classList.remove('d-none');
+    // contactBook.classList.remove('d-none');
+
+
+    if (window.location.href.includes('contacts.html')) {
+
+        if (detailedContact !== null && contactBook !== null) {
+            if (trackWindowWidth < 1100) {
+                detailedContact.classList.add('d-none');
+            } else if (trackWindowWidth > 1100) {
+                detailedContact.classList.remove('d-none', 'contact-view-responsive');
+                contactBook.classList.remove('d-none');
+            }
         }
     }
 });
@@ -63,9 +67,7 @@ async function loadContacts() {
     try {
         contacts = JSON.parse(await getItem('contacts'));
         getInitialLetterOfFirstname();
-    } catch (error) {
-
-    }
+    } catch (error) { }
 }
 
 /**
@@ -287,9 +289,9 @@ function responsiveContactBook(bA, cDD, cB, c) {
  * @param {Element} dD The detailed contact informations of the current selected contact
  */
 function defaultContactSelection(c, dD) {
-    co.classList.remove('bg-dark-blue', 'col-white');
-    contact.classList.remove('contactHover');
-    divDetails.classList.add('x-translate');
+    c.classList.remove('bg-dark-blue', 'col-white');
+    c.classList.remove('contactHover');
+    dD.classList.add('x-translate');
 }
 
 /**

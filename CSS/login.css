@@ -128,6 +128,8 @@ div.log-in > div {
 
     #sign-up-section-responsive { opacity: 1; }
 
+    div.login-input { width: 322px; }
+
     .capa-2 {
         height: 78px;
         width: 64px;
@@ -148,8 +150,6 @@ div.log-in > div {
         padding: 32px 16px;
         margin-top: 210px;
     }
-
-    div.login-input { width: 322px; }
 
     .log-in > div > form > div.flex.x-center.gap-35px {
         align-items: center;
