@@ -472,7 +472,7 @@ button,
     /* ----------------- */
     #contact-view-basic { 
         width: -webkit-fill-available;
-        /* display: f;  */
+        /* display: none;  */
     }
 
     /* .contacts-div {
@@ -487,15 +487,8 @@ button,
     .search-section { flex-direction: column; }
 
     /* ----------------- */
-    #contact-view-basic { 
-        width: -webkit-fill-available;
-        /* display: none;  */
-    }
+    #contact-view-basic { width: -webkit-fill-available; }
 
-    /* #contact-view-basic {
-        position: absolute;
-        left: 0;
-    } */
     /* ----------------- */
 
     

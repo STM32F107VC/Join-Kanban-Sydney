@@ -20,21 +20,36 @@ async function init_contacts(id) {
     // accountOrGuestLogin();
     markActiveLink(id);
     greetUser();
+    tackInitialScreenWidth();
 }
 
+/**
+ * Track initial screen width to to show either basic contact book or add classesfor mobile
+ */
+function tackInitialScreenWidth() {
+    trackWindowWidth = window.innerWidth;
+    if (trackWindowWidth < 1100) {
+        document.getElementById('contact-view-basic').classList.add('d-none');
+    } else if (trackWindowWidth > 1100) {
+        document.getElementById('contact-view-basic').classList.remove('d-none', 'contact-view-responsive');
+        document.querySelector('.contacts-div').classList.remove('d-none');
+    }
+}
+
+/**
+ * Track the screen width to change design of contact book
+ */
 addEventListener("resize", (event) => {
     trackWindowWidth = window.innerWidth;
-    // console.log(trackWindowWidth);
+    console.log(trackWindowWidth);
     let detailedContact = document.getElementById('contact-view-basic');
     let contactBook = document.querySelector('.contacts-div');
-    // contactBook.classList.remove('d-none');
-
-    if ((detailedContact || contactBook) != null) {
+    contactBook.classList.remove('d-none');
+    if (detailedContact !== null && contactBook !== null) {
         if (trackWindowWidth < 1100) {
             detailedContact.classList.add('d-none');
         } else if (trackWindowWidth > 1100) {
             detailedContact.classList.remove('d-none', 'contact-view-responsive');
-            // detailedContact.classList.add('d-none');
             contactBook.classList.remove('d-none');
         }
     }
@@ -211,12 +226,14 @@ function renderContacts(j, id, n, e, auc, p, bgc) {
         </div>`;
 }
 
+/**
+ * Show contact book when screen width is < 1100px
+ */
 function showContactBook() {
     let completeDivDetails = document.getElementById('contact-view-basic');
     let contactBook = document.querySelector('.contacts-div');
     let backArrow = document.getElementById('back-to-contacts');
-    if (trackWindowWidth < 1100)
-        backArrow.classList.add('d-none');
+    if (trackWindowWidth < 1100) backArrow.classList.add('d-none');
     completeDivDetails.classList.remove('contact-view-responsive');
     completeDivDetails.classList.add('d-none');
     contactBook.classList.remove('d-none');
@@ -240,21 +257,39 @@ function contactDetails(n, e, auc, p, id, j) {
     let currentId = id + j;
     if (!contact.classList.contains('bg-dark-blue', 'col-white') && currentId) {
         addContactClasses(contact, divDetails, currentId);
-        if (trackWindowWidth < 1100) {
-            backArrow.classList.remove('d-none');
-            completeDivDetails.classList.add('contact-view-responsive');
-            completeDivDetails.classList.remove('d-none');
-            contactBook.classList.add('d-none');
-            contact.classList.remove('bg-dark-blue', 'col-white');
-            contact.classList.add('contactHover');
-        }
+        if (trackWindowWidth < 1100) responsiveContactBook(backArrow, completeDivDetails, contactBook, contact);
     } else {
-        contact.classList.remove('bg-dark-blue', 'col-white');
-        contact.classList.remove('contactHover');
-        divDetails.classList.add('x-translate');
+        defaultContactSelection(contact, divDetails);
     }
     divDetails.innerHTML = renderContactDetails(n, e, auc, p, id, j);
     oldId = currentId;
+}
+
+/**
+ * Function to set several classes
+ * @param {Element} bA Is the back arrow icon
+ * @param {Element} cDD Div with with detailed informations of a contact 
+ * @param {Element} cB The contact book with all selectable contacts 
+ * @param {Element} c The current contact
+ */
+function responsiveContactBook(bA, cDD, cB, c) {
+    bA.classList.remove('d-none');
+    cDD.classList.add('contact-view-responsive');
+    cDD.classList.remove('d-none');
+    cB.classList.add('d-none');
+    c.classList.remove('bg-dark-blue', 'col-white');
+    c.classList.add('contactHover');
+}
+
+/**
+ * When contact is selected and it is clicked again, set default classes
+ * @param {Element} c The current contact
+ * @param {Element} dD The detailed contact informations of the current selected contact
+ */
+function defaultContactSelection(c, dD) {
+    co.classList.remove('bg-dark-blue', 'col-white');
+    contact.classList.remove('contactHover');
+    divDetails.classList.add('x-translate');
 }
 
 /**
