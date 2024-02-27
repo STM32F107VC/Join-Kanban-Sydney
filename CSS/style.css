@@ -341,7 +341,7 @@ button,
 
 /* Media Queries */
 @media only screen and (max-width: 1400px) {
-    .vertical-line { padding: 0 32px; }
+    /* .vertical-line { padding: 0 32px; } */
 
     .vector-bl-horizontal-contacts {
         display: unset;
@@ -405,7 +405,9 @@ button,
         flex-direction: column;
         justify-content: center;
         padding-right: 0;
-    }    
+    } 
+
+    #required-span { display: none; }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -414,35 +416,7 @@ button,
         height: initial;
     }
 
-    /* #add-tasks-overlay-view form { 
-        margin-top: 32px; 
-        align-items: center;
-    }
-
-    #form-low-part {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #add-tasks-overlay-view form > div.priority
-     { 
-        width: 100%;
-        flex-wrap: wrap;
-        align-items: center;
-    }
-
-    #add-tasks-overlay-view form > div > div:last-of-type > select { width: 100% !important;  }
-
-    div.submit-section { align-items: center; }
-
-    #subtasks-content-overlay,
-    #form-low-part div.priority,
-    #form-low-part > div > div input,
-    #add-tasks-overlay-view form > div > div textarea,
-    #add-tasks-overlay-view form > div > div input { width: 375px !important; }
-
-    #displaySelectedContacts-overlay { margin-bottom: 0; } */
+     #displaySelectedContacts-overlay { margin-bottom: 24px; }
 
     .contacts-overlay { height: initial; }
 
@@ -452,7 +426,6 @@ button,
         padding: 0; 
     }
 
-    #required-span,
     .vertical-line,
     #close-add-contact-default,
     #close-edit-contact-default,
@@ -472,9 +445,9 @@ button,
         border-bottom-left-radius: 30px;
     }
     
-    #add-tasks-overlay-view form,
     #overlay-contacts,
     #edit-contacts,
+    #add-tasks-overlay-view form,
     #edit-contacts > div:last-of-type,
     #overlay-contacts > div:last-of-type { flex-direction: column; }
 
@@ -662,12 +635,34 @@ button,
 }
 
 @media only screen and (max-width: 600px) {
+    /* ------- */
+    #add-tasks-overlay-view form div input.login-input,
+    #add-tasks-overlay-view form div textarea.login-input,
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(4) > div { width: 350px; }
+    
+    #add-tasks-overlay-view form > div:nth-child(1) > div:nth-child(3), 
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(3) { width: 392px; }
+
+    #add-tasks-overlay-view form { align-items: center; }
+
+    #priority-container-overlay {
+        width: 350px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #add-tasks-overlay-view form > div:nth-child(3) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* ------- */
+
+
     #body-board { padding: 16px; }
 
     .search-field { background-position-x: 80%, 92%; }
-
-    /* div.sign-up { margin-top: 264px; } */
-
 
     #to-do,
     #done,
@@ -698,13 +693,20 @@ button,
 }
 
 @media only screen and (max-width: 500px) {
+    #add-tasks-overlay-view form div input.login-input,
+    #add-tasks-overlay-view form div textarea.login-input,
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(4) > div { width: 300px; }
+    
+    #add-tasks-overlay-view form > div:nth-child(1) > div:nth-child(3), 
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(3) { width: 342px; }        
+
+    #add-tasks-overlay-view { padding: 24px; }
+
     #tasks-overlay-view { padding: 24px 16px; }
 
     .search-field { background-position-x: 76%, 90%; }
 
     .submit-section > button { width: 250px; }
-
-    #category { width: 342px; }
 
     #first-section > div:first-of-type { width: 146px; }
 
@@ -742,6 +744,7 @@ button,
 
     .submit-section {
         display: flex;
+        align-items: center;
         flex-direction: column-reverse;
     }
 
@@ -765,6 +768,25 @@ button,
 }
 
 @media only screen and (max-width: 400px) {
+    #add-tasks-overlay-view { padding: 16px; }
+
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(2) > div { width: unset; } 
+
+    #add-tasks-overlay-view form div input.login-input,
+    #add-tasks-overlay-view form div textarea.login-input,
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(4) > div { width: 250px; }
+    
+    #add-tasks-overlay-view form > div:nth-child(1) > div:nth-child(3), 
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(3) { width: 292px; }
+
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(4) > div { position: relative; }
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(4) div > img { 
+        position: absolute; 
+        right: 16px;
+    }
+
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(4) > div > input { width: 100%; }
+
     .contacts-div { align-items: center; }
 
     #contact-book > tr > div > div { gap: 16px; }
@@ -812,11 +834,13 @@ button,
         margin-top: 16px;
     }
 
+    #add-tasks-overlay-view > div > span.fs-61px,
     #contacts-title { 
-        font-size: 41px; 
+        font-size: 41px !important; 
         width: 100%;
     }
 
+    #add-tasks-overlay-view > div > span.fs-61px,
     #to-do,
     #done,
     #urgent,
@@ -857,11 +881,10 @@ button,
     #plus-icon-basic,
     #subtask-icons-basic {
         position: absolute;
-        right: 50px;
+        right: 12px;
     }
 
     .main-div-add-tasks, 
-    #category,
     #form-low-part {
         display: flex;
         flex-direction: column;
@@ -880,6 +903,16 @@ button,
 }
 
 @media only screen and (max-width: 350px) {
+    #add-tasks-overlay-view { padding: 8px; }
+
+    #add-tasks-overlay-view form div input.login-input,
+    #add-tasks-overlay-view form div textarea.login-input,
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(4) > div { width: 200px; }
+    
+    #add-tasks-overlay-view form > div:nth-child(1) > div:nth-child(3), 
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(3), 
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(6) button { width: 242px !important; }
+
     .contact,
     #contact-book > tr > td,
     #overlay-contacts form > div,
