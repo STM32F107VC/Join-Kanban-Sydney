@@ -1,7 +1,7 @@
-/* Declare variables and arrays */
+/* Declare global variables and arrays */
+let guest = false;
 let signUp = [];
 let users = [];
-let guest = false;
 
 /**
  * Init function called on body="onload" to load

@@ -1,4 +1,4 @@
-/* Declare variables */
+/* Declare global variables and arrays */
 let getBackgroundColor;
 let bgcState = false;
 let oldNumericId;
@@ -6,7 +6,6 @@ let oldLetterId;
 let oldId;
 let trackWindowWidth;
 
-/* Declare arrays */
 let contacts = [];
 
 /**
@@ -17,7 +16,6 @@ async function init_contacts(id) {
     await includeHTML();
     await loadUsers();
     await loadContacts();
-    // accountOrGuestLogin();
     markActiveLink(id);
     greetUser();
     tackInitialScreenWidth();

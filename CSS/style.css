@@ -635,7 +635,6 @@ button,
 }
 
 @media only screen and (max-width: 600px) {
-    /* ------- */
     #add-tasks-overlay-view form div input.login-input,
     #add-tasks-overlay-view form div textarea.login-input,
     #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(4) > div { width: 350px; }
@@ -657,9 +656,6 @@ button,
         align-items: center;
     }
     
-    /* ------- */
-
-
     #body-board { padding: 16px; }
 
     .search-field { background-position-x: 80%, 92%; }
@@ -879,7 +875,8 @@ button,
     }
 
     #plus-icon-basic,
-    #subtask-icons-basic {
+    #subtask-icons-basic, 
+    #subtask-icons-overlay {
         position: absolute;
         right: 12px;
     }

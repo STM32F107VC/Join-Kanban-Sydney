@@ -79,7 +79,7 @@ function getAddTaskOverlayMenuTemplate(location) {
                 <div id="displaySubtasks-${location}" class="mb-64px"></div>
 
                 <div ondblclick class="submit-section flex x-end gap-16px ft-general">
-                    <button onclick="resetAddTaskForm(${location})" class="flex y-center gap-4px btn-light fs-20px">Clear <img
+                    <button onclick="resetAddTaskForm('${location}')" class="flex y-center gap-4px btn-light fs-20px">Clear <img
                             src="assets/img/close.png" alt="close"></button>
                     <button id="submitBtn" type="submit" class="flex y-center gap-4px btn-dark fs-20px fw-700">Create
                         Task <img src="assets/img/check.png" alt="create"></button>

@@ -1,5 +1,6 @@
 /* Declare global variables and arrays */
 
+
 /**
  * Init function called on body="onload" to load
  * first necessary functions
@@ -7,23 +8,11 @@
 async function init_summary(id) {
     await includeHTML();
     await loadContacts();
-    // accountOrGuestLogin();
     getFromLocalStorage();
     markActiveLink(id);
     greetUser('summary');
     dayGreeting();
 }
-
-// async function accountOrGuestLogin() {
-//     let profilType = JSON.parse(await getItem('guestOrAccount'));
-//     profilValue = profilType.log
-//     let sidebarMenu = document.getElementById('sidebar');
-//     if (profilValue == "guest") {
-//         sidebarMenu.classList.add('d-none');
-//     } else {
-//         sidebarMenu.classList.remove('d-none');
-//     }
-// }
 
 /**
  * Load tasks from local storage ---------------- change to remote storage later!!
@@ -43,7 +32,6 @@ async function getFromLocalStorage() {
 
 /**
  * Get elements for setting: How many tasks in each column, urgent tasks, most urgent deadline
- * 
  * @param {JSON} informations 
  */
 function loadSummaryInformations(informations) {

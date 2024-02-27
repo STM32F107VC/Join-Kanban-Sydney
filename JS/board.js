@@ -1,4 +1,4 @@
-// let tasks = [];
+/* Declare global variables and arrays */
 let countUp = -1;
 let getCategory;
 let bgcCode;
@@ -17,7 +17,6 @@ let currentSubtask;
 async function init_board(id) {
     await includeHTML();
     await loadContacts();
-    // accountOrGuestLogin();
     loadTasks();
     markActiveLink(id);
     greetUser();
@@ -26,7 +25,9 @@ async function init_board(id) {
     howManyTasksPerColumn();
 }
 
-//-------------------------------------
+/**
+ * Muss ich noch verkleinern
+ */
 function howManyTasksPerColumn() {
     let prioHigh = 'high';
     let increment = 0;
@@ -72,8 +73,6 @@ function howManyTasksPerColumn() {
     };
     setToLocalStorage(summaryInformations, 'summary-informations');
 }
-
-//-------------------------------------
 
 /**
  * Load tasks from local storage ---------------- change to remote storage later!!
@@ -123,7 +122,7 @@ function closeAddTaskOverlay() {
     document.getElementById('side-and-topbar-board').classList.remove("opacity", "z-ind--1");
     document.getElementById('displaySelectedContacts-overlay').innerHTML = '';
     assignedContacts = [];
-    // history.replaceState();
+    window.location = window.location;
 }
 
 /**

@@ -17,28 +17,24 @@ let assignedContacts = [];
 async function init_tasks(id) {
     await includeHTML();
     await loadContacts();
-    // accountOrGuestLogin();
     markActiveLink(id);
     greetUser();
     getAddTaskMenu('basic');
     assignContact('basic');
 }
 
-//-----
+/**
+ * Check if add task menu is called from basic menu 
+ * add_task.html or from board.html as overlay menu
+ * @param {string} location Includes either 'basic' or 'overlay'
+ */
 function getAddTaskMenu(location) {
     let AddTaskDiv = document.getElementById('add-tasks-' + `${location}` + '-view');
     AddTaskDiv.innerHTML = getAddTaskOverlayMenuTemplate(location);
-
     if (AddTaskDiv.id == 'add-tasks-basic-view') {
         document.querySelector('div.close-cross').remove();
-
-    }
-    if (AddTaskDiv.id == 'add-tasks-overlay-view') {
-
-        // AddTaskDiv.classList.remove('d-none');
     }
 }
-//-----
 
 /**
  * Load available contacts
