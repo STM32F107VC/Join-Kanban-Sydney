@@ -17,6 +17,7 @@ let assignedContacts = [];
 async function init_tasks(id) {
     await includeHTML();
     await loadContacts();
+    loadTasks();
     markActiveLink(id);
     greetUser();
     getAddTaskMenu('basic');
@@ -70,6 +71,13 @@ function showAssignedContact(i, location) {
     }
 }
 
+/**
+ * Render selected contacts
+ * @param {variable} auC Acronym of contact 
+ * @param {variable} i This index (i) is the number for selecting
+ * @param {string} bgc Color code for background-color
+ * @returns 
+ */
 function renderSelectedContact(auC, i, bgc) {
     return /*html*/`
     <div id='${auC}${i}' class="acronym p-6px flex x-center y-center mr-4px" style="background-color: #${bgc}">
@@ -96,11 +104,15 @@ function buildAcronym(contact) {
 async function addTask(location) {
     let title = document.getElementById(`title-${location}`);
     let description = document.getElementById(`textarea-${location}`);
-    let assignedTo = document.getElementById(`assigned-${location}`);
     let date = document.getElementById(`date-${location}`);
     let category = document.getElementById(`category-${location}`);
     let bgcCode = checkCategory(category);
     document.getElementById('submitBtn').disabled = true;
+
+    /* ------ */
+
+    console.log(loadTasks());
+
     tasks.push({
         "Title": title.value,
         "Description": description.value,
@@ -115,6 +127,9 @@ async function addTask(location) {
         "Column-location": 'backlog'
     });
     setToLocalStorage(tasks, 'tasks');
+
+    /* ------ */
+
     // await setItem('tasks', JSON.stringify(tasks));
     resetAddTaskForm(location);
     document.getElementById('submitBtn').disabled = false;
@@ -140,7 +155,7 @@ function setHowManySubtasks() {
 
 /**
  *
- * @param {*} c Includes the current category either 'User Story' or 'Technical Task'
+ * @param {string} c Includes the current category either 'User Story' or 'Technical Task'
  * @returns The hexadecimal background color code
  */
 function checkCategory(c) {
@@ -394,8 +409,5 @@ function resetAddTaskForm(location) {
     document.getElementById(`displaySubtasks-${location}`).replaceChildren();
     document.getElementById(`displaySelectedContacts-${location}`).replaceChildren();
     let img = document.getElementById('prio-' + `${oldImg}-` + `${location}`).src = `assets/img/prio-default-${oldImg}.png`;
-
-    console.log(img);
-
     subtasks = [];
 }

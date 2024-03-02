@@ -271,7 +271,8 @@ input::-webkit-inner-spin-button {
 }
 
 .btn-dark:hover,
-.addTask-btn-small:hover { 
+.addTask-btn-small:hover,
+#add-contac-responsive > img:hover { 
     background-color: #29abe2;
     box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.5);
 }

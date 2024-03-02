@@ -17,7 +17,7 @@ let currentSubtask;
 async function init_board(id) {
     await includeHTML();
     await loadContacts();
-    loadTasks();
+    loadTasks(true);
     markActiveLink(id);
     greetUser();
     getAddTaskMenu('overlay');
@@ -77,12 +77,12 @@ function howManyTasksPerColumn() {
 /**
  * Load tasks from local storage ---------------- change to remote storage later!!
  */
-async function loadTasks() {
+async function loadTasks(locate) {
     let tasksToString = localStorage.getItem('tasks');
     if (tasksToString) {
         let object = JSON.parse(tasksToString);
         tasks = object;
-        loadToColumn();
+        if (locate) loadToColumn();
     }
 }
 
