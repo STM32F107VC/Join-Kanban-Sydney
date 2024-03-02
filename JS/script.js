@@ -16,6 +16,13 @@ async function init() {
 }
 
 /**
+ * Forwarding to homepage summary.html
+ */
+function homePage() {
+    window.location = 'summary.html';
+}
+
+/**
  * Changes background-color on activ link summary.html
  * add_task.html, board.html or contacts.html
  * @param {string} id Represents the current id of the active link 
@@ -108,12 +115,10 @@ function openLogoutMenu() {
 }
 
 /**
- * Go back to summary.html page
+ * Go back to previous page
  * 
  */
 function goBack() {
-    // location.replace('summary.html');
-    // window.location.href = 'summary.html';
     history.go(-1);
 }
 
@@ -202,4 +207,17 @@ function checkedCheckbox(cB) {
     } else if (checkbox.classList.contains('checkbox-checked')) {
         checkbox.classList.remove('checkbox-checked');
     }
+}
+
+function searchTask() {
+    let search = document.getElementById('search').value;
+    console.log(search);
+    // let div = document.getElementById('main-div-board')
+    // let container = document.getElementById("pokedex");
+    // container.innerHTML = '';
+    // search = search.toLowerCase();
+    // for (let k = 0; k < pokemonNames.length; k++) {
+    //     let name = pokemonNames[k];
+    //     if (name.includes(search)) { renderPokemonCards(k); }
+    // }
 }

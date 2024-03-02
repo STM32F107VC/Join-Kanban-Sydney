@@ -131,3 +131,6 @@ li {
 .col-red { color: red; }
 
 .submit-section > button { padding: 16px; }
+
+#displaySubtasks-basic,
+#displaySubtasks-overlay { width: 442px; }

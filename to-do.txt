@@ -97,7 +97,20 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 - Media queries in entsprechende .css dateien auslagern-
 
 ---Date: 25.02.24 ---
-- Beim add contacts overlay im responsive design den close button einfügen und ursprünglichen ausblenden
+- Beim add contacts overlay im responsive design den close button einfügen und ursprünglichen ausblenden✓
 
---- Note:  ---
-- trackWindowWidth in cdl: 7, 26, 216, 241 
+---Date: 28.02.24 ---
+- Add subtask im overlay menu spacing problem beheben✓
+- Wenn neue aufgabe von add_task.html oder board.html gespeichert wird, zuerst local storage auslesen, in tasks array pushen und dann alles nochmals speichern-
+- Remote storage einbinden-
+- Suchfunktion nach titel, beschreibung oder kategorie-
+- Wrap text in input field-
+
+---Date: 02.03.24 ---
+- add_task.html fehler bei media query beheben✓
+- edit task overlay menu responsive machen Note: start unter 600px  
+- Wenn neue aufgabe von add_task.html oder board.html gespeichert wird, zuerst local storage auslesen, in tasks array pushen und dann alles nochmals speichern
+- Remote storage einbinden
+- Suchfunktion nach titel, beschreibung oder kategorie
+- Wrap text in input field
+
