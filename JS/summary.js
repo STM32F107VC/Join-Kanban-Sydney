@@ -8,7 +8,8 @@
 async function init_summary(id) {
     await includeHTML();
     await loadContacts();
-    getFromLocalStorage();
+    await getFromLocalStorage();
+    // getFromRemoteStorage();
     markActiveLink(id);
     greetUser('summary');
     dayGreeting();
@@ -18,8 +19,10 @@ async function init_summary(id) {
  * Load tasks from local storage ---------------- change to remote storage later!!
  */
 async function getFromLocalStorage() {
-    let tasksToString = localStorage.getItem('tasks');
-    let summaryInformationsToString = localStorage.getItem('summary-informations');
+    // let tasksToString = localStorage.getItem('tasks');
+    // let summaryInformationsToString = localStorage.getItem('summary-informations');
+    let tasksToString = await getItem('tasks');
+    let summaryInformationsToString = await getItem('summary-informations');
     if (tasksToString) {
         let object = JSON.parse(tasksToString);
         tasks = object;
@@ -29,6 +32,27 @@ async function getFromLocalStorage() {
         loadSummaryInformations(informationObj);
     }
 }
+
+/**
+ * Load tasks from backend
+ */
+// async function getFromRemoteStorage() {
+//     try {
+//         tasks = JSON.parse(await getItem('tasks'));
+
+//     } catch (error) { }
+
+//     try {
+//         let informationObj = JSON.parse(await getItem('summary-informations'));
+//         loadSummaryInformations(informationObj);
+//     } catch (error) { }
+// }
+
+/************/
+//  await setItem('tasks', JSON.stringify(tasks));
+//  tasks = JSON.parse(await getItem('tasks'));
+/************/
+
 
 /**
  * Get elements for setting: How many tasks in each column, urgent tasks, most urgent deadline

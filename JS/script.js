@@ -221,3 +221,16 @@ function searchTask() {
     //     if (name.includes(search)) { renderPokemonCards(k); }
     // }
 }
+
+/**
+ * Deletes complet user account
+ * 
+ * How to use this function: Go to de body opening tag in login.html. There is the onload eventhander replace init(); with deleteUsers(1); and reload page. Then the storage with stored user profiles gets deleted. Afterwards remove deleteUsers(1); and insert init(); as original.
+ * @param {variable} i
+ */
+async function deleteUsers(i) {
+    users.splice(i, 1);
+    await setItem('users', JSON.stringify(users));
+    contacts = JSON.parse(await getItem('users'));
+    window.location = window.location;
+}

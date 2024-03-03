@@ -17,7 +17,7 @@ let currentSubtask;
 async function init_board(id) {
     await includeHTML();
     await loadContacts();
-    loadTasks(true);
+    await loadTasks(true);
     markActiveLink(id);
     greetUser();
     getAddTaskMenu('overlay');
@@ -28,7 +28,7 @@ async function init_board(id) {
 /**
  * Muss ich noch verkleinern
  */
-function howManyTasksPerColumn() {
+async function howManyTasksPerColumn() {
     let prioHigh = 'high';
     let increment = 0;
     saveDate = [];
@@ -71,20 +71,34 @@ function howManyTasksPerColumn() {
         'Amount-Of-Urgent-Tasks': increment,
         'Date': formatDate
     };
-    setToLocalStorage(summaryInformations, 'summary-informations');
+    // setToLocalStorage(summaryInformations, 'summary-informations');
+    await setItem('summary-informations', JSON.stringify(summaryInformations));
 }
 
 /**
  * Load tasks from local storage ---------------- change to remote storage later!!
  */
+// async function loadTasks(locate) {
+//     let tasksToString = localStorage.getItem('tasks');
+//     if (tasksToString) {
+//         let object = JSON.parse(tasksToString);
+//         tasks = object;
+//         if (locate) loadToColumn();
+//     }
+// }
+
+/**
+ * Load tasks from backend
+ */
 async function loadTasks(locate) {
-    let tasksToString = localStorage.getItem('tasks');
-    if (tasksToString) {
-        let object = JSON.parse(tasksToString);
-        tasks = object;
+    try {
+        tasks = JSON.parse(await getItem('tasks'));
         if (locate) loadToColumn();
-    }
+    } catch (error) { }
 }
+
+
+
 
 /**
  * Load tasks to matching column, which they were attached last
@@ -228,10 +242,17 @@ function showTaskOverlay(i) {
  * Delete tasks from board
  * @param {variable} j Is the task index 
  */
-function deleteTask(j) {
+async function deleteTask(j) {
     tasks.splice(j, 1);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    tasks = localStorage.getItem('tasks');
+
+    // localStorage.setItem('tasks', JSON.stringify(tasks));
+    // tasks = localStorage.getItem('tasks');
+
+    /************/
+    await setItem('tasks', JSON.stringify(tasks));
+    tasks = JSON.parse(await getItem('tasks'));
+    /************/
+
     location.replace('board.html');
 }
 
@@ -260,9 +281,7 @@ function getTaskValues(i) {
     let date = task['Date'];
     getCategory = task['Category'];
     bgcCode = task['Bgc-Code'];
-    // let getSubtasks = task['Subtasks'];
     oldImg = task['Prio'];
-    // let contact = task['Contacts'];
     renderAssignedContacts(task, i, 'edit-overlay');
     let renderSubtasks = document.getElementById('displaySubtasks-edit-overlay');
     for (let k = 0; k < task['Subtasks'].length; k++) {
@@ -287,7 +306,7 @@ function getTaskValues(i) {
  * Safes changes which were made on a task
  * @param {variable} j J is the index number for accessing a task in the tasks array
  */
-function saveEditTaskChanges(taskIndex) {
+async function saveEditTaskChanges(taskIndex) {
     document.getElementById('edit-overlay-ok-btn').disabled = true;
     let title = document.getElementById('title-editable');
     let description = document.getElementById('textarea-editable');
@@ -307,7 +326,8 @@ function saveEditTaskChanges(taskIndex) {
         "Progressbar-Value": percent,
         "Column-location": columnLocation
     });
-    setToLocalStorage(tasks, 'tasks');
+    // setToLocalStorage(tasks, 'tasks');
+    await setItem('tasks', JSON.stringify(tasks));
     document.getElementById('edit-overlay-ok-btn').disabled = false;
     location.reload();
 }
@@ -372,7 +392,7 @@ function loadActiveSubtasks(t, k, i) {
  * @param {variable} k Is the contact index
  * @param {variable} i Is the index of the subtak
  */
-function activeSubtasks(k, i) {
+async function activeSubtasks(k, i) {
     let task = tasks[k];
     let subtask = document.getElementById(`subtasks${k}${i}`);
     let completeSubtaskStatus = task['Active-Subtasks'];
@@ -381,7 +401,8 @@ function activeSubtasks(k, i) {
     task['Progressbar-Value'] = getAmounTOfSubtasks(task);
     tasks.splice(k, 1);
     tasks.push(task);
-    setToLocalStorage(tasks, 'tasks');
+    // setToLocalStorage(tasks, 'tasks');
+    await setItem('tasks', JSON.stringify(tasks));
 }
 
 /**
@@ -531,11 +552,12 @@ function drop(ev) {
  * @param {string} data Is the task name and number
  * @param {HTMLAllCollection} target Target is the collectio of the target row where the task should be dropped
  */
-function changeTaskLocation(data, target) {
+async function changeTaskLocation(data, target) {
     let columnId = target.id;
     let index = data.slice(-1);
     tasks[index]['Column-location'] = columnId;
-    setToLocalStorage(tasks, 'tasks');
+    // setToLocalStorage(tasks, 'tasks');
+    await setItem('tasks', JSON.stringify(tasks));
     checkParentDivsChildren(columnId);
     howManyTasksPerColumn();
 }

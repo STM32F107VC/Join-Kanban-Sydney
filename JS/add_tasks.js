@@ -108,11 +108,6 @@ async function addTask(location) {
     let category = document.getElementById(`category-${location}`);
     let bgcCode = checkCategory(category);
     document.getElementById('submitBtn').disabled = true;
-
-    /* ------ */
-
-    console.log(loadTasks());
-
     tasks.push({
         "Title": title.value,
         "Description": description.value,
@@ -126,11 +121,10 @@ async function addTask(location) {
         "Progressbar-Value": percent,
         "Column-location": 'backlog'
     });
-    setToLocalStorage(tasks, 'tasks');
+    // original setToLocalStorage(tasks, 'tasks');
+    await setItem('tasks', JSON.stringify(tasks));
 
     /* ------ */
-
-    // await setItem('tasks', JSON.stringify(tasks));
     resetAddTaskForm(location);
     document.getElementById('submitBtn').disabled = false;
 }
