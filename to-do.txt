@@ -109,8 +109,12 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 ---Date: 02.03.24 ---
 - add_task.html fehler bei media query beheben✓
 - edit task overlay menu responsive machen Note: start unter 600px✓  
-- Wenn neue aufgabe von add_task.html oder board.html gespeichert wird, zuerst local storage auslesen, in tasks array pushen und dann alles nochmals speichern
+- Wenn neue aufgabe von add_task.html oder board.html gespeichert wird, zuerst local storage auslesen, in tasks array pushen und dann alles nochmals speichern✓
+- Remote storage einbinden-
+- Suchfunktion nach titel, beschreibung oder kategorie-
+- Wrap text in input field-
+
+---Date: 03.03.24 ---
 - Remote storage einbinden
 - Suchfunktion nach titel, beschreibung oder kategorie
 - Wrap text in input field
-
