@@ -369,6 +369,7 @@ button,
     }
 
     .content-column { 
+        min-height: 50px;
         height: fit-content;
         display: flex; 
         flex-direction: row;

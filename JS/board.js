@@ -28,19 +28,22 @@ async function init_board(id) {
 /**
  * Muss ich noch verkleinern
  */
-async function howManyTasksPerColumn() {
+function howManyTasksPerColumn() {
     let prioHigh = 'high';
     let increment = 0;
     saveDate = [];
+
     let toDo = document.getElementById('backlog').children.length;
     let inProgress = document.getElementById('in-progress').children.length;
     let awaitFeedback = document.getElementById('await-feedback').children.length;
     let done = document.getElementById('done').children.length;
+
     let amountOfTasks = tasks.length;
     let dateObject;
     let month;
     let year;
     let formatDate;
+
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         let prio = task['Prio'];
@@ -59,33 +62,23 @@ async function howManyTasksPerColumn() {
             formatDate = `${day}.${month}.${year}`;
         }
     }
-    if (formatDate == undefined) {
-        formatDate = 'No urgent task';
-    }
-    summaryInformations = {
-        'To-Do': toDo,
-        'In-Progress': inProgress,
-        'Await-Feedback': awaitFeedback,
-        'Done': done,
-        'Amount-Of-Tasks': amountOfTasks,
-        'Amount-Of-Urgent-Tasks': increment,
-        'Date': formatDate
-    };
-    // setToLocalStorage(summaryInformations, 'summary-informations');
-    await setItem('summary-informations', JSON.stringify(summaryInformations));
+
+    if (formatDate == undefined) formatDate = 'No urgent task';
+    saveSummaryInformations(toDo, inProgress, awaitFeedback, done, amountOfTasks, increment, formatDate);
 }
 
-/**
- * Load tasks from local storage ---------------- change to remote storage later!!
- */
-// async function loadTasks(locate) {
-//     let tasksToString = localStorage.getItem('tasks');
-//     if (tasksToString) {
-//         let object = JSON.parse(tasksToString);
-//         tasks = object;
-//         if (locate) loadToColumn();
-//     }
-// }
+async function saveSummaryInformations(tD, iP, aF, d, aOF, i, fD) {
+    summaryInformations = {
+        'To-Do': tD,
+        'In-Progress': iP,
+        'Await-Feedback': aF,
+        'Done': d,
+        'Amount-Of-Tasks': aOF,
+        'Amount-Of-Urgent-Tasks': i,
+        'Date': fD
+    };
+    await setItem('summary-informations', JSON.stringify(summaryInformations));
+}
 
 /**
  * Load tasks from backend
@@ -96,9 +89,6 @@ async function loadTasks(locate) {
         if (locate) loadToColumn();
     } catch (error) { }
 }
-
-
-
 
 /**
  * Load tasks to matching column, which they were attached last
@@ -111,7 +101,6 @@ function loadToColumn() {
         if (column.childNodes !== 0) { column.innerHTML += taskTemplate(task, i); }
         renderAssignedContacts(task, i, false);
     }
-    noTaskToDo();
 }
 
 /**
@@ -244,15 +233,8 @@ function showTaskOverlay(i) {
  */
 async function deleteTask(j) {
     tasks.splice(j, 1);
-
-    // localStorage.setItem('tasks', JSON.stringify(tasks));
-    // tasks = localStorage.getItem('tasks');
-
-    /************/
     await setItem('tasks', JSON.stringify(tasks));
     tasks = JSON.parse(await getItem('tasks'));
-    /************/
-
     location.replace('board.html');
 }
 
@@ -326,7 +308,6 @@ async function saveEditTaskChanges(taskIndex) {
         "Progressbar-Value": percent,
         "Column-location": columnLocation
     });
-    // setToLocalStorage(tasks, 'tasks');
     await setItem('tasks', JSON.stringify(tasks));
     document.getElementById('edit-overlay-ok-btn').disabled = false;
     location.reload();
@@ -401,7 +382,6 @@ async function activeSubtasks(k, i) {
     task['Progressbar-Value'] = getAmounTOfSubtasks(task);
     tasks.splice(k, 1);
     tasks.push(task);
-    // setToLocalStorage(tasks, 'tasks');
     await setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -556,10 +536,10 @@ async function changeTaskLocation(data, target) {
     let columnId = target.id;
     let index = data.slice(-1);
     tasks[index]['Column-location'] = columnId;
-    // setToLocalStorage(tasks, 'tasks');
     await setItem('tasks', JSON.stringify(tasks));
-    checkParentDivsChildren(columnId);
     howManyTasksPerColumn();
+    // noTaskToDo();
+    // checkParentDivsChildren(columnId);
 }
 
 /**
@@ -593,7 +573,6 @@ function checkParentDivsChildren(columnId) {
     let targetColumn = document.getElementById(columnId);
     if (targetColumn.children.length > 0) {
         let child = targetColumn.getElementsByClassName('noTask');
-        noTaskToDo();
         targetColumn.removeChild(child[0]);
     }
 }

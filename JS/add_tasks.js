@@ -17,7 +17,7 @@ let assignedContacts = [];
 async function init_tasks(id) {
     await includeHTML();
     await loadContacts();
-    loadTasks();
+    await loadTasks();
     markActiveLink(id);
     greetUser();
     getAddTaskMenu('basic');
@@ -121,7 +121,8 @@ async function addTask(location) {
         "Progressbar-Value": percent,
         "Column-location": 'backlog'
     });
-    // original setToLocalStorage(tasks, 'tasks');
+
+    // setToLocalStorage(tasks, 'tasks');
     await setItem('tasks', JSON.stringify(tasks));
 
     /* ------ */
@@ -181,7 +182,6 @@ function savePriorityState(id, location) {
     let div = document.getElementById(`priority-container-${location}`);
     let priorityImg = div.querySelector('#prio-' + `${id}-` + `${location}`);
     let priorityImgOld = div.querySelector('#prio-' + `${oldImg}-` + `${location}`);
-    // let priorityImgId = priorityImg.id;
 
     if (location == 'edit-overlay') prioEditDefault(location);
 

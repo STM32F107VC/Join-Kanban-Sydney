@@ -209,6 +209,7 @@ function checkedCheckbox(cB) {
     }
 }
 
+/****************************/
 function searchTask() {
     let search = document.getElementById('search').value;
     console.log(search);
@@ -221,6 +222,7 @@ function searchTask() {
     //     if (name.includes(search)) { renderPokemonCards(k); }
     // }
 }
+/****************************/
 
 /**
  * Deletes complet user account
