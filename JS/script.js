@@ -209,21 +209,6 @@ function checkedCheckbox(cB) {
     }
 }
 
-/****************************/
-function searchTask() {
-    let search = document.getElementById('search').value;
-    console.log(search);
-    // let div = document.getElementById('main-div-board')
-    // let container = document.getElementById("pokedex");
-    // container.innerHTML = '';
-    // search = search.toLowerCase();
-    // for (let k = 0; k < pokemonNames.length; k++) {
-    //     let name = pokemonNames[k];
-    //     if (name.includes(search)) { renderPokemonCards(k); }
-    // }
-}
-/****************************/
-
 /**
  * Deletes complet user account
  * 

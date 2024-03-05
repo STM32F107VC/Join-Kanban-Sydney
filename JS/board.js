@@ -576,3 +576,28 @@ function checkParentDivsChildren(columnId) {
         targetColumn.removeChild(child[0]);
     }
 }
+
+/**
+ * Search tasks depending on title or description and display them below search bar
+ */
+function searchTask() {
+    let search = document.getElementById('search').value;
+    let boardContainer = document.querySelector('.drag-drop');
+    let displayResult = document.getElementById('display-searched-tasks');
+    boardContainer.classList.add('d-none');
+    displayResult.textContent = '';
+    for (let k = 0; k < tasks.length; k++) {
+        let task = tasks[k];
+        let title = task['Title'];
+        let description = task['Description'];
+        if (title.includes(search) || description.includes(search)) {
+            boardContainer.classList.add('d-none');
+            displayResult.classList.remove('d-none');
+            displayResult.innerHTML += taskTemplate(task, k);
+        }
+        if (search === '') {
+            boardContainer.classList.remove('d-none');
+            displayResult.classList.add('d-none');
+        }
+    }
+}
