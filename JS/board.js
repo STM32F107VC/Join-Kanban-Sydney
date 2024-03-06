@@ -558,6 +558,7 @@ function noTaskToDo() {
             nothingInside.src = './assets/img/no_task_in_column.svg';
             nothingInside.classList.add('noDrop', 'noTask');
             getLocation.appendChild(nothingInside);
+            /* Test */
         }
     }
 }
