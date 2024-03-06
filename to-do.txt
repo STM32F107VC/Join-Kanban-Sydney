@@ -1,7 +1,7 @@
 ---Legende---
 - erledigt = ✓
 - nicht erledigt = -
-- ist das problem behoben = ? (Theoretisch erledigt✓ korrekte funktionalität ungewiss)
+- ist das problem behoben = ? (erledigt auf funktionalität prüfen)
 
 Important: local storage durch backend ersetzten
 
@@ -123,7 +123,16 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 - Suchfunktion nach titel, beschreibung oder kategorie-
 
 ---Date: 05.03.24 ---
-- Remote storage einbinden
-- Suchfunktion nach titel, beschreibung oder 
+- Remote storage einbinden✓
+- Suchfunktion nach titel oder beschreibung✓
+
+---Date: 06.03.24 ---
+- Funktionen verkleinern
+- 
+
+
+
+Notiz: 
+- Es besteht ein Fehler darin, dass das Bild "no Taks to Do" vermutlich als child element einer spalte angeschaut wird und somit eine 1 in der anzahl an tasks in der jeweiligen spalte entsteht. Daher muss vorher zuerst abgefragt werden, ob sich in der spalte ein task befindet oder dieses bild. Stehen geblieben bei: howManyTasksPerColumn()
+
 - style.css ln:371 rmeove hight
-Notiz: Es besteht ein Fehler darin, dass das Bild "no Taks to Do" vermutlich als child element einer spalte angeschaut wird und somit eine 1 in der anzahl an tasks in der jeweiligen spalte entsteht. Daher muss vorher zuerst abgefragt werden, ob sich in der spalte ein task befindet oder dieses bild. Stehen geblieben bei: howManyTasksPerColumn(),
