@@ -127,12 +127,17 @@ in den div, welcher die gerenderten kontakte anzeigt, wieder werte zu übergeben
 - Suchfunktion nach titel oder beschreibung✓
 
 ---Date: 06.03.24 ---
+- Funktionen verkleinern-
+
+
+---Date: 10.03.24 ---
 - Funktionen verkleinern
-- 
-
-
+- Templates auslagern
+- Console.log statements entfernen
 
 Notiz: 
 - Es besteht ein Fehler darin, dass das Bild "no Taks to Do" vermutlich als child element einer spalte angeschaut wird und somit eine 1 in der anzahl an tasks in der jeweiligen spalte entsteht. Daher muss vorher zuerst abgefragt werden, ob sich in der spalte ein task befindet oder dieses bild. Stehen geblieben bei: howManyTasksPerColumn()
 
 - style.css ln:371 rmeove hight
+
+- Problem das tasks nicht mehr geladen werden. Vermutung: Ich lese nicht alle notwendigen dateien aus dem remote storage aus. Beim code aufräumen habe ich wahrscheinlich etwas rausgelöscht.

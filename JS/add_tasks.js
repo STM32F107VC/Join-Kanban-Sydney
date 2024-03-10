@@ -124,6 +124,7 @@ async function addTask(location) {
 
     // setToLocalStorage(tasks, 'tasks');
     await setItem('tasks', JSON.stringify(tasks));
+    // howManyTasksPerColumn();
 
     /* ------ */
     resetAddTaskForm(location);

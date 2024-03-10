@@ -84,10 +84,11 @@ async function saveSummaryInformations(tD, iP, aF, d, aOF, i, fD) {
  * Load tasks from backend
  */
 async function loadTasks(locate) {
-    try {
-        tasks = JSON.parse(await getItem('tasks'));
+    let tasksToString = await getItem('tasks');
+    if (tasksToString) {
+        tasks = JSON.parse(tasksToString);
         if (locate) loadToColumn();
-    } catch (error) { }
+    }
 }
 
 /**
@@ -341,6 +342,7 @@ function renderAssignedContacts(t, i, flag) {
 /**
  * Render subtasks in big task view
  * @param {JSON} t Includes a complete task
+ * @param {variable} k Is the index of the subtask
  * @param {variable} i Is the contact index
  */
 function renderSubtask(t, k, location) {
@@ -358,6 +360,12 @@ function renderSubtask(t, k, location) {
     }
 }
 
+/**
+ * Check or uncheck subtask depending on if its activ or not
+ * @param {JSON} t Includes a complete task
+ * @param {variable} k Is the index of the subtask
+ * @param {variable} i Is the contact index
+ */
 function loadActiveSubtasks(t, k, i) {
     let activeSubtask = t['Active-Subtasks'][i];
     let subtask = document.getElementById(`subtasks${k}${i}`);
@@ -558,7 +566,6 @@ function noTaskToDo() {
             nothingInside.src = './assets/img/no_task_in_column.svg';
             nothingInside.classList.add('noDrop', 'noTask');
             getLocation.appendChild(nothingInside);
-            /* Test */
         }
     }
 }
