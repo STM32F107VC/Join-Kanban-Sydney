@@ -29,21 +29,41 @@ async function init_board(id) {
  * Muss ich noch verkleinern
  */
 function howManyTasksPerColumn() {
-    let prioHigh = 'high';
     let increment = 0;
     saveDate = [];
+    let colArray = valueOfTasks();
+    let dateObject;
+    let formatDate;
+    let array;
+    array = getUrgentDate(formatDate, increment, dateObject);
+    formatDate = array[0];
+    increment = array[1];
+    if (formatDate == undefined) formatDate = 'No urgent task';
+    saveSummaryInformations(colArray[0], colArray[1], colArray[2], colArray[3], colArray[4], increment, formatDate);
+}
 
+/**
+ * Get total amount of tasks in board and per column
+ * @returns Amount of tasks in board total and per column
+ */
+function valueOfTasks() {
     let toDo = document.getElementById('backlog').children.length;
     let inProgress = document.getElementById('in-progress').children.length;
     let awaitFeedback = document.getElementById('await-feedback').children.length;
     let done = document.getElementById('done').children.length;
-
     let amountOfTasks = tasks.length;
-    let dateObject;
-    let month;
-    let year;
-    let formatDate;
+    return [toDo, inProgress, awaitFeedback, done, amountOfTasks];
+}
 
+/**
+ * Get from all urgent task the most urgent date
+ * @param {string} formatDate Includes the most urgent date
+ * @param {variable} increment Total amount of urgent tasks 
+ * @param {*} dateObject 
+ * @returns 
+ */
+function getUrgentDate(formatDate, increment, dateObject) {
+    let prioHigh = 'high';
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         let prio = task['Prio'];
@@ -56,17 +76,19 @@ function howManyTasksPerColumn() {
                 let date = saveDate[j];
                 dateObject = date.date;
             }
-            day = ('0' + dateObject.getDate()).slice(-2);
-            month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
-            year = dateObject.getFullYear();
+            let day = ('0' + dateObject.getDate()).slice(-2);
+            let month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
+            let year = dateObject.getFullYear();
             formatDate = `${day}.${month}.${year}`;
         }
     }
-
-    if (formatDate == undefined) formatDate = 'No urgent task';
-    saveSummaryInformations(toDo, inProgress, awaitFeedback, done, amountOfTasks, increment, formatDate);
+    return [formatDate, increment];
 }
 
+/**
+ * Save summary informations to display on summary.html
+ * 
+ */
 async function saveSummaryInformations(tD, iP, aF, d, aOF, i, fD) {
     summaryInformations = {
         'To-Do': tD,
@@ -144,29 +166,8 @@ function closeShowTaskOverlay() {
     document.getElementById('edit-task-overlay-view').classList.add('d-none');
     assignedContacts = [];
     subtasks = [];
+    oldImg = undefined;
     window.location = window.location;
-}
-
-/**
- * Render tasks to board
- * @param {JSON} task JSON with all informations of a task
- * @returns Returns the rendered task
- */
-function taskTemplate(task, i) {
-    return /*html*/`
-                    <div id="task${i}" onclick="showTaskOverlay(${i})" class="task flex flex-column ft-general noDrop" id="drag1" draggable='true'  ondragstart='drag(event)'>
-                        <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-16px fw-400 mb-24px noDrop">${task['Category']}</div>
-                        <div id="taskTitle${i}" class="task-title fs-16px fw-700 mb-8px noDrop">${task['Title']}</div>
-                        <div id="taskDescription${i}" class="flex x-start mb-24px fs-16px col-grey noDrop">${task['Description']}</div>
-                        <div id="progress${i}" class="flex x-space-betw y-center fs-12px mb-24px noDrop">
-                            <progress id="progressBar${i}" class="noDrop" value="${getAmounTOfSubtasks(task)}" max="100"></progress> 
-                            <span class="noDrop">${setCurrentSubtaskLength()}/${getSubtasks(task)}</span>
-                        </div>
-                        <div class="flex x-space-betw noDrop">
-                            <div id="assignedContact${i}" class="flex pl-6px noDrop"></div>
-                            ${renderPrioImg(task, i)}
-                        </div>
-                    </div>`;
 }
 
 /**
@@ -194,35 +195,7 @@ function showTaskOverlay(i) {
     if (str !== undefined) { priority = str.charAt(0).toUpperCase() + str.slice(1); }
     let div = document.getElementById('tasks-overlay-view');
     div.classList.remove('d-none');
-    div.innerHTML = /*html*/`
-        <div class="ft-general">
-            <div class="flex x-space-betw y-center">
-                <div id="category${i}" style="background-color:${task['Bgc-Code']}" class="task-category x-start col-white fs-23px fw-400">${task['Category']}</div>
-                <div class="close-cross p-zero"><img onclick="closeShowTaskOverlay()" class="p-8px"
-                        src="assets/img/close.png" alt="close"></div>
-                </div>
-            </div>
-            <div class="fs-61px fw-700">${task['Title']}</div>
-            <div class="fs-20px fw-400">${task['Description']}</div>
-            <div><span class="col-grey-blue">Due date:</span>&nbsp;&nbsp;&nbsp;${task['Date']}</div>
-            <div id='priority-state-overlay' class="flex y-center">
-                <span class="col-grey-blue">Priority:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${priority}&nbsp;
-                <img src="assets/img/prio-indicator-${priority}.svg" alt="prio-${priority}">
-            </div>
-            <div id="assignedContactPreView${i}">
-                <div class="mb-8px col-grey-blue">Assigned To:</div>
-            </div>
-            <div>
-                <div class="mb-8px col-grey-blue">Subtasks</div>
-                <div id="renderSubtask${i}-overlay"></div>
-            </div>
-
-            <div class="flex x-end gap-16px remove-margin">
-                    <img onclick="deleteTask(${i});" class="delete c-pointer" src="/assets/img/delete_default.png" alt="delete">
-                    <img src="/assets/img/subtasks_vector.svg" alt="separator">
-                    <img onclick="showEditTaskOverlay('${i}')" class="edit c-pointer" src="/assets/img/edit_default.png" alt="edit">
-            </div>
-        </div>`;
+    div.innerHTML = renderTasksOverlay(i, task, priority);
     if (str == undefined) { document.getElementById('priority-state-overlay').classList.add('d-none'); }
     renderAssignedContacts(task, i, true);
     renderSubtask(task, i, 'overlay');
@@ -254,7 +227,7 @@ function showEditTaskOverlay(i) {
 }
 
 /**
- * 
+ * Get all task values form JSON
  * @param {variable} i Is the task index 
  */
 function getTaskValues(i) {
@@ -274,12 +247,27 @@ function getTaskValues(i) {
         subtasks.push(subtask);
         renderSubtasks.innerHTML += subtaskTemplate(countUp, subtask, location);
     }
+    let prioState = document.getElementById('prio-' + oldImg + '-edit-overlay');
+    if (prioState !== null) prioState.src = `assets/img/prio-${task['Prio']}.svg`;
+    setEditableTaskValues(title, description, date);
+}
+
+/**
+ * Sets the default priority img as like no priority is selected
+ */
+function setDefaultPrioImg() {
     document.getElementById('prio-low-edit-overlay').src = 'assets/img/prio-default-low.png';
     document.getElementById('prio-medium-edit-overlay').src = 'assets/img/prio-default-medium.png';
     document.getElementById('prio-high-edit-overlay').src = 'assets/img/prio-default-high.png';
-    let prioState = document.getElementById(`prio-${task['Prio']}-edit-overlay`);
-    prioState.src = `assets/img/prio-${task['Prio']}.svg`;
-    oldImg = undefined;
+}
+
+/**
+ * Insert current title, description and date into editable task overlay menu
+ * @param {string} title Includes current task title 
+ * @param {string} description Includes current task description
+ * @param {string} date Includes current task deadline date
+ */
+function setEditableTaskValues(title, description, date) {
     document.getElementById('title-editable').value = title;
     document.getElementById('textarea-editable').value = description;
     document.getElementById('date-editable').value = date;
@@ -313,7 +301,6 @@ async function saveEditTaskChanges(taskIndex) {
     document.getElementById('edit-overlay-ok-btn').disabled = false;
     location.reload();
 }
-
 
 /**
  * Get contacts to render in another step
@@ -351,13 +338,24 @@ function renderSubtask(t, k, location) {
     for (let i = 0; i < subtasks.length; i++) {
         percentage = subtasks.length;
         let subtask = subtasks[i];
-        div.innerHTML += /*html*/`
-            <div class="subtasks flex y-center gap-16px">
-                <input class="flex x-center y-center checkbox" onclick="activeSubtasks('${k}', ${i})" type="checkbox" id="subtasks${k}${i}">
-                <div>${subtask}</div>
-            </div>`;
+        div.innerHTML += renderActiveSubtask(k, i, subtask);
         loadActiveSubtasks(t, k, i);
     }
+}
+
+/**
+ * 
+ * @param {*} k 
+ * @param {*} i 
+ * @param {*} subtask 
+ * @returns 
+ */
+function renderActiveSubtask(k, i, subtask) {
+    return /*html*/`
+        <div class="sub-pseudo subtasks flex y-center gap-16px">
+            <input class="flex x-center y-center checkbox" onclick="activeSubtasks('${k}', ${i})" type="checkbox" id="subtasks${k}${i}">
+            <div>${subtask}</div>
+        </div>`;
 }
 
 /**
@@ -411,37 +409,6 @@ function isSubtaskCheckboxChecked(subtask, completeSubtaskStatus, i) {
 }
 
 /**
- * Render contacts
- * @param {variable} aUC Includes the acronym of contact
- * @param {variable} i Is the contact index
- * @param {string} bgc Is the background-color code
- * @returns Rendered contact info sign includes acronym and
- *          a background color in a circle
- */
-function assigneContactsTemplate(aUC, i, bgc) {
-    return /*html*/`
-                    <div id='${aUC}${i}' class="acronym acronym-dimensions-small flex x-center y-center fs-12px noDrop" style="background-color: #${bgc}">${aUC}
-                    </div>`;
-}
-
-/**
-* Render contacts
- * @param {variable} aUC Includes the acronym of contact
- * @param {variable} i Is the contact index
- * @param {string} bgc Is the background-color code
- * @returns Rendered contact info sign includes acronym and
- *          a background color in a circle
- */
-function assigneContactsTemplatePreview(c, aUC, i, bgc) {
-    return /*html*/`
-                <div  class="flex y-center contacts-padding">
-                    <div id='${aUC}${i}' class="acronym acronym-dimensions-medium flex x-center y-center fs-12px" style="background-color: #${bgc}">${aUC}
-                    </div>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>${c['name']}</span>
-                </div>`;
-}
-
-/**
  * Generate acronym for example, Max Mustermann => MM
  * @param {JSON} contact JSON with all values a contact contains
  * @returns Returns the built acronym and background-color
@@ -451,21 +418,6 @@ function buildAcronym(contact) {
     let str = contact['name'].match(/\b(\w)/g);
     let acronymUpperCase = str.join('').toUpperCase();
     return [acronymUpperCase, bgc];
-}
-
-/**
- * Check if a priority state is selected. When selected, insert priority img,
- * when no state selected, render image and hide to edit later and add a priotity state.
- * @param {JSON} t Is a JSON with all feature of one task in it 
- * @param {variable} i Index of current JSON-array place
- * @returns Returns the rendered img
- */
-function renderPrioImg(t, i) {
-    if (t['Prio'] !== undefined) {
-        return /*html*/`<img class="noDrop" src="assets/img/prio-indicator-${t['Prio']}.svg" alt="prio-${t['Prio']}">`;
-    } else {
-        return /*html*/`<img class="d-none noDrop" src="assets/img/prio-indicator-${t['Prio']}.svg" alt="prio-${t['Prio']}">`;
-    }
 }
 
 /**
@@ -508,19 +460,23 @@ function getSubtasks(t) {
 
 /**
  * Allow drop action
- * @param {} ev 
+ * @param {tokenlist} ev Tokenlist from element to trop
  */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * Gets several values from draged element
+ * @param {tokenlist} ev Tokenlist from dragged element
+ */
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
 /**
  * 
- * @param {*} ev 
+ * @param {tokenlist} ev Tokenlist from element to drop
  */
 function drop(ev) {
     let target = ev.target;
@@ -546,8 +502,6 @@ async function changeTaskLocation(data, target) {
     tasks[index]['Column-location'] = columnId;
     await setItem('tasks', JSON.stringify(tasks));
     howManyTasksPerColumn();
-    // noTaskToDo();
-    // checkParentDivsChildren(columnId);
 }
 
 /**
@@ -594,6 +548,14 @@ function searchTask() {
     let displayResult = document.getElementById('display-searched-tasks');
     boardContainer.classList.add('d-none');
     displayResult.textContent = '';
+    getTaskToBeSearched(search, boardContainer, displayResult);
+
+}
+
+/**
+ * Iterate through tasks array and find matching task(s)
+ */
+function getTaskToBeSearched(search, boardContainer, displayResult) {
     for (let k = 0; k < tasks.length; k++) {
         let task = tasks[k];
         let title = task['Title'];

@@ -41,11 +41,7 @@ addEventListener("resize", (event) => {
     trackWindowWidth = window.innerWidth;
     let detailedContact = document.getElementById('contact-view-basic');
     let contactBook = document.querySelector('.contacts-div');
-    // contactBook.classList.remove('d-none');
-
-
     if (window.location.href.includes('contacts.html')) {
-
         if (detailedContact !== null && contactBook !== null) {
             if (trackWindowWidth < 1100) {
                 detailedContact.classList.add('d-none');

@@ -72,20 +72,6 @@ function showAssignedContact(i, location) {
 }
 
 /**
- * Render selected contacts
- * @param {variable} auC Acronym of contact 
- * @param {variable} i This index (i) is the number for selecting
- * @param {string} bgc Color code for background-color
- * @returns 
- */
-function renderSelectedContact(auC, i, bgc) {
-    return /*html*/`
-    <div id='${auC}${i}' class="acronym p-6px flex x-center y-center mr-4px" style="background-color: #${bgc}">
-        ${auC}
-    </div>`;
-}
-
-/**
  * Generate acronym for example, Max Mustermann => MM
  * @param {JSON} contact JSON with all values a contact contains
  * @returns Returns the built acronym and background-color
@@ -98,7 +84,7 @@ function buildAcronym(contact) {
 }
 
 /**
- * Function to add new tasks and save into tasks JSON-array
+ * Function to get task values for new task
  *
  */
 async function addTask(location) {
@@ -108,6 +94,21 @@ async function addTask(location) {
     let category = document.getElementById(`category-${location}`);
     let bgcCode = checkCategory(category);
     document.getElementById('submitBtn').disabled = true;
+    pushToTasksArray(title, description, date, category, bgcCode);
+    await setItem('tasks', JSON.stringify(tasks));
+    resetAddTaskForm(location);
+    document.getElementById('submitBtn').disabled = false;
+}
+
+/**
+ * Generate JSON and push it to tasks array
+ * @param {string} title Titel of task
+ * @param {string} description Description of task
+ * @param {string} date Date task should be finished
+ * @param {string} category Category of task user story or technical task
+ * @param {string} bgcCode The background color code for category
+ */
+function pushToTasksArray(title, description, date, category, bgcCode) {
     tasks.push({
         "Title": title.value,
         "Description": description.value,
@@ -121,14 +122,6 @@ async function addTask(location) {
         "Progressbar-Value": percent,
         "Column-location": 'backlog'
     });
-
-    // setToLocalStorage(tasks, 'tasks');
-    await setItem('tasks', JSON.stringify(tasks));
-    // howManyTasksPerColumn();
-
-    /* ------ */
-    resetAddTaskForm(location);
-    document.getElementById('submitBtn').disabled = false;
 }
 
 /**
@@ -183,9 +176,7 @@ function savePriorityState(id, location) {
     let div = document.getElementById(`priority-container-${location}`);
     let priorityImg = div.querySelector('#prio-' + `${id}-` + `${location}`);
     let priorityImgOld = div.querySelector('#prio-' + `${oldImg}-` + `${location}`);
-
     if (location == 'edit-overlay') prioEditDefault(location);
-
     if (oldImg === undefined) setFirstTimePriorityState(priorityImg, id, location);
     else {
         if (oldImg !== id) setCurrentPriorityState(priorityImg, priorityImgOld, id);
@@ -276,17 +267,15 @@ function toggleIcons(location) {
  */
 function addSubtask(location) {
     let list = document.getElementById('displaySubtasks-' + `${location}`);
-
     let input = document.getElementById('subtasks-' + `${location}`);
     let inputValue = input.value;
-
     if ((list.children.length < 2) && !(inputValue === "")) {
         subtasks.push(inputValue);
         state = subtasks.length - 1;
         list.innerHTML += subtaskTemplate(state, inputValue, location);
         let editImg = document.getElementById(`edite${state}-${location}`);
         editImg.addEventListener('click', clickHandlerEdit);
-    } else { console.log('Reached maximum of insertable subtasks.'); }
+    }
     clearSubtasks(input);
 }
 
@@ -302,24 +291,6 @@ function clickHandlerEdit() {
  */
 function clickHandlerSave(state, location) {
     saveSubtaskChanges(state, location);
-}
-
-/**
- * Template to render new subtask
- * @param {variable} state Index of the subtask
- * @param {string} inputValue
- * @returns
- */
-function subtaskTemplate(state, inputValue, location) {
-    return /*html*/ `
-                    <div ondblclick="editSubtask('${state}', '${location}');" id="subtask${state}-${location}" class="sub-pseudo c-pointer flex x-space-betw y-center mb-4px">
-                        <ul class="w-100 outline-none"><li id="value${state}-${location}">${inputValue}</li></ul>
-                        <div id="subtask-delete-accept-${state}-${location}" class="flex x-space-betw y-center opacity-zero">
-                            <img id="delete${state}-${location}" onclick="deleteSubtask('${state}', '${location}');" src="/assets/img/subtasks_bin.svg" alt="delete">
-                            <img class="p-lr" src="/assets/img/Vector 19.svg" alt="separator">
-                            <img id="edite${state}-${location}" onclick="editSubtask('${state}', '${location}');" src="/assets/img/subtasks_pencil.svg" alt="edit">
-                        </div>
-                    </div>`;
 }
 
 /**

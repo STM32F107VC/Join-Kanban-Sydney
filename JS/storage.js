@@ -1,4 +1,4 @@
-/* Declare variables and arrays */
+/* Declare variables */
 const STORAGE_TOKEN = 'XVVNZBR9H7OQFN0AM2E8ACL2BDF75H76T9R5ZYG0';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
