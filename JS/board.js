@@ -9,6 +9,11 @@ let subtasksLength;
 let percent;
 let percentage;
 let currentSubtask;
+let toDo;
+let inProgress;
+let awaitFeedback;
+let done;
+
 
 /**
  * Init function called on body="onload" to load
@@ -23,6 +28,7 @@ async function init_board(id) {
     getAddTaskMenu('overlay');
     assignContact('overlay');
     howManyTasksPerColumn();
+    noTaskToDo();
 }
 
 /**
@@ -47,10 +53,10 @@ function howManyTasksPerColumn() {
  * @returns Amount of tasks in board total and per column
  */
 function valueOfTasks() {
-    let toDo = document.getElementById('backlog').children.length;
-    let inProgress = document.getElementById('in-progress').children.length;
-    let awaitFeedback = document.getElementById('await-feedback').children.length;
-    let done = document.getElementById('done').children.length;
+    toDo = document.getElementById('backlog').children.length;
+    inProgress = document.getElementById('in-progress').children.length;
+    awaitFeedback = document.getElementById('await-feedback').children.length;
+    done = document.getElementById('done').children.length;
     let amountOfTasks = tasks.length;
     return [toDo, inProgress, awaitFeedback, done, amountOfTasks];
 }
@@ -480,6 +486,7 @@ function drag(ev) {
  */
 function drop(ev) {
     let target = ev.target;
+    let id = target.id;
     let data = ev.dataTransfer.getData("text");
     if (target.classList && target.classList.contains('noDrop')) {
         ev.preventDefault();
@@ -487,6 +494,11 @@ function drop(ev) {
         ev.preventDefault();
         ev.target.appendChild(document.getElementById(data));
         changeTaskLocation(data, target);
+        checkParentDivsChildren(id);
+
+        /**------- */
+        // howManyTasksPerColumn();
+        noTaskToDo();
     }
 }
 
@@ -501,7 +513,6 @@ async function changeTaskLocation(data, target) {
     let index = data.slice(-1);
     tasks[index]['Column-location'] = columnId;
     await setItem('tasks', JSON.stringify(tasks));
-    howManyTasksPerColumn();
 }
 
 /**
