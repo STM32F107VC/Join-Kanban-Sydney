@@ -92,7 +92,7 @@ function getUrgentDate(formatDate, increment, dateObject) {
 }
 
 /**
- * Save summary informations to display on summary.html
+ * Save all summary informations to display on summary.html
  * 
  */
 async function saveSummaryInformations(tD, iP, aF, d, aOF, i, fD) {
@@ -495,10 +495,21 @@ function drop(ev) {
         ev.target.appendChild(document.getElementById(data));
         changeTaskLocation(data, target);
         checkParentDivsChildren(id);
-
-        /**------- */
-        // howManyTasksPerColumn();
+        removeColumnPlaceholder();
+        howManyTasksPerColumn();
         noTaskToDo();
+    }
+}
+
+/**
+ * Remove img "No Task To Do" before getting amount of tasks per column
+ * After rendering "No Task To Do" img, so that this img isn't countet as a task
+ */
+function removeColumnPlaceholder() {
+    let locations = ['backlog', 'in-progress', 'await-feedback', 'done'];
+    for (let i = 0; i < locations.length; i++) {
+        let location = locations[i];
+        checkParentDivsChildren(location);
     }
 }
 
@@ -545,8 +556,11 @@ function noTaskToDo() {
 function checkParentDivsChildren(columnId) {
     let targetColumn = document.getElementById(columnId);
     if (targetColumn.children.length > 0) {
-        let child = targetColumn.getElementsByClassName('noTask');
-        targetColumn.removeChild(child[0]);
+        let childrenWithClass = targetColumn.getElementsByClassName('noTask');
+        if (childrenWithClass.length > 0) {
+            let child = childrenWithClass[0];
+            targetColumn.removeChild(child);
+        }
     }
 }
 
