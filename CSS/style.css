@@ -342,7 +342,21 @@ button,
 
 /* Media Queries */
 @media only screen and (max-width: 1400px) {
+    div.team-slogan { padding: 24px; }
+
+    #contacts-title { font-size: 47px; }
+    
     div.vertical-line { padding: 32px; }
+    
+    .drag-drop { flex-direction: column; }
+
+    .vertical-bl-line-contacts { display: none; }
+
+    #modify-contact > div > span { font-size: 41px; };
+
+    .drag-drop,
+    .drag-drop > div,
+    .content-column { width: 100%; }
 
     .vector-bl-horizontal-contacts {
         display: unset;
@@ -355,12 +369,6 @@ button,
         width: -webkit-fill-available;
         padding-right: 24px;
     }
-
-    .drag-drop { flex-direction: column; }
-
-    .drag-drop,
-    .drag-drop > div,
-    .content-column { width: 100%; }
 
     .search-section > div {
         display: flex;
@@ -384,18 +392,10 @@ button,
         margin-bottom: 16px;
     }
 
-    .vertical-bl-line-contacts { display: none; }
-
-    #modify-contact > div > span { font-size: 41px; };
-
-    div.team-slogan { padding: 24px; }
-
     #modify-contact { 
         margin-bottom: 64px;
         word-wrap: break-word;
     }
-
-    #contacts-title { font-size: 47px; }
 }
 
 @media only screen and (max-width: 1300px) {
@@ -417,20 +417,23 @@ button,
 }
 
 @media only screen and (max-width: 1200px) {
-    #add-tasks-overlay-view { 
-        padding: 32px; 
-        height: initial;
-    }
-
-     #displaySelectedContacts-overlay { margin-bottom: 24px; }
-
     .contacts-overlay { height: initial; }
 
-    #close-add-contact-responsive,
-    #close-edit-contact-responsive { 
-        display: flex;
-        padding: 0; 
-    }
+    #displaySelectedContacts-overlay { margin-bottom: 24px; }
+
+    #overlay-contacts form,
+    #edit-contacts form { align-items: center; }
+
+    #add-overlay-forms form,
+    #edit-overlay-forms > form { padding: 8px; }
+
+    #add-tasks-overlay-view #required-span { display: none; }
+
+    #overlay-contacts,
+    #edit-contacts,
+    #add-tasks-overlay-view form,
+    #edit-contacts > div:last-of-type,
+    #overlay-contacts > div:last-of-type { flex-direction: column; }
 
     .vertical-line,
     #close-add-contact-default,
@@ -439,10 +442,15 @@ button,
     #edit-contacts img.join-logo-small,
     #overlay-contacts > div:last-of-type form > div.gap-35px > button.btn-light { display: none; }
 
-    #overlay-contacts > div:last-of-type form > div.gap-35px,
-    #edit-contacts > div:last-of-type form > div.gap-35px {
-        justify-content: center;
-        padding: 0;
+    #add-tasks-overlay-view { 
+        padding: 32px; 
+        height: initial;
+    }
+
+    #close-add-contact-responsive,
+    #close-edit-contact-responsive { 
+        display: flex;
+        padding: 0; 
     }
 
     .overlay-forms {
@@ -450,12 +458,6 @@ button,
         border-bottom-right-radius: 30px;
         border-bottom-left-radius: 30px;
     }
-    
-    #overlay-contacts,
-    #edit-contacts,
-    #add-tasks-overlay-view form,
-    #edit-contacts > div:last-of-type,
-    #overlay-contacts > div:last-of-type { flex-direction: column; }
 
     #overlay-contacts > div.bg-dark-blue,
     #edit-contacts > div.bg-dark-blue { 
@@ -473,13 +475,11 @@ button,
         margin-bottom: 81px;
     }
 
-    #overlay-contacts form,
-    #edit-contacts form { align-items: center; }
-
-    #add-overlay-forms form,
-    #edit-overlay-forms > form { padding: 8px; }
-
-    #add-tasks-overlay-view #required-span { display: none; }
+    #overlay-contacts > div:last-of-type form > div.gap-35px,
+    #edit-contacts > div:last-of-type form > div.gap-35px {
+        justify-content: center;
+        padding: 0;
+    }
 }
 
 @media only screen and (min-width: 1100px) {
@@ -513,44 +513,44 @@ button,
 @media only screen and (max-width: 1000px) {
     .join-title {font-size: 47px; }
 
-    .vertical-bl-line { padding: 0 20px; }
-
     .summary-container { left: 290px; }
+
+    .vertical-bl-line { padding: 0 20px; }
 
     #progress-overview div { width: 163px; }
 }
 
 @media only screen and (max-width: 900px) {
-    .summary-container > div > div > div > span.dark-blue  {font-size: 21px;}
-
-    #first-section > div:first-of-type { width: 196px; }
-
-    #first-section > div:last-of-type { width: 118px; }
-
     #urgent-tasks { width: 404px; }
 
     #progress-overview div { width: 158px; }
+
+    #first-section > div:last-of-type { width: 118px; }
+
+    #first-section > div:first-of-type { width: 196px; }
+
+    .summary-container > div > div > div > span.dark-blue  {font-size: 21px;}
 }
 
 @media only screen and (max-width: 800px) {
+    #contacts { left: 0px; }
+    
+    #urgent-tasks { width: 384px; }
+    
+    .main-div-board { left: 24px; }
+    
+    .join-title { font-size: 61px; }
+    
+    .main-div-add-tasks { left: unset;}
+    
+    .contacts-div { min-width: unset; }
+    
+    #progress-overview div { width: 148px; }
+    
     .search-field { background-position-x: 80%, 92%; }
 
     .summary-container > div > div > div > span.dark-blue  { font-size: 27px; }
-
-    .join-title { font-size: 61px; }
-
-    .main-div-add-tasks { left: unset;}
-
-    .contacts-div { min-width: unset; }
-
-    #urgent-tasks { width: 384px; }
-
-    #progress-overview div { width: 148px; }
-
-    #contacts { left: 0px; }
-
-    .main-div-board { left: 24px; }
-
+    
     .sidebar > img,
     .topbar > span,
     #legal-notice,
@@ -643,6 +643,37 @@ button,
 }
 
 @media only screen and (max-width: 600px) {
+    #urgent-tasks { width: 344px; }
+    
+    .vertical-gr-line { padding: 0 32px; }
+    
+    #subtasks-content-basic { width: unset; }
+    
+    .search-field { background-position-x: 80%, 92%; }
+    
+    #first-section > div:last-of-type { width: 88px; }
+    
+    #first-section > div:first-of-type { width: 166px; }
+    
+    #add-tasks-overlay-view form { align-items: center; }
+
+    #edit-task-overlay-view > div > img { margin-right: 8px; }
+
+    #to-do,
+    #done,
+    #urgent,
+    #total-tasks,
+    #progress,
+    #feedback { font-size: 41px; }
+
+    #body-board,
+    #edit-task-overlay-view { padding: 16px; }
+
+    .spacing-to-do:hover,
+    .spacing-done:hover,
+    #urgent-tasks:hover,
+    #progress-overview div:hover { transform: scale(1); }
+
     #displaySubtasks-overlay,
     #displaySubtasks-edit-overlay,
     #add-tasks-overlay-view form div input.login-input,
@@ -652,7 +683,10 @@ button,
     #add-tasks-overlay-view form > div:nth-child(1) > div:nth-child(3), 
     #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(3) { width: 392px !important; }
 
-    #add-tasks-overlay-view form { align-items: center; }
+    #progress-overview div {
+        width: 130px; 
+        height: 100px;
+    }
 
     #priority-container-overlay
     {
@@ -666,44 +700,33 @@ button,
         flex-direction: column;
         align-items: center;
     }
-    
-    #body-board,
-    #edit-task-overlay-view { padding: 16px; }
-
-    .search-field { background-position-x: 80%, 92%; }
-
-    #to-do,
-    #done,
-    #urgent,
-    #total-tasks,
-    #progress,
-    #feedback { font-size: 41px; }
-
-    .vertical-gr-line { padding: 0 32px; }
-
-    #first-section > div:first-of-type { width: 166px; }
-
-    #first-section > div:last-of-type { width: 88px; }
-
-    #urgent-tasks { width: 344px; }
-
-    #progress-overview div {
-        width: 130px; 
-        height: 100px;
-    }
-
-    .spacing-to-do:hover,
-    .spacing-done:hover,
-    #urgent-tasks:hover,
-    #progress-overview div:hover { transform: scale(1); }
-
-    #subtasks-content-basic { width: unset; }
-
-    #edit-task-overlay-view > div > img { margin-right: 8px; }
 }
 
 @media only screen and (max-width: 500px) {
+    #urgent-tasks { width: 304px; }
     
+    #sidebar > a { padding: 16px 8px; }
+    
+    #progress-overview div { width: 120px; }
+    
+    #add-tasks-overlay-view { padding: 24px; }
+    
+    .contacts-div { align-items: flex-start; }
+    
+    .submit-section > button { width: 250px; }
+    
+    #tasks-overlay-view { padding: 24px 16px; }
+    
+    #contact-book > tr > div > div { gap: 24px; }
+    
+    .search-field { background-position-x: 76%, 90%; }
+    
+    #first-section > div:last-of-type { width: 68px; }
+    
+    #first-section > div:first-of-type { width: 146px; }
+
+    #contact-book > tr > div > div > div { padding: 8px; }
+
     #edit-task-overlay-view > div:nth-of-type(2) div.subtasks-main > div,
     #edit-task-overlay-view div input,
     #edit-task-overlay-view div textarea,
@@ -720,37 +743,6 @@ button,
     #add-tasks-overlay-view form > div:nth-child(1) > div:nth-child(3), 
     #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(3) { width: 342px !important; }
     
-    #add-tasks-basic-view form > div:nth-child(3)
-       {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #add-tasks-overlay-view { padding: 24px; }
-
-    #tasks-overlay-view { padding: 24px 16px; }
-
-    .search-field { background-position-x: 76%, 90%; }
-
-    .submit-section > button { width: 250px; }
-
-    #first-section > div:first-of-type { width: 146px; }
-
-    #first-section > div:last-of-type { width: 68px; }
-
-    #urgent-tasks { width: 304px; }
-
-    #progress-overview div { width: 120px; }
-
-    #sidebar > a { padding: 16px 8px; }
-
-    #contact-book > tr > div > div { gap: 24px; }
-
-    #contact-book > tr > div > div > div { padding: 8px; }
-
-    .contacts-div { align-items: flex-start; }
-
     .main-div-add-tasks > form input,
     .main-div-add-tasks > form textarea, 
     #subtasks-content-basic { width: 300px !important; }
@@ -758,10 +750,51 @@ button,
     #form-low-part div.priority, 
     .submit-section button { width: 348px !important; }
 
+    #overlay-contacts form > div,
+    #edit-overlay-forms > form div { width: 300px; }
+
+    #overlay-contacts > div.bg-dark-blue > span.fs-61px,
+    #edit-contacts > div.bg-dark-blue > span.fs-61px { font-size: 47px; }
+
+    #add-tasks-basic-view > div { justify-content: center; }
+
+    #add-tasks-basic-view form > div,
+    #add-tasks-basic-view form div:last-of-type,
+    #edit-task-overlay-view div:nth-child(2) > div { align-items: center; }
+
     #first-section > div:first-of-type svg,
     #first-section > div:last-of-type svg {
         width: 60px;
         height: 60px
+    }
+
+    .contact,
+    #contact-book > tr > td { 
+        width: 300px;
+        padding: 8px 16px;
+        font-weight: 700;
+    }
+
+    #plus-icon-edit-overlay {
+        position: absolute;
+        right: 64px;
+    }
+
+    #subtask-icons-edit-overlay {
+        position: absolute;
+        right: 72px;
+    }
+
+    #add-tasks-basic-view form > div:nth-child(3)
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .submit-section > button {
+        display: flex;
+        justify-content: center;
     }
 
     #edit-task-overlay-view > div:nth-of-type(2) > div > div:nth-child(4) > div,
@@ -776,44 +809,10 @@ button,
         align-items: center;
         flex-direction: column-reverse;
     }
-
-    .submit-section > button {
-        display: flex;
-        justify-content: center;
-    }
-
-    .contact,
-    #contact-book > tr > td { 
-        width: 300px;
-        padding: 8px 16px;
-        font-weight: 700;
-    }
-
-    #overlay-contacts form > div,
-    #edit-overlay-forms > form div { width: 300px; }
-
-    #overlay-contacts > div.bg-dark-blue > span.fs-61px,
-    #edit-contacts > div.bg-dark-blue > span.fs-61px { font-size: 47px; }
-
-    #add-tasks-basic-view > div { justify-content: center; }
-
-    #add-tasks-basic-view form > div,
-    #add-tasks-basic-view form div:last-of-type,
-    #edit-task-overlay-view div:nth-child(2) > div { align-items: center; }
-
-    #plus-icon-edit-overlay {
-        position: absolute;
-        right: 64px;
-    }
-
-    #subtask-icons-edit-overlay {
-        position: absolute;
-        right: 72px;
-    }
-
 }
 
 @media only screen and (max-width: 400px) {
+
 
     #main-div-board,
     #add-tasks-overlay-view { padding: 16px; }
@@ -843,30 +842,35 @@ button,
 
     #contact-book > tr > div > div { gap: 16px; }
 
-    #contact-book > tr > div > div > div { padding: 4px; }
-
+    
     .contact,
     #contact-book > tr > td { width: 250px; }
-
-    .search-field { background-position-x: 72%, 90%; }
-
+    
+    
     .search-section > div > img { padding: 4px; }
-
+    
     .search-section > div { margin-bottom: 4px; }
-
-    .main-div-add-tasks > form { align-items: center; }
-
+    
+    
     .vertical-gr-line { padding: 0 10px; }
+    
+    
+    #urgent-tasks { width: 176px; }
+    
+    #sidebar > a { padding: 16px 0px; }
+    
+    div.priority > div img { width: 128px; }
+    
+    #body-add-tasks { overflow-x: hidden; }
+    
+    
+    .search-field { background-position-x: 72%, 90%; }
+    
+    .main-div-add-tasks > form { align-items: center; }
+    
+    #contact-book > tr > div > div > div { padding: 4px; }
 
     #first-section > div:last-of-type > div.mr-16px { margin: 0; }
-
-    #urgent-tasks { width: 176px; }
-
-    #sidebar > a { padding: 16px 0px; }
-
-    div.priority > div img { width: 128px; }
-
-    #body-add-tasks { overflow-x: hidden; }
 
     .summary-container > div > div > div > span.dark-blue,
     #upcoming-deadline  { font-size: 21px; }
@@ -977,22 +981,11 @@ button,
 }
 
 @media only screen and (max-width: 350px) {
-    #plus-icon-edit-overlay,
-    #subtask-icons-edit-overlay {
-        right: 48px;
-    }
-
     #add-tasks-overlay-view { padding: 8px; }
 
-    #displaySubtasks-overlay,
-    #add-tasks-overlay-view form div input.login-input,
-    #add-tasks-overlay-view form div textarea.login-input,
-    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(4) > div { width: 200px !important; }
+    #plus-icon-edit-overlay,
+    #subtask-icons-edit-overlay { right: 48px; }
     
-    #add-tasks-overlay-view form > div:nth-child(1) > div:nth-child(3), 
-    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(3), 
-    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(6) button { width: 242px !important; }
-
     .contact,
     #contact-book > tr > td,
     #overlay-contacts form > div,
@@ -1002,28 +995,13 @@ button,
     #edit-contacts > div.bg-dark-blue > span.fs-61px { font-size: 41px; }
 
     #overlay-contacts > div.bg-dark-blue > span.fs-27px { font-size: 18px; }
+
+    #displaySubtasks-overlay,
+    #add-tasks-overlay-view form div input.login-input,
+    #add-tasks-overlay-view form div textarea.login-input,
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(4) > div { width: 200px !important; }
+    
+    #add-tasks-overlay-view form > div:nth-child(1) > div:nth-child(3), 
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(3), 
+    #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(6) button { width: 242px !important; }
 }
-
-/* ------------------------------------------- */
-/* @media only screen and (max-width: 1400px) {}
-
-@media only screen and (max-width: 1300px) {}
-
-@media only screen and (max-width: 1200px) {}
-
-@media only screen and (max-width: 1100px) {}
-
-@media only screen and (max-width: 1000px) {}
-
-@media only screen and (max-width: 900px) {}
-
-@media only screen and (max-width: 800px) {}
-
-@media only screen and (max-width: 600px) {}
-
-@media only screen and (max-width: 500px) {}
-
-@media only screen and (max-width: 400px) {}
-
-@media only screen and (max-width: 350px) {} */
-/* ------------------------------------------- */

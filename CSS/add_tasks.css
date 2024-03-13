@@ -89,11 +89,6 @@ div.subtasks-main > div { height: 28px; }
     cursor: pointer;
 }
 
-/* #displaySubtasks > div#subtask:hover #subtask-delete-accept { 
-    opacity: 1; 
-    cursor: pointer;
-} */
-
 .no-outline { border-bottom: 1px solid #29ABE2; }
 
 ul { 
@@ -107,7 +102,7 @@ ul {
 li { 
     outline: none;
     position: relative;
-    padding-left: 40px; /* Adjust as needed */
+    padding-left: 40px;
  }
 
  li::before {

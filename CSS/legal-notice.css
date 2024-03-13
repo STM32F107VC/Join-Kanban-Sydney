@@ -7,22 +7,9 @@
     padding-right: 64px;
 }
 
-.spacing-bottom {
-    padding-bottom: 128px;
-}
+.spacing-bottom { padding-bottom: 128px; }
 
 p { word-break: break-all; }
-
-/* @media only screen and (max-width: 800px) {
-
-    .main-div-legal-notice{
-        top:80px;
-        left:0;
-        margin-right: 50px;
-        margin-left: 50px;
-    }
-  
-} */
 
 @media only screen and (max-width: 600px) {
     div.main-div-legal-notice > div > span { font-size: 47px; }
