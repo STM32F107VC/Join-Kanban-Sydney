@@ -812,8 +812,40 @@ button,
 }
 
 @media only screen and (max-width: 400px) {
+    #urgent-tasks { width: 176px; }
+    
+    #sidebar > a { padding: 16px 0px; }
+    
+    .contacts-div { align-items: center; }
+    
+    .vertical-gr-line { padding: 0 10px; }
+    
+    #body-add-tasks { overflow-x: hidden; }
+    
+    #plus-icon-edit-overlay { right: 64px; }
+    
+    div.priority > div img { width: 128px; }
+    
+    #delete-part button { padding: 8px 12px; }
+    
+    #subtask-icons-edit-overlay { right: 48px; }
+    
+    #contact-book > tr > div > div { gap: 16px; }
+    
+    .search-section > div > img { padding: 4px; }
+    
+    .search-section > div { margin-bottom: 4px; }
+    
+    .search-field { background-position-x: 72%, 90%; }
+    
+    .main-div-add-tasks > form { align-items: center; }
 
+    #contact-book > tr > div > div > div { padding: 4px; }
+    
+    #first-section > div:last-of-type > div.mr-16px { margin: 0; }
 
+    #overlay-contacts > div.bg-dark-blue > span.fs-27px { font-size: 21px; }
+    
     #main-div-board,
     #add-tasks-overlay-view { padding: 16px; }
 
@@ -838,42 +870,28 @@ button,
 
     #add-tasks-overlay-view form > div:nth-child(3) > div:nth-child(4) > div > input { width: 100%; }
 
-    .contacts-div { align-items: center; }
-
-    #contact-book > tr > div > div { gap: 16px; }
-
-    
     .contact,
     #contact-book > tr > td { width: 250px; }
     
-    
-    .search-section > div > img { padding: 4px; }
-    
-    .search-section > div { margin-bottom: 4px; }
-    
-    
-    .vertical-gr-line { padding: 0 10px; }
-    
-    
-    #urgent-tasks { width: 176px; }
-    
-    #sidebar > a { padding: 16px 0px; }
-    
-    div.priority > div img { width: 128px; }
-    
-    #body-add-tasks { overflow-x: hidden; }
-    
-    
-    .search-field { background-position-x: 72%, 90%; }
-    
-    .main-div-add-tasks > form { align-items: center; }
-    
-    #contact-book > tr > div > div > div { padding: 4px; }
-
-    #first-section > div:last-of-type > div.mr-16px { margin: 0; }
-
     .summary-container > div > div > div > span.dark-blue,
     #upcoming-deadline  { font-size: 21px; }
+
+    #overlay-contacts > div.bg-dark-blue,
+    #edit-contacts > div.bg-dark-blue { padding: 24px 12px 112px 12px; }
+
+    #overlay-contacts form > div,
+    #edit-overlay-forms > form div { width: 250px; }
+
+    #to-do,
+    #done,
+    #urgent,
+    #progress,
+    #feedback,
+    .join-title,
+    #total-tasks,
+    .search-section > div > span, 
+    .main-div-add-tasks > div > span,
+    #add-tasks-overlay-view > div > span.fs-61px { font-size: 47px; }
 
     #subtasks-content-basic, 
     #displaySubtasks-edit-overlay,
@@ -903,17 +921,6 @@ button,
         font-size: 41px !important; 
         width: 100%;
     }
-
-    #to-do,
-    #done,
-    #urgent,
-    #progress,
-    #feedback,
-    .join-title,
-    #total-tasks,
-    .search-section > div > span, 
-    .main-div-add-tasks > div > span,
-    #add-tasks-overlay-view > div > span.fs-61px { font-size: 47px; }
 
     #urgent-tasks > div > div > div img,
     #first-section > div:first-of-type svg,
@@ -953,14 +960,6 @@ button,
         right: 108px;
     }
 
-    #subtask-icons-edit-overlay {
-        right: 48px;
-    }
-    
-    #plus-icon-edit-overlay {
-        right: 64px;
-    }
-
     #add-tasks-basic-view form,
     .main-div-add-tasks, 
     #form-low-part {
@@ -968,16 +967,6 @@ button,
         flex-direction: column;
         align-items: center;
     }
-
-    #overlay-contacts > div.bg-dark-blue,
-    #edit-contacts > div.bg-dark-blue { padding: 24px 12px 112px 12px; }
-
-    #overlay-contacts form > div,
-    #edit-overlay-forms > form div { width: 250px; }
-
-    #delete-part button { padding: 8px 12px; }
-
-    #overlay-contacts > div.bg-dark-blue > span.fs-27px { font-size: 21px; }
 }
 
 @media only screen and (max-width: 350px) {
