@@ -111,9 +111,9 @@ div.log-in > div {
     transition: scale 500ms ease-in-out;
 }
 
-@media only screen and (max-width: 1400px) {
+/* @media only screen and (max-width: 1400px) {
     .capa-2 { transform: translate(-30vh, -34vh); }
-}
+} */
 
 @media only screen and (max-width: 1000px) {
     .capa-2 { transform: translate(-26vh, -34vh); }
@@ -148,7 +148,7 @@ div.log-in > div {
 
     .log-in {
         padding: 32px 16px;
-        margin-top: 364px;
+        margin-top: 480px;
     }
 
     .log-in > div > form > div.flex.x-center.gap-35px {
