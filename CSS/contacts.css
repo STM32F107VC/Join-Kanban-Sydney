@@ -78,6 +78,7 @@
 #contact-book > tr > div { border-radius: 10px; }
 #contact-book > tr > div { cursor: pointer; }
 #contact-book > tr > td > span { margin-left: 12px; }
+#contact-book > tr > div > div > div:last-of-type { word-break: break-all; }
 a { color: #007CEE; }
 
 .separator {

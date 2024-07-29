@@ -383,6 +383,7 @@ button,
         flex-direction: row;
         gap: 16px;
         flex-wrap: wrap;
+        min-height: 200px;
     }
 
     div.team-slogan > div,
@@ -813,12 +814,16 @@ button,
 
 @media only screen and (max-width: 400px) {
     #urgent-tasks { width: 176px; }
-    
+
+    #urgent-tasks > div { margin-left: -28px; } 
+
+    #urgent-tasks > div:last-of-type { margin-left: 4px; } 
+
     #sidebar > a { padding: 16px 0px; }
     
     .contacts-div { align-items: center; }
     
-    .vertical-gr-line { padding: 0 10px; }
+    .vertical-gr-line { padding: 0 4px; }
     
     #body-add-tasks { overflow-x: hidden; }
     

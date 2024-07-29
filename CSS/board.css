@@ -31,6 +31,10 @@
     width: 252px;
 }
 
+.content-column > img {
+    height: fit-content;
+}
+
 .drag-drop > div { width: 252px; }
 
 .task {
@@ -47,6 +51,8 @@
 .task:active { rotate: 5deg; }
 
 .task > div { display: flex; }
+
+.task > div > div { flex-wrap: wrap; }
 
 .task-category {
     width: fit-content;
