@@ -198,7 +198,7 @@ function showTaskOverlay(i) {
     let task = tasks[i];
     let str = task['Prio'];
     let priority;
-    if (str !== undefined) { priority = str.charAt(0).toUpperCase() + str.slice(1); }
+    if (str !== undefined) { priority = str.charAt(0).toLowerCase() + str.slice(1); }
     let div = document.getElementById('tasks-overlay-view');
     div.classList.remove('d-none');
     div.innerHTML = renderTasksOverlay(i, task, priority);
