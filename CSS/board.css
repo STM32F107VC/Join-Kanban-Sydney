@@ -35,6 +35,12 @@
     height: fit-content;
 }
 
+.highlight {
+    border: 2px dotted #A8A8A8;
+    border-radius: 12px;
+    width: fit-content;
+}
+
 .drag-drop > div { width: 252px; }
 
 .task {
@@ -145,7 +151,7 @@ progress::-webkit-progress-bar {
     width: 160px;
 }
 
-.noDrop {/* Pseudo class avoid possibility to drop tasks into other tasks */}
+.noDrop {/* Pseudo class avoid possibility to drop tasks into other tasks or elements */}
 
 #display-searched-tasks {
     flex-wrap: wrap;

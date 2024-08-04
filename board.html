@@ -136,7 +136,7 @@
                     <img class="plus c-pointer" src="assets/img/plus-default.svg" onclick="openAddTaskOverlay();"
                         alt="plus">
                 </div>
-                <div class="content-column" id="backlog" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="content-column" id="backlog" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearHighlight(event)">
                 </div>
             </div>
 
@@ -146,7 +146,7 @@
                     <img class="plus c-pointer" src="assets/img/plus-default.svg" onclick="openAddTaskOverlay();"
                         alt="plus">
                 </div>
-                <div class="content-column" id="in-progress" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="content-column" id="in-progress" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearHighlight(event)"></div>
             </div>
 
             <div>
@@ -155,7 +155,7 @@
                     <img class="plus c-pointer" src="assets/img/plus-default.svg" onclick="openAddTaskOverlay();"
                         alt="plus">
                 </div>
-                <div class="content-column" id="await-feedback" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="content-column" id="await-feedback" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearHighlight(event)">
                 </div>
             </div>
 
@@ -165,7 +165,7 @@
                     <img class="plus c-pointer" src="assets/img/plus-default.svg" onclick="openAddTaskOverlay();"
                         alt="plus">
                 </div>
-                <div class="content-column" id="done" ondragover="allowDrop(event)" ondrop="drop(event)">
+                <div class="content-column" id="done" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="clearHighlight(event)">
                 </div>
             </div>
         </div>
