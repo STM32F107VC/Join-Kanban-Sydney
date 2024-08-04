@@ -202,27 +202,6 @@ function checkRegister(j, letter, n, e, auc, p, bgc) {
 }
 
 /**
- * Render contacts
- * @param {variable} id Contact specific id
- * @param {variable} n Contact name
- * @param {variable} e Contact email adress
- * @param {variable} auc Contact acronym
- * @returns Returns rendered selected contact
- */
-function renderContacts(j, id, n, e, auc, p, bgc) {
-    return /*html*/`
-        <div id="${id}${j}" onclick="contactDetails('${n}', '${e}', '${auc}', ${p}, '${id}', '${j}')" class="contact contactHover mb-24px">
-            <div class="flex y-center gap-35px">
-                <div style="background-color: #${bgc}" class="flex x-center y-center p-12px acronym">${auc}</div>
-                <div>
-                    <div class="ft-general fs-20px fw-400 mb-5px">${n}</div>
-                    <div><a class="ft-general fw-400 fs-16px" href="mailto: ${e}">${e}</a></div>
-                </div>
-            </div>
-        </div>`;
-}
-
-/**
  * Show contact book when screen width is < 1100px
  */
 function showContactBook() {
@@ -310,52 +289,6 @@ function addContactClasses(contact, divDetails, currentId) {
 }
 
 /**
- * Render contact details, when a contact is selected
- * @param {variable} n Contact name
- * @param {variable} e Contact email adress
- * @param {variable} auc Contact acronym
- * @param {variable} p Contact phone number
- * @param {variable} id Contact specific id
- * @param {variable} j J is the index number for accessing a contact in the contacts array
- * @returns Returns rendered contact details
- */
-function renderContactDetails(n, e, auc, p, id, j) {
-    return /*html*/`
-        <div id="modify-contact" class="edit-contact flex y-center mb-24px">
-            <div class="ft-general fs-47px fw-500 col-white mr-54px" style='background-color: #${contacts[j]['background-color']}'>
-                <span>${auc}</span></div>
-            <div>
-                <div class="ft-general fs-47px fw-500 mb-12px">${n}</div>
-                <div class="flex gap-16px">
-                    <img onclick="editContact('${j}', '${auc}')" class="edit c-pointer" src="/assets/img/edit_default.png" alt="edit">
-                    <img src="/assets/img/subtasks_vector.svg" alt="separator">
-                    <img onclick="deleteContact('${j}')" class="delete c-pointer" src="/assets/img/delete_default.png" alt="delete">
-                </div>
-            </div>
-        </div>
-        ${renderContactInformatons(e, p)}`;
-}
-
-/**
- * Renders the email adress and phone number
- * @param {JSON value} e Contact email adress
- * @param {JSON value} p Contact phone number
- * @returns Returns rendered contact informations
- */
-function renderContactInformatons(e, p) {
-    return /*html*/`
-        <div class="flex flex-column">
-            <span class="ft-general fs-20px fw-400 mb-64px mt-24px">Contact Information</span>
-            <div class="flex flex-column">
-                <span class="ft-general fs-16px fw-700 mb-16px">Email</span>
-                <a class="mb-24px" href="mailto:${e}">${e}</a>
-                <span class="ft-general fs-16px fw-700 mb-16px">Phone</span>
-                <a href="phone:${p}">${p}</a>
-            </div>
-        </div>`;
-}
-
-/**
  * Shows detailed information about a contact
  * @param {variable} j J is the index number for accessing a contact in the contacts array
  */
@@ -370,18 +303,6 @@ function editContact(j, auc) {
 }
 
 /**
- * Render acronym for contact details 
- * @param {string} auc Variable with acronym in it
- * @returns Returns rendered accronym part
- */
-function renderEditOverlayAvatar(auc) {
-    return /*html*/`
-        <div class="ft-general fs-47px fw-500 col-white" style="background-color: #${getBackgroundColor}">
-            <span>${auc}</span></div>
-        `;
-}
-
-/**
  * Get values out of contacts JSON array and show them in the input fields to check
  * @param {variable} j J is the index number for accessing a contact in the contacts array
  */
@@ -392,21 +313,6 @@ function getContactValues(j) {
     document.getElementById('edit-name').value = name;
     document.getElementById('edit-email').value = email;
     document.getElementById('edit-number').value = phone;
-}
-
-/**
- * Render form edit contact overlay menu the part to delete and safe contacts contacts
- * @param {variable} j J is the index number for accessing a contact in the contacts array
- * @returns Returns rendered delete part
- */
-function renderDeletePart(j) {
-    return /*html*/`
-        <button onclick="deleteContact(${j})" class="btn-light ft-general fs-21px fw-700 flex y-center gap-4px">
-            Delete <img src="assets/img/close.png" alt="cancel">
-        </button>
-        <button id="safe-btn" onclick="saveEditContactChanges(${j})" class="btn-dark ft-general fs-21px fw-700 flex y-center gap-4px">
-            Safe <img src="assets/img/check.png" alt="add">
-        </button>`;
 }
 
 /**
