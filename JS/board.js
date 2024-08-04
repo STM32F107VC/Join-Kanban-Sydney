@@ -1,4 +1,4 @@
-/* Declare global variables and arrays */
+/* Declare global variables */
 let countUp = -1;
 let getCategory;
 let bgcCode;
@@ -65,10 +65,9 @@ function valueOfTasks() {
  * Get from all urgent task the most urgent date
  * @param {string} formatDate Includes the most urgent date
  * @param {variable} increment Total amount of urgent tasks 
- * @param {*} dateObject 
- * @returns 
+ * @returns - Return the most urgent date
  */
-function getUrgentDate(formatDate, increment, dateObject) {
+function getUrgentDate(formatDate, increment) {
     let prioHigh = 'high';
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
@@ -78,17 +77,28 @@ function getUrgentDate(formatDate, increment, dateObject) {
             let currentDate = task['Date'];
             saveDate.push({ date: new Date(currentDate) });
             saveDate.sort((objA, objB) => Number(objA.date) - Number(objB.date),).reverse();
-            for (let j = 0; j < saveDate.length; j++) {
-                let date = saveDate[j];
-                dateObject = date.date;
-            }
-            let day = ('0' + dateObject.getDate()).slice(-2);
-            let month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
-            let year = dateObject.getFullYear();
-            formatDate = `${day}.${month}.${year}`;
+            formatDate = buildDate(saveDate, formatDate);
         }
     }
     return [formatDate, increment];
+}
+
+/**
+ * 
+ * @param {Array} saveDate - Array with the most urgent dates
+ * @param {number} formatDate - The most urgent date as numbers
+ * @returns - Returns the most urgent date
+ */
+function buildDate(saveDate, formatDate) {
+    for (let j = 0; j < saveDate.length; j++) {
+        let date = saveDate[j];
+        dateObject = date.date;
+    }
+    let day = ('0' + dateObject.getDate()).slice(-2);
+    let month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
+    let year = dateObject.getFullYear();
+    formatDate = `${day}.${month}.${year}`;
+    return formatDate;
 }
 
 /**
@@ -281,7 +291,7 @@ function setEditableTaskValues(title, description, date) {
 
 /**
  * Safes changes which were made on a task
- * @param {variable} j J is the index number for accessing a task in the tasks array
+ * @param {number} taskIndex Taskindex is the index number for accessing a task in the tasks array
  */
 async function saveEditTaskChanges(taskIndex) {
     document.getElementById('edit-overlay-ok-btn').disabled = true;
@@ -347,21 +357,6 @@ function renderSubtask(t, k, location) {
         div.innerHTML += renderActiveSubtask(k, i, subtask);
         loadActiveSubtasks(t, k, i);
     }
-}
-
-/**
- * 
- * @param {*} k 
- * @param {*} i 
- * @param {*} subtask 
- * @returns 
- */
-function renderActiveSubtask(k, i, subtask) {
-    return /*html*/`
-        <div class="sub-pseudo subtasks flex y-center gap-16px">
-            <input class="flex x-center y-center checkbox" onclick="activeSubtasks('${k}', ${i})" type="checkbox" id="subtasks${k}${i}">
-            <div>${subtask}</div>
-        </div>`;
 }
 
 /**
@@ -470,6 +465,23 @@ function getSubtasks(t) {
  */
 function allowDrop(ev) {
     ev.preventDefault();
+    let target = ev.target;
+    let targetColumn;
+
+    if (target.classList.contains('content-column')) {
+        targetColumn = target;
+    } else {
+        targetColumn = target.closest('.content-column');
+    }
+
+    if (targetColumn) {
+        let noDropElement = targetColumn.querySelector('.noDrop');
+        if (noDropElement && noDropElement.contains(target)) {
+            targetColumn.classList.remove('highlight');
+        } else {
+            targetColumn.classList.add('highlight');
+        }
+    }
 }
 
 /**
@@ -481,12 +493,13 @@ function drag(ev) {
 }
 
 /**
- * 
+ * Drop content to column
  * @param {tokenlist} ev Tokenlist from element to drop
  */
 function drop(ev) {
     let target = ev.target;
     let id = target.id;
+    let targetColumn = document.getElementById(`${id}`);
     let data = ev.dataTransfer.getData("text");
     if (target.classList && target.classList.contains('noDrop')) {
         ev.preventDefault();
@@ -498,6 +511,26 @@ function drop(ev) {
         removeColumnPlaceholder();
         howManyTasksPerColumn();
         noTaskToDo();
+        targetColumn.classList.remove('highlight');
+    }
+}
+
+/**
+ * Remove highlight when leaving the column
+ * @param {Event} ev Event from element to leave
+ */
+function clearHighlight(ev) {
+    let target = ev.target;
+    let targetColumn;
+
+    if (target.classList.contains('content-column')) {
+        targetColumn = target;
+    } else {
+        targetColumn = target.closest('.content-column');
+    }
+
+    if (targetColumn) {
+        targetColumn.classList.remove('highlight');
     }
 }
 
