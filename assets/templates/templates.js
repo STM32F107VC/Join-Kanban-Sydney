@@ -42,7 +42,7 @@ function getAddTaskOverlayMenuTemplate(location) {
                             <div id="form-low-part">
                                 <div class="flex flex-column mb-24px">
                                     <span class="mb-8px">Due date<span class="col-red">*</span></span>
-                                    <input class="login-input fs-20px" type="date" value="2024-01-01" name="" id="date-${location}" required>
+                                    <input class="login-input fs-20px" type="date" value"" name="" id="date-${location}" required>
                                 </div>
                                 <div class="priority flex flex-column mb-24px">
                                     <span class="mb-8px">Prio</span>
