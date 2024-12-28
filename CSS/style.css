@@ -522,6 +522,13 @@ button,
 }
 
 @media only screen and (max-width: 900px) {
+    .content-column {
+        height: 400px;
+        overflow-y: scroll;
+    }
+
+    .drag-drop { gap: 48px; }
+
     #urgent-tasks { width: 404px; }
 
     #progress-overview div { width: 158px; }
